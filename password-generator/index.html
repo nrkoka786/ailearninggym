@@ -205,7 +205,6 @@
         }
         footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
     </style>
-    <!-- GLOBAL GOOGLE ANALYTICS (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -214,8 +213,7 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
-<!-- GOOGLE ADSENSE AUTO-ADS CODE -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550"
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550"
          crossorigin="anonymous"></script>
 </head>
 <body>
@@ -227,14 +225,12 @@
 
     <div class="container">
         
-        <!-- MAIN APP AND CONTENT AREA -->
         <main class="main-content">
             
             <div class="adsense-placeholder top-banner-ad">
                 [ AdSense Space: Leaderboard Banner Unit ]
             </div>
 
-            <!-- INTERACTIVE UTILITY APP -->
             <section class="tool-wrapper">
                 <h2 style="margin-bottom: 15px; color: var(--text-dark);">Random Password Generator & Strength Analyzer</h2>
                 
@@ -273,7 +269,6 @@
                 </div>
             </section>
 
-            <!-- HIGH VALUE SEO ARTICLE SECTION (Prevents thin content block) -->
             <section class="seo-section">
                 <h2>Why Strong Passwords Are Vital For Cyber Security Protection</h2>
                 <p>Welcome to the cryptographic defense suite at AI Learning Gym. In the modern era of automated cyber threats, basic credential patterns fail within fractions of a single second. Malicious bot networks utilize optimized distributed hardware matrices to cycle through trillions of common string variants, meaning traditional, easily guessable passwords offer virtually zero protection.</p>
@@ -294,20 +289,23 @@
                 
                 <p><strong>Q: What makes a credential string completely un-crackable?</strong><br>
                 A: True safety depends on length and pattern isolation. Avoid using common word configurations or substituting simple character numbers (like changing an 'E' to a '3'). Long, entirely randomized patterns provide the highest defense profiles across all network layers.</p>
+
+                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free Online Password Generator</h3>
+                <p>Building secure credentials with our Password Generator takes only a single click. Adjust your length parameters, choose your preferred combination of uppercase letters, numbers, and symbols, and click generate to instantly compile a randomized, cryptographically secure string.</p>
+                
+                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">Why Safe Local Passwords Matter</h3>
+                <p>Generating sensitive access credentials over external cloud connections presents massive security vulnerabilities. This utility handles your algorithmic string criteria entirely within your browser's local sandbox memory space. No values are transmitted over the web, guaranteeing total isolation from server logs.</p>
             </section>
 
         </main>
 
-        <!-- SIDEBAR AD -->
         <aside>
             <div class="adsense-placeholder sidebar-ad">
                 [ AdSense Space: Large Skyscraper (Sticky Display) ]
             </div>
         </aside>
 
-    </div>
-
-    <footer>
+    </div> <footer>
         <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
         <p>
             <a href="/privacy-policy.html">Privacy Policy</a> | 
@@ -316,7 +314,6 @@
         </p>
     </footer>
 
-    <!-- INTERACTIVE APP LOGIC LAYER -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const passwordOutput = document.getElementById("password-output");
@@ -349,7 +346,8 @@
                 
                 if (allowedChars === "") {
                     passwordOutput.value = "Select an option!";
-                    updateStrength(0, 0);
+                    strengthBar.style.width = "0%";
+                    strengthText.innerText = "Crack Time: Checking...";
                     return;
                 }
 
