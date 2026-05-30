@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Text Case Converter | AI Learning Gym</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ANALYTICS_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YOUR_ANALYTICS_ID');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+         crossorigin="anonymous"></script>
+
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- AdSense Spaces --- */
+        .adsense-placeholder {
+            background-color: #eaeaea;
+            border: 2px dashed #bbb;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .top-banner-ad { width: 100%; height: 90px; }
+        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
+        .inline-content-ad { width: 100%; height: 250px; }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Case Transformer App Frame --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .text-input-area {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        .text-input-area:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .btn-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .transform-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .transform-btn:hover { background-color: var(--accent-color); }
+
+        .utility-btn {
+            background-color: #7f8c8d;
+        }
+        .utility-btn:hover { background-color: #95a5a6; }
+
+        .meta-stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <div class="adsense-placeholder top-banner-ad">
+                [ AdSense Space: Leaderboard Banner Unit ]
+            </div>
+
+            <section class="tool-wrapper">
+                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Accurate Text Case Converter</h2>
+                
+                <textarea id="text-input" class="text-input-area" placeholder="Type or paste your text content here to transform casing parameters instantly..."></textarea>
+
+                <div class="btn-panel">
+                    <button class="transform-btn" onclick="convertCase('upper')">UPPERCASE</button>
+                    <button class="transform-btn" onclick="convertCase('lower')">lowercase</button>
+                    <button class="transform-btn" onclick="convertCase('sentence')">Sentence case</button>
+                    <button class="transform-btn" onclick="convertCase('title')">Title Case</button>
+                    <button class="transform-btn" onclick="convertCase('capitalize')">Capitalize Words</button>
+                    <button class="transform-btn utility-btn" id="copy-btn" onclick="copyText()">Copy Result</button>
+                    <button class="transform-btn utility-btn" style="background-color: #e74c3c;" onclick="clearText()">Clear</button>
+                </div>
+
+                <div class="meta-stats" id="stats-display">
+                    Characters: 0 | Words: 0 | Sentences: 0
+                </div>
+            </section>
+
+            <section class="seo-section">
+                <h2>The Practical Importance of Content Case Normalization</h2>
+                <p>Welcome to the typography processing engine at AI Learning Gym. In modern digital publishing, consistent typography casing establishes visual authority and improves consumer comprehension. Accidentally leaving the CAPS LOCK toggled on can ruin drafts or data configurations, requiring specialized software formatters to cleanly rewrite documents instead of manually typing them out from scratch.</p>
+                
+                <h3>Understanding Structural Writing Standardizations</h3>
+                <p>Varying text variations operate under distinct grammatical rule structures across media networks. Standard Sentence Case isolates and targets capital parameters exclusively onto the initial alphabetical letter of a standalone paragraph or period split. Title formatting models, universally applied across legal systems and journalistic headers, amplify the significance of major noun structures while lowering trivial standard prepositions.</p>
+
+                <div class="adsense-placeholder inline-content-ad">
+                    [ AdSense Space: Rectangular In-Article Unit ]
+                </div>
+
+                <h3>Why Programmers and Editors Leverage Automation Tools</h3>
+                <p>For data administrators and search engine optimization analysts, shifting raw text strings across uppercase, snake_case, or clean descriptive headings is a routine task. Bulk data scrubbing strategies utilize local browser transformations to standardize text configurations seamlessly, ensuring corporate data pools look uniform before archiving assets into cloud systems.</p>
+                
+                <h3>Frequently Answered Text Modification Questions (FAQ)</h3>
+                <p><strong>Q: Does this converter parse hidden special font symbols or emojis safely?</strong><br>
+                A: Yes. The underlying JavaScript algorithms scan basic string layout configurations, leaving intricate punctuation scripts, code symbols, and native graphic characters completely untouched while exclusively altering relevant text casings.</p>
+                
+                <p><strong>Q: Is my pasted text document analyzed or cached on external server nodes?</strong><br>
+                A: No. Data protection is standard across our platform. Your pasted character data blocks exist solely inside your browser's local sandbox memory stack. The operations execute client-side, making it completely secure for private files.</p>
+            </section>
+
+        </main>
+
+        <aside>
+            <div class="adsense-placeholder sidebar-ad">
+                [ AdSense Space: Large Skyscraper (Sticky Display) ]
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <script>
+        const textInput = document.getElementById("text-input");
+        const statsDisplay = document.getElementById("stats-display");
+        const copyBtn = document.getElementById("copy-btn");
+
+        // Real-time counter logic loop
+        textInput.addEventListener("input", updateMetrics);
+
+        function updateMetrics() {
+            const rawText = textInput.value;
+            const charCount = rawText.length;
+            
+            // Calculate true word arrays
+            const cleanWords = rawText.trim().split(/\s+/).filter(word => word.length > 0);
+            const wordCount = cleanWords.length;
+
+            // Calculate sentences via common end marks (. ! ?)
+            const sentenceCount = rawText.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).length;
+
+            statsDisplay.innerText = `Characters: ${charCount.toLocaleString()} | Words: ${wordCount.toLocaleString()} | Sentences: ${sentenceCount.toLocaleString()}`;
+        }
+
+        function convertCase(mode) {
+            let currentText = textInput.value;
+            if (!currentText.trim()) return;
+
+            switch (mode) {
+                case 'upper':
+                    textInput.value = currentText.toUpperCase();
+                    break;
+                case 'lower':
+                    textInput.value = currentText.toLowerCase();
+                    break;
+                case 'sentence':
+                    // Lowercase everything, then capitalize characters following periods
+                    textInput.value = currentText.toLowerCase().replace(/(^\s*|[.!?]\s+)([a-z])/g, (match, p1, p2) => p1 + p2.toUpperCase());
+                    break;
+                case 'title':
+                    // Standard journalistic title capitalization logic
+                    textInput.value = currentText.toLowerCase().split(' ').map(word => {
+                        return (word.charAt(0).toUpperCase() + word.slice(1));
+                    }).join(' ');
+                    break;
+                case 'capitalize':
+                    textInput.value = currentText.replace(/\b[a-z]/g, letter => letter.toUpperCase());
+                    break;
+            }
+            updateMetrics();
+        }
+
+        function copyText() {
+            if (!textInput.value) return;
+            navigator.clipboard.writeText(textInput.value);
+            
+            const baseText = copyBtn.innerText;
+            copyBtn.innerText = "Copied!";
+            copyBtn.style.backgroundColor = "var(--success-color)";
+            
+            setTimeout(() => {
+                copyBtn.innerText = baseText;
+                copyBtn.style.backgroundColor = "#7f8c8d";
+            }, 1200);
+        }
+
+        function clearText() {
+            textInput.value = "";
+            updateMetrics();
+        }
+    </script>
+</body>
+</html>
