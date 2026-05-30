@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Image Resizer & Format Converter Sandbox | AI Learning Gym</title>
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- AdSense Spaces --- */
+        .adsense-placeholder {
+            background-color: #eaeaea;
+            border: 2px dashed #bbb;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .top-banner-ad { width: 100%; height: 90px; }
+        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
+        .inline-content-ad { width: 100%; height: 250px; }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Image Sandbox Frame --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Drag & Drop Area */
+        .upload-box {
+            border: 3px dashed #cbd5e1;
+            padding: 30px;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .upload-box:hover { border-color: var(--accent-color); }
+        .upload-box p { color: var(--text-muted); font-weight: 600; margin-top: 5px; }
+
+        #file-input { display: none; }
+
+        /* Workspace Settings Grid */
+        .workspace-grid {
+            display: none; /* Controlled by script */
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        @media (min-width: 600px) {
+            .workspace-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .preview-pane {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        .preview-pane img {
+            max-width: 100%;
+            max-height: 350px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .settings-panel {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-field-group {
+            flex: 1;
+        }
+
+        .input-field-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .num-input, .select-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .num-input:focus, .select-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .download-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .download-btn:hover { background-color: #27ae60; }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <!-- MAIN APP AND CONTENT AREA -->
+        <main class="main-content">
+            
+            <div class="adsense-placeholder top-banner-ad">
+                [ AdSense Space: Leaderboard Banner Unit ]
+            </div>
+
+            <!-- INTERACTIVE UTILITY APP -->
+            <section class="tool-wrapper">
+                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Client-Side Image Resizer & Sandbox</h2>
+                
+                <!-- Initial Drag/Upload Box -->
+                <div class="upload-box" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                    <svg width="48" height="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" style="color: var(--accent-color); margin: 0 auto 10px auto;">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <p>Click to select or drag & drop an image here</p>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Supports PNG, JPG, WebP</span>
+                    <input type="file" id="file-input" accept="image/*">
+                </div>
+
+                <!-- Main Active Canvas Editing Workspace -->
+                <div class="workspace-grid" id="workspace">
+                    <div class="preview-pane">
+                        <img id="image-preview" src="" alt="Source upload preview">
+                    </div>
+
+                    <div class="settings-panel">
+                        <h3 style="color: var(--text-dark); font-size: 1.1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px;">Dimension Configurations</h3>
+                        
+                        <div class="input-row">
+                            <div class="input-field-group">
+                                <label for="width-input">Width (px)</label>
+                                <input type="number" id="width-input" class="num-input">
+                            </div>
+                            <div class="input-field-group">
+                                <label for="height-input">Height (px)</label>
+                                <input type="number" id="height-input" class="num-input">
+                            </div>
+                        </div>
+
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="aspect-ratio" checked>
+                            <label for="aspect-ratio">Maintain Aspect Ratio</label>
+                        </div>
+
+                        <h3 style="color: var(--text-dark); font-size: 1.1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; margin-top: 10px;">Format Compression</h3>
+
+                        <div class="input-field-group">
+                            <label for="format-select">Export Format</label>
+                            <select id="format-select" class="select-input">
+                                <option value="image/jpeg">JPEG (.jpg)</option>
+                                <option value="image/png">PNG (.png)</option>
+                                <option value="image/webp">WebP (.webp)</option>
+                            </select>
+                        </div>
+
+                        <button id="download-btn" class="download-btn">Process & Download Image</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HIGH VALUE SEO ARTICLE SECTION (Prevents thin content block) -->
+            <section class="seo-section">
+                <h2>Optimizing Digital Images: Core Principles of Image Scaling</h2>
+                <p>Welcome to the image compression sandbox at AI Learning Gym. In the modern visual web workspace, serving raw camera file configurations degrades browser paint speed horizons and drives bounce counts high. Modifying width arrays and tuning file formats before deploying assets guarantees quick rendering speeds across mobile browsers.</p>
+                
+                <h3>Lossy vs. Lossless Digital Transformations Explained</h3>
+                <p>Altering file types shifts graphic file structures drastically. Standard PNG processing provides lossless layout structural retention, locking sharp pixel data lines safely inside your canvas asset, which is excellent for diagrams or sharp brand marks. Conversely, formats like JPEG and optimized WebP employ lossy algorithms, stripping un-scanned visual micro-details to yield incredibly small asset download sizes.</p>
+
+                <div class="adsense-placeholder inline-content-ad">
+                    [ AdSense Space: Rectangular In-Article Unit ]
+                </div>
+
+                <h3>Why Preserving Aspect Proportions Prevents Graphic Distortions</h3>
+                <p>Forced image skewing occurs when file width lines scale entirely independent of height frameworks. If proportions fall out of sync, graphic assets warp noticeably. Our workspace calculator keeps structural dimensions locked automatically, scaling adjacent layout rules uniformly to protect standard photographic balance completely.</p>
+                
+                <h3>Frequently Answered Compression Questions (FAQ)</h3>
+                <p><strong>Q: Are my high-res media uploads transmitted to your cloud databases?</strong><br>
+                A: No. Privacy is absolute within our utility network. The engine parses files locally via your web rendering viewport. The canvas structures rewrite pixels straight inside your local RAM cache environment.</p>
+                
+                <p><strong>Q: Which export variation serves web properties most effectively?</strong><br>
+                A: For modern websites, WebP provides the highest quality-to-compression ratios available. It cuts image data footprints down significantly compared to old JPEG frameworks without losing structural crispness.</p>
+            </section>
+
+        </main>
+
+        <!-- SIDEBAR AD -->
+        <aside>
+            <div class="adsense-placeholder sidebar-ad">
+                [ AdSense Space: Large Skyscraper (Sticky Display) ]
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <!-- INTERACTIVE APP LOGIC LAYER -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dropZone = document.getElementById("drop-zone");
+            const fileInput = document.getElementById("file-input");
+            const workspace = document.getElementById("workspace");
+            const imgPreview = document.getElementById("image-preview");
+            
+            const widthInput = document.getElementById("width-input");
+            const heightInput = document.getElementById("height-input");
+            const aspectCheck = document.getElementById("aspect-ratio");
+            const formatSelect = document.getElementById("format-select");
+            const downloadBtn = document.getElementById("download-btn");
+
+            let sourceImage = new Image();
+            let nativeRatio = 1;
+
+            // Drag Over States
+            dropZone.addEventListener("dragover", (e) => {
+                e.preventDefault();
+                dropZone.style.borderColor = "var(--accent-color)";
+            });
+
+            dropZone.addEventListener("dragleave", () => {
+                dropZone.style.borderColor = "#cbd5e1";
+            });
+
+            dropZone.addEventListener("drop", (e) => {
+                e.preventDefault();
+                dropZone.style.borderColor = "#cbd5e1";
+                if (e.dataTransfer.files.length > 0) {
+                    processFile(e.dataTransfer.files[0]);
+                }
+            });
+
+            fileInput.addEventListener("change", (e) => {
+                if (e.target.files.length > 0) {
+                    processFile(e.target.files[0]);
+                }
+            });
+
+            function processFile(file) {
+                if (!file.type.startsWith("image/")) {
+                    alert("Please drop a valid image file configuration!");
+                    return;
+                }
+
+                const fileReader = new FileReader();
+                fileReader.onload = (event) => {
+                    sourceImage.src = event.target.result;
+                };
+                fileReader.readAsDataURL(file);
+            }
+
+            sourceImage.onload = () => {
+                // Map out initial resolution vectors
+                widthInput.value = sourceImage.width;
+                heightInput.value = sourceImage.height;
+                nativeRatio = sourceImage.width / sourceImage.height;
+
+                imgPreview.src = sourceImage.src;
+                dropZone.style.display = "none";
+                workspace.style.display = "grid";
+            };
+
+            // Aspect locking event loops
+            widthInput.addEventListener("input", () => {
+                if (aspectCheck.checked && nativeRatio) {
+                    heightInput.value = Math.round(widthInput.value / nativeRatio);
+                }
+            });
+
+            heightInput.addEventListener("input", () => {
+                if (aspectCheck.checked && nativeRatio) {
+                    widthInput.value = Math.round(heightInput.value * nativeRatio);
+                }
+            });
+
+            // Master processing render execution matrix
+            downloadBtn.addEventListener("click", () => {
+                const targetW = parseInt(widthInput.value);
+                const targetH = parseInt(heightInput.value);
+
+                if (!targetW || targetW <= 0 || !targetH || targetH <= 0) {
+                    alert("Please input valid measurement metrics!");
+                    return;
+                }
+
+                // Create offscreen virtual processing canvas frame
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+                
+                canvas.width = targetW;
+                canvas.height = targetH;
+
+                // Execute bicubic scaling projection down onto target vectors
+                ctx.drawImage(sourceImage, 0, 0, targetW, targetH);
+
+                // Fetch data payload variations based on select values
+                const exportFormat = formatSelect.value;
+                const dataUrl = canvas.toDataURL(exportFormat, 0.90);
+
+                // Determine file suffix naming conventions
+                let extension = ".jpg";
+                if (exportFormat === "image/png") extension = ".png";
+                if (exportFormat === "image/webp") extension = ".webp";
+
+                // Generate trigger download hook
+                const tempLink = document.createElement("a");
+                tempLink.href = dataUrl;
+                tempLink.download = `ailearninggym-resized${extension}`;
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+            });
+        });
+    </script>
+</body>
+</html>
