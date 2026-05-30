@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Learning Gym | Free AI & Web Productivity Tool Hub</title>
+    <title>AI Learning Gym | Free Online Web Utilities & Interactive Developer Tools</title>
+
+    <!-- GLOBAL GOOGLE ANALYTICS (gtag.js) PLACEHOLDER -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ANALYTICS_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YOUR_ANALYTICS_ID');
+    </script>
+
+    <!-- GOOGLE ADSENSE AUTO-ADS CODE PLACEHOLDER -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+         crossorigin="anonymous"></script>
+
     <style>
-        /* --- Root Variables & Variables --- */
+        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
-            --bg-light: #f8fafc;
             --card-border: #e2e8f0;
+            --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -28,17 +42,16 @@
             line-height: 1.6;
         }
 
-        /* --- Header / Hero Section --- */
         header {
             background-color: var(--primary-color);
             color: #ffffff;
             padding: 40px 20px;
             text-align: center;
-            border-bottom: 5px solid var(--accent-color);
+            border-bottom: 4px solid var(--accent-color);
         }
 
-        header h1 {
-            font-size: 2.2rem;
+        header h1 { 
+            font-size: 2.2rem; 
             margin-bottom: 10px;
         }
 
@@ -49,18 +62,25 @@
             margin: 0 auto;
         }
 
-        /* --- Global Grid Container --- */
+        /* --- Grid Layout System --- */
         .container {
             max-width: 1200px;
             margin: 30px auto;
-            padding: 0 20px;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
-        /* --- AdSense Dummy Box Styles --- */
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- AdSense Spaces --- */
         .adsense-placeholder {
-            background-color: #e2e8f0;
-            border: 2px dashed #94a3b8;
-            color: var(--text-dark);
+            background-color: #eaeaea;
+            border: 2px dashed #bbb;
+            color: #666;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -68,249 +88,266 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 20px auto;
-            border-radius: 6px;
+            margin: 20px 0;
+            border-radius: 4px;
         }
 
-        .homepage-top-banner {
-            width: 100%;
-            height: 90px;
-            max-width: 970px;
+        .top-banner-ad { width: 100%; height: 90px; }
+        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
+        .inline-content-ad { width: 100%; height: 250px; }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        /* --- Tools Grid Layout --- */
-        .tools-grid {
+        /* --- Dashboard Tool Grid --- */
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        /* --- Tool Card Box Styling --- */
+        @media (min-width: 600px) {
+            .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 850px) {
+            .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         .tool-card {
             background: #ffffff;
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
         .tool-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+            border-color: var(--accent-color);
         }
 
-        .tool-card h3 {
+        .tool-title {
+            font-size: 1.2rem;
+            font-weight: 700;
             color: var(--text-dark);
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .tool-card p {
+        .tool-icon {
+            font-size: 1.4rem;
+        }
+
+        .tool-desc {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-grow: 1;
         }
 
-        .launch-btn {
-            display: block;
-            text-align: center;
-            background-color: var(--accent-color);
-            color: #ffffff;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background-color 0.2s;
+        .tool-action {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .launch-btn:hover {
-            background-color: #2980b9;
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
         }
 
-        /* --- Bottom Homepage SEO Content --- */
-        .homepage-seo {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 30px;
-            margin-top: 50px;
-            border: 1px solid var(--card-border);
-        }
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
 
-        .homepage-seo h2 {
-            color: var(--text-dark);
-            margin-bottom: 15px;
-        }
-
-        .homepage-seo p {
-            color: #475569;
-            margin-bottom: 15px;
-        }
-
-        /* --- Footer --- */
+        /* --- Standard Footer --- */
         footer {
             background-color: var(--primary-color);
-            color: #94a3b8;
+            color: #a0aec0;
             text-align: center;
             padding: 30px 20px;
-            margin-top: 60px;
+            margin-top: 40px;
             font-size: 0.9rem;
         }
-
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
     </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ANALYTICS_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  // Tells Google to start tracking visitors on ailearninggym.com
-  gtag('config', 'G-YOUR_ANALYTICS_ID');
-</script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
-     crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- HERO SECTION -->
     <header>
         <h1>AI Learning Gym</h1>
-        <p>Your instant suite of free browser utilities, text formatters, and secure cryptographic tools designed for developers, students, and content creators.</p>
+        <p>Your instant browser-based workspace for free, privacy-first developer utilities, text encoders, and production tools.</p>
     </header>
 
     <div class="container">
-
-        <!-- Top AdSpace placeholder -->
-        <div class="adsense-placeholder homepage-top-banner">
-            [ AdSense Space: Leaderboard Banner Unit ]
-        </div>
-
-        <!-- 10 TOOLS CARD GRID -->
-        <main class="tools-grid">
-
-            <!-- Tool 1 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>1. Word & Token Counter</h3>
-                    <p>Analyze text lengths, word occurrences, paragraph breakdowns, and estimated AI token parameters instantly inside your local browser layout.</p>
-                </div>
-                <a href="/word-counter/" class="launch-btn">Launch Tool</a>
+        
+        <!-- MAIN APP AND CONTENT AREA -->
+        <main class="main-content">
+            
+            <div class="adsense-placeholder top-banner-ad">
+                [ AdSense Space: Home Leaderboard Banner Unit ]
             </div>
 
-            <!-- Tool 2 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>2. QR Code Generator</h3>
-                    <p>Build custom high-resolution static QR codes for local Wi-Fi nodes, vCard profiles, phone numbers, and external marketing links completely free.</p>
-                </div>
-                <a href="/qr-generator/" class="launch-btn">Launch Tool</a>
+            <h2 style="margin-bottom: 20px; color: var(--text-dark); font-size: 1.4rem;">Available Web Utilities</h2>
+
+            <!-- INTERACTIVE DASHBOARD GRID -->
+            <div class="dashboard-grid">
+                
+                <!-- Tool 1 -->
+                <a href="/word-counter/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">📊</span> Word Counter</div>
+                        <div class="tool-desc">Analyze real-time text density metrics, verify exact character allocations, and compute reading profiles seamlessly.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 2 -->
+                <a href="/qr-generator/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">📷</span> QR Code Generator</div>
+                        <div class="tool-desc">Convert URLs, explicit text objects, or credentials into crisp, downloadable matrix matrix symbols instantly.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 3 -->
+                <a href="/password-generator/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">🔒</span> Password Generator</div>
+                        <div class="tool-desc">Build cryptographically secure, randomized alphabetic passwords utilizing custom algorithmic string criteria.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 4 -->
+                <a href="/age-calculator/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">📅</span> Age Calculator</div>
+                        <div class="tool-desc">Isolate exact chronological vectors down to the precise day, minute, and tracking milestone structures.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 5 -->
+                <a href="/image-resizer/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">🖼️</span> Image Resizer</div>
+                        <div class="tool-desc">Scale pixel boundaries, modify aspect ratios, and export optimized image layouts without cloud rendering delays.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 6 -->
+                <a href="/case-converter/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">🔠</span> Case Converter</div>
+                        <div class="tool-desc">Transform text strings instantaneously into standard UPPERCASE, lowercase, camelCase, or sentence structures.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 7 -->
+                <a href="/json-formatter/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">⚙️</span> JSON Formatter</div>
+                        <div class="tool-desc">Sanitize raw JSON data arrays into clean, indented, readable structural logic formats for easier code debugging.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 8 -->
+                <a href="/text-to-speech/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">🗣️</span> Text-to-Speech</div>
+                        <div class="tool-desc">Synthesize vocal audio output arrays directly inside your browser layout via client-side API architecture layers.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 9 -->
+                <a href="/diff-checker/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">🔍</span> Document Diff Checker</div>
+                        <div class="tool-desc">Run side-by-side string comparisons to isolate text additions, code mutations, or character adjustments cleanly.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
+                <!-- Tool 10 -->
+                <a href="/whatsapp-link/" class="tool-card">
+                    <div>
+                        <div class="tool-title"><span class="tool-icon">💬</span> WhatsApp Link Generator</div>
+                        <div class="tool-desc">Construct customized click-to-chat links with pre-filled content templates to speed up customer message pipelines.</div>
+                    </div>
+                    <div class="tool-action">Launch Tool &rarr;</div>
+                </a>
+
             </div>
 
-            <!-- Tool 3 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>3. Password Strength Meter</h3>
-                    <p>Generate highly resilient random text arrays and test exact processing time horizons required for malicious brute-force decrypt architectures.</p>
-                </div>
-                <a href="/password-generator/" class="launch-btn">Launch Tool</a>
-            </div>
+            <!-- HIGH VALUE SEO ARTICLE SECTION (Prevents thin content block) -->
+            <section class="seo-section">
+                <h2>The Importance of Client-Side Web Utilities in Modern Workspaces</h2>
+                <p>Welcome to the digital production hub at AI Learning Gym. In an increasingly hyper-connected digital landscape, the tools professionals, developers, and writers rely on daily shouldn't introduce unnecessary delays or data risks. Traditional cloud-hosted tool structures often process user data using external database synchronization loops. This method can hurt productivity and put private information at risk. AI Learning Gym changes this paradigm by running tools right inside your browser window.</p>
+                
+                <h3>Why Privacy-First Front-End Architecture Is Crucial</h3>
+                <p>When you use text formatting utilities, modify programmatic JSON scripts, or generate sensitive corporate credentials, transmitting that specific data over external cloud pipelines presents real vulnerabilities. Our platform uses client-side JavaScript execution arrays to handle your operations safely within your local system memory space. This completely removes the risk of server logs, tracking caches, or unauthorized data leaks.</p>
 
-            <!-- Tool 4 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>4. Dynamic Age & Date Calculator</h3>
-                    <p>Calculate exactly target age windows, milestones, and day differences between custom timeline variables for record processing.</p>
+                <div class="adsense-placeholder inline-content-ad">
+                    [ AdSense Space: Home Rectangular In-Article Unit ]
                 </div>
-                <a href="/age-calculator/" class="launch-btn">Launch Tool</a>
-            </div>
 
-            <!-- Tool 5 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>5. Image Processing Sandbox</h3>
-                    <p>Convert and shrink graphics sizes between JPEG, WebP, and PNG arrays client-side without compromising structural image resolutions.</p>
-                </div>
-                <a href="/image-resizer/" class="launch-btn">Launch Tool</a>
-            </div>
-
-            <!-- Tool 6 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>6. Text Case Transformer</h3>
-                    <p>Quickly manipulate text arrays between completely UPPERCASE, standard lowercase, sentence titles, or randomized inverted layouts.</p>
-                </div>
-                <a href="/case-converter/" class="launch-btn">Launch Tool</a>
-            </div>
-
-            <!-- Tool 7 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>7. JSON Validation Engine</h3>
-                    <p>Paste scrambled programmatic data payloads into a beautifully nested, clean layout highlighting nested syntax errors instantly.</p>
-                </div>
-                <a href="/json-formatter/" class="launch-btn">Launch Tool</a>
-            </div>
-
-            <!-- Tool 8 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>8. Text-to-Speech Audio Reader</h3>
-                    <p>Parse input writing arrays straight into auditory streams using local synthesized voices for proofreading edits and creative clips.</p>
-                </div>
-                <a href="/text-to-speech/" class="launch-btn">Launch Tool</a>
-            </div>
-
-            <!-- Tool 9 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>9. Visual Diff Document Checker</h3>
-                    <p>Paste separate paragraph structures adjacent to each other to cleanly map precise additions, removals, or code variations.</p>
-                </div>
-                <a href="/diff-checker/" class="launch-btn">Launch Tool</a>
-            </div>
-
-            <!-- Tool 10 Box -->
-            <div class="tool-card">
-                <div>
-                    <h3>10. WhatsApp Link Generator</h3>
-                    <p>Create clickable hyperlink arrays containing embedded custom text messages to let digital visitors text you without saving contacts.</p>
-                </div>
-                <a href="/whatsapp-link/" class="launch-btn">Launch Tool</a>
-            </div>
+                <h3>Streamlining Content and Engineering Workflows</h3>
+                <p>By bringing ten essential developer and content tools together onto a single, clean dashboard, we provide a unified home base for everyday production workflows. Marketing managers can fine-tune text layouts with the Case Converter and Word Counter. Meanwhile, integration engineering teams can check micro-adjustments using the Document Diff Checker or validate raw code blocks with the JSON Formatter. This centralized approach eliminates browser tab bloat and creates an efficient, focused workspace.</p>
+                
+                <h3>Frequently Answered Portal Questions (FAQ)</h3>
+                <p><strong>Q: Are all tools across the AI Learning Gym open-source and free to access?</strong><br>
+                A: Yes. Every single interactive utility module hosted across our network domain features completely unrestricted public access profiles, requiring zero active subscription commitments or onboarding procedures.</p>
+                
+                <p><strong>Q: Do these tools operate cleanly across tablet and smartphone displays?</strong><br>
+                A: Absolutely. The structural framework relies on clean CSS Grid layouts designed to adapt dynamically to your screen size, providing a seamless operational window across all desktop, tablet, and mobile displays.</p>
+            </section>
 
         </main>
 
-        <!-- HOMEPAGE SEO ACCREDITATION -->
-        <section class="homepage-seo">
-            <h2>Welcome to the AI Learning Gym Suite</h2>
-            <p>AI Learning Gym is a dedicated digital sandbox focused on optimizing modern workflows. All tools hosted inside this infrastructure utilize secure browser canvas processing interfaces. Your sensitive document lines, generated data strings, and images remain completely yours—never transmitted, saved, or exposed to background databases.</p>
-            <p>Our ongoing operational goal focuses on maintaining fast, accessible micro-utilities with minimal download sizes so users can easily toggle layouts from mobile and desktop viewports seamlessly.</p>
-        </section>
+        <!-- SIDEBAR AD -->
+        <aside>
+            <div class="adsense-placeholder sidebar-ad">
+                [ AdSense Space: Home Large Skyscraper Display ]
+            </div>
+        </aside>
 
     </div>
 
-    <!-- FOOTER LINKS (Required for Google AdSense Compliance) -->
     <footer>
         <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p style="margin-top: 15px;">
+        <p>
             <a href="/privacy-policy.html">Privacy Policy</a> | 
             <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Us</a>
+            <a href="/contact.html">Contact Support</a>
         </p>
     </footer>
 
