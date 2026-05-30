@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accurate Online Age & Date Calculator | AI Learning Gym</title>
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- AdSense Spaces --- */
+        .adsense-placeholder {
+            background-color: #eaeaea;
+            border: 2px dashed #bbb;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .top-banner-ad { width: 100%; height: 90px; }
+        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
+        .inline-content-ad { width: 100%; height: 250px; }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Calculator App Frame --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid var(--card-border);
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .date-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .date-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .calc-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .calc-btn:hover { background-color: #2980b9; }
+
+        /* Result Outputs */
+        .result-box {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-left: 5px solid var(--success-color);
+            border-radius: 4px;
+        }
+
+        .result-primary {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .result-secondary {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 10px;
+        }
+
+        .result-secondary p {
+            margin-bottom: 4px;
+        }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <div class="adsense-placeholder top-banner-ad">
+                [ AdSense Space: Leaderboard Banner Unit ]
+            </div>
+
+            <section class="tool-wrapper">
+                <nav class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchTab('age-calc')">Age Calculator</button>
+                    <button class="tab-btn" onclick="switchTab('date-diff')">Date Difference</button>
+                </nav>
+
+                <div id="age-calc" class="tab-content active">
+                    <div class="input-group">
+                        <label for="birth-date">Select Date of Birth:</label>
+                        <input type="date" id="birth-date" class="date-input">
+                    </div>
+                    <div class="input-group">
+                        <label for="age-at-date">Age at the Date of:</label>
+                        <input type="date" id="age-at-date" class="date-input">
+                    </div>
+                    <button class="calc-btn" onclick="calculateAge()">Calculate Age</button>
+
+                    <div id="age-result" class="result-box">
+                        <div class="result-primary" id="age-output-main"></div>
+                        <div class="result-secondary" id="age-output-sub"></div>
+                    </div>
+                </div>
+
+                <div id="date-diff" class="tab-content">
+                    <div class="input-group">
+                        <label for="start-date">Start Date:</label>
+                        <input type="date" id="start-date" class="date-input">
+                    </div>
+                    <div class="input-group">
+                        <label for="end-date">End Date:</label>
+                        <input type="date" id="end-date" class="date-input">
+                    </div>
+                    <button class="calc-btn" onclick="calculateDifference()">Calculate Difference</button>
+
+                    <div id="diff-result" class="result-box">
+                        <div class="result-primary" id="diff-output-main"></div>
+                        <div class="result-secondary" id="diff-output-sub"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="seo-section">
+                <h2>The Practical Importance of Precision Date Tracking Tools</h2>
+                <p>Welcome to the time-analysis engine at AI Learning Gym. Tracking chronological increments between calendar nodes is critical for cross-verifying administrative forms, processing official retirement windows, or evaluating personal milestones. Standard calendar scanning errors occur frequently due to erratic month lengths and leap year cycles, making a specialized computer counter highly reliable.</p>
+                
+                <h3>How Automated Timeline Systems Manage Leap Years Natively</h3>
+                <p>Human tracking systems historically struggle with solar year variations. A standard year contains 365 calendar cycles, but our planet takes roughly 365.2422 steps around the sun. To balance this shift, processing architectures compute specialized mathematical leaps every fourth annum. Our local system references native timezone arrays to verify calendar accuracy across thousands of historical ranges flawlessly.</p>
+
+                <div class="adsense-placeholder inline-content-ad">
+                    [ AdSense Space: Rectangular In-Article Unit ]
+                </div>
+
+                <h3>Why Total Metric Breakdowns Offer Deep Project Value</h3>
+                <p>Outside of simple biological birthdays, breaking time spans down into secondary values like total weeks, days, or hours provides immense baseline value for professional environments. Logistics managers evaluate workflow durations in raw working days, while code developers set countdown horizons using absolute minute limits to organize automated scripts cleanly.</p>
+                
+                <h3>Frequently Answered Calendar Questions (FAQ)</h3>
+                <p><strong>Q: Are my selected dates monitored or logged on your network?</strong><br>
+                A: No. Privacy is foundational to our layout. The calculations are processed instantaneously inside your local desktop or mobile browser window via native client-side JavaScript. No data parameters are uploaded to web servers.</p>
+                
+                <p><strong>Q: Does this engine compensate for contrasting global timezones?</strong><br>
+                A: The underlying scripts utilize your device's native local clock configurations. For exact chronological calculations, the formulas evaluate calendar changes relative to your local browser environment.</p>
+            </section>
+
+        </main>
+
+        <aside>
+            <div class="adsense-placeholder sidebar-ad">
+                [ AdSense Space: Large Skyscraper (Sticky Display) ]
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <script>
+        // Set default calendar values to today on load
+        document.addEventListener("DOMContentLoaded", () => {
+            const todayStr = new Date().toISOString().split('T')[0];
+            document.getElementById("age-at-date").value = todayStr;
+            document.getElementById("start-date").value = todayStr;
+            document.getElementById("end-date").value = todayStr;
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function calculateAge() {
+            const birthInput = document.getElementById("birth-date").value;
+            const targetInput = document.getElementById("age-at-date").value;
+            
+            if (!birthInput || !targetInput) {
+                alert("Please select both dates!");
+                return;
+            }
+
+            const birthDate = new Date(birthInput);
+            const targetDate = new Date(targetInput);
+
+            if (birthDate > targetDate) {
+                alert("Birth date cannot be after the target comparison date!");
+                return;
+            }
+
+            let years = targetDate.getFullYear() - birthDate.getFullYear();
+            let months = targetDate.getMonth() - birthDate.getMonth();
+            let days = targetDate.getDate() - birthDate.getDate();
+
+            if (days < 0) {
+                months--;
+                // Get days in previous month
+                const prevMonth = new Date(targetDate.getFullYear(), targetDate.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            // Sub-metrics calculation block
+            const totalMs = targetDate - birthDate;
+            const totalDays = Math.floor(totalMs / (1000 * 60 * 60 * 24));
+            const totalWeeks = Math.floor(totalDays / 7);
+            const extraDays = totalDays % 7;
+            const totalHours = totalDays * 24;
+            const totalMinutes = totalHours * 60;
+
+            document.getElementById("age-output-main").innerText = `${years} Years, ${months} Months, and ${days} Days`;
+            
+            document.getElementById("age-output-sub").innerHTML = `
+                <p><strong>Total Weeks:</strong> ${totalWeeks.toLocaleString()} weeks ${extraDays} days</p>
+                <p><strong>Total Days:</strong> ${totalDays.toLocaleString()} days</p>
+                <p><strong>Total Hours:</strong> ${totalHours.toLocaleString()} hours</p>
+                <p><strong>Total Minutes:</strong> ${totalMinutes.toLocaleString()} minutes</p>
+            `;
+            document.getElementById("age-result").style.display = "block";
+        }
+
+        function calculateDifference() {
+            const startInput = document.getElementById("start-date").value;
+            const endInput = document.getElementById("end-date").value;
+
+            if (!startInput || !endInput) {
+                alert("Please fill in both fields!");
+                return;
+            }
+
+            const startDate = new Date(startInput);
+            const endDate = new Date(endInput);
+
+            const diffMs = Math.abs(endDate - startDate);
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            
+            const weeks = Math.floor(diffDays / 7);
+            const remainingDays = diffDays % 7;
+
+            document.getElementById("diff-output-main").innerText = `${diffDays.toLocaleString()} Total Days`;
+            document.getElementById("diff-output-sub").innerHTML = `
+                <p><strong>Duration metrics:</strong> ${weeks} weeks and ${remainingDays} days.</p>
+            `;
+            document.getElementById("diff-result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
