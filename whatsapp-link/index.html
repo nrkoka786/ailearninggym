@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free WhatsApp Link Generator with Pre-filled Text | AI Learning Gym</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ANALYTICS_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YOUR_ANALYTICS_ID');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+         crossorigin="anonymous"></script>
+
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --whatsapp-green: #25d366;
+            --whatsapp-dark: #128c7e;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- AdSense Spaces --- */
+        .adsense-placeholder {
+            background-color: #eaeaea;
+            border: 2px dashed #bbb;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .top-banner-ad { width: 100%; height: 90px; }
+        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
+        .inline-content-ad { width: 100%; height: 250px; }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Generator App Frame --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .phone-input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        .country-code {
+            width: 80px;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .main-phone {
+            flex-grow: 1;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .custom-textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .country-code:focus, .main-phone:focus, .custom-textarea:focus {
+            outline: none;
+            border-color: var(--whatsapp-dark);
+        }
+
+        /* Link Display Box */
+        .output-box {
+            background-color: #ffffff;
+            border: 1px solid var(--card-border);
+            border-left: 5px solid var(--whatsapp-green);
+            border-radius: 4px;
+            padding: 20px;
+            margin-top: 20px;
+            word-break: break-all;
+        }
+
+        .generated-url {
+            font-family: monospace;
+            font-size: 1rem;
+            color: var(--whatsapp-dark);
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: var(--whatsapp-green);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .action-btn:hover { background-color: var(--whatsapp-dark); }
+
+        .test-btn {
+            background-color: #7f8c8d;
+        }
+        .test-btn:hover { background-color: #95a5a6; }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <div class="adsense-placeholder top-banner-ad">
+                [ AdSense Space: Leaderboard Banner Unit ]
+            </div>
+
+            <section class="tool-wrapper">
+                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Instant WhatsApp Click-to-Chat Link Generator</h2>
+                
+                <div class="form-group">
+                    <label>WhatsApp Phone Number (Include Country Code, No Symbols):</label>
+                    <div class="phone-input-wrapper">
+                        <input type="text" id="country-code" class="country-code" placeholder="1" value="1">
+                        <input type="tel" id="phone-number" class="main-phone" placeholder="5551234567">
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: block;">*Example: 1 for US, 44 for UK, 91 for India. Omit any leading zeros or plus symbols.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="custom-message">Pre-filled Welcome Message (Optional):</label>
+                    <textarea id="custom-message" class="custom-textarea" placeholder="Hello! I am interested in your services. Please provide more details..."></textarea>
+                </div>
+
+                <div class="output-box">
+                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-dark); display: block; margin-bottom: 6px;">Your Generated Click-to-Chat URL:</span>
+                    <span id="generated-url-display" class="generated-url">https://wa.me/</span>
+                    
+                    <div class="btn-panel">
+                        <button class="action-btn" id="copy-btn" onclick="copyLink()">Copy Generated Link</button>
+                        <button class="action-btn test-btn" id="test-btn" onclick="testLink()">Test Link (Open Chat)</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="seo-section">
+                <h2>Maximizing Customer Conversion with Click-to-Chat Links</h2>
+                <p>Welcome to the digital marketing sandbox at AI Learning Gym. In the hyper-accelerated modern consumer space, frictional barriers crush incoming transactional leads. Forcing mobile users to manually copy a ten-digit string, open their contacts, assign a name field, and reload a messaging interface causes massive customer drop-off. Custom shortcuts bridge that layout divide instantly.</p>
+                
+                <h3>The Engineering Logic: How wa.me API Structures Work</h3>
+                <p>The standard architecture driving this utility utilizes the secure global API domain framework provided natively by WhatsApp. When a client-side layout constructs a formatted destination query, it transforms standard alphanumeric spacing arrays into URL-safe hexadecimal text values (such as rendering a character space as `%20`). When a mobile application layer reads this payload, it bypasses traditional address validation and boots up a matching chat instantly.</p>
+
+                <div class="adsense-placeholder inline-content-ad">
+                    [ AdSense Space: Rectangular In-Article Unit ]
+                </div>
+
+                <h3>Strategic Link Placement Across Social Media Ecosystems</h3>
+                <p>Deploying automated hyperlinked shortcuts alters organic lead capture strategies dramatically across public networks. Independent creators leverage these assets inside Instagram profiles, TikTok introductory biography fields, and digital business layouts. Pre-filling an intentional text template means your brand categorizes incoming requests instantly, streamlining customer sorting pipelines from day one.</p>
+                
+                <h3>Frequently Answered Link Routing Questions (FAQ)</h3>
+                <p><strong>Q: Does generating these direct chat URLs capture my target phone values?</strong><br>
+                A: No. Data protection is absolute across the AI Learning Gym. All URL generation routines compile locally inside your front-end RAM memory stack using immediate string joins. No database pipelines ever parse or cache your customer contacts.</p>
+                
+                <p><strong>Q: Why does the routing fail if I include a leading "+" symbol?</strong><br>
+                A: The official mobile communication handlers strictly parse numerical strings exclusively. Adding bracket marks, punctuation breaks, dashes, or prefix variables breaks the routing map. Strip all symbols to guarantee universal performance.</p>
+            </section>
+
+        </main>
+
+        <aside>
+            <div class="adsense-placeholder sidebar-ad">
+                [ AdSense Space: Large Skyscraper (Sticky Display) ]
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <script>
+        const countryInput = document.getElementById("country-code");
+        const phoneInput = document.getElementById("phone-number");
+        const messageInput = document.getElementById("custom-message");
+        const urlDisplay = document.getElementById("generated-url-display");
+        const copyBtn = document.getElementById("copy-btn");
+
+        // Attach live input listeners to construct the link dynamically
+        [countryInput, phoneInput, messageInput].forEach(element => {
+            element.addEventListener("input", constructWhatsAppLink);
+        });
+
+        function constructWhatsAppLink() {
+            // Strip spaces, dashes, plus signs, and leading zeros from inputs
+            const cleanCountry = countryInput.value.replace(/[^0-9]/g, '');
+            const cleanPhone = phoneInput.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
+            const rawMessage = messageInput.value;
+
+            if (!cleanPhone) {
+                urlDisplay.innerText = "https://wa.me/";
+                return;
+            }
+
+            // Base format configuration
+            let finalUrl = `https://wa.me/${cleanCountry}${cleanPhone}`;
+
+            // If a custom welcome message exists, encode it cleanly for URI safety
+            if (rawMessage.trim() !== "") {
+                finalUrl += `?text=${encodeURIComponent(rawMessage)}`;
+            }
+
+            urlDisplay.innerText = finalUrl;
+        }
+
+        function copyLink() {
+            const currentUrl = urlDisplay.innerText;
+            if (currentUrl === "https://wa.me/") {
+                alert("Please enter a phone number configuration first!");
+                return;
+            }
+
+            navigator.clipboard.writeText(currentUrl);
+            
+            const originalText = copyBtn.innerText;
+            copyBtn.innerText = "Copied URL!";
+            copyBtn.style.backgroundColor = "#128c7e";
+            
+            setTimeout(() => {
+                copyBtn.innerText = originalText;
+                copyBtn.style.backgroundColor = "var(--whatsapp-green)";
+            }, 1200);
+        }
+
+        function testLink() {
+            const currentUrl = urlDisplay.innerText;
+            if (currentUrl === "https://wa.me/") {
+                alert("Please enter a phone number configuration first to test!");
+                return;
+            }
+            // Safely spawn a new window tab to test link compatibility
+            window.open(currentUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
