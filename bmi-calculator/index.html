@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Fitness BMI Calculator | AI Learning Gym</title>
+    <meta name="description" content="Calculate your Body Mass Index (BMI) instantly. Free online fitness health calculator supporting metric and imperial inputs with ideal weight zone targets.">
+    <meta name="keywords" content="bmi calculator online, body mass index, free fitness calculator, check body weight health, ideal weight range chart">
+    <meta property="og:title" content="Free Online Fitness BMI Calculator | AI Learning Gym">
+    <meta property="og:description" content="Analyze your weight-to-height ratio instantly with interactive medical category gauges in a privacy-first sandbox.">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --underweight: #3498db;
+            --normal: #2ecc71;
+            --overweight: #f1c40f;
+            --obese: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- Live Ad Container Classes --- */
+        .ad-container {
+            margin: 15px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Calculator App Frame --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid var(--card-border);
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 600px) {
+            .input-row.split { grid-template-columns: 1fr 1fr; }
+            .input-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .input-group label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .bmi-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .bmi-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .calc-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .calc-btn:hover { background-color: #2980b9; }
+
+        /* Results & Interactive Gauges */
+        .result-panel {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .score-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .score-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        /* Gauge Spectrum Slider */
+        .gauge-bar {
+            height: 12px;
+            background: linear-gradient(to right, var(--underweight) 25%, var(--normal) 25% 55%, var(--overweight) 55% 75%, var(--obese) 75%);
+            border-radius: 6px;
+            position: relative;
+            margin: 25px 0 10px 0;
+        }
+
+        .gauge-pointer {
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: -2px;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .gauge-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+        .target-box {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbd5e1;
+            font-size: 0.95rem;
+            color: #4a5568;
+            text-align: center;
+        }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2027849186057550"
+                     data-ad-slot="1105246416"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <section class="tool-wrapper">
+                <nav class="tabs-nav">
+                    <button id="btn-metric" class="tab-btn active" onclick="switchUnitMode('metric')">⚙️ Metric Units</button>
+                    <button id="btn-imperial" class="tab-btn" onclick="switchUnitMode('imperial')">🇺🇸 Imperial Units</button>
+                </nav>
+
+                <div class="input-row split" id="metric-inputs">
+                    <div class="input-group">
+                        <label for="weight-metric">Weight (kg):</label>
+                        <input type="number" id="weight-metric" class="bmi-input" placeholder="e.g. 70" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="height-metric">Height (cm):</label>
+                        <input type="number" id="height-metric" class="bmi-input" placeholder="e.g. 175" min="1">
+                    </div>
+                </div>
+
+                <div class="input-row triple" id="imperial-inputs" style="display: none;">
+                    <div class="input-group">
+                        <label for="weight-imperial">Weight (lbs):</label>
+                        <input type="number" id="weight-imperial" class="bmi-input" placeholder="e.g. 150" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="height-feet">Height (Feet):</label>
+                        <input type="number" id="height-feet" class="bmi-input" placeholder="e.g. 5" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="height-inches">Height (Inches):</label>
+                        <input type="number" id="height-inches" class="bmi-input" placeholder="e.g. 9" min="0" max="11">
+                    </div>
+                </div>
+
+                <button class="calc-btn" onclick="executeBMICalculation()">Calculate Body Mass Index</button>
+
+                <div class="result-panel" id="bmi-result-card">
+                    <div class="score-display">
+                        <div class="score-num" id="bmi-score">0.0</div>
+                        <div class="score-label" id="bmi-status">Normal Weight</div>
+                    </div>
+                    
+                    <div class="gauge-bar">
+                        <div class="gauge-pointer" id="bmi-indicator" style="left: 50%;"></div>
+                    </div>
+                    <div class="gauge-labels">
+                        <span>18.5 (Under)</span>
+                        <span>24.9 (Normal)</span>
+                        <span>29.9 (Over)</span>
+                        <span>30+ (Obese)</span>
+                    </div>
+
+                    <div class="target-box" id="target-range-display">
+                        Your healthy target weight range is...
+                    </div>
+                </div>
+            </section>
+
+            <section class="seo-section">
+                <h2>Understanding the Medical Purpose of Body Mass Index (BMI)</h2>
+                <p>Welcome to the health analytics interface at AI Learning Gym. Body Mass Index, commonly referred to as BMI, is a standardized international screening blueprint used by medical organizations, fitness experts, and nutritionists to quickly classify body composition phenotypes. By evaluating an individual's mass relative to their square height metrics, the calculation flags baseline nutritional tracking zones without needing complex lab equipment.</p>
+                
+                <h3>How the Mathematic Body Ratios are Calculated</h3>
+                <p>The core algorithm operates on clear proportional parameters. Within the standard metric grid, your structural score equals total mass in kilograms divided by your height in square meters ($kg/m^2$). Imperial conversions require an additional scalar multiplier ($703 \times \text{lbs}/\text{inches}^2$) to bridge differences in unit scales perfectly. These calculations estimate general tissue distribution profiles cleanly.</p>
+
+                <div class="ad-container">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2027849186057550"
+                         data-ad-slot="1105246416"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <h3>Why Healthy Weight Horizons Matter Across Lifespans</h3>
+                <p>Maintaining a metabolic balance within the designated "Normal" baseline tier (scores fluctuating between 18.5 and 24.9) significantly reduces long-term operational health risks. Scores shifting outside these parameters can indicate tracking vulnerabilities, prompting professionals to review muscle tissue densities, visceral body fat spreads, or potential underlying circulatory strain vectors.</p>
+                
+                <h3>Frequently Answered Health Portal Questions (FAQ)</h3>
+                <p><strong>Q: Does a high BMI value explicitly prove an individual has excessive body fat?</strong><br>
+                A: Not necessarily. The formula calculates total structural weight distribution without distinguishing between skeletal muscle mass and fat tissue arrays. High-performance weightlifters often register in upper tiers purely due to dense muscle fiber configurations.</p>
+                
+                <p><strong>Q: Are my personal physical dimensions logged onto your analytics servers?</strong><br>
+                A: No. Privacy integrity is fundamental across our utility network ecosystem. Your height, weight, and fitness scores process entirely in your device's browser front-end memory via local script structures. No parameters are shared or stored.</p>
+            </section>
+
+        </main>
+
+        <aside style="position: sticky; top: 20px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2027849186057550"
+                 data-ad-slot="1105246416"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+    </div> 
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <script>
+        let currentMode = "metric";
+
+        function switchUnitMode(mode) {
+            currentMode = mode;
+            const btnMetric = document.getElementById("btn-metric");
+            const btnImperial = document.getElementById("btn-imperial");
+            const metricBox = document.getElementById("metric-inputs");
+            const imperialBox = document.getElementById("imperial-inputs");
+
+            if (mode === "metric") {
+                btnMetric.classList.add("active");
+                btnImperial.classList.remove("active");
+                metricBox.style.display = "grid";
+                imperialBox.style.display = "none";
+            } else {
+                btnMetric.classList.remove("active");
+                btnImperial.classList.add("active");
+                metricBox.style.display = "none";
+                imperialBox.style.display = "grid";
+            }
+            document.getElementById("bmi-result-card").style.display = "none";
+        }
+
+        function executeBMICalculation() {
+            let weight = 0; // standard base in kg
+            let height = 0; // standard base in meters
+            let bmi = 0;
+
+            let minHealthyWeight = 0;
+            let maxHealthyWeight = 0;
+            let rangeString = "";
+
+            if (currentMode === "metric") {
+                const kgInput = parseFloat(document.getElementById("weight-metric").value);
+                const cmInput = parseFloat(document.getElementById("height-metric").value);
+
+                if (!kgInput || !cmInput || kgInput <= 0 || cmInput <= 0) {
+                    alert("Please provide valid weight and height measurements!");
+                    return;
+                }
+
+                weight = kgInput;
+                height = cmInput / 100;
+                bmi = weight / (height * height);
+
+                // Calculate healthy weights relative to height matrix loops
+                minHealthyWeight = 18.5 * (height * height);
+                maxHealthyWeight = 24.9 * (height * height);
+                rangeString = `<strong>${Math.round(minHealthyWeight)} kg</strong> - <strong>${Math.round(maxHealthyWeight)} kg</strong>`;
+
+            } else {
+                const lbsInput = parseFloat(document.getElementById("weight-imperial").value);
+                const ftInput = parseFloat(document.getElementById("height-feet").value);
+                const inInput = parseFloat(document.getElementById("height-inches").value) || 0;
+
+                if (!lbsInput || !ftInput || lbsInput <= 0 || ftInput <= 0) {
+                    alert("Please provide valid weight and height measurements!");
+                    return;
+                }
+
+                const totalInches = (ftInput * 12) + inInput;
+                bmi = (lbsInput / (totalInches * totalInches)) * 703;
+
+                // Calculate imperial standard health limits
+                minHealthyWeight = (18.5 * (totalInches * totalInches)) / 703;
+                maxHealthyWeight = (24.9 * (totalInches * totalInches)) / 703;
+                rangeString = `<strong>${Math.round(minHealthyWeight)} lbs</strong> - <strong>${Math.round(maxHealthyWeight)} lbs</strong>`;
+            }
+
+            // Standardize numeric display rounding rules
+            bmi = Math.round(bmi * 10) / 10;
+            document.getElementById("bmi-score").innerText = bmi;
+
+            // Classify clinical categories and adjust spectrum sliders
+            const statusLabel = document.getElementById("bmi-status");
+            const pointer = document.getElementById("bmi-indicator");
+            let percentagePosition = 0;
+
+            if (bmi < 18.5) {
+                statusLabel.innerText = "Underweight";
+                statusLabel.style.color = "var(--underweight)";
+                // Map position into left quarter 0-25%
+                percentagePosition = (bmi / 18.5) * 25;
+                if (percentagePosition < 3) percentagePosition = 3;
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                statusLabel.innerText = "Normal Healthy Weight";
+                statusLabel.style.color = "var(--normal)";
+                // Map position into normal tier 25-55%
+                percentagePosition = 25 + ((bmi - 18.5) / 6.4) * 30;
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                statusLabel.innerText = "Overweight";
+                statusLabel.style.color = "var(--overweight)";
+                // Map position into overweight tier 55-75%
+                percentagePosition = 55 + ((bmi - 25) / 4.9) * 20;
+            } else {
+                statusLabel.innerText = "Obese Condition";
+                statusLabel.style.color = "var(--obese)";
+                // Map position into obese limits 75-100%
+                percentagePosition = 75 + ((bmi - 30) / 15) * 25;
+                if (percentagePosition > 97) percentagePosition = 97;
+            }
+
+            pointer.style.left = `${percentagePosition}%`;
+            document.getElementById("target-range-display").innerHTML = `For your unique height framework, the clinically ideal weight range is ${rangeString}.`;
+            document.getElementById("bmi-result-card").style.display = "block";
+        }
+    </script>
+</body>
+</html>
