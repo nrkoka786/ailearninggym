@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Markdown Live Preview Editor | AI Learning Gym</title>
+    <meta name="description" content="Write and compile Markdown notation code side-by-side with instant live HTML rendering views. Free, secure, privacy-first client-side documentation workspace.">
+    <meta name="keywords" content="markdown editor, markdown live preview, md reader, live html rendering, read me creator, markdown documentation tool, text preview tool, dev tools online">
+    <meta property="og:title" content="Free Online Markdown Live Preview Editor | AI Learning Gym">
+    <meta property="og:description" content="An instantaneous side-by-side Markdown composition grid featuring live parsing blocks and automated HTML structural output exports.">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --success-color: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- Live Ad Container Classes --- */
+        .ad-container {
+            margin: 15px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Editor Workspace Frame --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .btn-action:hover { background-color: #2980b9; }
+        .btn-action.success { background-color: var(--success-color); }
+
+        .split-editor-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .split-editor-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .pane-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .editor-textarea {
+            width: 100%;
+            height: 450px;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            resize: vertical;
+            background: #ffffff;
+            line-height: 1.5;
+        }
+        .editor-textarea:focus { outline: none; border-color: var(--accent-color); }
+
+        /* Rendered HTML Styling Output Viewport */
+        .render-preview-box {
+            width: 100%;
+            height: 450px;
+            padding: 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            background: #ffffff;
+            overflow-y: auto;
+            color: #111827;
+        }
+
+        /* Target Markdown Typographic Elements Inside Live Preview Box */
+        .render-preview-box h1 { font-size: 1.8rem; margin-bottom: 12px; border-bottom: 1px solid var(--card-border); padding-bottom: 4px; color: var(--text-dark); }
+        .render-preview-box h2 { font-size: 1.4rem; margin: 16px 0 8px 0; color: var(--text-dark); }
+        .render-preview-box h3 { font-size: 1.15rem; margin: 12px 0 6px 0; }
+        .render-preview-box p { margin-bottom: 12px; font-size: 0.95rem; }
+        .render-preview-box code { background-color: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9rem; color: #e11d48; }
+        .render-preview-box pre { background-color: #1e293b; padding: 12px; border-radius: 6px; overflow-x: auto; margin-bottom: 15px; }
+        .render-preview-box pre code { background: none; color: #f8fafc; padding: 0; font-size: 0.85rem; }
+        .render-preview-box ul, .render-preview-box ol { margin-left: 20px; margin-bottom: 12px; font-size: 0.95rem; }
+        .render-preview-box blockquote { border-left: 4px solid #cbd5e1; padding-left: 12px; color: var(--text-muted); font-style: italic; margin-bottom: 12px; }
+        .render-preview-box a { color: var(--accent-color); text-decoration: none; }
+        .render-preview-box a:hover { text-decoration: underline; }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2027849186057550"
+                     data-ad-slot="1105246416"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <section class="tool-wrapper">
+                <div class="action-bar">
+                    <button class="btn-action" id="btn-copy-html" onclick="copyCompiledHTMLCode(this)">Copy Formatted HTML</button>
+                    <button class="btn-action" style="background:#7f8c8d;" onclick="clearEditorField()">Clear Content</button>
+                </div>
+
+                <div class="split-editor-grid">
+                    <div>
+                        <div class="pane-title">Markdown Syntax Input</div>
+                        <textarea id="markdown-input" class="editor-textarea" placeholder="Enter standard markdown notation tags here..." oninput="parseMarkdownContent()"></textarea>
+                    </div>
+
+                    <div>
+                        <div class="pane-title">Instant Live Preview Rendering</div>
+                        <div id="html-preview" class="render-preview-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="seo-section">
+                <h2>The Role of Lightweight Markup Languages in Technical Writing</h2>
+                <p>Welcome to the structured composition sandbox at AI Learning Gym. In modern software engineering pipelines, technical writing projects, and global repository frameworks like GitHub, communicating ideas clearly requires structured layout designs. While full HTML scripts provide exhaustive layout flexibility, writing them out manually during fast note-taking can slow productivity down. This is why technical professionals rely on Markdown text tools.</p>
+                
+                <h3>Understanding the Parsing Rules of Structured Text Elements</h3>
+                <p>Created by John Gruber in 2004, **Markdown** works by parsing basic plain text syntax arrangements into valid semantic rich-text blocks. Using simple character parameters like hashes (`#`) tells compilation scripts to produce structured headers. Wrapping phrases in asterisks (`**`) flags text loops for bold presentation, while dashes (`-`) build out tidy unordered list matrices. This simple syntax lets you format web pages accurately without breaking your flow.</p>
+
+                <div class="ad-container">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2027849186057550"
+                         data-ad-slot="1105246416"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <h3>Why Client-Side Parsing Enhances Workspace Privacy</h3>
+                <p>Many traditional markup conversion systems pass your editing drafts to an external cloud database to render the final HTML results. This method presents serious data leaks if you are drafting private technical files or internal software specs. Our platform eliminates this vulnerability by processing translations entirely locally in your device's browser front-end memory. Your private notes stay strictly under your control.</p>
+                
+                <h3>Frequently Answered Formatting Questions (FAQ)</h3>
+                <p><strong>Q: Does this editor support standard code block formatting highlights?</strong><br>
+                A: Yes. Enclosing a snippet within triple backtick elements (<code>```</code>) automatically converts text arrays into a clean monospace code container block module. This setup makes it easy to read code scripts, check variables, and preview styling configurations before launching your project.</p>
+                
+                <p><strong>Q: How do the synchronized scroll mapping elements maintain layout consistency?</strong><br>
+                A: The underlying JavaScript engine links scroll positions across containers. When you scroll through long markdown blocks, the live HTML frame shifts proportionally. This ensures your active text and visual layouts stay aligned perfectly across widescreen displays.</p>
+            </section>
+
+        </main>
+
+        <aside style="position: sticky; top: 20px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2027849186057550"
+                 data-ad-slot="1105246416"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <script>
+        // Highly efficient, lightweight native Markdown text compiler matrix script
+        function parseMarkdownContent() {
+            const rawText = document.getElementById('markdown-input').value;
+            const previewContainer = document.getElementById('html-preview');
+
+            if (!rawText) {
+                previewContainer.innerHTML = '';
+                return;
+            }
+
+            // Clean input lines array mapping setup
+            let htmlResult = rawText
+                // Basic HTML Sanitation protection loop
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                
+                // Multi-line code container parsing blocks
+                .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+                
+                // Inline single code element blocks
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                
+                // Typographic Headings structures matching rules
+                .replace(/^\s*###\s+(.+)$/gm, '<h3>$1</h3>')
+                .replace(/^\s*##\s+(.+)$/gm, '<h2>$1</h2>')
+                .replace(/^\s*#\s+(.+)$/gm, '<h1>$1</h1>')
+                
+                // Blockquote container allocations
+                .replace(/^\s*&gt;\s+(.+)$/gm, '<blockquote>$1</blockquote>')
+                
+                // Structural Unordered Lists tags
+                .replace(/^\s*-\s+(.+)$/gm, '<ul><li>$1</li></ul>')
+                .replace(/<\/ul>\s*<ul>/g, '') // Flatten adjacent array list elements
+                
+                // Structural Ordered Lists tags
+                .replace(/^\s*\d+\.\s+(.+)$/gm, '<ol><li>$1</li></ol>')
+                .replace(/<\/ol>\s*<ol>/g, '') 
+                
+                // Inline text formatting indicators (Bold / Italic styles)
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+                
+                // Global Hyperlink formatting conversion strings
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+                
+                // Standard clean layout paragraph row configurations
+                .replace(/^(?!<h|<pre|<block|<ul|<ol|<li)(.+)$/gm, '<p>$1</p>');
+
+            previewContainer.innerHTML = htmlResult;
+        }
+
+        function copyCompiledHTMLCode(btnNode) {
+            const compiledCodeString = document.getElementById('html-preview').innerHTML;
+            if (!compiledCodeString) return;
+
+            navigator.clipboard.writeText(compiledCodeString).then(() => {
+                const standardLabel = btnNode.innerText;
+                btnNode.innerText = 'Copied!';
+                btnNode.classList.add('success');
+                setTimeout(() => {
+                    btnNode.innerText = standardLabel;
+                    btnNode.classList.remove('success');
+                }, 1200);
+            });
+        }
+
+        function clearEditorField() {
+            document.getElementById('markdown-input').value = '';
+            document.getElementById('html-preview').innerHTML = '';
+        }
+
+        // Initialize synchronized scrolling alignment behaviors
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputField = document.getElementById('markdown-input');
+            const previewField = document.getElementById('html-preview');
+
+            inputField.addEventListener('scroll', () => {
+                const percentage = inputField.scrollTop / (inputField.scrollHeight - inputField.clientHeight);
+                previewField.scrollTop = percentage * (previewField.scrollHeight - previewField.clientHeight);
+            });
+
+            // Seed workspace with clean starter templates loop
+            inputField.value = `# Document Title Setup\n\nWelcome to your **Live Markdown Editor** dashboard grid. Type text loops here to preview updates.\n\n## Sub-Header Section\n\n- Access essential structural layouts list items.\n- Process strings natively client-side.\n\n### Code Block Matrix Preview:\n\n\`\`\`\nfunction initializeProject() {\n    console.log("AI Learning Gym Engine Active");\n}\n\`\`\``;
+            parseMarkdownContent();
+        });
+    </script>
+</body>
+</html>
