@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online White Screen &amp; Monitor Display Tester | AI Learning Gym</title>
+    <meta name="description" content="Turn your browser into a pure white screen or color field instantly. Free online monitor diagnostic tool for dead pixel testing, backlight bleed checks, and screen cleaning.">
+    <meta name="keywords" content="white screen, display tester, dead pixel checker, screen light, monitor cleaner, full screen color, backlight bleed test">
+    <meta property="og:title" content="Free Online White Screen &amp; Monitor Display Tester | AI Learning Gym">
+    <meta property="og:description" content="Maximized pure color fields and multi-spectrum monitor testing tools running natively within your local browser layout.">
+
+    <!-- GLOBAL GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <!-- GLOBAL GOOGLE ADSENSE SCRIPT -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.2s ease;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- Live Ad Container Classes --- */
+        .ad-container {
+            margin: 15px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Tool Configuration Area --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Color Picker Buttons */
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0 25px 0;
+        }
+
+        .color-btn {
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border: 2px solid var(--card-border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fff;
+            color: var(--text-dark);
+        }
+        .color-btn:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .color-btn.active { border-color: var(--accent-color); background: #e0f2fe; }
+
+        .action-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .action-btn:hover { background-color: #2980b9; }
+
+        /* --- Immersive Tester Canvas Viewport --- */
+        #test-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: none;
+            cursor: none; /* Hidden during active test */
+        }
+
+        #test-canvas.active {
+            display: block;
+        }
+
+        /* Floating HUD Control Overlay */
+        .hud-overlay {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 37, 47, 0.95);
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: opacity 0.4s ease, visibility 0.4s;
+            z-index: 10000;
+            pointer-events: auto;
+        }
+
+        .hud-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .hud-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+        .hud-btn:hover { transform: scale(1.15); border-color: #fff; }
+        
+        .hud-exit {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background 0.2s;
+        }
+        .hud-exit:hover { background: #c0392b; }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <!-- 1️⃣ LIVE ADSENSE DISPLAY SLOT: TOP BANNER -->
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2027849186057550"
+                     data-ad-slot="1105246416"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <section class="tool-wrapper">
+                <h2 style="margin-bottom: 10px; color: var(--text-dark);">Display Diagnostic &amp; Screen Light</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Configure your base tracking field color, then enter the immersive environment to run monitor diagnostics, identify screen damage, or use your monitor as an external light source.</p>
+                
+                <div class="color-palette">
+                    <button class="color-btn active" onclick="setBaseColor('#ffffff', this)">Pure White</button>
+                    <button class="color-btn" onclick="setBaseColor('#000000', this)">Deep Black</button>
+                    <button class="color-btn" onclick="setBaseColor('#ff0000', this)">Matrix Red</button>
+                    <button class="color-btn" onclick="setBaseColor('#00ff00', this)">Matrix Green</button>
+                    <button class="color-btn" onclick="setBaseColor('#0000ff', this)">Matrix Blue</button>
+                </div>
+
+                <button class="action-btn" onclick="launchImmersiveTester()">
+                    <span>🖥️</span> Launch Full-Screen Test Mode
+                </button>
+            </section>
+
+            <!-- IMMERSIVE SIMULATION LAYER -->
+            <div id="test-canvas">
+                <div id="hud-panel" class="hud-overlay">
+                    <button class="hud-btn" style="background:#ffffff;" onclick="updateImmersiveColor('#ffffff')" title="White"></button>
+                    <button class="hud-btn" style="background:#000000;" onclick="updateImmersiveColor('#000000')" title="Black"></button>
+                    <button class="hud-btn" style="background:#ff0000;" onclick="updateImmersiveColor('#ff0000')" title="Red"></button>
+                    <button class="hud-btn" style="background:#00ff00;" onclick="updateImmersiveColor('#00ff00')" title="Green"></button>
+                    <button class="hud-btn" style="background:#0000ff;" onclick="updateImmersiveColor('#0000ff')" title="Blue"></button>
+                    <button class="hud-exit" onclick="exitImmersiveTester()">Exit Test</button>
+                </div>
+            </div>
+
+            <section class="seo-section">
+                <h2>The Practical Application of Full-Field Color Illuminations</h2>
+                <p>Welcome to the display physics dashboard at AI Learning Gym. Transforming a browser canvas into an uncompressed, edge-to-edge solid color field provides essential engineering and quality assurance functions. Whether you need to run clean hardware evaluations, identify mechanical screen issues, or clear off physical dust blocks, local client-side screen generation handles tests reliably with zero background computing delays.</p>
+                
+                <h3>Dead Pixel Isolation and Backlight Defect Testing</h3>
+                <p>Modern high-density displays use sub-pixel configurations to render crisp text layers and multimedia layouts. If an individual pixel cell short-circuits, it can get stuck as a permanent dark spot or bright artifact. Cycling your screen across distinct primary monochromatic states (Red, Green, Blue, White, and Black) makes structural anomalies stand out immediately. This lets you quickly assess if a monitor panel warrants a hardware replacement.</p>
+
+                <!-- 2️⃣ LIVE ADSENSE DISPLAY SLOT: IN-ARTICLE UNIT -->
+                <div class="ad-container">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2027849186057550"
+                         data-ad-slot="1105246416"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <h3>Detecting Backlight Bleed and Screen Burn-In Artifacts</h3>
+                <p>Liquid crystal and premium organic display panels often face challenges like uneven backlight distribution or permanent ghosting artifacts. Evaluating an isolated black matrix layout in a dark environment lets you see edge anomalies and clouding structures easily. On the flip side, using a clean white field reveals panel wear or residual interface tracking lines caused by leaving static layouts on screen for too long.</p>
+                
+                <h3>Frequently Answered Monitor Testing Questions (FAQ)</h3>
+                <p><strong>Q: Does launching full-screen testing profiles store any browser history or device tracking telemetry?</strong><br>
+                A: No. Privacy and device isolation are standard across our platform. The diagnostic interface utilizes native front-end rendering engines exclusively within your browser window. No diagnostic parameters or system specifications are logged or transmitted externally.</p>
+                
+                <p><strong>Q: Why does the control panel automatically hide during testing profiles?</strong><br>
+                A: To guarantee true full-screen testing. An active on-screen control interface block would hide dead pixels or panel issues sitting underneath it. Moving your cursor slightly brings the HUD panel back instantly, letting you switch colors or exit smoothly.</p>
+            </section>
+
+        </main>
+
+        <!-- 3️⃣ LIVE ADSENSE DISPLAY SLOT: STICKY SIDEBAR -->
+        <aside style="position: sticky; top: 20px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2027849186057550"
+                 data-ad-slot="1105246416"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+    </div> 
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <script>
+        let selectedColor = '#ffffff';
+        let hudTimeout;
+
+        function setBaseColor(colorHex, buttonElement) {
+            selectedColor = colorHex;
+            
+            // Manage visual state classes across configuration buttons
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            buttonElement.classList.add('active');
+        }
+
+        function launchImmersiveTester() {
+            const canvas = document.getElementById('test-canvas');
+            canvas.style.backgroundColor = selectedColor;
+            canvas.classList.add('active');
+            
+            // Try to engage native browser full screen mode if supported
+            if (canvas.requestFullscreen) {
+                canvas.requestFullscreen();
+            } else if (canvas.webkitRequestFullscreen) { /* Safari support */
+                canvas.webkitRequestFullscreen();
+            }
+
+            // Initialize structural listener mechanisms for mouse tracking and HUD management
+            canvas.addEventListener('mousemove', triggerHudVisibilityState);
+            triggerHudVisibilityState();
+        }
+
+        function updateImmersiveColor(colorHex) {
+            document.getElementById('test-canvas').style.backgroundColor = colorHex;
+            triggerHudVisibilityState();
+        }
+
+        function triggerHudVisibilityState() {
+            const hud = document.getElementById('hud-panel');
+            const canvas = document.getElementById('test-canvas');
+            
+            hud.classList.remove('hidden');
+            canvas.style.cursor = 'default';
+
+            clearTimeout(hudTimeout);
+            
+            // Automatically clear tracking elements and hide control overlay after inactivity
+            hudTimeout = setTimeout(() => {
+                hud.classList.add('hidden');
+                canvas.style.cursor = 'none';
+            }, 2500);
+        }
+
+        function exitImmersiveTester() {
+            const canvas = document.getElementById('test-canvas');
+            clearTimeout(hudTimeout);
+            
+            canvas.removeEventListener('mousemove', triggerHudVisibilityState);
+            canvas.classList.remove('active');
+            
+            // Release programmatic fullscreen allocations
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+        }
+
+        // Monitor escape controls to exit testing safely if full screen mode changes
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                const canvas = document.getElementById('test-canvas');
+                if (canvas.classList.contains('active')) {
+                    exitImmersiveTester();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
