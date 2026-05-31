@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Base64 Encoder / Decoder | AI Learning Gym</title>
+    <meta name="description" content="Encode strings, files, or images into Base64 formats or cleanly decode payloads back into raw text instantly. 100% private client-side developer utility.">
+    <meta name="keywords" content="base64 encoder, base64 decoder, text to base64, base64 converter, image to base64, data uri generator, base64 string decoder, web developer utilities">
+    <meta property="og:title" content="Free Online Base64 Encoder / Decoder | AI Learning Gym">
+    <meta property="og:description" content="An instantaneous, client-side binary text processing canvas with deep file processing layers running in a local sandboxed browser memory context.">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --success-color: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- Live Ad Container Classes --- */
+        .ad-container {
+            margin: 15px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Base64 Workspace Frame --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .workspace-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .pane-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pane-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .base64-textarea {
+            width: 100%;
+            height: 250px;
+            padding: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            resize: vertical;
+            background: #ffffff;
+        }
+
+        .base64-textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .pane-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-action {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .btn-action:hover { background-color: #2980b9; }
+        .btn-action.success { background-color: var(--success-color); }
+
+        /* File Upload Drop Zone Module */
+        .upload-wrapper {
+            background: #ffffff;
+            border: 2px dashed #cbd5e1;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 25px;
+            transition: border-color 0.2s;
+        }
+        .upload-wrapper:hover { border-color: var(--accent-color); }
+
+        .hidden-file-input {
+            display: none;
+        }
+
+        .upload-label-trigger {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2027849186057550"
+                     data-ad-slot="1105246416"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <section class="tool-wrapper">
+                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Base64 Binary Text Translator</h2>
+                
+                <div class="workspace-grid">
+                    <div class="pane-container">
+                        <span class="pane-label">Raw Plain Text (UTF-8)</span>
+                        <textarea id="text-plain" class="base64-textarea" placeholder="Type or paste regular text here to generate Base64 strings automatically..." oninput="handleTextEncoding()"></textarea>
+                        <div class="pane-actions">
+                            <button class="btn-action" id="btn-copy-plain" onclick="copyPaneValue('text-plain', this)">Copy Text</button>
+                            <button class="btn-action" style="background:#7f8c8d;" onclick="clearWorkspace()">Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="pane-container">
+                        <span class="pane-label">Base64 Encoded Output String</span>
+                        <textarea id="text-base64" class="base64-textarea" placeholder="Paste Base64 compiled characters here to translate back into clean readable text..." oninput="handleTextDecoding()"></textarea>
+                        <div class="pane-actions">
+                            <button class="btn-action" id="btn-copy-base64" onclick="copyPaneValue('text-base64', this)">Copy Base64</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload-wrapper">
+                    <span style="font-size: 1.3rem;">🖼️</span>
+                    <p style="font-size: 0.95rem; margin-top: 5px; color: var(--text-dark);">
+                        Need a Data URI code for an asset? 
+                        <label class="upload-label-trigger" for="binary-file-selector">Select an image or file</label> 
+                        to calculate its Base64 byte structure safely offline.
+                    </p>
+                    <input type="file" id="binary-file-selector" class="hidden-file-input" onchange="processFileToBase64()">
+                </div>
+            </section>
+
+            <section class="seo-section">
+                <h2>The Purpose and Computer Architecture of Base64 String Encoding</h2>
+                <p>Welcome to the data processing matrix at AI Learning Gym. In network administration, software engineering, and database optimization, computing systems frequently handle files that contain complex binary byte structures. Traditional legacy text transfer protocols were built to carry standard alphabetic text blocks rather than asset media scripts. Running binary streams over text channels can cause code breaking and character formatting drops, which is why developers use an intermediate translation layout called Base64.</p>
+                
+                <h3>Understanding the Mathematical Logic of Base-64 Indexes</h3>
+                <p>The term **Base64** describes a mathematical counting framework that utilizes 64 safe ASCII characters to encode any binary data. These characters consist of upper-case letters (A-Z), lower-case letters (a-z), numerals (0-9), and characters (+) and (/). The compression script systematically reads sequences of three 8-bit binary data chunks (24 total bits) and breaks them down into four separate 6-bit index allocations. These chunks then map straight to their corresponding symbol values in the global Base64 index registry file.</p>
+
+                <div class="ad-container">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2027849186057550"
+                         data-ad-slot="1105246416"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <h3>Why Data URI Tags Streamline Frontend CSS Asset Pipelines</h3>
+                <p>Beyond mapping strings for secure API requests, Base64 compilation provides massive utility for frontend web engineering through **Data URIs**. By converting a small asset image file directly into an uncompressed base64 sequence, developers can insert the asset directly into an HTML template or a CSS styling ruleset. This approach removes the need for separate network asset tracking loops, improving overall layout loading metrics across mobile data plans.</p>
+                
+                <h3>Frequently Answered Binary Encoding Questions (FAQ)</h3>
+                <p><strong>Q: Does dropping an image into your file converter upload data onto an external server layout?</strong><br>
+                A: No. Privacy sandboxing is standard across our tool network. The file processor reads data structures entirely locally using the native browser HTML5 `FileReader` execution loop. Your files are processed entirely in local memory, keeping them hidden from web snooping loops.</p>
+                
+                <p><strong>Q: Is Base64 encoding an effective strategy for securing or encrypting passwords?</strong><br>
+                A: No. Base64 is a data transformation format, not an encryption mechanism. Anyone who intercepts a Base64 sequence can easily decode it using standard browser utility configurations. For security needs, you should use secure cryptographic hashing algorithms instead.</p>
+            </section>
+
+        </main>
+
+        <aside style="position: sticky; top: 20px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2027849186057550"
+                 data-ad-slot="1105246416"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <script>
+        // --- Encoding Controller ---
+        function handleTextEncoding() {
+            const rawString = document.getElementById('text-plain').value;
+            const targetField = document.getElementById('text-base64');
+
+            if (!rawString) {
+                targetField.value = '';
+                return;
+            }
+
+            try {
+                // Multi-byte UTF-8 string encoding compliance wrapper
+                const utf8Bytes = new TextEncoder().encode(rawString);
+                let binString = "";
+                for (let i = 0; i < utf8Bytes.length; i++) {
+                    binString += String.fromCharCode(utf8Bytes[i]);
+                }
+                targetField.value = btoa(binString);
+            } catch (err) {
+                targetField.value = `[Encoding Error]: Unable to calculate Base64 character weights.`;
+            }
+        }
+
+        // --- Decoding Controller ---
+        function handleTextDecoding() {
+            const base64String = document.getElementById('text-base64').value.trim();
+            const targetField = document.getElementById('text-plain');
+
+            if (!base64String) {
+                targetField.value = '';
+                return;
+            }
+
+            try {
+                const binString = atob(base64String);
+                const bytes = new Uint8Array(binString.length);
+                for (let i = 0; i < binString.length; i++) {
+                    bytes[i] = binString.charCodeAt(i);
+                }
+                targetField.value = new TextDecoder().decode(bytes);
+            } catch (err) {
+                // Intercept padding irregularities or invalid character matrices gracefully
+                targetField.value = `[Decoding Error]: Entered string contains structures invalid inside Base64 registries.`;
+            }
+        }
+
+        // --- File Reader Integration Module ---
+        function processFileToBase64() {
+            const selector = document.getElementById('binary-file-selector');
+            if (!selector.files || selector.files.length === 0) return;
+
+            const selectedFile = selector.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                document.getElementById('text-base64').value = e.target.result;
+                document.getElementById('text-plain').value = `[File Metadata File Array Captured]\nName: ${selectedFile.name}\nSize: ${selectedFile.size} bytes\nMIME Type: ${selectedFile.type}\n\nBase64 Data URI string generated successfully into adjacent canvas window grid.`;
+            };
+
+            reader.onerror = function() {
+                alert("An error occurred while reading your local system file file structures.");
+            };
+
+            // Read target file block properties as full data URI string
+            reader.readAsDataURL(selectedFile);
+        }
+
+        function copyPaneValue(textAreaId, buttonNode) {
+            const copyText = document.getElementById(textAreaId).value;
+            if (!copyText) return;
+
+            navigator.clipboard.writeText(copyText).then(() => {
+                const fallbackLabel = buttonNode.innerText;
+                buttonNode.innerText = 'Copied!';
+                buttonNode.classList.add('success');
+                setTimeout(() => {
+                    buttonNode.innerText = fallbackLabel;
+                    buttonNode.classList.remove('success');
+                }, 1200);
+            });
+        }
+
+        function clearWorkspace() {
+            document.getElementById('text-plain').value = '';
+            document.getElementById('text-base64').value = '';
+            document.getElementById('binary-file-selector').value = '';
+        }
+    </script>
+</body>
+</html>
