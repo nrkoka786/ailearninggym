@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Advanced Hex Color Picker &amp; Palette Generator | AI Learning Gym</title>
+    <meta name="description" content="Generate beautiful color schemes instantly. Free online color picker supporting HEX, RGB, and HSL values with complementary, analogous, and triadic palette maps.">
+    <meta name="keywords" content="color picker, hex color generator, palette creator, rgb converter, hsl color map, color scheme finder, design utilities, web palette maker">
+    <meta property="og:title" content="Free Advanced Hex Color Picker &amp; Palette Generator | AI Learning Gym">
+    <meta property="og:description" content="An interactive, high-fidelity color spectrum studio featuring instant value conversion arrays and randomized aesthetic scheme generation matrices.">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        /* --- Core Layout & Styling Matrix --- */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --success-color: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grid Layout System --- */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .container { grid-template-columns: 3fr 1fr; }
+        }
+
+        /* --- Live Ad Container Classes --- */
+        .ad-container {
+            margin: 15px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* --- Main Layout Window --- */
+        .main-content {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- Color Picker App Frame --- */
+        .tool-wrapper {
+            background: #f8f9fa;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Split Picker Workspace */
+        .picker-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 650px) {
+            .picker-grid { grid-template-columns: 1fr 1.5fr; }
+        }
+
+        .picker-visual-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .color-preview-pane {
+            width: 100%;
+            height: 150px;
+            border-radius: 6px;
+            border: 2px solid var(--card-border);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            transition: background-color 0.1s ease;
+        }
+
+        .native-picker-input {
+            width: 100%;
+            height: 45px;
+            border: 2px solid var(--card-border);
+            border-radius: 6px;
+            cursor: pointer;
+            background: none;
+            padding: 2px;
+        }
+
+        /* Code String Value Fields */
+        .values-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .value-row {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            padding: 8px 12px;
+        }
+
+        .value-label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            width: 50px;
+            text-transform: uppercase;
+        }
+
+        .value-string {
+            flex-grow: 1;
+            font-family: monospace;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            border: none;
+            outline: none;
+            background: transparent;
+        }
+
+        .copy-action-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .copy-action-btn:hover { background-color: #2980b9; }
+        .copy-action-btn.copied { background-color: var(--success-color); }
+
+        /* Palette Scheme Block Modules */
+        .palette-section-header {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .palette-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .swatch-box {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .swatch-color {
+            height: 60px;
+            border-radius: 4px 4px 0 0;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.15s;
+        }
+        .swatch-box:hover .swatch-color { transform: scaleY(1.05); }
+
+        .swatch-label {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-top: none;
+            padding: 4px 2px;
+            font-size: 0.75rem;
+            font-family: monospace;
+            text-align: center;
+            color: var(--text-dark);
+            font-weight: bold;
+            border-radius: 0 0 4px 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .randomize-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .randomize-btn:hover { background-color: #27ae60; }
+
+        /* --- SEO Article Area --- */
+        .seo-section {
+            border-top: 2px solid #edf2f7;
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+
+        /* --- Standard Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #a0aec0;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym Utilities</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2027849186057550"
+                     data-ad-slot="1105246416"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <section class="tool-wrapper">
+                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Advanced Color Picker &amp; Palette Hub</h2>
+                
+                <div class="picker-grid">
+                    <div class="picker-visual-box">
+                        <div id="color-preview" class="color-preview-pane"></div>
+                        <input type="color" id="color-input" class="native-picker-input" value="#3498db" oninput="syncColorOutputs(this.value)">
+                        <button class="randomize-btn" onclick="generateRandomCoreColor()">🎲 Roll Random Color</button>
+                    </div>
+
+                    <div class="values-stack">
+                        <div class="value-row">
+                            <span class="value-label">Hex</span>
+                            <input type="text" id="input-hex" class="value-string" readonly>
+                            <button class="copy-action-btn" onclick="copyValueField('input-hex', this)">Copy</button>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Rgb</span>
+                            <input type="text" id="input-rgb" class="value-string" readonly>
+                            <button class="copy-action-btn" onclick="copyValueField('input-rgb', this)">Copy</button>
+                        </div>
+                        <div class="value-row">
+                            <span class="value-label">Hsl</span>
+                            <input type="text" id="input-hsl" class="value-string" readonly>
+                            <button class="copy-action-btn" onclick="copyValueField('input-hsl', this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="palette-section-header">Analogous Color Spectrum Scheme</div>
+                    <div id="palette-analogous" class="palette-row"></div>
+
+                    <div class="palette-section-header">Complementary Contrast Pairings</div>
+                    <div id="palette-complementary" class="palette-row"></div>
+
+                    <div class="palette-section-header">Triadic Geometric Balance Map</div>
+                    <div id="palette-triadic" class="palette-row"></div>
+                </div>
+            </section>
+
+            <section class="seo-section">
+                <h2>The Math and Chromatic Physics Behind Digital Color Models</h2>
+                <p>Welcome to the visual translation grid at AI Learning Gym. In digital design, interface styling, and core software engineering, managing the visual spectrum requires translating raw colors into standardized mathematical coordinate languages. Displays use physical light arrays to display graphics. Shifting between color models (like hex arrays, integer ratios, or coordinate degrees) is essential for modern front-end styling rules.</p>
+                
+                <h3>Decoding HEX, RGB, and HSL Representation Matrices</h3>
+                <p>Digital display panels render interfaces using the additive **RGB** spectrum—combining localized intensities of Red, Green, and Blue light channels ranging across integer arrays from 0 to 255. **Hexadecimal values** compress these exact three channel properties into shorthand base-16 strings (ranging from `#000000` to `#ffffff`) that are clean and lightweight for CSS stylesheets. On the other hand, the **HSL model** structures values relative to human perception, using circular coordinates for Hue (0° to 360°), followed by precise percentages for Saturation and Lightness.</p>
+
+                <div class="ad-container">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-2027849186057550"
+                         data-ad-slot="1105246416"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <h3>The Practical Engineering Benefit of Algorithmic Palette Harmony Maps</h3>
+                <p>Excellent web design relies on rigorous geometric spacing across the color wheel. Our layout engine calculates color transformations natively client-side using coordinate adjustments on the HSL axis. By calculating programmatic offsets, the tool builds fluid **Analogous** schemes (adjacent color options that look natural), sets up **Complementary** pairs (colors on direct opposite sides for strong visual hierarchies), and checks **Triadic** maps (three points equally spaced across the color wheel) to help build accessible, high-contrast digital interfaces.</p>
+                
+                <h3>Frequently Answered Graphic Selection Questions (FAQ)</h3>
+                <p><strong>Q: Does selecting colors or saving swatches send image data to an external server?</strong><br>
+                A: No. Privacy and device sandboxing are baseline elements across our application stack. All color computations, model translations, and matrix extensions run locally within your browser's execution engine via fast client-side scripts.</p>
+                
+                <p><strong>Q: Can I click on the computed palette swatches to update the main workspace values?</strong><br>
+                A: Yes. Every generated swatch element across our harmony grids works as an interactive link. Clicking a box imports that specific hex value directly back into the primary workspace, making it fast and easy to build out your style sheets.</p>
+            </section>
+
+        </main>
+
+        <aside style="position: sticky; top: 20px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2027849186057550"
+                 data-ad-slot="1105246416"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a>
+        </p>
+    </footer>
+
+    <script>
+        // --- Core Translation Engines ---
+        function hexToRgb(hex) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return { r, g, b };
+        }
+
+        function rgbToHsl(r, g, b) {
+            r /= 255; g /= 255; b /= 255;
+            const max = Math.max(r, g, b), min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+
+            if (max === min) {
+                h = s = 0; // achromatic tracking fallback
+            } else {
+                const d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                h /= 6;
+            }
+            return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+        }
+
+        function hslToHex(h, s, l) {
+            s /= 100; l /= 100;
+            const k = n => (n + h / 30) % 12;
+            const a = s * Math.min(l, 1 - l);
+            const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+            const toHex = x => Math.round(x * 255).toString(16).padStart(2, '0');
+            return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+        }
+
+        // --- Controller Harmonizer Execution ---
+        function syncColorOutputs(hexValue) {
+            document.getElementById('color-preview').style.backgroundColor = hexValue;
+            document.getElementById('color-input').value = hexValue;
+            
+            const rgb = hexToRgb(hexValue);
+            const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+
+            document.getElementById('input-hex').value = hexValue.toUpperCase();
+            document.getElementById('input-rgb').value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+            document.getElementById('input-hsl').value = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+
+            buildColorHarmonyGrids(hsl.h, hsl.s, hsl.l);
+        }
+
+        function buildColorHarmonyGrids(h, s, l) {
+            // 1. Calculate Analogous (Adjacent steps)
+            renderPaletteContainer('palette-analogous', [
+                hslToHex((h + 330) % 360, s, l),
+                hslToHex((h + 345) % 360, s, l),
+                hslToHex(h, s, l),
+                hslToHex((h + 15) % 360, s, l),
+                hslToHex((h + 30) % 360, s, l)
+            ]);
+
+            // 2. Calculate Complementary Pairings across varying values
+            renderPaletteContainer('palette-complementary', [
+                hslToHex(h, s, Math.max(l - 20, 10)),
+                hslToHex(h, s, l),
+                hslToHex((h + 180) % 360, s, l),
+                hslToHex((h + 180) % 360, s, Math.max(l - 15, 10)),
+                hslToHex((h + 180) % 360, Math.max(s - 20, 10), Math.min(l + 20, 90))
+            ]);
+
+            // 3. Calculate Triadic Array (120 degree increments)
+            renderPaletteContainer('palette-triadic', [
+                hslToHex(h, s, l),
+                hslToHex((h + 120) % 360, s, l),
+                hslToHex((h + 120) % 360, s, Math.max(l - 15, 10)),
+                hslToHex((h + 240) % 360, s, l),
+                hslToHex((h + 240) % 360, s, Math.max(l - 15, 10))
+            ]);
+        }
+
+        function renderPaletteContainer(elementId, colorArray) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = '';
+            
+            colorArray.forEach(hex => {
+                const block = document.createElement('div');
+                block.className = 'swatch-box';
+                block.onclick = () => syncColorOutputs(hex);
+                block.innerHTML = `
+                    <div class="swatch-color" style="background-color: ${hex};"></div>
+                    <div class="swatch-label">${hex.toUpperCase()}</div>
+                `;
+                container.appendChild(block);
+            });
+        }
+
+        function generateRandomCoreColor() {
+            const characters = '0123456789abcdef';
+            let randomHex = '#';
+            for (let i = 0; i < 6; i++) {
+                randomHex += characters[Math.floor(Math.random() * 16)];
+            }
+            syncColorOutputs(randomHex);
+        }
+
+        function copyValueField(fieldId, btnNode) {
+            const textString = document.getElementById(fieldId).value;
+            navigator.clipboard.writeText(textString).then(() => {
+                const fallbackText = btnNode.innerText;
+                btnNode.innerText = 'Copied!';
+                btnNode.classList.add('copied');
+                setTimeout(() => {
+                    btnNode.innerText = fallbackText;
+                    btnNode.classList.remove('copied');
+                }, 1200);
+            });
+        }
+
+        // Initialize display properties on load
+        document.addEventListener('DOMContentLoaded', () => {
+            syncColorOutputs('#3498db');
+        });
+    </script>
+</body>
+</html>
