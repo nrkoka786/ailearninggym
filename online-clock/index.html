@@ -1,10 +1,11 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online World Clock &amp; Timers | AI Learning Gym</title>
     <meta name="description" content="Access high-precision real-time world timezone mapping engines paired with integrated web alarms, stopwatch split laps, and countdown intervals natively inside your browser.">
     
-    <!-- Global AdSense Engine Tag -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
 
     <style>
@@ -17,7 +18,7 @@
             --border-color: #334155;
         }
         
-        /* Slate Theme Override (Matches your screenshot) */
+        /* Slate Theme Profile Baseline */
         .theme-slate {
             --bg-dark: #0f1423;
             --card-bg: #1d263b;
@@ -25,6 +26,15 @@
             --text-light: #ffffff;
             --text-muted: #748ba7;
             --border-color: #2b3852;
+        }
+
+        .theme-dark {
+            --bg-dark: #090d16;
+            --card-bg: #111827;
+            --accent-blue: #60a5fa;
+            --text-light: #f9fafb;
+            --text-muted: #6b7280;
+            --border-color: #1f2937;
         }
 
         .theme-light {
@@ -76,10 +86,11 @@
             background-color: var(--card-bg);
             color: var(--text-light);
             border: 1px solid var(--border-color);
-            padding: 6px 12px;
+            padding: 8px 14px;
             border-radius: 6px;
             cursor: pointer;
             outline: none;
+            font-size: 0.9rem;
         }
 
         /* --- Main Digital Display Canvas --- */
@@ -90,6 +101,7 @@
             text-align: center;
             margin-bottom: 25px;
             border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .time-digits {
@@ -97,6 +109,7 @@
             font-weight: 700;
             letter-spacing: 2px;
             margin-bottom: 10px;
+            font-variant-numeric: tabular-nums;
         }
 
         .date-string {
@@ -150,6 +163,7 @@
             border: 1px solid var(--border-color);
             min-height: 250px;
             display: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .panel-card.active {
@@ -220,6 +234,7 @@
             text-align: center;
             margin-bottom: 25px;
             letter-spacing: 1px;
+            font-variant-numeric: tabular-nums;
         }
 
         .lap-box {
@@ -239,6 +254,7 @@
             border-bottom: 1px dashed rgba(255,255,255,0.05);
         }
 
+        /* --- World Grid Selector Framework --- */
         .world-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -254,22 +270,45 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
-        .world-name { font-weight: 600; }
-        .world-time { font-variant-numeric: tabular-nums; color: var(--accent-blue); font-weight: 700; }
+        
+        .zone-selector {
+            background-color: transparent;
+            border: none;
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 4px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            outline: none;
+            max-width: 60%;
+        }
+        
+        .zone-selector option {
+            background-color: var(--card-bg);
+            color: var(--text-light);
+        }
+
+        .world-time { 
+            font-variant-numeric: tabular-nums; 
+            color: var(--accent-blue); 
+            font-weight: 700; 
+            font-size: 1.1rem;
+        }
 
         .status-alert {
             text-align: center;
             margin-top: 15px;
             font-weight: 600;
             color: var(--accent-blue);
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body class="theme-slate">
 
     <div class="app-container">
-        <!-- Header Controls -->
         <div class="header-bar">
             <h1>AI Learning Gym Time Studio</h1>
             <select id="themeSelector" class="theme-select">
@@ -279,13 +318,11 @@
             </select>
         </div>
 
-        <!-- Master Clock Canvas Block -->
         <div class="main-display-card">
             <div id="masterTime" class="time-digits">00:00:00 AM</div>
             <div id="masterDate" class="date-string">Loading Real-Time Matrix...</div>
         </div>
 
-        <!-- Navigation Matrix Tabs -->
         <div class="tabs-nav">
             <button class="tab-btn active" data-target="panel-alarm">⏰ Alarm</button>
             <button class="tab-btn" data-target="panel-timer">⏳ Timer</button>
@@ -293,12 +330,10 @@
             <button class="tab-btn" data-target="panel-world">🌐 World Clock</button>
         </div>
 
-        <!-- PANEL: ALARM -->
         <div id="panel-alarm" class="panel-card active">
             <h2>Set Web Alarm</h2>
             <div class="input-group">
                 <select id="alarmHour" class="time-select">
-                    <!-- Generation profiles standard loop loops -->
                     <option value="12">12</option><option value="01">01</option><option value="02">02</option>
                     <option value="03">03</option><option value="04">04</option><option value="05">05</option>
                     <option value="06">06</option><option value="07">07</option><option value="08">08</option>
@@ -307,10 +342,9 @@
                 <span style="font-size: 1.5rem; font-weight: bold;">:</span>
                 <select id="alarmMinute" class="time-select">
                     <option value="00">00</option><option value="05">05</option><option value="10">10</option>
-                    <option value="12">12</option><option value="15">15</option><option value="20">20</option>
-                    <option value="25">25</option><option value="30">30</option><option value="35">35</option>
-                    <option value="40">40</option><option value="45">45</option><option value="50">50</option>
-                    <option value="55">55</option>
+                    <option value="15">15</option><option value="20">20</option><option value="25">25</option>
+                    <option value="30">30</option><option value="35">35</option><option value="40">40</option>
+                    <option value="45">45</option><option value="50">50</option><option value="55">55</option>
                 </select>
                 <select id="alarmAmpm" class="time-select time-select-ampm">
                     <option value="AM">AM</option>
@@ -324,7 +358,6 @@
             <div id="alarmStatus" class="status-alert"></div>
         </div>
 
-        <!-- PANEL: TIMER -->
         <div id="panel-timer" class="panel-card">
             <h2>Countdown Interval Timer</h2>
             <div id="timerInputArea" class="input-group">
@@ -339,7 +372,6 @@
             </div>
         </div>
 
-        <!-- PANEL: STOPWATCH -->
         <div id="panel-stopwatch" class="panel-card">
             <h2>Precision Split Stopwatch</h2>
             <div id="stopwatchDisplay" class="stopwatch-display">00:00.00</div>
@@ -351,20 +383,78 @@
             <div id="lapBox" class="lap-box"></div>
         </div>
 
-        <!-- PANEL: WORLD CLOCK -->
         <div id="panel-world" class="panel-card">
-            <h2>Global Timezone Monitors</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h2>Global Timezone Monitors</h2>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Change slots to track custom cities</span>
+            </div>
             <div class="world-grid">
-                <div class="world-item"><span class="world-name">London (GMT)</span><span class="world-time" id="tz-london">00:00:00</span></div>
-                <div class="world-item"><span class="world-name">New York (EST)</span><span class="world-time" id="tz-ny">00:00:00</span></div>
-                <div class="world-item"><span class="world-name">Tokyo (JST)</span><span class="world-time" id="tz-tokyo">00:00:00</span></div>
-                <div class="world-item"><span class="world-name">Sydney (AEST)</span><span class="world-time" id="tz-sydney">00:00:00</span></div>
+                <div class="world-item">
+                    <select class="zone-selector" data-slot="1">
+                        <option value="Europe/London" selected>London (GMT)</option>
+                        <option value="America/New_York">New York (EST)</option>
+                        <option value="America/Chicago">Chicago (CST)</option>
+                        <option value="America/Los_Angeles">Los Angeles (PST)</option>
+                        <option value="Asia/Tokyo">Tokyo (JST)</option>
+                        <option value="Asia/Dubai">Dubai (GST)</option>
+                        <option value="Australia/Sydney">Sydney (AEST)</option>
+                        <option value="Europe/Paris">Paris (CET)</option>
+                        <option value="Asia/Kolkata">Mumbai (IST)</option>
+                        <option value="Asia/Singapore">Singapore (SGT)</option>
+                    </select>
+                    <span class="world-time" id="world-clock-1">00:00:00</span>
+                </div>
+                <div class="world-item">
+                    <select class="zone-selector" data-slot="2">
+                        <option value="Europe/London">London (GMT)</option>
+                        <option value="America/New_York" selected>New York (EST)</option>
+                        <option value="America/Chicago">Chicago (CST)</option>
+                        <option value="America/Los_Angeles">Los Angeles (PST)</option>
+                        <option value="Asia/Tokyo">Tokyo (JST)</option>
+                        <option value="Asia/Dubai">Dubai (GST)</option>
+                        <option value="Australia/Sydney">Sydney (AEST)</option>
+                        <option value="Europe/Paris">Paris (CET)</option>
+                        <option value="Asia/Kolkata">Mumbai (IST)</option>
+                        <option value="Asia/Singapore">Singapore (SGT)</option>
+                    </select>
+                    <span class="world-time" id="world-clock-2">00:00:00</span>
+                </div>
+                <div class="world-item">
+                    <select class="zone-selector" data-slot="3">
+                        <option value="Europe/London">London (GMT)</option>
+                        <option value="America/New_York">New York (EST)</option>
+                        <option value="America/Chicago">Chicago (CST)</option>
+                        <option value="America/Los_Angeles">Los Angeles (PST)</option>
+                        <option value="Asia/Tokyo" selected>Tokyo (JST)</option>
+                        <option value="Asia/Dubai">Dubai (GST)</option>
+                        <option value="Australia/Sydney">Sydney (AEST)</option>
+                        <option value="Europe/Paris">Paris (CET)</option>
+                        <option value="Asia/Kolkata">Mumbai (IST)</option>
+                        <option value="Asia/Singapore">Singapore (SGT)</option>
+                    </select>
+                    <span class="world-time" id="world-clock-3">00:00:00</span>
+                </div>
+                <div class="world-item">
+                    <select class="zone-selector" data-slot="4">
+                        <option value="Europe/London">London (GMT)</option>
+                        <option value="America/New_York">New York (EST)</option>
+                        <option value="America/Chicago">Chicago (CST)</option>
+                        <option value="America/Los_Angeles">Los Angeles (PST)</option>
+                        <option value="Asia/Tokyo">Tokyo (JST)</option>
+                        <option value="Asia/Dubai">Dubai (GST)</option>
+                        <option value="Australia/Sydney" selected>Sydney (AEST)</option>
+                        <option value="Europe/Paris">Paris (CET)</option>
+                        <option value="Asia/Kolkata">Mumbai (IST)</option>
+                        <option value="Asia/Singapore">Singapore (SGT)</option>
+                    </select>
+                    <span class="world-time" id="world-clock-4">00:00:00</span>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- Tab Control Architecture Handling Logic ---
+        // --- Tab Control Navigation State Engine ---
         const tabs = document.querySelectorAll('.tab-btn');
         const panels = document.querySelectorAll('.panel-card');
 
@@ -378,50 +468,54 @@
             });
         });
 
-        // --- Theme Selector Override ---
+        // --- Global Dashboard Theme Switching Logic ---
         document.getElementById('themeSelector').addEventListener('change', (e) => {
             document.body.className = e.target.value;
         });
 
-        // --- Audio Synthesizer (Fallback to prevent broken physical audio path files) ---
+        // --- Audio Synthesizer Engine (Self-Generating Sine Fallback) ---
         function triggerBeepAlert() {
-            const context = new (window.AudioContext || window.webkitAudioContext)();
-            const osc = context.createOscillator();
-            const gain = context.createGain();
-            osc.connect(gain);
-            gain.connect(context.destination);
-            osc.type = 'sine';
-            osc.frequency.value = 880; // High pitch ring
-            gain.gain.setValueAtTime(1, context.currentTime);
-            osc.start();
-            gain.gain.exponentialRampToValueAtTime(0.001, context.currentTime + 1.5);
-            osc.stop(context.currentTime + 1.5);
+            try {
+                const context = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = context.createOscillator();
+                const gain = context.createGain();
+                osc.connect(gain);
+                gain.connect(context.destination);
+                osc.type = 'sine';
+                osc.frequency.value = 880; // Secure pitch notification frequency
+                gain.gain.setValueAtTime(1, context.currentTime);
+                osc.start();
+                gain.gain.exponentialRampToValueAtTime(0.001, context.currentTime + 1.5);
+                osc.stop(context.currentTime + 1.5);
+            } catch (e) {
+                console.log("Audio pipeline initializing requires user interaction focus first.");
+            }
         }
 
-        // --- Core Time Engine Running Loop ---
+        // --- Core Clock Operational Execution Loop ---
         let targetAlarmTime = null;
 
         function updateMasterClock() {
             const now = new Date();
             
-            // Format time options cleanly
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             
             hours = hours % 12;
-            hours = hours ? hours : 12; // Handle structural midnight evaluations
+            hours = hours ? hours : 12; 
             const cleanHours = String(hours).padStart(2, '0');
 
+            // Expose primary timeline node
             const timestampString = `${cleanHours}:${minutes}:${seconds} ${ampm}`;
             document.getElementById('masterTime').textContent = timestampString;
 
-            // Render calendar baseline
+            // Render descriptive calendar layout
             const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('masterDate').textContent = now.toLocaleDateString('en-US', dateOptions);
 
-            // Verify Active Alarm State Trigger
+            // Verify alarm constraints matching profile loops
             if (targetAlarmTime) {
                 const currentMinuteCheck = `${cleanHours}:${minutes} ${ampm}`;
                 if (currentMinuteCheck === targetAlarmTime) {
@@ -432,16 +526,26 @@
                 }
             }
 
-            // Sync Multi-Zone Nodes
-            document.getElementById('tz-london').textContent = new Date().toLocaleTimeString('en-US', {timeZone: 'Europe/London', hour12: false});
-            document.getElementById('tz-ny').textContent = new Date().toLocaleTimeString('en-US', {timeZone: 'America/New_York', hour12: false});
-            document.getElementById('tz-tokyo').textContent = new Date().toLocaleTimeString('en-US', {timeZone: 'Asia/Tokyo', hour12: false});
-            document.getElementById('tz-sydney').textContent = new Date().toLocaleTimeString('en-US', {timeZone: 'Australia/Sydney', hour12: false});
+            // Parse and sync multi-zone custom selector nodes dynamically
+            const zoneSelectors = document.querySelectorAll('.zone-selector');
+            zoneSelectors.forEach(selector => {
+                const slotId = selector.dataset.slot;
+                const selectedTimezone = selector.value;
+                try {
+                    const localZoneString = new Date().toLocaleTimeString('en-US', {
+                        timeZone: selectedTimezone,
+                        hour12: false
+                    });
+                    document.getElementById(`world-clock-${slotId}`).textContent = localZoneString;
+                } catch (err) {
+                    document.getElementById(`world-clock-${slotId}`).textContent = "00:00:00";
+                }
+            });
         }
         setInterval(updateMasterClock, 1000);
         updateMasterClock();
 
-        // --- ALARM SECTION ENGINE ---
+        // --- WEBALARM SYSTEM CORES ---
         document.getElementById('btnSetAlarm').addEventListener('click', () => {
             const h = document.getElementById('alarmHour').value;
             const m = document.getElementById('alarmMinute').value;
@@ -455,7 +559,7 @@
             document.getElementById('alarmStatus').textContent = "Alarm status cleared.";
         });
 
-        // --- TIMER SECTION ENGINE ---
+        // --- TIMER INTERVAL LOGIC SYSTEM ---
         let timerInterval = null;
         let totalTimerSeconds = 0;
 
@@ -465,12 +569,10 @@
 
         btnStartTimer.addEventListener('click', () => {
             if (timerInterval) {
-                // Pause Trigger Action
                 clearInterval(timerInterval);
                 timerInterval = null;
                 btnStartTimer.textContent = "Resume Timer";
             } else {
-                // Initiate/Run Calculation Stream
                 if (totalTimerSeconds === 0) {
                     const m = parseInt(document.getElementById('timerMin').value) || 0;
                     const s = parseInt(document.getElementById('timerSec').value) || 0;
@@ -510,9 +612,11 @@
             timerInputArea.style.display = 'flex';
             timerDisplay.style.display = 'none';
             btnStartTimer.textContent = "Start Timer";
+            document.getElementById('timerMin').value = "0";
+            document.getElementById('timerSec').value = "30";
         }
 
-        // --- STOPWATCH SECTION ENGINE ---
+        // --- TRACKING STOPWATCH FRAMEWORKS ---
         let stopwatchInterval = null;
         let stopwatchStartTime = 0;
         let elapsedTime = 0;
@@ -525,14 +629,12 @@
 
         btnStartStopwatch.addEventListener('click', () => {
             if (stopwatchInterval) {
-                // Pause State
                 clearInterval(stopwatchInterval);
                 elapsedTime += Date.now() - stopwatchStartTime;
                 stopwatchInterval = null;
                 btnStartStopwatch.textContent = "Resume";
                 btnLapStopwatch.disabled = true;
             } else {
-                // Active calculation parameters loop tracking
                 stopwatchStartTime = Date.now();
                 stopwatchInterval = setInterval(updateStopwatchDisplay, 10);
                 btnStartStopwatch.textContent = "Pause";
@@ -569,4 +671,5 @@
             stopwatchDisplay.textContent = `${minutes}:${seconds}.${centiseconds}`;
         }
     </script>
-</body></html>
+</body>
+</html>
