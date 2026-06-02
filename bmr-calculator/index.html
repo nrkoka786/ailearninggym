@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMR & Calories Calculator | AI Learning Gym</title>
-    <meta name="description" content="Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) accurately using the clinical Mifflin-St Jeor formula.">
+    <meta name="description" content="Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) accurately using Metric or Imperial systems with the Mifflin-St Jeor formula.">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
@@ -107,10 +107,39 @@
             border: 1px solid var(--text-muted);
             flex: 1;
             justify-content: center;
+            font-weight: 600;
+            transition: all 0.2s ease;
         }
 
         input[type="radio"] {
             accent-color: var(--accent);
+        }
+
+        /* Unit System Tab Switcher styles */
+        .system-tabs {
+            display: flex;
+            background-color: rgba(15, 23, 42, 0.6);
+            padding: 0.25rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.6rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 0.35rem;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent);
+            color: #0f172a;
         }
 
         .input-row {
@@ -135,6 +164,13 @@
 
         input:focus {
             border-color: var(--accent);
+        }
+
+        .unit-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            display: block;
         }
 
         .btn {
@@ -227,6 +263,12 @@
 
     <main>
         <div class="card">
+            
+            <div class="system-tabs">
+                <button class="tab-btn active" id="metricTabBtn" onclick="switchSystem('metric')">Metric System (cm/kg)</button>
+                <button class="tab-btn" id="imperialTabBtn" onclick="switchSystem('imperial')">Imperial System (ft/in/lbs)</button>
+            </div>
+
             <div class="form-group">
                 <label>Biological Sex</label>
                 <div class="radio-group">
@@ -245,16 +287,23 @@
                         <label for="age">Age (Years)</label>
                         <input type="number" id="age" min="1" max="120" value="25">
                     </div>
+                    
                     <div class="input-wrapper">
-                        <label for="weight">Weight (kg)</label>
-                        <input type="number" id="weight" min="10" max="300" value="70">
+                        <label for="weight" id="weightLabel">Weight (kg)</label>
+                        <input type="number" id="weight" min="1" value="70">
+                        <span class="unit-label" id="weightUnitHint">Enter weight in kilograms</span>
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="height">Height (cm)</label>
-                <input type="number" id="height" min="50" max="250" value="175">
+            <div class="form-group" id="heightContainer">
+                <label for="height" id="heightLabel">Height (cm)</label>
+                <div class="input-row" id="heightInputRow">
+                    <div class="input-wrapper">
+                        <input type="number" id="height" min="1" value="175">
+                        <span class="unit-label" id="heightUnitHint">Enter height in centimeters</span>
+                    </div>
+                </div>
             </div>
 
             <button class="btn" onclick="calculateBMR()">Calculate Metabolic Metrics</button>
@@ -262,7 +311,7 @@
             <div class="results-container" id="resultsPanel">
                 <div class="hero-result">
                     <div style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.25rem;">Your Basal Metabolic Rate (BMR)</div>
-                    <div class="hero-number" id="bmrDisplay">1,654</div>
+                    <div class="hero-number" id="bmrDisplay">0,000</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Calories/day burned at absolute rest.</div>
                 </div>
 
@@ -270,11 +319,11 @@
                 <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.4;">Based on your metabolism, here is how many daily calories you burn depending on active lifestyles:</p>
                 
                 <div id="tdeeContainer">
-                    <div class="tdee-row"><span>Sedentary (Little/no exercise)</span><span class="tdee-val" id="tdee-sedentary">0000 kcal</span></div>
-                    <div class="tdee-row"><span>Lightly Active (Exercise 1-3 days/wk)</span><span class="tdee-val" id="tdee-light">0000 kcal</span></div>
-                    <div class="tdee-row"><span>Moderately Active (Exercise 3-5 days/wk)</span><span class="tdee-val" id="tdee-mod">0000 kcal</span></div>
-                    <div class="tdee-row"><span>Very Active (Hard exercise 6-7 days/wk)</span><span class="tdee-val" id="tdee-active">0000 kcal</span></div>
-                    <div class="tdee-row"><span>Extra Active (Physical job or elite training)</span><span class="tdee-val" id="tdee-extreme">0000 kcal</span></div>
+                    <div class="tdee-row"><span>Sedentary (Little/no exercise)</span><span class="tdee-val" id="tdee-sedentary">0,000 kcal</span></div>
+                    <div class="tdee-row"><span>Lightly Active (Exercise 1-3 days/wk)</span><span class="tdee-val" id="tdee-light">0,000 kcal</span></div>
+                    <div class="tdee-row"><span>Moderately Active (Exercise 3-5 days/wk)</span><span class="tdee-val" id="tdee-mod">0,000 kcal</span></div>
+                    <div class="tdee-row"><span>Very Active (Hard exercise 6-7 days/wk)</span><span class="tdee-val" id="tdee-active">0,000 kcal</span></div>
+                    <div class="tdee-row"><span>Extra Active (Physical job or elite training)</span><span class="tdee-val" id="tdee-extreme">0,000 kcal</span></div>
                 </div>
             </div>
         </div>
@@ -285,19 +334,91 @@
     </footer>
 
     <script>
+        let currentSystem = 'metric';
+
+        // Handles rendering adjustments when flipping systems
+        function switchSystem(system) {
+            currentSystem = system;
+            document.getElementById('resultsPanel').style.display = 'none';
+            
+            const metricBtn = document.getElementById('metricTabBtn');
+            const imperialBtn = document.getElementById('imperialTabBtn');
+            const heightRow = document.getElementById('heightInputRow');
+            
+            if (system === 'metric') {
+                metricBtn.classList.add('active');
+                imperialBtn.classList.remove('active');
+                
+                // Set Metric labels & standard placeholders
+                document.getElementById('weightLabel').textContent = "Weight (kg)";
+                document.getElementById('weightUnitHint').textContent = "Enter weight in kilograms";
+                document.getElementById('weight').value = "70";
+                
+                document.getElementById('heightLabel').textContent = "Height (cm)";
+                heightRow.innerHTML = `
+                    <div class="input-wrapper">
+                        <input type="number" id="height" min="1" value="175">
+                        <span class="unit-label">Enter height in centimeters</span>
+                    </div>
+                `;
+            } else {
+                imperialBtn.classList.add('active');
+                metricBtn.classList.remove('active');
+                
+                // Set Imperial labels & standard placeholders
+                document.getElementById('weightLabel').textContent = "Weight (lbs)";
+                document.getElementById('weightUnitHint').textContent = "Enter weight in pounds";
+                document.getElementById('weight').value = "155";
+                
+                document.getElementById('heightLabel').textContent = "Height (Feet / Inches)";
+                heightRow.innerHTML = `
+                    <div class="input-wrapper">
+                        <input type="number" id="heightFeet" min="1" max="8" value="5">
+                        <span class="unit-label">Feet (ft)</span>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="number" id="heightInches" min="0" max="11" value="9">
+                        <span class="unit-label">Inches (in)</span>
+                    </div>
+                `;
+            }
+        }
+
         function calculateBMR() {
             const age = parseInt(document.getElementById('age').value);
-            const weight = parseFloat(document.getElementById('weight').value);
-            const height = parseFloat(document.getElementById('height').value);
             const gender = document.querySelector('input[name="gender"]:checked').value;
+            
+            let weightInKg = 0;
+            let heightInCm = 0;
 
-            if (isNaN(age) || isNaN(weight) || isNaN(height) || age <= 0 || weight <= 0 || height <= 0) {
-                alert("Please make sure all metrics entered are valid positive numbers.");
-                return;
+            // 1. Process measurements inputs based on selected system state
+            if (currentSystem === 'metric') {
+                const weight = parseFloat(document.getElementById('weight').value);
+                const height = parseFloat(document.getElementById('height').value);
+                
+                if (isNaN(age) || isNaN(weight) || isNaN(height) || age <= 0 || weight <= 0 || height <= 0) {
+                    alert("Please fill out all metric fields with valid parameters.");
+                    return;
+                }
+                weightInKg = weight;
+                heightInCm = height;
+            } else {
+                const weightLbs = parseFloat(document.getElementById('weight').value);
+                const feet = parseInt(document.getElementById('heightFeet').value);
+                const inches = parseInt(document.getElementById('heightInches').value) || 0;
+                
+                if (isNaN(age) || isNaN(weightLbs) || isNaN(feet) || age <= 0 || weightLbs <= 0 || feet <= 0 || inches < 0) {
+                    alert("Please fill out all imperial fields with valid parameters.");
+                    return;
+                }
+                
+                // Convert Imperial parameters to Metric parameters for Mifflin formulas
+                weightInKg = weightLbs * 0.45359237; 
+                heightInCm = ((feet * 12) + inches) * 2.54;
             }
 
-            // Mifflin-St Jeor Engine Calculation
-            let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+            // 2. Compute Core Mifflin-St Jeor Formula
+            let bmr = (10 * weightInKg) + (6.25 * heightInCm) - (5 * age);
             if (gender === 'male') {
                 bmr += 5;
             } else {
@@ -306,17 +427,15 @@
 
             const roundedBMR = Math.round(bmr);
             
-            // Render basic BMR interface value
+            // 3. Update UI outputs
             document.getElementById('bmrDisplay').textContent = roundedBMR.toLocaleString();
 
-            // Populate Harris-Benedict TDEE multipliers
             document.getElementById('tdee-sedentary').textContent = Math.round(bmr * 1.2).toLocaleString() + " kcal";
             document.getElementById('tdee-light').textContent = Math.round(bmr * 1.375).toLocaleString() + " kcal";
             document.getElementById('tdee-mod').textContent = Math.round(bmr * 1.55).toLocaleString() + " kcal";
             document.getElementById('tdee-active').textContent = Math.round(bmr * 1.725).toLocaleString() + " kcal";
             document.getElementById('tdee-extreme').textContent = Math.round(bmr * 1.9).toLocaleString() + " kcal";
 
-            // Reveal the content wrapper
             document.getElementById('resultsPanel').style.display = 'block';
         }
     </script>
