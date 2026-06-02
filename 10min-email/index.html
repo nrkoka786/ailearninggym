@@ -6,7 +6,6 @@
     <title>10-Minute Temporary Email Generator | AI Learning Gym</title>
     <meta name="description" content="Get a free, secure, disposable 10-minute temporary email address to protect your privacy and block spam instantly.">
 
-    <!-- Google Analytics Tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,7 +14,6 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
-    <!-- Google AdSense Auto Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
 
     <style>
@@ -215,14 +213,16 @@
 
         .mail-body {
             display: none;
-            background-color: rgba(0,0,0,0.3);
+            background-color: #ffffff;
             padding: 1rem;
             margin-top: 0.5rem;
             border-radius: 0.5rem;
             font-size: 0.9rem;
-            color: #d1d5db;
+            color: #1e293b;
             line-height: 1.5;
-            border-left: 3px solid var(--accent);
+            border-left: 5px solid var(--accent);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+            overflow-x: auto;
         }
 
         footer {
@@ -243,7 +243,6 @@
     <main>
         <div class="card">
             
-            <!-- Timer Controls Info -->
             <div class="timer-row">
                 <div>
                     <span style="font-size: 0.85rem; color: var(--text-muted); display: block; font-weight:600;">TIME REMAINING</span>
@@ -251,22 +250,20 @@
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 0.35rem;">
                     <button class="btn-action" style="margin:0;" onclick="refreshTimer()">➕ Renew 10 Min</button>
-                    <button class="btn-action btn-danger" style="margin:0;" onclick="generateNewEmail()">🔄 Get New Address</button>
+                    <button class="btn-action btn-danger" style="margin:0;" onclick="generateLiveEmail()">🔄 Get New Address</button>
                 </div>
             </div>
 
-            <!-- Email Display Block Container -->
             <div class="email-generator-box">
-                <div class="email-address" id="emailField">loading_address...</div>
+                <div class="email-address" id="emailField">fetching_live_inbox...</div>
                 <button class="btn-action" onclick="copyEmail()">📋 Copy</button>
             </div>
 
-            <!-- Interactive Local Simulated Inbox Panel -->
             <div class="inbox-container">
                 <div class="inbox-header">
-                    <div>Your Sandbox Inbox</div>
+                    <div>Your Live Inbox</div>
                     <div style="font-size:0.85rem; font-weight: normal; color: var(--text-muted); display:flex; align-items:center; gap:0.5rem;">
-                        <span class="pulse-dot"></span> Listening for incoming messages...
+                        <span class="pulse-dot"></span> Checking live servers for messages...
                     </div>
                 </div>
 
@@ -274,7 +271,7 @@
                     <div class="no-mail" id="emptyInboxMessage">
                         <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📥</div>
                         <div>Waiting for messages...</div>
-                        <div style="font-size: 0.75rem; margin-top: 0.25rem;">(Tip: A verification trigger simulation runs every 25 seconds!)</div>
+                        <div style="font-size: 0.75rem; margin-top: 0.25rem;">Send a real email to the address above to test it live!</div>
                     </div>
                 </div>
             </div>
@@ -283,45 +280,149 @@
     </main>
 
     <footer>
-        &copy; 2026 AI Learning Gym Sandbox Environment. Running safely.
+        &copy; 2026 AI Learning Gym Sandbox Environment. Connected to Live Mail Server Networks.
     </footer>
 
     <script>
-        let timeLeft = 600; // 10 minutes in seconds
+        const API_URL = "https://api.mail.tm";
+        let currentAddress = "";
+        let currentToken = "";
+        let timeLeft = 600;
         let countdownInterval;
-        let simulationInterval;
+        let checkEmailInterval;
+        let knownMessageIds = new Set();
 
-        const dynamicDomains = ["@tempmail.gym", "@boxshield.net", "@dropinbox.org", "@skiffmail.xyz"];
-        const customPrefixes = ["alpha", "user88", "testpoint", "privacy", "crypto", "shadow", "ghost"];
-
-        // Generate a completely clean random address pattern
-        function generateNewEmail() {
-            const randPrefix = customPrefixes[Math.floor(Math.random() * customPrefixes.length)] + Math.floor(Math.random() * 900 + 100);
-            const randDomain = dynamicDomains[Math.floor(Math.random() * dynamicDomains.length)];
+        // Initialize App
+        async function generateLiveEmail() {
+            clearInterval(checkEmailInterval);
+            document.getElementById('emailField').textContent = "generating...";
             
-            document.getElementById('emailField').textContent = randPrefix + randDomain;
-            
-            // Wipe standard simulation tracking rows
+            // Clear current inbox display
             document.getElementById('inboxList').innerHTML = `
                 <div class="no-mail" id="emptyInboxMessage">
                     <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📥</div>
                     <div>Waiting for messages...</div>
-                    <div style="font-size: 0.75rem; margin-top: 0.25rem;">(Tip: A verification trigger simulation runs every 25 seconds!)</div>
+                    <div style="font-size: 0.75rem; margin-top: 0.25rem;">Send a real email to the address above to test it live!</div>
                 </div>
             `;
-            
-            refreshTimer();
-            resetSimulationLoop();
+            knownMessageIds.clear();
+
+            try {
+                // 1. Fetch live available mail domains from Mail.tm
+                const domainResponse = await fetch(`${API_URL}/domains`);
+                const domainData = await domainResponse.json();
+                const targetDomain = domainData["hydra:member"][0].domain;
+
+                // 2. Compute random accounts credentials
+                const randomUser = 'gym_' + Math.random().toString(36).substring(2, 11);
+                currentAddress = `${randomUser}@${targetDomain}`;
+                const password = Math.random().toString(36).substring(2, 15);
+
+                // 3. Register the live account mailbox
+                const registerResponse = await fetch(`${API_URL}/accounts`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ address: currentAddress, password: password })
+                });
+
+                if (!registerResponse.ok) throw new Error("Account generation rejected");
+
+                // 4. Authenticate to secure a JWT token for stream tracking
+                const tokenResponse = await fetch(`${API_URL}/token`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ address: currentAddress, password: password })
+                });
+                const tokenData = await tokenResponse.json();
+                currentToken = tokenData.token;
+
+                // Update display fields
+                document.getElementById('emailField').textContent = currentAddress;
+                refreshTimer();
+
+                // 5. Fire loop to poll inbox messages every 5 seconds
+                checkEmailInterval = setInterval(checkInboxMessages, 5000);
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('emailField').textContent = "Connection error. Retry.";
+            }
         }
 
-        // Timer Engine Logic
+        // Live API Inbox Monitoring Loop
+        async function checkInboxMessages() {
+            if (!currentToken || timeLeft <= 0) return;
+
+            try {
+                const response = await fetch(`${API_URL}/messages`, {
+                    headers: { 'Authorization': `Bearer ${currentToken}` }
+                });
+                const data = await response.json();
+                const messages = data["hydra:member"];
+
+                if (messages.length > 0) {
+                    const emptyMsg = document.getElementById('emptyInboxMessage');
+                    if (emptyMsg) emptyMsg.remove();
+                }
+
+                // Process messages in order
+                for (let msg of messages) {
+                    if (!knownMessageIds.has(msg.id)) {
+                        knownMessageIds.add(msg.id);
+                        await fetchAndRenderFullMessage(msg.id);
+                    }
+                }
+            } catch (err) {
+                console.error("Inbox fetching cycle failed:", err);
+            }
+        }
+
+        // Fetch detailed HTML email bodies and attach row structures
+        async function fetchAndRenderFullMessage(messageId) {
+            try {
+                const response = await fetch(`${API_URL}/messages/${messageId}`, {
+                    headers: { 'Authorization': `Bearer ${currentToken}` }
+                });
+                const fullMail = await response.json();
+
+                const timeStamp = new Date(fullMail.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                const senderName = fullMail.from.name || fullMail.from.address;
+
+                const row = document.createElement('div');
+                row.className = 'mail-row';
+                row.onclick = function() {
+                    const bodyEl = this.querySelector('.mail-body');
+                    bodyEl.style.display = bodyEl.style.display === 'block' ? 'none' : 'block';
+                };
+
+                // Use html content if present, fallback to raw text
+                const parsedContent = fullMail.html ? fullMail.html.join('') : fullMail.text;
+
+                row.innerHTML = `
+                    <div class="mail-meta">
+                        <span style="color: var(--success); font-weight:600;">${senderName} (${fullMail.from.address})</span>
+                        <span>${timeStamp}</span>
+                    </div>
+                    <div class="mail-subject">${fullMail.subject || "(No Subject)"}</div>
+                    <div class="mail-body">${parsedContent}</div>
+                `;
+
+                document.getElementById('inboxList').prepend(row);
+
+            } catch (err) {
+                console.error("Failed to parse full text content:", err);
+            }
+        }
+
+        // Timer Mechanisms
         function startTimer() {
             clearInterval(countdownInterval);
             countdownInterval = setInterval(() => {
                 if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
+                    clearInterval(checkEmailInterval);
                     document.getElementById('clockDisplay').textContent = "00:00";
-                    document.getElementById('emailField').textContent = "EXPIRED - Click New Address";
+                    document.getElementById('emailField').textContent = "EXPIRED - Refresh Address";
                     return;
                 }
                 timeLeft--;
@@ -336,63 +437,17 @@
             startTimer();
         }
 
-        // Clipboard Copy Utility
         function copyEmail() {
             const currentEmail = document.getElementById('emailField').textContent;
-            if(timeLeft <= 0 || currentEmail.includes("EXPIRED")) return;
+            if(timeLeft <= 0 || currentEmail.includes("EXPIRED") || currentEmail.includes("fetching")) return;
             
             navigator.clipboard.writeText(currentEmail).then(() => {
-                alert("Temporary email address copied successfully to clipboard!");
+                alert("Live temporary email address copied to clipboard!");
             });
         }
 
-        // Simulated Local Verification Email Pipeline
-        const simulatedMails = [
-            { sender: "support@netflix-activation.com", subject: "Complete your premium trial validation code", body: "Thank you for joining our network! Your single-use access confirmation code is: <b>984-112</b>. This temporary token window collapses in 15 minutes." },
-            { sender: "no-reply@discordapp.io", subject: "Verify your temporary gaming channel handle", body: "Click the secure button link below to quickly whitelist your active user handle and join the private server dashboard: <br><br><a href='#' style='color:#3a86ff;'>[Confirm Handle Whitelist]</a>" },
-            { sender: "security@binance-exchange.net", subject: "[Alert] Authorized API Key Creation Request", body: "A request to authenticate a new trading terminal link was verified from your sandbox IP location. If this was not you, freeze your secure profile access nodes immediately." },
-            { sender: "hello@newsletter.producthunt.com", subject: "Today's Top 10 Trending Developer Assets 🚀", body: "Check out the newest micro-tools capturing the community's eye this afternoon! Number one on the dashboard index is a fully custom local privacy framework built by AI Learning Gym!" }
-        ];
-
-        function triggerSimulatedMail() {
-            if(timeLeft <= 0) return;
-            
-            const emptyMsg = document.getElementById('emptyInboxMessage');
-            if (emptyMsg) emptyMsg.remove();
-
-            // Pull a random sample from our simulation matrix
-            const mailData = simulatedMails[Math.floor(Math.random() * simulatedMails.length)];
-            const timeStamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
-            const row = document.createElement('div');
-            row.className = 'mail-row';
-            row.onclick = function() {
-                const bodyEl = this.querySelector('.mail-body');
-                bodyEl.style.display = bodyEl.style.display === 'block' ? 'none' : 'block';
-            };
-
-            row.innerHTML = `
-                <div class="mail-meta">
-                    <span style="color: var(--success); font-weight:600;">${mailData.sender}</span>
-                    <span>${timeStamp}</span>
-                </div>
-                <div class="mail-subject">${mailData.subject}</div>
-                <div class="mail-body">${mailData.body}</div>
-            `;
-
-            document.getElementById('inboxList').prepend(row);
-        }
-
-        function resetSimulationLoop() {
-            clearInterval(simulationInterval);
-            // Run an incoming delivery event simulation loop every 25 seconds
-            simulationInterval = setInterval(triggerSimulatedMail, 25000);
-            // Fire one immediately after 4 seconds to delight users
-            setTimeout(triggerSimulatedMail, 4000);
-        }
-
-        // Initialization Run
-        generateNewEmail();
+        // Initial Run Trigger
+        generateLiveEmail();
     </script>
 </body>
 </html>
