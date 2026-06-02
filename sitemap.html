@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Web Utilities Index &amp; Sitemap | AI Learning Gym</title>
-    <meta name="description" content="Navigate the complete directory of 20 free, privacy-first web utilities and developer tools hosted at AI Learning Gym. All tools execute entirely client-side.">
-    <meta name="keywords" content="sitemap, tools directory, web utilities index, developer tools map, free calculators online, privacy tools directory">
-    <meta property="og:title" content="Visual Web Utilities Index &amp; Sitemap | AI Learning Gym">
-    <meta property="og:description" content="A comprehensive navigational map outlining all 20 local browser execution tools, calculators, and text processors.">
-
-    <!-- GLOBAL GOOGLE ANALYTICS -->
+    <title>Site Map Directory | AI Learning Gym</title>
+    <meta name="description" content="Navigate the complete inventory of browser-based utilities, encoders, trackers, and fitness tools built across the AI Learning Gym ecosystem.">
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,284 +14,147 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
-    <!-- GLOBAL GOOGLE ADSENSE SCRIPT -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
-            --text-muted: #64748b;
             --card-border: #e2e8f0;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        
         header {
             background-color: var(--primary-color);
             color: #ffffff;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
             border-bottom: 4px solid var(--accent-color);
         }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
+        
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- Live Ad Container Classes --- */
-        .ad-container {
-            margin: 15px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* --- Main Layout Window --- */
-        .main-content {
+        .sitemap-card {
             background: #ffffff;
-            padding: 25px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Sitemap Directory Structure --- */
-        .sitemap-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
             margin-bottom: 30px;
         }
 
-        .category-block {
-            margin-bottom: 25px;
+        h2 { color: var(--text-dark); margin-bottom: 20px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; }
+        
+        .map-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
         }
+        @media (min-width: 600px) { .map-grid { grid-template-columns: repeat(2, 1fr); } }
 
-        .category-title {
+        .map-section h3 {
             font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-dark);
+            color: var(--primary-color);
             margin-bottom: 12px;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .links-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-
-        @media (min-width: 600px) {
-            .links-list { grid-template-columns: 1fr 1fr; }
-        }
-
-        .links-list li {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 4px;
-            padding: 10px 15px;
-            transition: transform 0.15s, border-color 0.15s;
-        }
-
-        .links-list li:hover {
-            transform: translateX(3px);
-            border-color: var(--accent-color);
-        }
-
-        .links-list a {
-            color: var(--text-dark);
+        .map-section ul { list-style: none; }
+        .map-section ul li { margin-bottom: 10px; padding-left: 15px; position: relative; }
+        .map-section ul li::before { content: "•"; color: var(--accent-color); font-weight: bold; position: absolute; left: 0; }
+        
+        .map-section a {
+            color: #4a5568;
             text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-weight: 500;
+            transition: color 0.15s;
         }
+        .map-section a:hover { color: var(--accent-color); text-decoration: underline; }
 
-        .links-list a:hover {
-            color: var(--accent-color);
-        }
-
-        .tool-index-number {
-            font-size: 0.75rem;
-            background: #e2e8f0;
-            color: var(--text-muted);
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-family: monospace;
-        }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        footer { text-align: center; margin-top: 40px; color: #718096; font-size: 0.9rem; }
+        footer a { color: var(--accent-color); text-decoration: none; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
+        <h1>AI Learning Gym</h1>
+        <p>Comprehensive Web Portal Site Map Directory</p>
     </header>
 
     <div class="container">
-        
-        <main class="main-content">
+        <div class="sitemap-card">
+            <h2>Website Architecture Mapping</h2>
             
-            <!-- 1️⃣ LIVE ADSENSE DISPLAY SLOT: TOP BANNER -->
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+            <div class="map-grid">
+                
+                <!-- Section 1 -->
+                <div class="map-section">
+                    <h3>🤖 AI Text &amp; Mail Processing</h3>
+                    <ul>
+                        <li><a href="/">Platform Home Dashboard</a></li>
+                        <li><a href="/ai-detector/">AI Structural Content Detector</a></li>
+                        <li><a href="/10min-email/">10-Minute Temporary Mailbox</a></li>
+                        <li><a href="/word-counter/">Linguistic Word Counter Engine</a></li>
+                        <li><a href="/text-to-speech/">Text-to-Speech Vocal Studio</a></li>
+                        <li><a href="/case-converter/">Dynamic Case Transformation</a></li>
+                        <li><a href="/lorem-ipsum/">Developer Dummy Text Block Studio</a></li>
+                    </ul>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="map-section">
+                    <h3>📊 Financial &amp; Math Engines</h3>
+                    <ul>
+                        <li><a href="/loan-calculator/">Loan Amortization Calculator</a></li>
+                        <li><a href="/tip-splitter/">Tip Allocation &amp; Bill Splitter</a></li>
+                        <li><a href="/age-calculator/">Chronological Age Milestone Vector</a></li>
+                        <li><a href="/unit-converter/">Universal Unit Translation Layer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="map-section">
+                    <h3>⚙️ System Cryptography &amp; Development</h3>
+                    <ul>
+                        <li><a href="/json-formatter/">JSON Structural Validation Engine</a></li>
+                        <li><a href="/markdown-editor/">Live Markdown Synchronization View</a></li>
+                        <li><a href="/diff-checker/">Document Mutation Diff Checker</a></li>
+                        <li><a href="/password-generator/">Secure Pseudorandom Password Builder</a></li>
+                        <li><a href="/qr-generator/">Matrix QR Code Symbol Studio</a></li>
+                        <li><a href="/base64/">Base64 String Binary Translation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="map-section">
+                    <h3>⏱️ Health, Diagnostics &amp; Layout Utilities</h3>
+                    <ul>
+                        <li><a href="/online-clock/">World Clock &amp; High-Precision Split Timers</a></li>
+                        <li><a href="/bmr-calculator/">BMR &amp; TDEE Energy Target Planner</a></li>
+                        <li><a href="/sleep-calculator/">REM Sleep Cycle Sleep Window Finder</a></li>
+                        <li><a href="/pomodoro-timer/">Cyclical Pomodoro Productivity Track</a></li>
+                        <li><a href="/bmi-calculator/">Biological Body Mass Index Module</a></li>
+                        <li><a href="/color-picker/">Naked Hex Field Spectrum Picker</a></li>
+                        <li><a href="/white-screen/">Dead Pixel Surface Backlight Diagnostic</a></li>
+                        <li><a href="/whatsapp-link/">Instant WhatsApp API Message Layout</a></li>
+                        <li><a href="/font-generator/">Fancy Stylized Unicode Letter Converter</a></li>
+                        <li><a href="/image-resizer/">Sandbox Image Boundary Canvas Scaler</a></li>
+                    </ul>
+                </div>
+
             </div>
+        </div>
 
-            <section class="sitemap-wrapper">
-                <h2 style="margin-bottom: 20px; color: var(--text-dark);">Complete Platform Directory Map</h2>
-                
-                <!-- CATEGORY: TEXT & CONTENT PROCESSING -->
-                <div class="category-block">
-                    <div class="category-title">Text &amp; Content Processing</div>
-                    <ul class="links-list">
-                        <li><a href="/word-counter/"><span class="tool-index-number">01</span> Real-Time Word Counter</a></li>
-                        <li><a href="/case-converter/"><span class="tool-index-number">06</span> String Case Converter</a></li>
-                        <li><a href="/text-to-speech/"><span class="tool-index-number">08</span> Client-Side Text-to-Speech</a></li>
-                        <li><a href="/diff-checker/"><span class="tool-index-number">09</span> Document Diff Checker</a></li>
-                        <li><a href="/font-generator/"><span class="tool-index-number">11</span> Bold &amp; Fancy Font Generator</a></li>
-                        <li><a href="/lorem-ipsum/"><span class="tool-index-number">15</span> Developer Lorem Ipsum Generator</a></li>
-                    </ul>
-                </div>
-
-                <!-- CATEGORY: DEVELOPER UTILITIES & ENCODERS -->
-                <div class="category-block">
-                    <div class="category-title">Developer Utilities &amp; Encoders</div>
-                    <ul class="links-list">
-                        <li><a href="/qr-generator/"><span class="tool-index-number">02</span> Interactive QR Code Generator</a></li>
-                        <li><a href="/password-generator/"><span class="tool-index-number">03</span> Cryptographic Password Generator</a></li>
-                        <li><a href="/json-formatter/"><span class="tool-index-number">07</span> JSON Formatter &amp; Sanitizer</a></li>
-                        <li><a href="/color-picker/"><span class="tool-index-number">18</span> Hex Color Picker &amp; Palette Studio</a></li>
-                        <li><a href="/base64/"><span class="tool-index-number">19</span> Base64 Encoder / Decoder Matrix</a></li>
-                        <li><a href="/markdown-editor/"><span class="tool-index-number">20</span> Markdown Live Preview Editor</a></li>
-                    </ul>
-                </div>
-
-                <!-- CATEGORY: CALCULATORS & MATHEMATICAL CONVERTERS -->
-                <div class="category-block">
-                    <div class="category-title">Calculators &amp; Mathematical Converters</div>
-                    <ul class="links-list">
-                        <li><a href="/age-calculator/"><span class="tool-index-number">04</span> Chronological Age Calculator</a></li>
-                        <li><a href="/unit-converter/"><span class="tool-index-number">12</span> Universal Unit Conversion Grid</a></li>
-                        <li><a href="/bmi-calculator/"><span class="tool-index-number">13</span> Biological Fitness BMI Calculator</a></li>
-                        <li><a href="/tip-splitter/"><span class="tool-index-number">14</span> Commercial Tip &amp; Bill Splitter</a></li>
-                    </ul>
-                </div>
-
-                <!-- CATEGORY: PRODUCTIVITY, MEDIA & GRAPHICS -->
-                <div class="category-block">
-                    <div class="category-title">Productivity, Media &amp; Graphics</div>
-                    <ul class="links-list">
-                        <li><a href="/image-resizer/"><span class="tool-index-number">05</span> High-Fidelity Image Resizer</a></li>
-                        <li><a href="/whatsapp-link/"><span class="tool-index-number">10</span> WhatsApp Click-To-Chat Linker</a></li>
-                        <li><a href="/white-screen/"><span class="tool-index-number">16</span> Display Diagnostic White Screen</a></li>
-                        <li><a href="/pomodoro-timer/"><span class="tool-index-number">17</span> Pomodoro Focus Clock &amp; Stopwatch</a></li>
-                    </ul>
-                </div>
-
-                <!-- CATEGORY: SYSTEM PAGES -->
-                <div class="category-block">
-                    <div class="category-title">Core Administration Profiles</div>
-                    <ul class="links-list" style="grid-template-columns: 1fr; max-width: 400px;">
-                        <li><a href="/">🏠 AI Learning Gym Home Dashboard</a></li>
-                        <li><a href="/privacy-policy.html">🔒 User Privacy Policy Statement</a></li>
-                        <li><a href="/terms-of-service.html">⚖️ Site Terms of Service Agreement</a></li>
-                        <li><a href="/contact.html">✉️ Help Desk &amp; Technical Contact Support</a></li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- HIGH VALUE SEO ARTICLE SECTION -->
-            <section class="seo-section">
-                <h2>The Architectural Value of Structured Navigation Maps</h2>
-                <p>An HTML sitemap acts as a critical link distribution node for web architectures. By listing all twenty specialized micro-utilities alongside core compliance pages, we ensure that both human visitors and automated indexing systems can easily find everything our platform offers. This structure ensures zero orphan directories remain across the domain architecture.</p>
-                
-                <p>Every tool page linked above runs completely client-side. This layout design helps your browser instantly process strings, mathematical variables, layout adjustments, and text modifications locally. Running calculations on your own machine completely eliminates tracking risks and external network lag, giving you a completely sandboxed, highly responsive desktop tool environment.</p>
-            </section>
-
-        </main>
-
-        <!-- 3️⃣ LIVE ADSENSE DISPLAY SLOT: STICKY SIDEBAR -->
-        <aside style="position: sticky; top: 20px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-        </aside>
-
+        <footer>
+            <p>&copy; 2026 <a href="/">AI Learning Gym</a>. All rights reserved.</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a>
-        </p>
-    </footer>
 
 </body>
 </html>
