@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Cycle Calculator | AI Learning Gym</title>
+    <meta name="description" content="Calculate the perfect time to fall asleep or wake up. Avoid grogginess by analyzing natural 90-minute sleep cycles.">
+
+    <!-- Google Analytics Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #a78bfa;
+            --accent-hover: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        main {
+            width: 100%;
+            max-width: 650px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            background-color: rgba(15, 23, 42, 0.6);
+            padding: 0.25rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 0.35rem;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent);
+            color: var(--bg-color);
+        }
+
+        .calculator-content {
+            display: none;
+        }
+
+        .calculator-content.active {
+            display: block;
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        select, input {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--text-muted);
+            padding: 0.6rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            outline: none;
+            text-align: center;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--accent);
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .results-container {
+            margin-top: 2rem;
+            display: none;
+            text-align: left;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-card {
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .time-card.recommended {
+            border-color: var(--success);
+            background-color: rgba(16, 185, 129, 0.05);
+        }
+
+        .time-card-hours {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .time-card.recommended .time-card-hours {
+            color: var(--success);
+        }
+
+        .time-card-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            background-color: rgba(245, 158, 11, 0.05);
+            border-left: 3px solid var(--warning);
+            padding: 0.75rem 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌙 Sleep Cycle Calculator</h1>
+        <p>Optimize your rest rhythms to wake up refreshed and groggy-free.</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <!-- Mode Selection Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchMode('wake')">I need to wake up at...</button>
+                <button class="tab-btn" onclick="switchMode('sleep')">I am going to bed now</button>
+            </div>
+
+            <!-- MODE 1: CALC BY WAKE TIME -->
+            <div id="wakeMode" class="calculator-content active">
+                <p style="color: var(--text-muted);">Select your target wake-up alarm time:</p>
+                <div class="input-row">
+                    <select id="wakeHour">
+                        <option value="1">01</option><option value="2">02</option><option value="3">03</option>
+                        <option value="4">04</option><option value="5">05</option><option value="6">06</option>
+                        <option value="7" selected>07</option><option value="8">08</option><option value="9">09</option>
+                        <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                    </select>
+                    <span>:</span>
+                    <select id="wakeMinute">
+                        <option value="0" selected>00</option><option value="15">15</option>
+                        <option value="30">30</option><option value="45">45</option>
+                    </select>
+                    <select id="wakeAmpm">
+                        <option value="AM" selected>AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="calculateBedtimes()">Find Best Bedtimes</button>
+            </div>
+
+            <!-- MODE 2: CALC BY SLEEPING NOW -->
+            <div id="sleepMode" class="calculator-content">
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">If you close your eyes right this instant, your body accounts for roughly 14 minutes of routine tossing and turning to slip into unconsciousness.</p>
+                <button class="btn" onclick="calculateWakeTimes()">Calculate Wake Times</button>
+            </div>
+
+            <!-- DYNAMIC METRICS OUTPUT PANEL -->
+            <div class="results-container" id="resultsPanel">
+                <div class="results-title" id="resultsTitle">Suggested Schedules</div>
+                <div class="time-grid" id="timeGrid"></div>
+                <div class="disclaimer">
+                    <strong>💡 Pro Tip:</strong> Humans average 90-minute sleep intervals. Aim for 5 or 6 full cycles (7.5 to 9 hours of total sleep) to achieve optimal performance, deep tissue recovery, and cognitive alignment.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 AI Learning Gym Sandbox Environment. Running safely.
+    </footer>
+
+    <script>
+        // Tab switching utility
+        function switchMode(mode) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.calculator-content').forEach(c => c.classList.remove('active'));
+            document.getElementById('resultsPanel').style.display = 'none';
+
+            if(mode === 'wake') {
+                event.target.classList.add('active');
+                document.getElementById('wakeMode').classList.add('active');
+            } else {
+                event.target.classList.add('active');
+                document.getElementById('sleepMode').classList.add('active');
+            }
+        }
+
+        // Helper: Format Dates neatly into readable standard AM/PM strings
+        function formatTime(dateObj) {
+            let hours = dateObj.getHours();
+            let minutes = String(dateObj.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Handle 0 midnight conversion
+            return `${hours}:${minutes} ${ampm}`;
+        }
+
+        // Logic Loop 1: Work Backwards from target morning wake up window
+        function calculateBedtimes() {
+            const hrSelect = parseInt(document.getElementById('wakeHour').value);
+            const minSelect = parseInt(document.getElementById('wakeMinute').value);
+            const ampmSelect = document.getElementById('wakeAmpm').value;
+
+            let targetDate = new Date();
+            let targetHour = hrSelect;
+            if (ampmSelect === 'PM' && targetHour < 12) targetHour += 12;
+            if (ampmSelect === 'AM' && targetHour === 12) targetHour = 0;
+
+            targetDate.setHours(targetHour, minSelect, 0, 0);
+            
+            // If the input setup equates to a time that already passed today, assume tomorrow morning
+            if (targetDate < new Date()) {
+                targetDate.setDate(targetDate.getDate() + 1);
+            }
+
+            const grid = document.getElementById('timeGrid');
+            grid.innerHTML = '';
+            
+            // Calculate backwards for 6, 5, 4, and 3 full 90-min cycles (plus 14 mins latency)
+            const cycles = [6, 5, 4, 3];
+            
+            cycles.forEach(c => {
+                let bedtime = new Date(targetDate.getTime());
+                const totalMinutesBack = (c * 90) + 14; 
+                bedtime.setMinutes(bedtime.getMinutes() - totalMinutesBack);
+
+                const card = document.createElement('div');
+                card.className = `time-card ${(c === 5 || c === 6) ? 'recommended' : ''}`;
+                card.innerHTML = `
+                    <div class="time-card-hours">${formatTime(bedtime)}</div>
+                    <div class="time-card-meta">${c} Cycles (${c * 1.5}h Sleep)</div>
+                    <div class="time-card-meta" style="font-size:0.7rem; opacity:0.8;">Includes falling asleep</div>
+                `;
+                grid.appendChild(card);
+            });
+
+            document.getElementById('resultsTitle').textContent = "To wake up feeling pristine, try falling asleep at:";
+            document.getElementById('resultsPanel').style.display = 'block';
+        }
+
+        // Logic Loop 2: Calculate forward starting right this instant
+        function calculateWakeTimes() {
+            const now = new Date();
+            const grid = document.getElementById('timeGrid');
+            grid.innerHTML = '';
+
+            // Calculate forward for 3, 4, 5, and 6 full cycles (adding 14 mins latency)
+            const cycles = [3, 4, 5, 6];
+
+            cycles.forEach(c => {
+                let wakeTime = new Date(now.getTime());
+                const totalMinutesForward = (c * 90) + 14;
+                wakeTime.setMinutes(wakeTime.getMinutes() + totalMinutesForward);
+
+                const card = document.createElement('div');
+                card.className = `time-card ${(c === 5 || c === 6) ? 'recommended' : ''}`;
+                card.innerHTML = `
+                    <div class="time-card-hours">${formatTime(wakeTime)}</div>
+                    <div class="time-card-meta">${c} Cycles (${c * 1.5}h Sleep)</div>
+                    <div class="time-card-meta" style="font-size:0.7rem; opacity:0.8;">Set alarm for this time</div>
+                `;
+                grid.appendChild(card);
+            });
+
+            document.getElementById('resultsTitle').textContent = "If you head to bed right now, set your alarm for:";
+            document.getElementById('resultsPanel').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
