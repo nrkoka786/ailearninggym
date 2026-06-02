@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMR & Calories Calculator | AI Learning Gym</title>
+    <meta name="description" content="Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) accurately using the clinical Mifflin-St Jeor formula.">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        main {
+            width: 100%;
+            max-width: 650px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            background-color: rgba(15, 23, 42, 0.4);
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--text-muted);
+            flex: 1;
+            justify-content: center;
+        }
+
+        input[type="radio"] {
+            accent-color: var(--accent);
+        }
+
+        .input-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .input-wrapper {
+            flex: 1;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--text-muted);
+            padding: 0.65rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #0f172a;
+            border: none;
+            padding: 0.85rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .results-container {
+            margin-top: 2rem;
+            display: none;
+            text-align: left;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-result {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: monospace;
+        }
+
+        .tdee-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .tdee-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+
+        .tdee-row:last-child {
+            border-bottom: none;
+        }
+
+        .tdee-val {
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🏃‍♂️ BMR Metabolic Calculator</h1>
+        <p>Discover your body's baseline resting energy requirements automatically.</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <div class="form-group">
+                <label>Biological Sex</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="male" checked> Male
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="female"> Female
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-row">
+                    <div class="input-wrapper">
+                        <label for="age">Age (Years)</label>
+                        <input type="number" id="age" min="1" max="120" value="25">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" min="10" max="300" value="70">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="height">Height (cm)</label>
+                <input type="number" id="height" min="50" max="250" value="175">
+            </div>
+
+            <button class="btn" onclick="calculateBMR()">Calculate Metabolic Metrics</button>
+
+            <div class="results-container" id="resultsPanel">
+                <div class="hero-result">
+                    <div style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.25rem;">Your Basal Metabolic Rate (BMR)</div>
+                    <div class="hero-number" id="bmrDisplay">1,654</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Calories/day burned at absolute rest.</div>
+                </div>
+
+                <div class="tdee-title">Total Daily Energy Expenditure (TDEE)</div>
+                <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.4;">Based on your metabolism, here is how many daily calories you burn depending on active lifestyles:</p>
+                
+                <div id="tdeeContainer">
+                    <div class="tdee-row"><span>Sedentary (Little/no exercise)</span><span class="tdee-val" id="tdee-sedentary">0000 kcal</span></div>
+                    <div class="tdee-row"><span>Lightly Active (Exercise 1-3 days/wk)</span><span class="tdee-val" id="tdee-light">0000 kcal</span></div>
+                    <div class="tdee-row"><span>Moderately Active (Exercise 3-5 days/wk)</span><span class="tdee-val" id="tdee-mod">0000 kcal</span></div>
+                    <div class="tdee-row"><span>Very Active (Hard exercise 6-7 days/wk)</span><span class="tdee-val" id="tdee-active">0000 kcal</span></div>
+                    <div class="tdee-row"><span>Extra Active (Physical job or elite training)</span><span class="tdee-val" id="tdee-extreme">0000 kcal</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 AI Learning Gym Sandbox Environment. Running safely.
+    </footer>
+
+    <script>
+        function calculateBMR() {
+            const age = parseInt(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+
+            if (isNaN(age) || isNaN(weight) || isNaN(height) || age <= 0 || weight <= 0 || height <= 0) {
+                alert("Please make sure all metrics entered are valid positive numbers.");
+                return;
+            }
+
+            // Mifflin-St Jeor Engine Calculation
+            let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+            if (gender === 'male') {
+                bmr += 5;
+            } else {
+                bmr -= 161;
+            }
+
+            const roundedBMR = Math.round(bmr);
+            
+            // Render basic BMR interface value
+            document.getElementById('bmrDisplay').textContent = roundedBMR.toLocaleString();
+
+            // Populate Harris-Benedict TDEE multipliers
+            document.getElementById('tdee-sedentary').textContent = Math.round(bmr * 1.2).toLocaleString() + " kcal";
+            document.getElementById('tdee-light').textContent = Math.round(bmr * 1.375).toLocaleString() + " kcal";
+            document.getElementById('tdee-mod').textContent = Math.round(bmr * 1.55).toLocaleString() + " kcal";
+            document.getElementById('tdee-active').textContent = Math.round(bmr * 1.725).toLocaleString() + " kcal";
+            document.getElementById('tdee-extreme').textContent = Math.round(bmr * 1.9).toLocaleString() + " kcal";
+
+            // Reveal the content wrapper
+            document.getElementById('resultsPanel').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
