@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Alarm Clock, Timer & Stopwatch | AI Learning Gym</title>
-    <meta name="description" content="A premium, full-screen online digital clock, customizable alarm clock, interval countdown timer, and high-precision split-lap stopwatch.">
+    <meta name="description" content="A premium, full-screen online digital clock, customizable alarm clock, interval countdown timer, split-lap stopwatch, and global world clock time zone converter.">
 
     <!-- Google Analytics Tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
@@ -257,6 +257,61 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
+        /* World Clock Grid Utilities */
+        .world-clock-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .world-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .world-card {
+            background-color: var(--bg-color);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            position: relative;
+            text-align: left;
+        }
+
+        .world-card-label {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .world-card-tz {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .world-card-time {
+            font-family: monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .remove-zone-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
         .alarm-banner {
             position: fixed;
             top: 20px;
@@ -307,6 +362,7 @@
             <button class="tab-btn active" onclick="switchTab('alarm')">⏰ Alarm</button>
             <button class="tab-btn" onclick="switchTab('timer')">⏳ Timer</button>
             <button class="tab-btn" onclick="switchTab('stopwatch')">⏱️ Stopwatch</button>
+            <button class="tab-btn" onclick="switchTab('world')">🌐 World Clock</button>
         </nav>
 
         <!-- ALARM PANEL -->
@@ -362,6 +418,29 @@
             </div>
             <div class="lap-list" id="lapList"></div>
         </section>
+
+        <!-- WORLD CLOCK TIME ZONE PANEL -->
+        <section id="worldPanel" class="panel">
+            <div class="panel-title">Global Time Zones</div>
+            <div class="world-clock-controls">
+                <select id="zoneSelector" class="theme-select" style="max-width: 300px; width: 100%;">
+                    <option value="America/New_York">New York (EST/EDT)</option>
+                    <option value="America/Chicago">Chicago (CST/CDT)</option>
+                    <option value="America/Los_Angeles">Los Angeles (PST/PDT)</option>
+                    <option value="Europe/London">London (GMT/BST)</option>
+                    <option value="Europe/Paris">Paris (CET/CEST)</option>
+                    <option value="Asia/Tokyo">Tokyo (JST)</option>
+                    <option value="Asia/Kolkata">India (IST)</option>
+                    <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                    <option value="Asia/Dubai">Dubai (GST)</option>
+                    <option value="Pacific/Auckland">Auckland (NZST/NZDT)</option>
+                </select>
+                <button class="btn btn-primary" style="min-width: 80px;" onclick="addTimeZoneCard()">Add</button>
+            </div>
+            <div class="world-grid" id="worldClockGrid">
+                <!-- Timezone cards append here dynamically -->
+            </div>
+        </section>
     </main>
 
     <!-- Emergency Modal/Banner For Running Alarms -->
@@ -372,7 +451,7 @@
     </div>
 
     <footer>
-        &copy; 2026 AI Learning Gym Sandbox Environment. Running locally and offline safely.
+        &copy; 2026 AI Learning Gym Sandbox Environment. Running safely.
     </footer>
 
     <script>
@@ -380,6 +459,9 @@
         document.getElementById('themeSelect').addEventListener('change', (e) => {
             document.documentElement.setAttribute('data-theme', e.target.value);
         });
+
+        // --- Active Monitored Timezones List ---
+        let activeTimeZones = ['America/New_York', 'Europe/London', 'Asia/Tokyo'];
 
         // --- Live Clock Engine ---
         function updateLiveClock() {
@@ -398,6 +480,9 @@
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('liveDate').textContent = now.toLocaleDateString('en-US', options);
 
+            // Real-time ticking updates for active World Clock cards
+            updateWorldClockGrid(now);
+
             // Real-time checking loop for the structural Alarm Clock
             checkAlarm(now);
         }
@@ -413,6 +498,49 @@
             document.getElementById(`${tabId}Panel`).classList.add('active');
         }
 
+        // --- World Clock Grid Engine ---
+        function addTimeZoneCard() {
+            const selectEl = document.getElementById('zoneSelector');
+            const selectedZone = selectEl.value;
+            if (!activeTimeZones.includes(selectedZone)) {
+                activeTimeZones.push(selectedZone);
+                updateLiveClock();
+            }
+        }
+
+        function removeTimeZoneCard(zone) {
+            activeTimeZones = activeTimeZones.filter(z => z !== zone);
+            updateLiveClock();
+        }
+
+        function updateWorldClockGrid(now) {
+            const gridEl = document.getElementById('worldClockGrid');
+            gridEl.innerHTML = ''; // Keep grid tracking updated live
+
+            activeTimeZones.forEach(zone => {
+                const cityName = zone.split('/')[1].replace('_', ' ');
+                
+                // Formatter engine to fetch targeted localized string variations
+                const timeString = now.toLocaleTimeString('en-US', {
+                    timeZone: zone,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+
+                const card = document.createElement('div');
+                card.className = 'world-card';
+                card.innerHTML = `
+                    <button class="remove-zone-btn" onclick="removeTimeZoneCard('${zone}')">&times;</button>
+                    <div class="world-card-label">${cityName}</div>
+                    <div class="world-card-tz">${zone}</div>
+                    <div class="world-card-time">${timeString}</div>
+                `;
+                gridEl.appendChild(card);
+            });
+        }
+
         // --- Global Audio Notification System ---
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         let alarmIntervalToken = null;
@@ -423,7 +551,7 @@
                 let osc = audioCtx.createOscillator();
                 let gain = audioCtx.createGain();
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // High pitch notification A5
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime); 
                 gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
@@ -477,7 +605,7 @@
         }
 
         // --- Countdown Timer Module ---
-        let timerDuration = 600; // 10 minutes starting standard
+        let timerDuration = 600; 
         let timerIntervalToken = null;
 
         function updateTimerDisplay() {
@@ -486,7 +614,8 @@
             document.getElementById('timerDisplay').textContent = `${mins}:${secs}`;
         }
 
-        function setTimerPreset(minutes) {
+        // JavaScript Hoisting compatibility functions
+        window.setTimerPreset = function(minutes) {
             resetTimer();
             timerDuration = minutes * 60;
             updateTimerDisplay();
@@ -500,7 +629,6 @@
                 startBtn.textContent = 'Start';
                 startBtn.className = 'btn btn-success';
             } else {
-                // If initializing from standard inputs rather than preset chips
                 if (document.getElementById('timerInputs').style.display !== 'none') {
                     const m = parseInt(document.getElementById('timerMin').value) || 0;
                     const s = parseInt(document.getElementById('timerSec').value) || 0;
