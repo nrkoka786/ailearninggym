@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Amortization Calculator | AI Learning Gym</title>
+    <meta name="description" content="Calculate your monthly loan payments and view a complete month-by-month amortization schedule breakdown for mortgages, auto loans, or personal debt.">
+
+    <!-- Google Analytics Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <!-- Google AdSense Auto Ads Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --success: #4ade80;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            width: 100%;
+            max-width: 750px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        main {
+            width: 100%;
+            max-width: 750px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        input {
+            width: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--text-muted);
+            padding: 0.65rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #0f172a;
+            border: none;
+            padding: 0.85rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .results-container {
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card {
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .summary-card.highlight {
+            border-color: var(--accent);
+            background-color: rgba(56, 189, 248, 0.05);
+        }
+
+        .summary-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-top: 0.25rem;
+            font-family: monospace;
+        }
+
+        .summary-card.highlight .summary-val {
+            color: var(--success);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: rgba(15, 23, 42, 0.8);
+            color: var(--text-main);
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        tr:hover td {
+            background-color: rgba(255,255,255,0.02);
+            color: var(--text-main);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📊 Loan Amortization Calculator</h1>
+        <p>Break down monthly payment streams into explicit principal vs interest data arrays.</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="loanAmount">Loan Amount ($)</label>
+                    <input type="number" id="loanAmount" min="100" value="250000" step="1000">
+                </div>
+                <div class="form-group">
+                    <label for="interestRate">Annual Interest Rate (%)</label>
+                    <input type="number" id="interestRate" min="0.1" value="6.5" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="loanTerm">Loan Term (Years)</label>
+                    <input type="number" id="loanTerm" min="1" value="30">
+                </div>
+            </div>
+
+            <button class="btn" onclick="calculateLoan()">Generate Amortization Schedule</button>
+
+            <!-- Results Metrics Dashboard -->
+            <div class="results-container" id="resultsPanel">
+                <div class="summary-cards">
+                    <div class="summary-card highlight">
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight:600;">MONTHLY PAYMENT</div>
+                        <div class="summary-val" id="monthlyPaymentDisplay">$0.00</div>
+                    </div>
+                    <div class="summary-card">
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight:600;">TOTAL PRINCIPAL</div>
+                        <div class="summary-val" id="totalPrincipalDisplay" style="color:var(--text-main);">$0.00</div>
+                    </div>
+                    <div class="summary-card">
+                        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight:600;">TOTAL INTEREST PAID</div>
+                        <div class="summary-val" id="totalInterestDisplay" style="color:#f43f5e;">$0.00</div>
+                    </div>
+                </div>
+
+                <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem;">Month-by-Month Amortization Schedule</div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Payment</th>
+                                <th>Principal</th>
+                                <th>Interest</th>
+                                <th>Remaining Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleTableBody">
+                            <!-- Dynamic Table Rows Injection -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 AI Learning Gym Sandbox Environment. Running safely.
+    </footer>
+
+    <script>
+        function calculateLoan() {
+            const principal = parseFloat(document.getElementById('loanAmount').value);
+            const annualRate = parseFloat(document.getElementById('interestRate').value);
+            const years = parseInt(document.getElementById('loanTerm').value);
+
+            if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || principal <= 0 || annualRate <= 0 || years <= 0) {
+                alert("Please make sure all loan inputs are completely valid positive numbers.");
+                return;
+            }
+
+            const monthlyRate = (annualRate / 100) / 12;
+            const totalPayments = years * 12;
+
+            // Fixed Monthly Amortization Formula Calculation
+            const monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / (Math.pow(1 + monthlyRate, totalPayments) - 1);
+
+            let remainingBalance = principal;
+            let totalInterestPaid = 0;
+            
+            const tbody = document.getElementById('scheduleTableBody');
+            tbody.innerHTML = '';
+
+            // Compute math metrics loop row by row
+            for (let i = 1; i <= totalPayments; i++) {
+                const interestPayment = remainingBalance * monthlyRate;
+                let principalPayment = monthlyPayment - interestPayment;
+
+                // Edge case handling for final payment rounding discrepancies
+                if (i === totalPayments) {
+                    principalPayment = remainingBalance;
+                }
+
+                totalInterestPaid += interestPayment;
+                remainingBalance -= principalPayment;
+
+                // Stop generating row UI after 120 months (10 years) to avoid performance lag, but continue math accumulation
+                if (i <= 120 || i === totalPayments) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${i}</td>
+                        <td>$${monthlyPayment.toFixed(2)}</td>
+                        <td>$${principalPayment.toFixed(2)}</td>
+                        <td>$${interestPayment.toFixed(2)}</td>
+                        <td>$${Math.max(0, remainingBalance).toFixed(2)}</td>
+                    `;
+                    tbody.appendChild(row);
+                } else if (i === 121) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td colspan="5" style="text-align:center; font-style:italic; padding: 1rem;">... Schedule truncated for performance. Showing final month below ...</td>`;
+                    tbody.appendChild(row);
+                }
+            }
+
+            // Render Hero UI Text
+            document.getElementById('monthlyPaymentDisplay').textContent = `$${monthlyPayment.toFixed(2)}`;
+            document.getElementById('totalPrincipalDisplay').textContent = `$${principal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('totalInterestDisplay').textContent = `$${totalInterestPaid.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+            document.getElementById('resultsPanel').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
