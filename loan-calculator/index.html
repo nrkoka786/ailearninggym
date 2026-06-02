@@ -7,13 +7,11 @@
     <meta name="description" content="Calculate fixed-rate monthly loan payments and instantly inspect a comprehensive amortization schedule table. 100% private client-side calculator.">
     <meta name="keywords" content="loan amortization calculator, monthly payment calculator, principal and interest schedule, mortgage payoff estimator, free finance utility">
     
-    <!-- Open Graph Metadata for LLM RAG & Social Preview Layouts -->
     <meta property="og:title" content="Free Loan Amortization Calculator | AI Learning Gym">
     <meta property="og:description" content="Compute exact fixed loan monthly profiles and view a systematic principal/interest breakdown matrix entirely in your browser sandbox.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ailearninggym.com/loan-calculator/">
 
-    <!-- Google Analytics Tracking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -22,12 +20,8 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
-    <!-- Google AdSense Script Deployment -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
 
-    <!-- ========================================== -->
-    <!--  JSON-LD STRUCTURED DATA SCHEMA FOR GOOGLE/LLMs -->
-    <!-- ========================================== -->
     <script type="application/ld:json">
     {
       "@context": "https://schema.org",
@@ -74,27 +68,41 @@
         header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 5px; }
         header a:hover { color: var(--accent-color); }
 
+        /* Flexible Grid Base Architecture Layout */
         .container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 20px;
         }
-        @media (min-width: 992px) { .container { grid-template-columns: 3fr 1fr; } }
 
-        .main-content { background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .ad-container { margin: 15px 0; text-align: center; width: 100%; }
+        @media (min-width: 992px) { 
+            .container { 
+                display: grid;
+                grid-template-columns: 3fr 1fr; 
+                align-items: start; /* Fix: Stops stretch distortion during inactive ad states */
+            } 
+        }
 
-        /* App Layout Canvas */
+        .main-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ad-container { margin: 10px 0; text-align: center; width: 100%; }
+
+        /* Workspace Core Component Cards */
         .app-canvas {
-            background: #f8fafc;
+            background: #ffffff; 
             border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 25px;
-            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
+        
         .input-group {
             display: grid;
             grid-template-columns: 1fr;
@@ -105,7 +113,8 @@
         
         .form-control { display: flex; flex-direction: column; }
         .form-control label { font-weight: 600; color: var(--text-dark); margin-bottom: 5px; font-size: 0.9rem; }
-        .form-control input { padding: 10px; border: 1px solid var(--card-border); border-radius: 4px; font-size: 1rem; }
+        .form-control input { padding: 10px; border: 1px solid var(--card-border); border-radius: 4px; font-size: 1rem; outline: none; }
+        .form-control input:focus { border-color: var(--accent-color); }
         
         .calc-btn {
             background-color: var(--accent-color);
@@ -121,7 +130,7 @@
         }
         .calc-btn:hover { background-color: #2980b9; }
 
-        /* Results Matrix Dashboard */
+        /* Performance Output Summary Elements */
         .results-summary {
             display: grid;
             grid-template-columns: 1fr;
@@ -132,34 +141,42 @@
         @media (min-width: 600px) { .results-summary { grid-template-columns: repeat(3, 1fr); } }
         
         .summary-card {
-            background: #ffffff;
+            background: #f8fafc;
             border-left: 4px solid var(--accent-color);
             padding: 15px;
             border-radius: 4px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .summary-card.highlight { border-left-color: var(--success-color); }
-        .summary-card p { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; }
-        .summary-card h3 { font-size: 1.4rem; color: var(--text-dark); margin-top: 2px; }
+        .summary-card p { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .summary-card h3 { font-size: 1.4rem; color: var(--text-dark); margin-top: 2px; font-family: monospace; }
 
-        /* Schedule Table Styling */
-        .table-responsive { width: 100%; overflow-x: auto; margin-top: 25px; display: none; }
+        /* Schedule Matrix Table Area */
+        .table-responsive { width: 100%; overflow-x: auto; margin-top: 25px; display: none; max-height: 500px; border: 1px solid var(--card-border); border-radius: 4px; }
         table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
         th, td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); }
-        th { background-color: #f1f5f9; color: var(--text-dark); font-weight: 700; }
+        th { background-color: #f1f5f9; color: var(--text-dark); font-weight: 700; position: sticky; top: 0; }
+        td { color: #4a5568; }
         tr:hover { background-color: #f8fafc; }
 
-        /* Rich Content & SEO Typography Section */
-        .seo-section { border-top: 2px solid #edf2f7; padding-top: 30px; margin-top: 40px; }
+        /* Rich Content & SEO Document Architecture */
+        .seo-section { 
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
         .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; }
         .seo-section h3 { color: #34495e; margin: 22px 0 10px 0; font-size: 1.1rem; }
         .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.95rem; }
         .seo-section ul { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.95rem; }
         .seo-section ul li { margin-bottom: 6px; }
 
-        /* Accordion FAQ Styling */
+        /* Structured accordion list cards */
         .faq-item { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; }
         .faq-item h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 5px; }
+        .faq-item p { margin-bottom: 0; color: #4a5568; font-size: 0.9rem; }
 
         footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
         footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
@@ -175,15 +192,8 @@
 
     <div class="container">
         
-        <main class="main-content">
+        <div class="main-content-wrapper">
             
-            <!-- Contextual Header Ad Placement -->
-            <div class="ad-container">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-
-            <!-- Interactive Application Sandbox Wrapper -->
             <section class="app-canvas" aria-label="Loan Calculator Tool UI">
                 <div class="input-group">
                     <div class="form-control">
@@ -201,7 +211,6 @@
                 </div>
                 <button class="calc-btn" onclick="calculateLoanProfile()">Run Amortization Computation</button>
 
-                <!-- Computation Micro-Dashboard Outputs -->
                 <div class="results-summary" id="summaryBox">
                     <div class="summary-card highlight">
                         <p>Monthly Installment (P+I)</p>
@@ -217,7 +226,6 @@
                     </div>
                 </div>
 
-                <!-- Complete Extracted Amortization Schedule Data Table -->
                 <div class="table-responsive" id="tableWrapper">
                     <table id="amortizationTable">
                         <thead>
@@ -234,17 +242,19 @@
                 </div>
             </section>
 
-            <!-- ========================================== -->
-            <!--   PROGRAMMATIC HIGH-RANKING SEO ARTICLE AREA  -->
-            <!-- ========================================== -->
-            <section class="seo-section">
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <main class="seo-section">
                 <h2>Understanding the Mechanics of Loan Amortization Schedules</h2>
                 <p>When entering a long-term borrowing arrangement—such as a fixed-rate mortgage, automobile purchase agreement, or business installment line—the headline interest parameter tells only part of the story. To map out your actual financial future, you need to understand exactly how each monthly payment is divided. This process is governed by a mathematical standard known as <strong>amortization</strong>.</p>
                 <p>Our client-side computation engine parses your principal baseline against active calendar-rate vectors to build an instantaneous payment schedule. This breakdown allows you to visualize exactly how your debt reduces over time, helping you make smart, strategic financial decisions right from your browser.</p>
 
                 <h3>The Fundamental Amortization Formula Explained</h3>
                 <p>To calculate the systematic fixed monthly installment amount required to completely wipe out a debt balance, financial systems rely on a specific mathematical equation:</p>
-                <p style="text-align: center; font-weight: 700; margin: 20px 0; font-size: 1.1rem; background: #f8fafc; padding: 15px; border-radius: 4px; border: 1px solid var(--card-border);">
+                <p style="text-align: center; font-weight: 700; margin: 20px 0; font-size: 1.1rem; background: #f8fafc; padding: 15px; border-radius: 4px; border: 1px solid var(--card-border); font-family: monospace;">
                     M = P [ i(1 + i)^n ] / [ (1 + i)^n - 1 ]
                 </p>
                 <p>Where the variable items are mapped across specific profiles:</p>
@@ -280,14 +290,14 @@
                     <h4>Q: How does choosing a shorter loan term change my long-term costs?</h4>
                     <p>A: Selecting a shorter loan lifespan (like a 15-year term instead of a 30-year option) increases your individual monthly payment amount. However, because it wipes out the core principal balance much faster, it significantly reduces the cumulative lifetime interest fees you pay over the life of the loan.</p>
                 </div>
-            </section>
+            </main>
+        </div>
 
-        </main>
-
-        <!-- Vertical Sticky Dynamic Ad Sidebar -->
-        <aside style="position: sticky; top: 20px;">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <aside class="sidebar-ad">
+            <div style="position: sticky; top: 20px;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
         </aside>
 
     </div>
@@ -301,9 +311,6 @@
         </p>
     </footer>
 
-    <!-- ========================================== -->
-    <!--     HIGH-PRECISION JAVASCRIPT MATH ENGINE     -->
-    <!-- ========================================== -->
     <script>
         function calculateLoanProfile() {
             // Extract raw UI inputs safely
@@ -342,28 +349,30 @@
             // Generate Amortization Rows Step-by-Step
             for (let i = 1; i <= totalPaymentsCount; i++) {
                 const interestAllocation = currentBalance * periodicInterestRate;
-                const principalAllocation = monthlyInstallment - interestAllocation;
+                const monthlyInstallmentFixed = isNaN(monthlyInstallment) ? 0 : monthlyInstallment;
+                const interestAllocationFixed = isNaN(interestAllocation) ? 0 : interestAllocation;
+                const principalAllocation = monthlyInstallmentFixed - interestAllocationFixed;
                 
                 currentBalance -= principalAllocation;
-                cumulativeInterest += interestAllocation;
-                cumulativePaidTotal += monthlyInstallment;
+                cumulativeInterest += interestAllocationFixed;
+                cumulativePaidTotal += monthlyInstallmentFixed;
 
                 // Build Table Rows Cleanly
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td><strong>${i}</strong></td>
-                    <td>$${principalAllocation.toFixed(2)}</td>
-                    <td>$${interestAllocation.toFixed(2)}</td>
-                    <td>$${cumulativePaidTotal.toFixed(2)}</td>
-                    <td>$${Math.max(0, currentBalance).toFixed(2)}</td>
+                    <td>$${principalAllocation.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                    <td>$${interestAllocationFixed.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                    <td>$${cumulativePaidTotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                    <td>$${Math.max(0, currentBalance).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
                 `;
                 tbody.appendChild(row);
             }
 
-            // Expose Metric Layout Summaries inside UI
-            document.getElementById('monthlyPaymentDisplay').innerText = `$${monthlyInstallment.toFixed(2)}`;
-            document.getElementById('totalInterestDisplay').innerText = `$${cumulativeInterest.toFixed(2)}`;
-            document.getElementById('totalCostDisplay').innerText = `$${(principal + cumulativeInterest).toFixed(2)}`;
+            // Expose Metric Layout Summaries inside UI with comma separation formats
+            document.getElementById('monthlyPaymentDisplay').innerText = `$${monthlyInstallment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+            document.getElementById('totalInterestDisplay').innerText = `$${cumulativeInterest.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+            document.getElementById('totalCostDisplay').innerText = `$${(principal + cumulativeInterest).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
 
             // Remove hidden states smoothly
             document.getElementById('summaryBox').style.display = 'grid';
