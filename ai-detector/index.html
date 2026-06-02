@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Content Detector Tool | AI Learning Gym</title>
+    <meta name="description" content="Analyze text instantly to identify AI patterns from ChatGPT, Claude, and Gemini using structural linguistic heuristic engines.">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --panel-bg: #161f30;
+            --text-main: #f8fafc;
+            --text-muted: #6b7c96;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --success: #10b981;
+            --danger: #ef4444;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+        }
+
+        textarea {
+            width: 100%;
+            height: 250px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            outline: none;
+            resize: vertical;
+            margin-bottom: 1.25rem;
+        }
+
+        textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            padding: 0 0.25rem;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .results-container {
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gauge Meter Style */
+        .gauge-section {
+            background-color: rgba(11, 15, 25, 0.4);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .gauge-bar-wrapper {
+            background-color: #1e293b;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .gauge-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--success), var(--accent), var(--danger));
+            transition: width 1s ease-in-out;
+        }
+
+        .score-label {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: monospace;
+        }
+
+        /* Metric Diagnostic Rows */
+        .diagnostic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .diag-card {
+            background-color: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: left;
+        }
+
+        .diag-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .diag-val {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🤖 AI Structural Content Detector</h1>
+        <p>Analyze linguistic variations, low burstiness trends, and text predictability footprints.</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <textarea id="textInput" placeholder="Paste your copy block text layout here (Minimum 25 words recommended for accurate burstiness metrics)..." oninput="updateCounters()"></textarea>
+            
+            <div class="meta-row">
+                <span id="wordCountLabel">Words: 0</span>
+                <span id="charCountLabel">Characters: 0</span>
+            </div>
+
+            <button class="btn" onclick="analyzeTextPattern()">Analyze Content Footprint</button>
+
+            <div class="results-container" id="resultsPanel">
+                <div class="gauge-section">
+                    <div style="font-size: 1rem; color: var(--text-muted); font-weight: 600;">AI GENERATION PROBABILITY</div>
+                    <div class="score-label" id="scoreDisplay">0%</div>
+                    <div class="gauge-bar-wrapper">
+                        <div class="gauge-fill" id="gaugeBarFill"></div>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" id="verdictText">Linguistic fingerprint matches classic human writing styles.</p>
+                </div>
+
+                <div class="diagnostic-grid">
+                    <div class="diag-card">
+                        <div class="diag-title">Sentence Variance</div>
+                        <div class="diag-val" id="varianceDisplay">0.00</div>
+                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem;">Lower means uniform AI style.</div>
+                    </div>
+                    <div class="diag-card">
+                        <div class="diag-title">AI Token Density</div>
+                        <div class="diag-val" id="densityDisplay">0.0%</div>
+                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem;">Frequency of default AI phrases.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 AI Learning Gym Sandbox Environment. Running safely.
+    </footer>
+
+    <script>
+        // High-density tokens favored heavily by default LLM optimization nodes
+        const aiKeywords = [
+            "furthermore", "moreover", "conclusion", "testament", "delve", "tapestry", 
+            "crucial", "imperative", "notably", "demystify", "foster", "remind",
+            "essential to note", "it is important to remember", "beacon", "underscores"
+        ];
+
+        function updateCounters() {
+            const text = document.getElementById('textInput').value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            document.getElementById('wordCountLabel').textContent = `Words: ${words}`;
+            document.getElementById('charCountLabel').textContent = `Characters: ${text.length}`;
+        }
+
+        function analyzeTextPattern() {
+            const text = document.getElementById('textInput').value.trim();
+            const wordList = text.toLowerCase().split(/\s+/);
+            const wordsCount = text ? wordList.length : 0;
+
+            if (wordsCount < 10) {
+                alert("Please paste a larger sample layout (at least 10 words) for structural calculations.");
+                return;
+            }
+
+            // 1. Compute AI Phrase Token Density
+            let matchingTokens = 0;
+            aiKeywords.forEach(keyword => {
+                const regex = new RegExp('\\b' + keyword + '\\b', 'gi');
+                const matches = text.match(regex);
+                if (matches) matchingTokens += matches.length;
+            });
+            const densityPercentage = (matchingTokens / wordsCount) * 100;
+
+            // 2. Compute Burstiness (Standard Deviation of Sentence Lengths)
+            const sentences = text.split(/[.!?]+\s+/).filter(s => s.trim().length > 0);
+            let sentenceLengths = sentences.map(s => s.trim().split(/\s+/).length);
+
+            let meanLength = 0;
+            let variance = 0;
+
+            if (sentenceLengths.length > 0) {
+                const sum = sentenceLengths.reduce((a, b) => a + b, 0);
+                meanLength = sum / sentenceLengths.length;
+
+                const squareDiffs = sentenceLengths.map(len => Math.pow(len - meanLength, 2));
+                const sumSquareDiffs = squareDiffs.reduce((a, b) => a + b, 0);
+                variance = sumSquareDiffs / sentenceLengths.length;
+            }
+
+            // 3. Algorithmic Score Weighting Engine
+            let aiProbability = 0;
+
+            // Density penalty scaling
+            if (densityPercentage > 0) aiProbability += (densityPercentage * 12);
+            
+            // Burstiness uniform penalty scaling (AI writes with low variance, human writes with high variance)
+            if (variance < 12) {
+                aiProbability += (12 - variance) * 6;
+            } else {
+                aiProbability -= (variance - 12) * 2;
+            }
+
+            // Cap math limits safely between 1% and 99% for algorithmic integrity
+            aiProbability = Math.max(1, Math.min(99, Math.round(aiProbability)));
+            if(wordsCount > 40 && matchingTokens === 0 && variance > 25) aiProbability = 1; // Pure organic pass override
+
+            // Render displays
+            document.getElementById('scoreDisplay').textContent = `${aiProbability}%`;
+            document.getElementById('gaugeBarFill').style.width = `${aiProbability}%`;
+            document.getElementById('varianceDisplay').textContent = variance.toFixed(2);
+            document.getElementById('densityDisplay').textContent = `${densityPercentage.toFixed(1)}%`;
+
+            // Adjust textual verdicts based on metric tiers
+            const verdictEl = document.getElementById('verdictText');
+            if (aiProbability < 25) {
+                verdictEl.textContent = "Linguistic fingerprint matches classic human writing patterns perfectly.";
+                verdictEl.style.color = "var(--success)";
+            } else if (aiProbability < 65) {
+                verdictEl.textContent = "Mixed structural patterns detected. Suggests a human-edited or heavily paraphrased AI profile.";
+                verdictEl.style.color = "orange";
+            } else {
+                verdictEl.textContent = "High probability of AI text generation. Highly uniform sentence metrics detected.";
+                verdictEl.style.color = "var(--danger)";
+            }
+
+            document.getElementById('resultsPanel').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
