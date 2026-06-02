@@ -6,6 +6,7 @@
     <title>BMR & Calories Calculator | AI Learning Gym</title>
     <meta name="description" content="Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) accurately using Metric or Imperial systems with the Mifflin-St Jeor formula.">
 
+    <!-- Google Analytics Tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,6 +15,7 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
+    <!-- Google AdSense Auto Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
 
     <style>
@@ -115,7 +117,6 @@
             accent-color: var(--accent);
         }
 
-        /* Unit System Tab Switcher styles */
         .system-tabs {
             display: flex;
             background-color: rgba(15, 23, 42, 0.6);
@@ -151,7 +152,7 @@
             flex: 1;
         }
 
-        input[type="number"] {
+        input[type="number"], select {
             width: 100%;
             background-color: var(--bg-color);
             color: var(--text-main);
@@ -162,7 +163,7 @@
             outline: none;
         }
 
-        input:focus {
+        input:focus, select:focus {
             border-color: var(--accent);
         }
 
@@ -219,16 +220,17 @@
             font-family: monospace;
         }
 
-        .tdee-title {
+        .section-title {
             font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
             color: var(--text-muted);
             border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 0.5rem;
         }
 
-        .tdee-row {
+        .table-row {
             display: flex;
             justify-content: space-between;
             padding: 0.75rem 0.5rem;
@@ -236,14 +238,21 @@
             font-size: 0.95rem;
         }
 
-        .tdee-row:last-child {
+        .table-row:last-child {
             border-bottom: none;
         }
 
-        .tdee-val {
+        .val-highlight {
             font-family: monospace;
             font-weight: 700;
             color: var(--accent);
+        }
+
+        .goal-box {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         footer {
@@ -257,18 +266,20 @@
 <body>
 
     <header>
-        <h1>🏃‍♂️ BMR Metabolic Calculator</h1>
-        <p>Discover your body's baseline resting energy requirements automatically.</p>
+        <h1>🏃‍♂️ BMR & TDEE Planner</h1>
+        <p>Discover your metabolic blueprint and calculate precise daily calorie targets.</p>
     </header>
 
     <main>
         <div class="card">
             
+            <!-- Unit System Selection Tabs -->
             <div class="system-tabs">
                 <button class="tab-btn active" id="metricTabBtn" onclick="switchSystem('metric')">Metric System (cm/kg)</button>
                 <button class="tab-btn" id="imperialTabBtn" onclick="switchSystem('imperial')">Imperial System (ft/in/lbs)</button>
             </div>
 
+            <!-- Biological Sex Input -->
             <div class="form-group">
                 <label>Biological Sex</label>
                 <div class="radio-group">
@@ -281,6 +292,7 @@
                 </div>
             </div>
 
+            <!-- Age & Weight Input Block -->
             <div class="form-group">
                 <div class="input-row">
                     <div class="input-wrapper">
@@ -296,35 +308,77 @@
                 </div>
             </div>
 
+            <!-- Height Input Block -->
             <div class="form-group" id="heightContainer">
                 <label for="height" id="heightLabel">Height (cm)</label>
                 <div class="input-row" id="heightInputRow">
                     <div class="input-wrapper">
                         <input type="number" id="height" min="1" value="175">
-                        <span class="unit-label" id="heightUnitHint">Enter height in centimeters</span>
+                        <span class="unit-label">Enter height in centimeters</span>
                     </div>
                 </div>
             </div>
 
-            <button class="btn" onclick="calculateBMR()">Calculate Metabolic Metrics</button>
+            <!-- Activity Level Input (Crucial for Actionable Advice) -->
+            <div class="form-group">
+                <label for="activityLevel">Your Current Activity Level</label>
+                <select id="activityLevel">
+                    <option value="1.2" selected>Sedentary (Little to no exercise)</option>
+                    <option value="1.375">Lightly Active (Exercise 1-3 days/week)</option>
+                    <option value="1.55">Moderately Active (Exercise 3-5 days/week)</option>
+                    <option value="1.725">Very Active (Hard exercise 6-7 days/week)</option>
+                    <option value="1.9">Extra Active (Highly physical job or elite athlete)</option>
+                </select>
+            </div>
 
+            <button class="btn" onclick="calculateBMR()">Calculate Your Roadmap</button>
+
+            <!-- Results Section Panels -->
             <div class="results-container" id="resultsPanel">
+                
                 <div class="hero-result">
                     <div style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.25rem;">Your Basal Metabolic Rate (BMR)</div>
                     <div class="hero-number" id="bmrDisplay">0,000</div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Calories/day burned at absolute rest.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">The energy needed entirely at rest to stay alive.</div>
                 </div>
 
-                <div class="tdee-title">Total Daily Energy Expenditure (TDEE)</div>
-                <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.4;">Based on your metabolism, here is how many daily calories you burn depending on active lifestyles:</p>
-                
-                <div id="tdeeContainer">
-                    <div class="tdee-row"><span>Sedentary (Little/no exercise)</span><span class="tdee-val" id="tdee-sedentary">0,000 kcal</span></div>
-                    <div class="tdee-row"><span>Lightly Active (Exercise 1-3 days/wk)</span><span class="tdee-val" id="tdee-light">0,000 kcal</span></div>
-                    <div class="tdee-row"><span>Moderately Active (Exercise 3-5 days/wk)</span><span class="tdee-val" id="tdee-mod">0,000 kcal</span></div>
-                    <div class="tdee-row"><span>Very Active (Hard exercise 6-7 days/wk)</span><span class="tdee-val" id="tdee-active">0,000 kcal</span></div>
-                    <div class="tdee-row"><span>Extra Active (Physical job or elite training)</span><span class="tdee-val" id="tdee-extreme">0,000 kcal</span></div>
+                <!-- Section 1: Total Theoretical Footprint -->
+                <div class="section-title">Daily Energy Expenditure (TDEE Summary)</div>
+                <div class="table-row">
+                    <span>Your Selected Lifestyle Maintenance Baseline:</span>
+                    <span class="val-highlight" id="chosenTdeeDisplay">0,000 kcal/day</span>
                 </div>
+
+                <!-- Section 2: Actionable Strategy Breakdown -->
+                <div class="section-title">🎯 Your Specific Calorie Targets</div>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem; line-height: 1.4;">
+                    To achieve your physical training or body composition goals, match your daily nutrition intake to these calculated targets:
+                </p>
+                
+                <div class="goal-box">
+                    <div class="table-row">
+                        <div>
+                            <strong>Weight Loss Plan</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Gradual, healthy body fat reduction.</div>
+                        </div>
+                        <span class="val-highlight" id="goalLoss" style="color: #f43f5e;">0,000 kcal/day</span>
+                    </div>
+                    <div class="table-row">
+                        <div>
+                            <strong>Maintenance Plan</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Stay exactly where you are right now.</div>
+                        </div>
+                        <span class="val-highlight" id="goalMaintain">0,000 kcal/day</span>
+                    </div>
+                    <div class="table-row">
+                        <div>
+                            <strong>Muscle Building Plan</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Lean bulk tracking to fuel lean tissue.</div>
+                        </div>
+                        <span class="val-highlight" id="goalGain" style="color: #38bdf8;">0,000 kcal/day</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
@@ -336,7 +390,6 @@
     <script>
         let currentSystem = 'metric';
 
-        // Handles rendering adjustments when flipping systems
         function switchSystem(system) {
             currentSystem = system;
             document.getElementById('resultsPanel').style.display = 'none';
@@ -349,7 +402,6 @@
                 metricBtn.classList.add('active');
                 imperialBtn.classList.remove('active');
                 
-                // Set Metric labels & standard placeholders
                 document.getElementById('weightLabel').textContent = "Weight (kg)";
                 document.getElementById('weightUnitHint').textContent = "Enter weight in kilograms";
                 document.getElementById('weight').value = "70";
@@ -365,7 +417,6 @@
                 imperialBtn.classList.add('active');
                 metricBtn.classList.remove('active');
                 
-                // Set Imperial labels & standard placeholders
                 document.getElementById('weightLabel').textContent = "Weight (lbs)";
                 document.getElementById('weightUnitHint').textContent = "Enter weight in pounds";
                 document.getElementById('weight').value = "155";
@@ -373,7 +424,7 @@
                 document.getElementById('heightLabel').textContent = "Height (Feet / Inches)";
                 heightRow.innerHTML = `
                     <div class="input-wrapper">
-                        <input type="number" id="heightFeet" min="1" max="8" value="5">
+                        <input type="number" id="heightFeet" min="1" max="8" value="5";>
                         <span class="unit-label">Feet (ft)</span>
                     </div>
                     <div class="input-wrapper">
@@ -387,11 +438,11 @@
         function calculateBMR() {
             const age = parseInt(document.getElementById('age').value);
             const gender = document.querySelector('input[name="gender"]:checked').value;
+            const activityMultiplier = parseFloat(document.getElementById('activityLevel').value);
             
             let weightInKg = 0;
             let heightInCm = 0;
 
-            // 1. Process measurements inputs based on selected system state
             if (currentSystem === 'metric') {
                 const weight = parseFloat(document.getElementById('weight').value);
                 const height = parseFloat(document.getElementById('height').value);
@@ -412,12 +463,11 @@
                     return;
                 }
                 
-                // Convert Imperial parameters to Metric parameters for Mifflin formulas
                 weightInKg = weightLbs * 0.45359237; 
                 heightInCm = ((feet * 12) + inches) * 2.54;
             }
 
-            // 2. Compute Core Mifflin-St Jeor Formula
+            // Core Mifflin-St Jeor Equation calculation
             let bmr = (10 * weightInKg) + (6.25 * heightInCm) - (5 * age);
             if (gender === 'male') {
                 bmr += 5;
@@ -426,15 +476,20 @@
             }
 
             const roundedBMR = Math.round(bmr);
-            
-            // 3. Update UI outputs
-            document.getElementById('bmrDisplay').textContent = roundedBMR.toLocaleString();
+            const rawTdee = bmr * activityMultiplier;
+            const roundedTdee = Math.round(rawTdee);
 
-            document.getElementById('tdee-sedentary').textContent = Math.round(bmr * 1.2).toLocaleString() + " kcal";
-            document.getElementById('tdee-light').textContent = Math.round(bmr * 1.375).toLocaleString() + " kcal";
-            document.getElementById('tdee-mod').textContent = Math.round(bmr * 1.55).toLocaleString() + " kcal";
-            document.getElementById('tdee-active').textContent = Math.round(bmr * 1.725).toLocaleString() + " kcal";
-            document.getElementById('tdee-extreme').textContent = Math.round(bmr * 1.9).toLocaleString() + " kcal";
+            // Calculate precise calorie targets based on active metrics
+            const targetLoss = Math.round(rawTdee - 450); // Balanced deficit
+            const targetGain = Math.round(rawTdee + 300); // Controlled surplus
+
+            // Update DOM interface elements smoothly
+            document.getElementById('bmrDisplay').textContent = roundedBMR.toLocaleString();
+            document.getElementById('chosenTdeeDisplay').textContent = roundedTdee.toLocaleString() + " kcal/day";
+            
+            document.getElementById('goalLoss').textContent = targetLoss.toLocaleString() + " kcal/day";
+            document.getElementById('goalMaintain').textContent = roundedTdee.toLocaleString() + " kcal/day";
+            document.getElementById('goalGain').textContent = targetGain.toLocaleString() + " kcal/day";
 
             document.getElementById('resultsPanel').style.display = 'block';
         }
