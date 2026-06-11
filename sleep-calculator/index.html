@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sleep Cycle Calculator | AI Learning Gym</title>
+    <title>Sleep Cycle Calculator | Privacy-First | AI Learning Gym</title>
     <meta name="description" content="Calculate the perfect time to fall asleep or wake up. Avoid grogginess by analyzing natural 90-minute sleep cycles.">
+    <meta name="keywords" content="sleep cycle calculator, rem sleep optimizer, wake up refreshed, circadian rhythm calculator, sleep latency tracker, health utilities">
 
-    <!-- Google Analytics Tag -->
+    <meta property="og:title" content="Sleep Cycle Calculator | AI Learning Gym">
+    <meta property="og:description" content="Optimize your rest rhythms based on natural REM sleep architecture completely inside your browser sandbox.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ailearninggym.com/sleep-calculator/">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,8 +20,29 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
-    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <script type="application/ld:json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "REM Sleep Cycle Optimizer Engine",
+      "description": "A privacy-first, client-side calculator designed to map out ideal nightly rest and wake schedules based on natural REM architecture to eliminate morning grogginess.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "browserRequirements": "Requires JavaScript support. Fully executed client-side.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "AI Learning Gym",
+        "url": "https://ailearninggym.com"
+      }
+    }
+    </script>
 
     <style>
         :root {
@@ -29,6 +55,7 @@
             --success: #10b981;
             --warning: #f59e0b;
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --card-border: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -50,7 +77,7 @@
 
         header {
             width: 100%;
-            max-width: 650px;
+            max-width: 750px;
             text-align: center;
             margin-bottom: 2rem;
         }
@@ -69,7 +96,7 @@
 
         main {
             width: 100%;
-            max-width: 650px;
+            max-width: 750px;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -223,32 +250,62 @@
             border-left: 3px solid var(--warning);
             padding: 0.75rem 1rem;
             border-radius: 0 0.5rem 0.5rem 0;
+            margin-bottom: 20px;
         }
 
-        footer {
-            margin-top: auto;
-            padding: 2rem 0;
-            color: var(--text-muted);
-            font-size: 0.875rem;
+        /* Rich Content & SEO Document Architecture */
+        .seo-section { 
+            background: var(--panel-bg);
+            padding: 30px;
+            border-radius: 1rem;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            text-align: left;
+            margin-top: 20px;
         }
+        .seo-section h2 { color: var(--text-main); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+        .seo-section h3 { color: var(--accent); margin: 25px 0 10px 0; font-size: 1.2rem; }
+        .seo-section p { margin-bottom: 15px; color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: var(--text-muted); font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
+
+        /* Structured accordion list cards */
+        .faq-item { background: rgba(15, 23, 42, 0.4); border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent); }
+        .faq-item h4 { color: var(--text-main); font-size: 1rem; margin-bottom: 5px; }
+        .faq-item p { margin-bottom: 0; color: var(--text-muted); font-size: 0.92rem; }
+
+        .ad-container { margin: 20px 0; text-align: center; width: 100%; }
+
+        footer { 
+            width: 100%;
+            background-color: var(--panel-bg); 
+            color: var(--text-muted); 
+            padding: 40px 20px; 
+            margin-top: 60px; 
+            text-align: center; 
+            font-size: 0.9rem;
+            border-radius: 1rem 1rem 0 0;
+            box-shadow: 0 -10px 25px -5px rgba(0,0,0,0.2);
+        }
+        footer a { color: var(--text-muted); text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent); }
     </style>
 </head>
 <body>
 
     <header>
         <h1>🌙 Sleep Cycle Calculator</h1>
-        <p>Optimize your rest rhythms to wake up refreshed and groggy-free.</p>
+        <p>Optimize your rest rhythms based on biological tracking parameters to eliminate morning fatigue.</p>
+        <a href="/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 10px;">&larr; Return to Dashboard Hub</a>
     </header>
 
     <main>
         <div class="card">
-            <!-- Mode Selection Tabs -->
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchMode('wake')">I need to wake up at...</button>
                 <button class="tab-btn" onclick="switchMode('sleep')">I am going to bed now</button>
             </div>
 
-            <!-- MODE 1: CALC BY WAKE TIME -->
             <div id="wakeMode" class="calculator-content active">
                 <p style="color: var(--text-muted);">Select your target wake-up alarm time:</p>
                 <div class="input-row">
@@ -271,13 +328,11 @@
                 <button class="btn" onclick="calculateBedtimes()">Find Best Bedtimes</button>
             </div>
 
-            <!-- MODE 2: CALC BY SLEEPING NOW -->
             <div id="sleepMode" class="calculator-content">
                 <p style="color: var(--text-muted); margin-bottom: 1.5rem;">If you close your eyes right this instant, your body accounts for roughly 14 minutes of routine tossing and turning to slip into unconsciousness.</p>
                 <button class="btn" onclick="calculateWakeTimes()">Calculate Wake Times</button>
             </div>
 
-            <!-- DYNAMIC METRICS OUTPUT PANEL -->
             <div class="results-container" id="resultsPanel">
                 <div class="results-title" id="resultsTitle">Suggested Schedules</div>
                 <div class="time-grid" id="timeGrid"></div>
@@ -286,10 +341,74 @@
                 </div>
             </div>
         </div>
+
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="seo-section">
+            <h2>The Science of Circadian Rhythms and REM Sleep Cycles</h2>
+            <p>Have you ever slept for a full eight or nine hours, only to wake up feeling completely exhausted, heavy, and groggy? This frustrating state is known as sleep inertia, and it is rarely caused by a lack of total sleep time. Instead, it is the direct result of breaking a natural biological boundary—waking up in the middle of a deep Rapid Eye Movement (REM) or slow-wave sleep cycle. Our client-side optimization calculator uses biological rest metrics to protect you from this disruptions.</p>
+            
+            <p>Human sleep architecture is not a flat line of continuous unconsciousness. Instead, your brain moves through cyclical patterns throughout the night. Each complete cycle takes roughly <strong>90 minutes</strong> to complete, transitioning through light sleep, deep stage sleep, and highly active REM states where dreaming occurs. Waking up at the tail end of a cycle, when your body naturally approaches near-waking conditions, keeps your brain feeling fresh, focused, and instantly alert.</p>
+
+            <h3>How the 14-Minute Sleep Latency Factor Is Formulated</h3>
+            <p>A major flaw of basic alarm clocks is that they assume you fall asleep the millisecond your head hits the pillow. In human biology, the time required to transition from full wakefulness to light sleep is known as <strong>sleep latency</strong>.</p>
+            <p>Clinical sleep data tracks this duration using a standard mathematical latency offset equation across healthy adults:</p>
+            
+            <p style="text-align: center; font-weight: 700; margin: 20px 0; font-size: 1.1rem; background: rgba(15, 23, 42, 0.4); padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); color: var(--accent);">
+                $$T_{\text{Alarm}} = T_{\text{Bedtime}} + (N \times 90) + 14$$
+            </p>
+
+            <p>Where variables align across these criteria parameters:</p>
+            <ul>
+                <li><strong>$T_{\text{Alarm}}$:</strong> Your targeted morning wake-up window.</li>
+                <li><strong>$T_{\text{Bedtime}}$:</strong> The moment you turn off lights and close your eyes.</li>
+                <li><strong>$N$:</strong> The integer count of complete sleep intervals (ideally targeting 5 or 6 cycles).</li>
+                <li><strong>$14$:</strong> The average structural constant tracking sleep latency (minutes to transition into stage 1 sleep).</li>
+            </ul>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h3>How to Use This Circadian Rhythm Optimizer</h3>
+            <p>Our application runs completely locally on your system hardware, ensuring total privacy. Use the navigation tabs above depending on your schedule workflow:</p>
+            <ol>
+                <li><strong>Tab 1 (I need to wake up at):</strong> Use this option if you have a rigid corporate or school alarm schedule. Select your target morning window, and our engine will work backward to calculate the exact times you should turn off your lights.</li>
+                <li><strong>Tab 2 (I am going to bed now):</strong> Use this option if your schedule is fluid. Simply click the calculation button right before closing your eyes, and our tool will show you the exact alarm times to set for perfect 90-minute intervals.</li>
+            </ol>
+
+            <h3>Frequently Answered Biological Rest Questions</h3>
+            
+            <div class="faq-item">
+                <h4>Q: What exactly is sleep inertia, and why does it cause morning grogginess?</h4>
+                <p>A: Sleep inertia is a physiological state characterized by cognitive motor impairment and grogginess immediately after waking. It occurs when your alarm goes off during deep slow-wave or REM sleep stages, catching your brain unprepared for immediate wakefulness.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: Is six hours of structured sleep better than eight hours of random sleep?</h4>
+                <p>A: Frequently, yes. Six hours fits neatly into exactly 4 full 90-minute sleep intervals ($6 \text{ hours} / 1.5 \text{ hours} = 4 \text{ complete cycles}$), allowing you to wake up cleanly at the end of a cycle. Conversely, eight hours can cut directly through a deep cycle, leading to severe grogginess upon waking.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: How does our privacy sandbox process your health schedules?</h4>
+                <p>A: At AI Learning Gym, we use a clean client-side approach. Every computation occurs locally inside your device's browser memory sandbox. No sleep logs, target parameters, or system location arrays are transmitted or stored on external cloud infrastructure.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
-        &copy; 2026 AI Learning Gym Sandbox Environment. Running safely.
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <div class="footer-links" style="margin-top: 15px;">
+            <a href="/privacy.html">Privacy Policy</a> | 
+            <a href="/about.html">About Us</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a> | 
+            <a href="/sitemap.html">Site Map Directory</a>
+        </div>
     </footer>
 
     <script>
