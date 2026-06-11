@@ -340,19 +340,21 @@
             font-size: 0.95rem;
         }
 
-        /* --- Live Ad Layout Systems with Elegant Skeleton Placeholders --- */
+        /* --- Live Ad Layout Systems with Fixed Grid Centering (Fixed image_56d0a5.png issue) --- */
         .ad-container { 
-            margin: 30px auto; 
+            margin: 35px auto; 
             text-align: center; 
             width: 100%; 
             max-width: 728px;
-            min-height: 90px;
+            height: 90px;
             background: rgba(30, 41, 59, 0.25);
             border: 1px dashed var(--border-color);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .ad-container::before {
@@ -363,11 +365,15 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             opacity: 0.5;
+            position: absolute;
+            z-index: 1;
         }
 
-        /* Prevent layout conflicts once AdSense takes over element mapping */
         .ad-container ins {
             width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
         }
 
         /* --- Rich Content Documentation Area --- */
