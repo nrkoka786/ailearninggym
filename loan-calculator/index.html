@@ -167,19 +167,20 @@
             border: 1px solid var(--card-border);
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; }
-        .seo-section h3 { color: #34495e; margin: 22px 0 10px 0; font-size: 1.1rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.95rem; }
-        .seo-section ul { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.95rem; }
-        .seo-section ul li { margin-bottom: 6px; }
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
+        .seo-section h3 { color: #34495e; margin: 25px 0 10px 0; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
 
         /* Structured accordion list cards */
-        .faq-item { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; }
+        .faq-item { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent-color); }
         .faq-item h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 5px; }
-        .faq-item p { margin-bottom: 0; color: #4a5568; font-size: 0.9rem; }
+        .faq-item p { margin-bottom: 0; color: #4a5568; font-size: 0.92rem; }
 
         footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
     </style>
 </head>
 <body>
@@ -252,17 +253,27 @@
                 <p>When entering a long-term borrowing arrangement—such as a fixed-rate mortgage, automobile purchase agreement, or business installment line—the headline interest parameter tells only part of the story. To map out your actual financial future, you need to understand exactly how each monthly payment is divided. This process is governed by a mathematical standard known as <strong>amortization</strong>.</p>
                 <p>Our client-side computation engine parses your principal baseline against active calendar-rate vectors to build an instantaneous payment schedule. This breakdown allows you to visualize exactly how your debt reduces over time, helping you make smart, strategic financial decisions right from your browser.</p>
 
+                <h3>How to Use This Free Amortization Tool</h3>
+                <p>Our workspace runs entirely locally without any annoying sign-ups or tracking lag. Follow these clear steps to chart your payoff trajectory:</p>
+                <ol>
+                    <li><strong>Enter Loan Principal Balance:</strong> Input the base amount of money you intend to borrow (excluding down payments).</li>
+                    <li><strong>Provide Annual Interest Rate:</strong> Put in the fixed rate assigned by your lender (e.g., 6.5%).</li>
+                    <li><strong>Specify Term Lifespan:</strong> Enter how many years the loan agreement spans (e.g., 15 or 30 years).</li>
+                </ol>
+
                 <h3>The Fundamental Amortization Formula Explained</h3>
-                <p>To calculate the systematic fixed monthly installment amount required to completely wipe out a debt balance, financial systems rely on a specific mathematical equation:</p>
-                <p style="text-align: center; font-weight: 700; margin: 20px 0; font-size: 1.1rem; background: #f8fafc; padding: 15px; border-radius: 4px; border: 1px solid var(--card-border); font-family: monospace;">
-                    M = P [ i(1 + i)^n ] / [ (1 + i)^n - 1 ]
+                <p>To calculate the systematic fixed monthly installment amount required to completely wipe out a debt balance, financial systems rely on a standard mathematical equation:</p>
+                
+                <p style="text-align: center; font-weight: 700; margin: 20px 0; font-size: 1.1rem; background: #f8fafc; padding: 15px; border-radius: 4px; border: 1px solid var(--card-border);">
+                    $$M = P \frac{i(1 + i)^n}{(1 + i)^n - 1}$$
                 </p>
+                
                 <p>Where the variable items are mapped across specific profiles:</p>
                 <ul>
-                    <li><strong>M:</strong> The total calculated regular installment payment required each month.</li>
-                    <li><strong>P:</strong> The initial principal capital balance borrowed.</li>
-                    <li><strong>i:</strong> The periodic interest factor (computed by dividing the nominal annual percentage rate by 12 monthly cycles).</li>
-                    <li><strong>n:</strong> The complete tracking collection of total payments (calculated by multiplying the term lifespan years by 12).</li>
+                    <li><strong>$M$:</strong> The total calculated regular installment payment required each month.</li>
+                    <li><strong>$P$:</strong> The initial principal capital balance borrowed.</li>
+                    <li><strong>$i$:</strong> The periodic interest factor (computed by dividing the nominal annual percentage rate by 12 monthly cycles).</li>
+                    <li><strong>$n$:</strong> The complete tracking collection of total payments (calculated by multiplying the term lifespan years by 12).</li>
                 </ul>
 
                 <div class="ad-container">
@@ -304,9 +315,11 @@
 
     <footer>
         <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem; color: #a0aec0;">
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
+        <p style="margin-top: 10px; font-size: 0.85rem; color: #cbd5e1;">
+            <a href="/privacy.html">Privacy Policy</a> | 
+            <a href="/about.html">About Us</a> | 
             <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a> | 
             <a href="/sitemap.html">Site Map Directory</a>
         </p>
     </footer>
