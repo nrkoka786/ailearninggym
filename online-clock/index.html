@@ -12,6 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ailearninggym.com/online-clock/">
 
+    <!-- GLOBAL GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -20,6 +21,7 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
+    <!-- GLOBAL GOOGLE ADSENSE SCRIPT -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
 
     <script type="application/ld:json">
@@ -338,8 +340,35 @@
             font-size: 0.95rem;
         }
 
-        /* --- Live Ad Layout Systems --- */
-        .ad-container { margin: 20px 0; text-align: center; width: 100%; }
+        /* --- Live Ad Layout Systems with Elegant Skeleton Placeholders --- */
+        .ad-container { 
+            margin: 30px auto; 
+            text-align: center; 
+            width: 100%; 
+            max-width: 728px;
+            min-height: 90px;
+            background: rgba(30, 41, 59, 0.25);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-container::before {
+            content: "Sponsored Advertisement Workspace";
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        /* Prevent layout conflicts once AdSense takes over element mapping */
+        .ad-container ins {
+            width: 100%;
+        }
 
         /* --- Rich Content Documentation Area --- */
         .seo-section {
@@ -400,6 +429,7 @@
             <button class="tab-btn" data-target="panel-world">🌐 World Clock</button>
         </div>
 
+        <!-- ================= ALARM PANEL ================= -->
         <div id="panel-alarm" class="panel-card active">
             <h2>Set Web Alarm</h2>
             <div class="input-group">
@@ -428,6 +458,7 @@
             <div id="alarmStatus" class="status-alert"></div>
         </div>
 
+        <!-- ================= TIMER PANEL ================= -->
         <div id="panel-timer" class="panel-card">
             <h2>Countdown Interval Timer</h2>
             <div id="timerInputArea" class="input-group">
@@ -442,6 +473,7 @@
             </div>
         </div>
 
+        <!-- ================= STOPWATCH PANEL ================= -->
         <div id="panel-stopwatch" class="panel-card">
             <h2>Precision Split Stopwatch</h2>
             <div id="stopwatchDisplay" class="stopwatch-display">00:00.00</div>
@@ -453,6 +485,7 @@
             <div id="lapBox" class="lap-box"></div>
         </div>
 
+        <!-- ================= WORLD CLOCK PANEL ================= -->
         <div id="panel-world" class="panel-card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
                 <h2>Global Timezone Monitors</h2>
@@ -522,6 +555,7 @@
             </div>
         </div>
 
+        <!-- Google AdSense Adaptive Visual Framework Unit Placement -->
         <div class="ad-container">
             <ins class="adsbygoogle"
                  style="display:block"
@@ -532,6 +566,7 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
+        <!-- HIGH VALUE SEO ARTICLE SECTION FOR QUALITY EVALUATION -->
         <section class="seo-section">
             <h2>The Engineering Mechanics of Distributed Time Coordination</h2>
             <p>Welcome to the core temporal processing studio at AI Learning Gym. Across modern web frameworks, continuous integration pipelines, and international market environments, managing absolute time metrics is crucial. Standard network tools introduce connection delays when fetching data from remote cloud databases. This application removes those errors by executing your tracking routines locally via native client-side frameworks.</p>
