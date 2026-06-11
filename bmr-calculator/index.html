@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMR & Calories Calculator | AI Learning Gym</title>
+    <title>BMR & Calories Calculator | Privacy-First | AI Learning Gym</title>
     <meta name="description" content="Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) accurately using Metric or Imperial systems with the Mifflin-St Jeor formula.">
+    <meta name="keywords" content="BMR calculator, TDEE calorie planner, Mifflin-St Jeor formula, basal metabolic rate, macro target tracking, daily calorie deficit, gym utility">
 
-    <!-- Google Analytics Tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,8 +15,29 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
-    <!-- Google AdSense Auto Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+
+    <script type="application/ld:json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Mifflin-St Jeor BMR &amp; TDEE Core Engine",
+      "description": "A client-side fitness application designed to compute basal metabolic metrics and customize systematic macronutrient calorie roadmaps based on active physiological data layers.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "browserRequirements": "Requires JavaScript support. Fully executed client-side.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "AI Learning Gym",
+        "url": "https://ailearninggym.com"
+      }
+    }
+    </script>
 
     <style>
         :root {
@@ -27,6 +48,7 @@
             --accent: #10b981;
             --accent-hover: #059669;
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --border-color: #2b3852;
         }
 
         * {
@@ -48,7 +70,7 @@
 
         header {
             width: 100%;
-            max-width: 650px;
+            max-width: 750px;
             text-align: center;
             margin-bottom: 2rem;
         }
@@ -67,7 +89,7 @@
 
         main {
             width: 100%;
-            max-width: 650px;
+            max-width: 750px;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -101,6 +123,7 @@
         .radio-label {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             cursor: pointer;
             background-color: rgba(15, 23, 42, 0.4);
@@ -108,7 +131,6 @@
             border-radius: 0.5rem;
             border: 1px solid var(--text-muted);
             flex: 1;
-            justify-content: center;
             font-weight: 600;
             transition: all 0.2s ease;
         }
@@ -255,31 +277,94 @@
             margin-top: 0.5rem;
         }
 
-        footer {
-            margin-top: auto;
-            padding: 2rem 0;
-            color: var(--text-muted);
-            font-size: 0.875rem;
+        /* --- Live Ad Layout Systems with Fixed Grid Centering --- */
+        .ad-container { 
+            margin: 35px auto; 
+            text-align: center; 
+            width: 100%; 
+            max-width: 728px;
+            height: 90px;
+            background: rgba(30, 41, 59, 0.25);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .ad-container::before {
+            content: "Sponsored Advertisement Workspace";
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .ad-container ins {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Rich Content & SEO Document Architecture --- */
+        .seo-section { 
+            background: var(--panel-bg);
+            padding: 30px;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            text-align: left;
+            margin-top: 20px;
+        }
+        .seo-section h2 { color: var(--text-main); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+        .seo-section h3 { color: var(--accent); margin: 25px 0 10px 0; font-size: 1.2rem; }
+        .seo-section p { margin-bottom: 15px; color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: var(--text-muted); font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
+
+        .faq-item { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent); }
+        .faq-item h4 { color: var(--text-main); font-size: 1rem; margin-bottom: 5px; }
+        .faq-item p { margin-bottom: 0; color: var(--text-muted); font-size: 0.92rem; }
+
+        footer { 
+            width: 100%;
+            background-color: var(--panel-bg); 
+            color: var(--text-muted); 
+            padding: 40px 20px; 
+            margin-top: 60px; 
+            text-align: center; 
+            font-size: 0.9rem;
+            border-radius: 1rem 1rem 0 0;
+            box-shadow: 0 -10px 25px -5px rgba(0,0,0,0.2);
+            border-top: 1px solid var(--border-color);
+        }
+        footer a { color: var(--text-muted); text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent); }
     </style>
 </head>
 <body>
 
     <header>
         <h1>🏃‍♂️ BMR & TDEE Planner</h1>
-        <p>Discover your metabolic blueprint and calculate precise daily calorie targets.</p>
+        <p>Discover your metabolic blueprint and calculate precise daily calorie targets natively inside your device sandbox.</p>
+        <a href="/" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 10px;">&larr; Return to Dashboard Hub</a>
     </header>
 
     <main>
         <div class="card">
             
-            <!-- Unit System Selection Tabs -->
             <div class="system-tabs">
                 <button class="tab-btn active" id="metricTabBtn" onclick="switchSystem('metric')">Metric System (cm/kg)</button>
                 <button class="tab-btn" id="imperialTabBtn" onclick="switchSystem('imperial')">Imperial System (ft/in/lbs)</button>
             </div>
 
-            <!-- Biological Sex Input -->
             <div class="form-group">
                 <label>Biological Sex</label>
                 <div class="radio-group">
@@ -292,7 +377,6 @@
                 </div>
             </div>
 
-            <!-- Age & Weight Input Block -->
             <div class="form-group">
                 <div class="input-row">
                     <div class="input-wrapper">
@@ -308,7 +392,6 @@
                 </div>
             </div>
 
-            <!-- Height Input Block -->
             <div class="form-group" id="heightContainer">
                 <label for="height" id="heightLabel">Height (cm)</label>
                 <div class="input-row" id="heightInputRow">
@@ -319,7 +402,6 @@
                 </div>
             </div>
 
-            <!-- Activity Level Input (Crucial for Actionable Advice) -->
             <div class="form-group">
                 <label for="activityLevel">Your Current Activity Level</label>
                 <select id="activityLevel">
@@ -333,7 +415,6 @@
 
             <button class="btn" onclick="calculateBMR()">Calculate Your Roadmap</button>
 
-            <!-- Results Section Panels -->
             <div class="results-container" id="resultsPanel">
                 
                 <div class="hero-result">
@@ -342,14 +423,12 @@
                     <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">The energy needed entirely at rest to stay alive.</div>
                 </div>
 
-                <!-- Section 1: Total Theoretical Footprint -->
                 <div class="section-title">Daily Energy Expenditure (TDEE Summary)</div>
                 <div class="table-row">
                     <span>Your Selected Lifestyle Maintenance Baseline:</span>
                     <span class="val-highlight" id="chosenTdeeDisplay">0,000 kcal/day</span>
                 </div>
 
-                <!-- Section 2: Actionable Strategy Breakdown -->
                 <div class="section-title">🎯 Your Specific Calorie Targets</div>
                 <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem; line-height: 1.4;">
                     To achieve your physical training or body composition goals, match your daily nutrition intake to these calculated targets:
@@ -378,13 +457,87 @@
                         <span class="val-highlight" id="goalGain" style="color: #38bdf8;">0,000 kcal/day</span>
                     </div>
                 </div>
-
             </div>
         </div>
+
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2027849186057550"
+                 data-ad-slot="1105246416"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="seo-section">
+            <h2>The Science of Human Metabolism: Deconstructing BMR and TDEE</h2>
+            <p>Managing your body composition, increasing athletic endurance, or designing a healthy lifestyle strategy requires an understanding of your metabolic footprint. Many people start random diets without evaluating their base biological energy demands, which can lead to low energy or lost muscle mass. The AI Learning Gym application uses client-side calculations to analyze your metabolic baseline, helping you manage your goals safely within your browser window.</p>
+            
+            <p>Every person has a unique baseline of energy use, split into two primary layers: <strong>Basal Metabolic Rate (BMR)</strong> and <strong>Total Daily Energy Expenditure (TDEE)</strong>. Your BMR represents the absolute minimum amount of energy your body needs to stay alive and function at rest (powering vital organs like the heart, lungs, and liver). Your TDEE builds on top of that base, factoring in daily steps, active exercise routines, and the energy required to digest food throughout the day.</p>
+
+            <h3>The Mechanics of the Mifflin-St Jeor Formula</h3>
+            <p>To deliver accurate metabolic data, our engine relies on the standard Mifflin-St Jeor predictive equations, which clinical sports data flags as the gold standard for predicting resting metabolic targets.</p>
+            <p>The system calculates your baseline energy use by parsing your sex parameters against lean mass vectors using these formulas:</p>
+            
+            <div style="background: rgba(15, 23, 42, 0.4); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); color: var(--accent); font-family: monospace; margin: 20px 0; font-size: 1rem; line-height: 1.5;">
+                <strong>Men:</strong> BMR = (10 &times; W) + (6.25 &times; H) - (5 &times; A) + 5<br>
+                <strong>Women:</strong> BMR = (10 &times; W) + (6.25 &times; H) - (5 &times; A) - 161
+            </div>
+
+            <p>Where variables align across these standard physiological metrics:</p>
+            <ul>
+                <li><strong>W:</strong> Absolute body mass measured cleanly in kilograms.</li>
+                <li><strong>H:</strong> Total chronological vertical stature measured in centimeters.</li>
+                <li><strong>A:</strong> Explicit chronological age calculated in complete years.</li>
+            </ul>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-2027849186057550"
+                     data-ad-slot="1105246416"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h3>How to Utilize Your Metabolic Blueprint Effectively</h3>
+            <p>Once our engine processes your data parameters, use your customized roadmap according to your fitness targets:</p>
+            <ol>
+                <li><strong>Weight Loss Plan:</strong> Ties your nutrition intake to a safe, sustainable 450-calorie deficit below your TDEE baseline, encouraging healthy fat loss without sacrificing hard-earned muscle.</li>
+                <li><strong>Maintenance Plan:</strong> Keeps your calorie intake perfectly balanced with your daily energy output, locking in your current weight and stabilizing metabolic parameters.</li>
+                <li><strong>Muscle Building Plan:</strong> Creates a controlled 300-calorie surplus to provide the extra energy your body needs to synthesize new lean muscle tissue effectively.</li>
+            </ol>
+
+            <h3>Frequently Answered Metabolism Questions</h3>
+            
+            <div class="faq-item">
+                <h4>Q: Why does my calculated BMR drop naturally as I age?</h4>
+                <p>A: As the human body ages, lean skeletal muscle tissue naturally decreases over time, while fat mass often changes composition. Because lean muscle is highly active and requires significant energy to maintain, a reduction in muscle mass naturally lowers your baseline resting metabolic rate.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Q: How does this tool process weight and height metric variations?</h4>
+                <p>A: Our tool includes instant unit selector tabs. If you use the Imperial view, the calculator automatically runs background conversion equations, shifting your entries into kilograms and centimeters ($1 \text{ lb} \approx 0.453 \text{ kg}$ and $1 \text{ inch} = 2.54 \text{ cm}$) to ensure your final numbers are accurate.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: Are my sensitive weight, age, or sex entries processed securely?</h4>
+                <p>A: Yes. AI Learning Gym is engineered using 100% client-side script execution loops. Your physical metrics, training selections, and biological parameters are processed entirely within your device's local memory sandbox. No remote logging occurs, and no server databases are pinged.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
-        &copy; 2026 AI Learning Gym Sandbox Environment. Running safely.
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <div class="footer-links" style="margin-top: 15px;">
+            <a href="/privacy.html">Privacy Policy</a> | 
+            <a href="/about.html">About Us</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a> | 
+            <a href="/sitemap.html">Site Map Directory</a>
+        </div>
     </footer>
 
     <script>
@@ -424,7 +577,7 @@
                 document.getElementById('heightLabel').textContent = "Height (Feet / Inches)";
                 heightRow.innerHTML = `
                     <div class="input-wrapper">
-                        <input type="number" id="heightFeet" min="1" max="8" value="5";>
+                        <input type="number" id="heightFeet" min="1" max="8" value="5">
                         <span class="unit-label">Feet (ft)</span>
                     </div>
                     <div class="input-wrapper">
