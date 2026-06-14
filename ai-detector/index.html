@@ -34,8 +34,7 @@
       "author": {
         "@type": "Organization",
         "name": "AI Learning Gym",
-        "url": "https://ailearninggym.com"
-      }
+        "url": "https://ailearninggym.com"      }
     }
     </script>
 
@@ -337,11 +336,11 @@
         </div>
 
         <div class="ad-container">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
+            <ins class="adsbygoogle" 
+                 style="display:block" 
+                 data-ad-client="ca-pub-2027849186057550" 
+                 data-ad-slot="1105246416" 
+                 data-ad-format="auto" 
                  data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
@@ -368,11 +367,11 @@
             </ul>
 
             <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
+                <ins class="adsbygoogle" 
+                     style="display:block" 
+                     data-ad-client="ca-pub-2027849186057550" 
+                     data-ad-slot="1105246416" 
+                     data-ad-format="auto" 
                      data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
@@ -432,8 +431,13 @@
 
         function analyzeTextPattern() {
             const text = document.getElementById('textInput').value.trim();
-            const wordList = text.toLowerCase().split(/\s+/);
-            const wordsCount = text ? wordList.length : 0;
+            if (!text) {
+                alert("Please paste text to analyze.");
+                return;
+            }
+
+            const wordList = text.toLowerCase().split(/\s+/).filter(w => w.length > 0);
+            const wordsCount = wordList.length;
 
             if (wordsCount < 10) {
                 alert("Please paste a larger sample layout (at least 10 words) for structural calculations.");
@@ -450,39 +454,48 @@
             const densityPercentage = (matchingTokens / wordsCount) * 100;
 
             // 2. Compute Burstiness (Standard Deviation of Sentence Lengths)
-            const sentences = text.split(/[.!?]+\s+/).filter(s => s.trim().length > 0);
-            let sentenceLengths = sentences.map(s => s.trim().split(/\s+/).length);
-
-            let meanLength = 0;
+            // FIXED: Using positive lookahead ensures sentence recognition with or without spaces at boundaries
+            const sentences = text.split(/[.!?]+(?=\s|$)/).map(s => s.trim()).filter(s => s.length > 0);
+            
+            let sentenceLengths = sentences.map(s => s.split(/\s+/).filter(w => w.length > 0).length);
             let variance = 0;
+            let meanLength = 0;
 
-            if (sentenceLengths.length > 0) {
+            if (sentenceLengths.length > 1) {
                 const sum = sentenceLengths.reduce((a, b) => a + b, 0);
                 meanLength = sum / sentenceLengths.length;
 
                 const squareDiffs = sentenceLengths.map(len => Math.pow(len - meanLength, 2));
                 const sumSquareDiffs = squareDiffs.reduce((a, b) => a + b, 0);
-                variance = sumSquareDiffs / sentenceLengths.length;
+                variance = sumSquareDiffs / (sentenceLengths.length - 1);
+            } else if (sentenceLengths.length === 1) {
+                variance = 2.0; 
             }
 
-            // 3. Algorithmic Score Weighting Engine
-            let aiProbability = 0;
+            // 3. Normalized Algorithmic Score Weighting Engine
+            let aiProbability = 35; // Neutral starting calculation index baseline
 
-            // Density penalty scaling
-            if (densityPercentage > 0) aiProbability += (densityPercentage * 12);
-            
-            // Burstiness uniform penalty scaling (AI writes with low variance, human writes with high variance)
-            if (variance < 12) {
-                aiProbability += (12 - variance) * 6;
+            // Density weighting
+            if (densityPercentage > 0) {
+                aiProbability += (densityPercentage * 15);
+            }
+
+            // Variance weighting
+            if (variance < 15) {
+                aiProbability += (15 - variance) * 4;
             } else {
-                aiProbability -= (variance - 12) * 2;
+                aiProbability -= (variance - 15) * 1.5;
             }
 
-            // Cap math limits safely between 1% and 99% for algorithmic integrity
-            aiProbability = Math.max(1, Math.min(99, Math.round(aiProbability)));
-            if(wordsCount > 40 && matchingTokens === 0 && variance > 25) aiProbability = 1; // Pure organic pass override
+            // Safeguards and adjustments based on raw token matching benchmarks
+            if (matchingTokens === 0 && variance > 18) {
+                aiProbability -= 20;
+            }
 
-            // Render displays
+            // Safe clamping between 1% and 99%
+            aiProbability = Math.max(1, Math.min(99, Math.round(aiProbability)));
+
+            // Render updates to user interface components
             document.getElementById('scoreDisplay').textContent = `${aiProbability}%`;
             document.getElementById('gaugeBarFill').style.width = `${aiProbability}%`;
             document.getElementById('varianceDisplay').textContent = variance.toFixed(2);
@@ -490,10 +503,10 @@
 
             // Adjust textual verdicts based on metric tiers
             const verdictEl = document.getElementById('verdictText');
-            if (aiProbability < 25) {
+            if (aiProbability < 30) {
                 verdictEl.textContent = "Linguistic fingerprint matches classic human writing patterns perfectly.";
                 verdictEl.style.color = "var(--success)";
-            } else if (aiProbability < 65) {
+            } else if (aiProbability < 68) {
                 verdictEl.textContent = "Mixed structural patterns detected. Suggests a human-edited or heavily paraphrased AI profile.";
                 verdictEl.style.color = "orange";
             } else {
