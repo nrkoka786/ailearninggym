@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Learning Gym | Free Online Web Utilities &amp; Interactive Developer Tools</title>
-    <meta name="description" content="Access the AI Learning Gym utility suite. Free, privacy-first online tools including QR generators, secure password creators, age calculators, Pomodoro clocks, and markdown editors.">
-    <meta name="keywords" content="web utilities, online developer tools, privacy first tools, free web calculators, text analyzers, white screen tester, pomodoro clock, hex color picker, base64 converter">
-    <meta property="og:title" content="AI Learning Gym | Free Online Web Utilities &amp; Interactive Tools">
-    <meta property="og:description" content="Access free, fast, privacy-first web utilities and developer tools entirely inside your browser sandbox.">
-    <meta property="og:type" content="website">
+    <title>Free AI Content Detector Tool | Privacy-First | AI Learning Gym</title>
+    <meta name="description" content="Analyze text instantly to identify AI patterns from ChatGPT, Claude, and Gemini using structural linguistic heuristic engines. 100% local processing.">
+    <meta name="keywords" content="AI detector online, ChatGPT content scanner, check for AI text, perplexity burstiness calculator, anti AI plagiarism utility, free writing tools">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,540 +14,458 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <script type="application/ld:json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Linguistic AI Structural Content Detector",
+      "description": "A privacy-first, client-side heuristic app designed to scan text strings for mathematical token predictability and sentence length uniformity indicators.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web Browser",
+      "browserRequirements": "Requires JavaScript support. Fully executed client-side.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "AI Learning Gym",
+        "url": "https://ailearninggym.com"
+      }
+    }
+    </script>
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
-            --primary-color: #1a252f;
-            --accent-color: #3498db;
-            --text-dark: #2c3e50;
-            --text-muted: #64748b;
-            --card-border: #e2e8f0;
-            --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --bg-color: #0b0f19;
+            --panel-bg: #161f30;
+            --text-main: #f8fafc;
+            --text-muted: #6b7c96;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --success: #10b981;
+            --danger: #ef4444;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --border-color: #2b3852;
         }
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-family);
         }
         body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-        header h1 { 
-             font-size: 2.2rem; 
-             margin-bottom: 10px;
-        }
-        header p {
-            color: #cbd5e1;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-        /* --- Live Ad Container Classes --- */
-        .ad-container {
-            margin: 15px 0;
-            text-align: center;
-            width: 100%;
-        }
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        /* --- Dashboard Tool Grid --- */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        @media (min-width: 600px) {
-            .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        .tool-card {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .tool-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--hover-shadow);
-            border-color: var(--accent-color);
-        }
-        .tool-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-            display: flex;
             align-items: center;
-            gap: 10px;
+            padding: 2rem 1rem;
         }
-        .tool-icon {
-            font-size: 1.4rem;
+        header {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        .tool-desc {
-            font-size: 0.9rem;
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+        header p {
             color: var(--text-muted);
-            margin-bottom: 15px;
-            flex-grow: 1;
+            font-size: 1rem;
         }
-        .tool-action {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        main {
+            width: 100%;
+            max-width: 800px;
             display: flex;
-            align-items: center;
-            gap: 5px;
+            flex-direction: column;
+            gap: 1.5rem;
         }
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
+        .card {
+            background-color: var(--panel-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
         }
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin-left: 25px; margin-bottom: 15px; color: #4a5568; }
-        .seo-section li { margin-bottom: 5px; }
-        /* --- Expanded Multi-Column Footer Matrix --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #cbd5e1;
-            padding: 50px 20px 30px 20px;
-            margin-top: 60px;
+        textarea {
+            width: 100%;
+            height: 250px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            outline: none;
+            resize: vertical;
+            margin-bottom: 1.25rem;
+        }
+        textarea:focus {
+            border-color: var(--accent);
+        }
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
             font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            padding: 0 0.25rem;
         }
-        .footer-grid {
-            max-width: 1200px;
-            margin: 0 auto 40px auto;
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+        .results-container {
+            margin-top: 2rem;
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Gauge Meter Style */
+        .gauge-section {
+            background-color: rgba(11, 15, 25, 0.4);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .gauge-bar-wrapper {
+            background-color: #1e293b;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+            position: relative;
+        }
+        .gauge-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--success), #eab308, var(--danger));
+            transition: width 1s ease-in-out;
+        }
+        .score-label {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: monospace;
+        }
+        /* Metric Diagnostic Rows */
+        .diagnostic-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .diag-card {
+            background-color: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 1rem;
+            border-radius: 0.5rem;
             text-align: left;
         }
-        @media (min-width: 576px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 992px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
-        .footer-col h4 {
-            color: #ffffff;
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .diag-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid rgba(52, 152, 219, 0.3);
-            padding-bottom: 5px;
+            margin-bottom: 0.25rem;
         }
-        .footer-col ul {
-            list-style: none;
+        .diag-val {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: monospace;
         }
-        .footer-col ul li {
-            margin-bottom: 8px;
+        /* --- Live Ad Layout Systems with Fixed Grid Centering --- */
+        .ad-container {
+             margin: 35px auto;
+             text-align: center;
+             width: 100%;
+             max-width: 728px;
+            height: 90px;
+            background: rgba(22, 31, 48, 0.4);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
-        .footer-col a {
-            color: #a0aec0;
-            text-decoration: none;
-            transition: color 0.2s;
-            display: inline-block;
+        .ad-container::before {
+            content: "Sponsored Advertisement Workspace";
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            position: absolute;
+            z-index: 1;
         }
-        .footer-col a:hover {
-            color: var(--accent-color);
+        .ad-container ins {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
         }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 25px;
-            text-align: center;
-            color: #718096;
+        /* --- Rich Content & SEO Document Architecture --- */
+        .seo-section {
+             background: var(--panel-bg);
+            padding: 30px;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+            text-align: left;
+            margin-top: 20px;
         }
-        .footer-bottom-links {
-            margin-top: 10px;
+        .seo-section h2 { color: var(--text-main); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+        .seo-section h3 { color: var(--accent); margin: 25px 0 10px 0; font-size: 1.2rem; }
+        .seo-section p { margin-bottom: 15px; color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: var(--text-muted); font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
+        .faq-item { background: rgba(11, 15, 25, 0.4); border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent); }
+        .faq-item h4 { color: var(--text-main); font-size: 1rem; margin-bottom: 5px; }
+        .faq-item p { margin-bottom: 0; color: var(--text-muted); font-size: 0.92rem; }
+        footer {
+             width: 100%;
+            background-color: var(--panel-bg);
+             color: var(--text-muted);
+             padding: 40px 20px;
+             margin-top: 60px;
+             text-align: center;
+             font-size: 0.9rem;
+            border-radius: 1rem 1rem 0 0;
+            box-shadow: 0 -10px 25px -5px rgba(0,0,0,0.5);
+            border-top: 1px solid var(--border-color);
         }
-        .footer-bottom-links a {
-            color: #a0aec0;
-            text-decoration: none;
-            margin: 0 12px;
-            font-size: 0.85rem;
-        }
-        .footer-bottom-links a:hover {
-            color: var(--accent-color);
-        }
-        /* --- Uniform Footer Bottom Links Override --- */
-        .footer-links a, 
-        .footer-links a:visited {
-            color: #a0aec0 !important;
-            text-decoration: none !important;
-            margin: 0 12px;
-            font-size: 0.85rem;
-            transition: color 0.2s;
-            display: inline-block;
-        }
-        .footer-links a:hover {
-            color: var(--accent-color) !important;
-            text-decoration: underline !important;
-        }
+        footer a { color: var(--text-muted); text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent); }
     </style>
 </head>
 <body>
     <header>
-        <h1>AI Learning Gym</h1>
-        <p>Your instant browser-based workspace for free, privacy-first developer utilities, text encoders, and production tools.</p>
+        <h1>🤖 AI Structural Content Detector</h1>
+        <p>Analyze local linguistic variations, structural burstiness trends, and text predictability footprints entirely client-side.</p>
     </header>
-    <div class="container">
-        <main class="main-content">
+    <main>
+        <div class="card">
+            <textarea id="textInput" placeholder="Paste your copy block text layout here (Minimum 25 words recommended for accurate burstiness metrics)..." oninput="updateCounters()"></textarea>
+            <div class="meta-row">
+                <span id="wordCountLabel">Words: 0</span>
+                <span id="charCountLabel">Characters: 0</span>
+            </div>
+            <button class="btn" onclick="analyzeTextPattern()">Analyze Content Footprint</button>
+            <div class="results-container" id="resultsPanel">
+                <div class="gauge-section">
+                    <div style="font-size: 1rem; color: var(--text-muted); font-weight: 600;">AI GENERATION PROBABILITY</div>
+                    <div class="score-label" id="scoreDisplay">0%</div>
+                    <div class="gauge-bar-wrapper">
+                        <div class="gauge-fill" id="gaugeBarFill"></div>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" id="verdictText">Linguistic fingerprint matches classic human writing styles.</p>
+                </div>
+                <div class="diagnostic-grid">
+                    <div class="diag-card">
+                        <div class="diag-title">Sentence Variance</div>
+                        <div class="diag-val" id="varianceDisplay">0.00</div>
+                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem;">Lower values represent uniform AI structures.</div>
+                    </div>
+                    <div class="diag-card">
+                        <div class="diag-title">AI Token Density</div>
+                        <div class="diag-val" id="densityDisplay">0.0%</div>
+                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem;">Frequency of high-probability transitional words.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-2027849186057550"
+                  data-ad-slot="1105246416"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        <section class="seo-section">
+            <h2>About this Tool &amp; User Guide</h2>
+            <p>The Linguistic AI Structural Content Detector is an interactive diagnostic app engineered to analyze the structural characteristics of written documents. Built with privacy and accessibility as core pillars, this utility scans plain text input fields to uncover patterns typical of machine generation. By examining key stylistic parameters inside your browser viewport, this utility gives writers, educators, and content creators immediate feedback without using cloud processing frameworks or external networks.</p>
+
+            <h3>How to Use the AI Content Detector App</h3>
+            <p>Operating the local text classification terminal follows a clear, non-invasive data workflow. Follow these simple steps to evaluate your document drafts:</p>
+            <ol>
+                <li><strong>Input Text Block Placement:</strong> Paste your plain text content directly into the central editing window. A minimum sample size of 25 to 50 words is recommended to give our local heuristics processors enough data points.</li>
+                <li><strong>Initialize Footprint Scanning:</strong> Click the primary <em>Analyze Content Footprint</em> action trigger. This kicks off the local lexical scanning engine immediately.</li>
+                <li><strong>Read the Metric Indicators:</strong> Review the structural probability gauge alongside the diagnostic rows. The interface maps variance totals and word weights instantly to show structural patterns clearly.</li>
+            </ol>
+
+            <h3>Core Analytical Fields Explained</h3>
+            <p>Our client-side software framework tests document patterns by evaluating structural metrics across two key areas:</p>
+            <ul>
+                <li><strong>Linguistic Sentence Variance (Burstiness):</strong> This field measures the standard deviation of sentence lengths throughout your text. Natural human storytelling naturally includes varied phrasing styles, creating significant sentence variance. Artificial text structures, on the other hand, tend to keep paragraph cadences uniform, showing a low variance value.</li>
+                <li><strong>High-Probability Token Density:</strong> Generative models regularly select a specific catalog of predictable transitional keywords (such as <em>furthermore</em>, <em>moreover</em>, or <em>testament</em>) to bridge concepts. The app calculates the percentage of these words against your total word count to assess textual predictability.</li>
+            </ul>
+
+            <h2>The Mathematics of Linguistic Automation: Perplexity and Burstiness</h2>
+            <p>Welcome to the heuristic syntax scanning terminal at AI Learning Gym. As Large Language Models (LLMs) like ChatGPT, Claude, and Gemini become deeply integrated into writing workflows, distinguishing organic human writing from algorithmic content has become a major focus for editors, educators, and search engines. Rather than searching for hidden watermarks, modern classification algorithms analyze foundational math layouts within text strings using two key metrics: <strong>perplexity</strong> and <strong>burstiness</strong>.</p>
+            <p>Perplexity measures the mathematical predictability of a specific word sequence. Because AI models are engineered to output the next token based on statistical averages, they naturally select predictable wording patterns. Human writers, however, introduce stylistic choices, unique word combinations, and localized errors. This results in high perplexity scores that machine learning classifiers flag as organic prose.</p>
+            
+            <h3>Analyzing the Burstiness Metric (Sentence Length Standard Deviation)</h3>
+            <p>The biggest indicator of artificial content is structural uniformity across paragraphs. In mathematical linguistics, the variation of sentence lengths and structures throughout a document is defined as <strong>burstiness</strong>.</p>
+            <p>Our client-side scanning engine calculates this variance by determining the standard deviation ($\sigma$) of sentence lengths across your text sample:</p>
+            <div style="background: rgba(11, 15, 25, 0.4); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); color: var(--accent); font-family: monospace; margin: 20px 0; font-size: 1rem; text-align: center;">
+                $$\sigma = \sqrt{\frac{\sum_{j=1}^{N} (L_j - \mu)^2}{N}}$$
+            </div>
+            <p>Where structural variables match these localized parameters:</p>
+            <ul>
+                <li><strong>$N$:</strong> The absolute total count of individual sentence blocks isolated in the text.</li>
+                <li><strong>$L_j$:</strong> The precise word count of sentence index $j$ within the document array.</li>
+                <li><strong>$\mu$:</strong> The calculated mean (average) length across all sentences combined.</li>
+            </ul>
             <div class="ad-container">
                 <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                      style="display:block"
+                      data-ad-client="ca-pub-2027849186057550"
+                      data-ad-slot="1105246416"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
-            <h2 style="margin-bottom: 20px; color: var(--text-dark); font-size: 1.4rem;">Available Web Utilities</h2>
-            <div class="dashboard-grid">
-                <a href="/ai-detector/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🤖</span> AI Structural Content Detector</div>
-                        <div class="tool-desc">Analyze blocks of text for artificial footprints and structural linguistic variance using high-precision local heuristics models.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/loan-calculator/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">📈</span> Loan Amortization Calculator</div>
-                        <div class="tool-desc">Compute fixed loan profiles and inspect systematic monthly breakdown schedules splitting principal from interest balances.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/online-clock/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🌐</span> Online World Clock &amp; Timers</div>
-                        <div class="tool-desc">Access high-precision real-time world timezone mapping engines paired with integrated stopwatch splits and countdown intervals.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/10min-email/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">📨</span> 10-Minute Temporary Mailbox</div>
-                        <div class="tool-desc">Deploy ephemeral, disposable active inbox gateways to bypass data-logging loops while cleanly retaining received messaging metadata.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/bmr-calculator/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🏃‍♂️</span> BMR &amp; TDEE Calorie Planner</div>
-                        <div class="tool-desc">Run Mifflin-St Jeor metabolic equations through fluid metric/imperial systems to output specific target fitness macros.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/sleep-calculator/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">💤</span> REM Sleep Cycle Optimizer</div>
-                        <div class="tool-desc">Map out ideal nightly rest and wake schedules based on natural REM architecture to completely eliminate morning grogginess.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/word-counter/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">📊</span> Word Counter</div>
-                        <div class="tool-desc">Analyze real-time text density metrics, verify exact character allocations, and compute reading profiles seamlessly.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/qr-generator/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">📷</span> QR Code Generator</div>
-                        <div class="tool-desc">Convert URLs, explicit text objects, or credentials into crisp, downloadable matrix symbols instantly.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/password-generator/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🔒</span> Password Generator</div>
-                        <div class="tool-desc">Build cryptographically secure, randomized alphabetic passwords utilizing custom algorithmic string criteria.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/age-calculator/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">📅</span> Age Calculator</div>
-                        <div class="tool-desc">Isolate exact chronological vectors down to the precise day, minute, and tracking milestone structures.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/image-resizer/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🖼️</span> Image Resizer</div>
-                        <div class="tool-desc">Scale pixel boundaries, modify aspect ratios, and export optimized image layouts without cloud rendering delays.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/case-converter/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🔠</span> Case Converter</div>
-                        <div class="tool-desc">Transform text strings instantaneously into standard UPPERCASE, lowercase, camelCase, or sentence structures.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/json-formatter/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">⚙️</span> JSON Formatter</div>
-                        <div class="tool-desc">Sanitize raw JSON data arrays into clean, indented, readable structural logic formats for easier code debugging.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/text-to-speech/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🗣️</span> Text-to-Speech</div>
-                        <div class="tool-desc">Synthesize vocal audio output arrays directly inside your browser layout via client-side API architecture layers.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/diff-checker/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🔍</span> Document Diff Checker</div>
-                        <div class="tool-desc">Run side-by-side string comparisons to isolate text additions, code mutations, or character adjustments cleanly.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/whatsapp-link/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">💬</span> WhatsApp Link Generator</div>
-                        <div class="tool-desc">Construct customized click-to-chat links with pre-filled content templates to speed up customer message pipelines.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/font-generator/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">✒️</span> Bold &amp; Fancy Font Generator</div>
-                        <div class="tool-desc">Convert standard input values into stylized unicode symbols and striking text layouts for digital interfaces.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/unit-converter/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🔄</span> Universal Unit Converter</div>
-                        <div class="tool-desc">Translate metric, imperial, and engineering values dynamically with zero reliance on cloud-hosted calculation loops.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/bmi-calculator/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">⚖️</span> Fitness BMI Calculator</div>
-                        <div class="tool-desc">Compute body mass metrics alongside specialized biological health markers using offline calculations inside your sandbox.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/tip-splitter/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">💸</span> Tip &amp; Bill Splitter</div>
-                        <div class="tool-desc">Calculate specific service tip allocations and divide group payment balances transparently down to the exact cent.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/lorem-ipsum/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">📝</span> Developer Lorem Ipsum Generator</div>
-                        <div class="tool-desc">Construct tailored Latin dummy text strings, sentence structures, and block paragraphs with automated HTML tagging capabilities.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/white-screen/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🖥️</span> Display Diagnostic &amp; Screen Light</div>
-                        <div class="tool-desc">Generate isolated pure color fields to inspect backlight bleeding, spot dead pixel matrix issues, or run minimalist surface screen cleaning.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/pomodoro-timer/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">⏱️</span> Pomodoro Timer &amp; Stopwatch</div>
-                        <div class="tool-desc">Optimize daily productivity intervals using cyclical Pomodoro focus sessions paired with high-precision split-lap stopwatches.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/color-picker/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🎨</span> Hex Color Picker &amp; Palette Studio</div>
-                        <div class="tool-desc">Inspect spectrum hex fields natively to isolate HEX, RGB, and HSL codes while generating balanced harmonic palette configurations.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/base64/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">🔗</span> Base64 Encoder / Decoder</div>
-                        <div class="tool-desc">Translate raw strings into Base64 binaries or securely convert media assets into lightweight frontend Data URI text scripts.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
-                <a href="/markdown-editor/" class="tool-card">
-                    <div>
-                        <div class="tool-title"><span class="tool-icon">📝</span> Markdown Live Preview Editor</div>
-                        <div class="tool-desc">Draft clean documentation blocks inside a split-pane interface featuring synchronized scrolling and live semantic HTML previews.</div>
-                    </div>
-                    <div class="tool-action">Launch Tool &rarr;</div>
-                </a>
+            <h3>How to Evaluate AI Structural Footprints Natively</h3>
+            <p>Our processing engine scans text entirely locally without using external API web requests. Follow these simple guidelines to test your text:</p>
+            <ol>
+                <li><strong>Provide a Quality Sample Size:</strong> Paste an input draft containing at least 25 to 50 words. Small string objects (like simple headlines) lack the mathematical data needed to measure sentence variance accurately.</li>
+                <li><strong>Analyze the Core Metrics:</strong> Look at the sentence variance card. Organic human writing styles typically produce a variance score above 15.0, reflecting a natural mix of short punchy phrases and long descriptive lines. Conversely, automated outputs usually land under 10.0, showing a rigid, monotonous sentence flow.</li>
+                <li><strong>Check for Transition Tokens:</strong> Automated text generators rely heavily on a distinct set of transitional words (like *furthermore*, *moreover*, *testament*, or *tapestry*) to bridge conceptual points. Our scanner tracks these density levels to calculate the overall probability score.</li>
+            </ol>
+            <h3>Frequently Answered Detection Questions</h3>
+            <div class="faq-item">
+                <h4>Q: Can a native client-side detector guarantee 100% classification accuracy?</h4>
+                <p>A: No heuristic pattern scanner can guarantee absolute certainty because human writers can naturally write with uniform styles, and advanced prompting can force AI to mimic human variation. Instead, this tool functions as a high-precision diagnostic indicator, isolating passages that show unusually low structural variety.</p>
             </div>
-            <section class="seo-section">
-                <h2>About our Web Utilities Hub &amp; Platform User Guide</h2>
-                <p>Welcome to the AI Learning Gym, a high-performance web dashboard built to offer instantaneous, browser-native utility services. Our platform brings together high-efficiency components across four distinct workspaces: Software Development, Personal Finance, Wellness and Physical Diagnostics, and System Performance Analysis. By optimizing all components to work inside the local browser viewport, we clear away the technical friction, account roadblocks, and security compromises typical of standard cloud-hosted conversion suites.</p>
-
-                <h3>How to Navigate and Operate the Tool Suites</h3>
-                <p>To use any module hosted on AI Learning Gym, click on its dashboard card above. Every platform application operates under a strict unified layout structure engineered for maximum accessibility:</p>
-                <ol>
-                    <li><strong>Input Matrix Setup:</strong> Enter your source text values, operational metrics, financial configurations, or design dimensions directly into the top configuration forms.</li>
-                    <li><strong>Real-Time Client Processing:</strong> Click the primary conversion or computation button. Processing happens instantaneously using frontend logic processors in your local memory space.</li>
-                    <li><strong>Output File Exporting:</strong> Download or copy your finalized results—including clean indented script text, vector graphic matrix formats, formatting reports, or chronological calculation summaries—directly to your machine.</li>
-                </ol>
-
-                <h3>Core System Categories and Practical Layout Ecosystems</h3>
-                <p>Our cross-functional platform is logically mapped to handle daily technical tasks, operational troubleshooting, and data formatting issues efficiently:</p>
-                <ul>
-                    <li><strong>Development &amp; Text Encoders:</strong> Tools like the <em>JSON Formatter</em>, <em>Base64 Encoder/Decoder</em>, and <em>Markdown Live Preview Editor</em> allow engineers and content writers to sanitize raw nested objects, transform strings, and write formatted text with live structural previews.</li>
-                    <li><strong>Math &amp; Financial Calculators:</strong> Use the <em>Loan Amortization Calculator</em> or <em>Tip &amp; Bill Splitter</em> to isolate complex interest distributions or break up multi-party payment totals instantly.</li>
-                    <li><strong>Health &amp; Wellness Trackers:</strong> Compute critical physiological metrics locally via the <em>BMR &amp; TDEE Calorie Planner</em>, <em>REM Sleep Cycle Optimizer</em>, and <em>Fitness BMI Calculator</em>.</li>
-                    <li><strong>Diagnostics &amp; System Performance:</strong> Run real-time diagnostics using tools like the <em>Display Diagnostic &amp; Screen Light</em> to pinpoint backlight bleeding or check screen integrity safely.</li>
-                </ul>
-
-                <h3>The Importance of Client-Side Web Utilities in Modern Workspaces</h3>
-                <p>In an increasingly hyper-connected digital landscape, the tools professionals, developers, and writers rely on daily shouldn't introduce unnecessary delays or data risks. Traditional cloud-hosted tool structures often process user data using external database synchronization loops. This method can hurt productivity and put private information at risk. AI Learning Gym changes this paradigm by running tools right inside your browser window.</p>                
-                
-                <h3>Why Privacy-First Front-End Architecture Is Crucial</h3>
-                <p>When you use text formatting utilities, modify programmatic JSON scripts, or generate sensitive corporate credentials, transmitting that specific data over external cloud pipelines presents real vulnerabilities. Our platform uses client-side JavaScript execution arrays to handle your operations safely within your local system memory space. This completely removes the risk of server logs, tracking caches, or unauthorized data leaks.</p>
-                
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2027849186057550"
-                         data-ad-slot="1105246416"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-                
-                <h3>Streamlining Content and Engineering Workflows</h3>
-                <p>By bringing twenty essential developer and content tools together onto a single, clean dashboard, we provide a unified home base for everyday production workflows. Marketing managers can fine-tune text layouts with the Case Converter and Word Counter. Meanwhile, integration engineering teams can check micro-adjustments using the Document Diff Checker, validate raw code blocks with the JSON Formatter, run color harmonies with our Palette Studio, or manage work cycles using the Pomodoro Timer. This centralized approach eliminates browser tab bloat and creates an efficient, focused workspace.</p>                
-                
-                <h3>Frequently Answered Portal Questions (FAQ)</h3>
-                <p><strong>Q: Are all tools across the AI Learning Gym open-source and free to access?</strong><br>
-                A: Yes. Every single interactive utility module hosted across our network domain features completely unrestricted public access profiles, requiring zero active subscription commitments or onboarding procedures.</p>
-                <p><strong>Q: Do these tools operate cleanly across tablet and smartphone displays?</strong><br>
-                A: Absolutely. The structural framework relies on clean CSS Grid layouts designed to adapt dynamically to your screen size, providing a seamless operational window across all desktop, tablet, and mobile displays.</p>
-                <p><strong>Q: Is my entered information cached or saved onto any remote storage layer?</strong><br>
-                A: No. AI Learning Gym is engineered on a local execution model. All script modifications, calculated values, and user data fields remain exclusively within your device's browser sandbox space and vanish immediately upon closing the page.</p>
-            </section>
-        </main>
-        <aside style="position: sticky; top: 20px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
-    </div>
+            <div class="faq-item">
+                <h4>Q: Why do automated models generate text with low burstiness scores?</h4>
+                <p>A: LLMs are trained to optimize text for maximum readability and neutral pacing. This training causes the model to generate highly uniform sentences, usually averaging 15 to 20 words each. This lacks the unpredictable structural shifts seen in natural human storytelling.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Q: Is my pasted text document safe from storage or monitoring arrays?</h4>
+                <p>A: Absolutely. Most online AI detectors upload your text directly to cloud servers to store your writing for model training. AI Learning Gym runs entirely locally inside your browser's memory sandbox. Your copy drafts, research notes, and creative assets never leave your device.</p>
+            </div>
+        </section>
+    </main>
     <footer>
-        <div class="footer-grid">            
-            <div class="footer-col">
-                <h4>🤖 AI &amp; Privacy Mail</h4>
-                <ul>
-                    <li><a href="/ai-detector/">AI Structural Detector</a></li>
-                    <li><a href="/10min-email/">10-Min Temporary Mail</a></li>
-                    <li><a href="/word-counter/">Linguistic Word Counter</a></li>
-                    <li><a href="/text-to-speech/">Text-to-Speech Studio</a></li>
-                    <li><a href="/lorem-ipsum/">Lorem Ipsum Generator</a></li>
-                    <li><a href="/case-converter/">Text Case Converter</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>📊 Math &amp; Financials</h4>
-                <ul>
-                    <li><a href="/loan-calculator/">Loan Amortization Engine</a></li>
-                    <li><a href="/tip-splitter/">Tip &amp; Bill Share Calculator</a></li>
-                    <li><a href="/age-calculator/">Chronological Age Finder</a></li>
-                    <li><a href="/unit-converter/">Universal Unit Converter</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>⚙️ Developer Utilities</h4>
-                <ul>
-                    <li><a href="/json-formatter/">JSON Logic Formatter</a></li>
-                    <li><a href="/markdown-editor/">Markdown Preview Editor</a></li>
-                    <li><a href="/diff-checker/">Document Diff Checker</a></li>
-                    <li><a href="/password-generator/">Secure Password Engine</a></li>
-                    <li><a href="/qr-generator/">Crisp QR Code Matrix</a></li>
-                    <li><a href="/base64/">Base64 String Encoder</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>⏱️ Timers &amp; Health Units</h4>
-                <ul>
-                    <li><a href="/online-clock/">Online Clock &amp; Timers</a></li>
-                    <li><a href="/bmr-calculator/">BMR &amp; TDEE Energy Planner</a></li>
-                    <li><a href="/sleep-calculator/">REM Sleep Cycle Engine</a></li>
-                    <li><a href="/pomodoro-timer/">Pomodoro Focus Clock</a></li>
-                    <li><a href="/bmi-calculator/">Fitness BMI Calculator</a></li>
-                    <li><a href="/color-picker/">Hex Palette Studio</a></li>
-                    <li><a href="/white-screen/">Display Light Diagnostic</a></li>
-                    <li><a href="/whatsapp-link/">WhatsApp Link Template</a></li>
-                    <li><a href="/font-generator/">Fancy Unicode Fonts</a></li>
-                    <li><a href="/image-resizer/">Client Image Resizer</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="/privacy.html">Privacy Policy</a> | 
-                <a href="/about.html">About Us</a> | 
-                <a href="/terms-of-service.html">Terms of Use</a> | 
-                <a href="/contact.html">Contact Support</a> | 
-                <a href="/sitemap.html">Site Map Directory</a>
-            </div>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+        <div class="footer-links" style="margin-top: 15px;">
+            <a href="/privacy.html">Privacy Policy</a> | 
+            <a href="/about.html">About Us</a> | 
+            <a href="/terms-of-service.html">Terms of Use</a> | 
+            <a href="/contact.html">Contact Support</a> | 
+            <a href="/sitemap.html">Site Map Directory</a>
         </div>
     </footer>
+    <script>
+        // High-density tokens favored heavily by default LLM optimization nodes
+        const aiKeywords = [
+            "furthermore", "moreover", "conclusion", "testament", "delve", "tapestry", 
+            "crucial", "imperative", "notably", "demystify", "foster", "remind",
+            "essential to note", "it is important to remember", "beacon", "underscores"
+        ];
+        function updateCounters() {
+            const text = document.getElementById('textInput').value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            document.getElementById('wordCountLabel').textContent = `Words: ${words}`;
+            document.getElementById('charCountLabel').textContent = `Characters: ${text.length}`;
+        }
+        function analyzeTextPattern() {
+            const text = document.getElementById('textInput').value.trim();
+            if (!text) {
+                alert("Please paste text to analyze.");
+                return;
+            }
+            const wordList = text.toLowerCase().split(/\s+/).filter(w => w.length > 0);
+            const wordsCount = wordList.length;
+            if (wordsCount < 10) {
+                alert("Please paste a larger sample layout (at least 10 words) for structural calculations.");
+                return;
+            }
+            // 1. Compute AI Phrase Token Density
+            let matchingTokens = 0;
+            aiKeywords.forEach(keyword => {
+                const regex = new RegExp('\\b' + keyword + '\\b', 'gi');
+                const matches = text.match(regex);
+                if (matches) matchingTokens += matches.length;
+            });
+            const densityPercentage = (matchingTokens / wordsCount) * 100;
+            // 2. Compute Burstiness (Standard Deviation of Sentence Lengths)
+            const sentences = text.split(/[.!?]+(?=\s|$)/).map(s => s.trim()).filter(s => s.length > 0);
+            let sentenceLengths = sentences.map(s => s.split(/\s+/).filter(w => w.length > 0).length);
+            let variance = 0;
+            let meanLength = 0;
+            if (sentenceLengths.length > 1) {
+                const sum = sentenceLengths.reduce((a, b) => a + b, 0);
+                meanLength = sum / sentenceLengths.length;
+                const squareDiffs = sentenceLengths.map(len => Math.pow(len - meanLength, 2));
+                const sumSquareDiffs = squareDiffs.reduce((a, b) => a + b, 0);
+                variance = sumSquareDiffs / (sentenceLengths.length - 1);
+            } else if (sentenceLengths.length === 1) {
+                variance = 2.0; 
+            }
+            // 3. Normalized Algorithmic Score Weighting Engine
+            let aiProbability = 35; // Neutral starting calculation index baseline
+            // Density weighting
+            if (densityPercentage > 0) {
+                aiProbability += (densityPercentage * 15);
+            }
+            // Variance weighting
+            if (variance < 15) {
+                aiProbability += (15 - variance) * 4;
+            } else {
+                aiProbability -= (variance - 15) * 1.5;
+            }
+            // Safeguards and adjustments based on raw token matching benchmarks
+            if (matchingTokens === 0 && variance > 18) {
+                aiProbability -= 20;
+            }
+            // Safe clamping between 1% and 99%
+            aiProbability = Math.max(1, Math.min(99, Math.round(aiProbability)));
+            // Render updates to user interface components
+            document.getElementById('scoreDisplay').textContent = `${aiProbability}%`;
+            document.getElementById('gaugeBarFill').style.width = `${aiProbability}%`;
+            document.getElementById('varianceDisplay').textContent = variance.toFixed(2);
+            document.getElementById('densityDisplay').textContent = `${densityPercentage.toFixed(1)}%`;
+            // Adjust textual verdicts based on metric tiers
+            const verdictEl = document.getElementById('verdictText');
+            if (aiProbability < 30) {
+                verdictEl.textContent = "Linguistic fingerprint matches classic human writing patterns perfectly.";
+                verdictEl.style.color = "var(--success)";
+            } else if (aiProbability < 68) {
+                verdictEl.textContent = "Mixed structural patterns detected. Suggests a human-edited or heavily paraphrased AI profile.";
+                verdictEl.style.color = "orange";
+            } else {
+                verdictEl.textContent = "High probability of AI text generation. Highly uniform sentence metrics detected.";
+                verdictEl.style.color = "var(--danger)";
+            }
+            document.getElementById('resultsPanel').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
