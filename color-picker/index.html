@@ -115,7 +115,7 @@
             width: 100%;
             height: 150px;
             border-radius: 6px;
-            border: 2px solid var(--card-border);
+            border: 1px solid var(--card-border);
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
             transition: background-color 0.1s ease;
         }
@@ -252,6 +252,8 @@
         .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
         .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
         .seo-section p { margin-bottom: 15px; color: #4a5568; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
 
         /* --- Standard Footer --- */
         footer {
@@ -330,6 +332,26 @@
             </section>
 
             <section class="seo-section">
+                <h2>About this Tool &amp; User Guide</h2>
+                <p>The Free Advanced Hex Color Picker &amp; Palette Generator is an interactive digital design suite engineered to calculate color mutations, translate hex values, and build dynamic harmonic matching swatches instantly inside your browser. Optimized for web designers, brand developers, and frontend programmers, this tool handles complex color wheel geometries smoothly. Operating entirely client-side, the utility processes color models locally within transient device layers, providing total privacy with zero remote telemetry logging.</p>
+
+                <h3>How to Operate the Color Studio Panels</h3>
+                <p>Sampling hex codes and formulating balanced color schemes is simple. Execute these process steps to generate your digital style palettes:</p>
+                <ol>
+                    <li><strong>Isolate a Core Color:</strong> Click the central color swatch square box to open your operating system's native color picker interface modal, or click <em>Roll Random Color</em> to trigger a randomized seed color.</li>
+                    <li><strong>Extract Translation Formats:</strong> Review the adjacent value stack rows, which instantly show the chosen color mapped perfectly into Hex formatting tags, comma-separated RGB profiles, and circular HSL parameters.</li>
+                    <li><strong>Explore Harmony Scheme Arrays:</strong> Scroll down to browse your programmatically generated palette blocks, including Analogous, Complementary, and Triadic color combinations.</li>
+                    <li><strong>Copy Values and Swap Focus:</strong> Click the <em>Copy</em> button next to any format text string to save it directly to your clipboard. You can also click on any small generated palette color tile below to instantly load it as your main focus color.</li>
+                </ol>
+
+                <h3>Core Chromatic Features Detailed</h3>
+                <p>This UI application runs multiple mathematical translation pipelines concurrently to generate fluid visual schemes:</p>
+                <ul>
+                    <li><strong>Real-Time Value Cross-Mapping:</strong> The script reads hex base-16 structures, calculates the individual channels to output absolute RGB weights (0 to 255), and uses geometric formulas to plot matching angular HSL profiles instantly.</li>
+                    <li><strong>Programmatic Color Schemes:</strong> The color engine shifts hue settings along the circular 360-degree axis to construct natural-looking Analogous variations ($\pm15^\circ$ offsets), sharp Complementary balances ($180^\circ$ direct opposition), and perfectly spaced Triadic combinations ($120^\circ$ steps).</li>
+                    <li><strong>Non-Invasive Interactive Elements:</strong> Clicking any color swatch automatically runs the entire translation loop backwards, allowing designers to jump between colors and test harmonies smoothly without losing their workflow.</li>
+                </ul>
+
                 <h2>The Math and Chromatic Physics Behind Digital Color Models</h2>
                 <p>Welcome to the visual translation grid at AI Learning Gym. In digital design, interface styling, and core software engineering, managing the visual spectrum requires translating raw colors into standardized mathematical coordinate languages. Displays use physical light arrays to display graphics. Shifting between color models (like hex arrays, integer ratios, or coordinate degrees) is essential for modern front-end styling rules.</p>
                 
@@ -357,6 +379,9 @@
                 
                 <p><strong>Q: Can I click on the computed palette swatches to update the main workspace values?</strong><br>
                 A: Yes. Every generated swatch element across our harmony grids works as an interactive link. Clicking a box imports that specific hex value directly back into the primary workspace, making it fast and easy to build out your style sheets.</p>
+
+                <p><strong>Q: Why do some converted HSL percentage values show slight rounding differences across other online pickers?</strong><br>
+                A: Standard decimal calculations often produce repeating fractions during the translation from base-16 integers to a base-10 percentage matrix. Our engine rounds these results to the nearest whole integer to ensure your styling sheets stay clean, standard, and easy to read.</p>
             </section>
 
         </main>
@@ -380,7 +405,7 @@
         <p>
             <a href="/privacy-policy.html">Privacy Policy</a> | 
             <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a>
+            <a href="/contact.html">Contact Support</a> |
             <a href="/sitemap.html">Site Map Directory</a>
         </p>
     </footer>
