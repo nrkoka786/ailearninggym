@@ -204,6 +204,8 @@
         .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
         .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
         .seo-section p { margin-bottom: 15px; color: #4a5568; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
 
         /* --- Standard Footer --- */
         footer {
@@ -272,6 +274,27 @@
             </section>
 
             <section class="seo-section">
+                <h2>About this Tool &amp; User Guide</h2>
+                <p>The Free Online Visual Text Diff Checker is a side-by-side comparative analysis dashboard engineered to spot textual variations, script alterations, and structural string updates instantly. Optimized for version tracking, text document editing, and structural data cleanup, this platform processes raw strings line-by-line. Operating strictly client-side, the utility performs comparisons locally within your browser sandbox, guaranteeing absolute privacy by leaving your source code lines completely isolated from remote storage layers.</p>
+
+                <h3>How to Operate the Visual Comparison Workspace</h3>
+                <p>Auditing draft variations or identifying file adjustments maps to an intuitive process. Execute these functional steps to process your files:</p>
+                <ol>
+                    <li><strong>Set Up Baseline Target (Text A):</strong> Paste your starting text, master manuscript, or source script array into the left workspace container marked <em>Original Base Document (Text A)</em>.</li>
+                    <li><strong>Set Up Modified Version (Text B):</strong> Paste your updated documentation branch or current copy variant into the adjacent field marked <em>Updated Modified Document (Text B)</em>.</li>
+                    <li><strong>Run the Differential Analyzer:</strong> Click the blue <em>Compare Documents</em> action trigger to initialize the local line-by-line evaluation parser.</li>
+                    <li><strong>Analyze Visual Mutations:</strong> Review the twin output code blocks generated underneath. The system highlights modified segments immediately: matching text lines remain neutral, removed sections turn red with a strike-through indicator, and new insertions turn bright green.</li>
+                    <li><strong>Reset the Dashboard:</strong> Click <em>Clear Fields</em> to empty all text areas and hide the output panels, preparing the memory frame for a new analysis loop.</li>
+                </ol>
+
+                <h3>Core Comparative Features Detailed</h3>
+                <p>Our client-side text processing framework applies synchronized index array queries to deliver accurate visual difference highlights:</p>
+                <ul>
+                    <li><strong>Carriage Return Line Segregation:</strong> The script scans string contents and splits parameters into discrete index rows using carriage return anchors (`\n`). This process preserves structural indentation context perfectly for both programming files and basic text paragraphs.</li>
+                    <li><strong>XSS Protection &amp; Safe HTML Escaping:</strong> To prevent unexpected script execution or formatting rendering failures when parsing source code (like raw HTML/XML tags), the engine includes an internal translation wrapper that converts characters like `&lt;` and `&gt;` securely before displaying results.</li>
+                    <li><strong>Transient Memory Caching:</strong> All compared lines and generated outputs exist exclusively within the browser viewport's virtual DOM structure, vanishing permanently upon tab termination.</li>
+                </ul>
+
                 <h2>The Role of Text Differentiation Algorithms in Quality Control</h2>
                 <p>Welcome to the document auditing engine at AI Learning Gym. Tracking micro-modifications between separate editorial lines or code scripts is foundational to software version management and copy editing. Manually cross-examining long textual lines frequently induces fatigue, leading to oversight. Utilizing an automated differential tracking layout isolates additions instantly.</p>
                 
@@ -299,6 +322,9 @@
                 
                 <p><strong>Q: Does this checker flag single letter anomalies within a modified sentence?</strong><br>
                 A: This lightweight tool operates using clean line-by-line verification arrays, highlighting complete rows that contain changes. This provides a highly clean visual bird's-eye view for organizing long documentation modules.</p>
+
+                <p><strong>Q: How does the comparison script handle blank or empty spacing lines smoothly?</strong><br>
+                A: When the analyzer matches an empty line index, the system applies a non-breaking HTML white space entity (`&amp;nbsp;`) to the display code. This keeps your side-by-side row alignments perfectly synced visually, even when one document has extra line breaks.</p>
 
                 <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free Online Document Diff Checker</h3>
                 <p>Isolating text mutations with our Document Diff Checker is fast and accurate. Input your original source code block or text manuscript into the first display box, place your revised document layout into the adjacent container, and run a side-by-side string comparison instantly.</p>
@@ -328,7 +354,7 @@
         <p>
             <a href="/privacy-policy.html">Privacy Policy</a> | 
             <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a>
+            <a href="/contact.html">Contact Support</a> |
             <a href="/sitemap.html">Site Map Directory</a>
         </p>
     </footer>
