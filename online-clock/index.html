@@ -12,7 +12,6 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ailearninggym.com/online-clock/">
 
-    <!-- GLOBAL GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -21,7 +20,6 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
-    <!-- GLOBAL GOOGLE ADSENSE SCRIPT -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
 
     <script type="application/ld:json">
@@ -340,7 +338,7 @@
             font-size: 0.95rem;
         }
 
-        /* --- Live Ad Layout Systems with Fixed Grid Centering (Fixed image_56d0a5.png issue) --- */
+        /* --- Live Ad Layout Systems with Fixed Grid Centering --- */
         .ad-container { 
             margin: 35px auto; 
             text-align: center; 
@@ -435,7 +433,6 @@
             <button class="tab-btn" data-target="panel-world">🌐 World Clock</button>
         </div>
 
-        <!-- ================= ALARM PANEL ================= -->
         <div id="panel-alarm" class="panel-card active">
             <h2>Set Web Alarm</h2>
             <div class="input-group">
@@ -464,7 +461,6 @@
             <div id="alarmStatus" class="status-alert"></div>
         </div>
 
-        <!-- ================= TIMER PANEL ================= -->
         <div id="panel-timer" class="panel-card">
             <h2>Countdown Interval Timer</h2>
             <div id="timerInputArea" class="input-group">
@@ -479,7 +475,6 @@
             </div>
         </div>
 
-        <!-- ================= STOPWATCH PANEL ================= -->
         <div id="panel-stopwatch" class="panel-card">
             <h2>Precision Split Stopwatch</h2>
             <div id="stopwatchDisplay" class="stopwatch-display">00:00.00</div>
@@ -491,7 +486,6 @@
             <div id="lapBox" class="lap-box"></div>
         </div>
 
-        <!-- ================= WORLD CLOCK PANEL ================= -->
         <div id="panel-world" class="panel-card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
                 <h2>Global Timezone Monitors</h2>
@@ -561,7 +555,6 @@
             </div>
         </div>
 
-        <!-- Google AdSense Adaptive Visual Framework Unit Placement -->
         <div class="ad-container">
             <ins class="adsbygoogle"
                  style="display:block"
@@ -572,11 +565,30 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- HIGH VALUE SEO ARTICLE SECTION FOR QUALITY EVALUATION -->
         <section class="seo-section">
+            <h2>About this Tool &amp; User Guide</h2>
+            <p>The Online World Clock &amp; Precision Timing Studio is a browser-native time-management workstation featuring four modular functional sub-systems: an interactive Web Alarm framework, an interval Countdown Timer, a centisecond Split Stopwatch, and a live four-slot World Clock timezone engine. Built to eliminate execution lag, this utility calculates standard time shifts, countdown steps, and lap captures directly on your local device without sending your settings or tracking data to remote servers.</p>
+
+            <h3>How to Use the Integrated Timing Suite</h3>
+            <p>Navigating between the application panels and managing your time goals follows a clean, single-page interface layout:</p>
+            <ol>
+                <li><strong>Select Active Utility:</strong> Click the navigation tabs located above the dashboard (Alarm, Timer, Stopwatch, World Clock) to switch workspaces instantly.</li>
+                <li><strong>Configure Alarms &amp; Countdowns:</strong> Under the <em>Alarm</em> panel, choose your hours and minutes from the drop-down selectors and click <em>Set Alarm</em>. For countdown intervals, input your desired duration values inside the minutes/seconds fields and trigger <em>Start Timer</em>.</li>
+                <li><strong>Operate the Split Stopwatch:</strong> Launch the centisecond counter using the primary <em>Start</em> button. While active, use the <em>Lap</em> trigger to log specific split times to the scrollable lap history layout below.</li>
+                <li><strong>Customize World Clock Zones:</strong> Access the <em>World Clock</em> view panel to monitor global timelines concurrently. Click the drop-down menus within any of the four grid items to map your chosen international city instantly.</li>
+                <li><strong>Personalize the Visual Interface:</strong> Select your preferred display style using the theme selector at the top-right corner to toggle between Dark Slate, Deep Midnight, or Crisp Light.</li>
+            </ol>
+
+            <h3>Core Temporal Functions Detailed</h3>
+            <p>Our client-side architecture leverages advanced native browser APIs to ensure timing precision across separate views:</p>
+            <ul>
+                <li><strong>Delta Time Calculations:</strong> To prevent processing delay dependencies common in standard execution intervals, the stopwatch runs on hardware delta trackers. It compares your initial click moment with the active system timestamp, keeping loops precise down to the millisecond even if the tab sits idle in the background.</li>
+                <li><strong>Intl.DateTimeFormat Localization:</strong> The world clock grid bypasses hardcoded text conversions. Instead, it queries the browser's native Internationalization API (`Intl.DateTimeFormat`) to map time structures relative to localized standard IANA database rules on the fly.</li>
+                <li><strong>Audio Oscillator Synthesis:</strong> When countdown limits expire or alarms activate, the system triggers the browser's local Web Audio API, generating clear audio alert tones natively without relying on external `.mp3` file assets.</li>
+            </ul>
+
             <h2>The Engineering Mechanics of Distributed Time Coordination</h2>
             <p>Welcome to the core temporal processing studio at AI Learning Gym. Across modern web frameworks, continuous integration pipelines, and international market environments, managing absolute time metrics is crucial. Standard network tools introduce connection delays when fetching data from remote cloud databases. This application removes those errors by executing your tracking routines locally via native client-side frameworks.</p>
-            
             <p>Managing workflows across boundaries requires an understanding of time structures. The international standard for time measurement is <strong>Coordinated Universal Time (UTC)</strong>, which establishes a baseline independent of regional daylight changes. By anchoring operations to a central timeline, developer environments avoid server logging issues, database out-of-sync alerts, and file merge errors.</p>
 
             <h3>Key Benefits of Client-Side Chronological Tracking</h3>
@@ -606,23 +618,20 @@
             </ol>
 
             <h3>Frequently Answered Time Keeping Questions</h3>
-            
             <div class="faq-card">
                 <h4>Q: Why do world clock values differ from basic calendar settings?</h4>
                 <p>A: World clocks use geographical time zone identifiers to calculate offsets from Coordinated Universal Time (UTC). This grid automatically adjusts for regional daylight saving mutations without shifting your local machine's base timeline settings.</p>
             </div>
-            
             <div class="faq-card">
                 <h4>Q: How does the alert mechanism function if my computer volume is turned off?</h4>
                 <p>A: The system sounds alarms via the browser's integrated client-side Web Audio API, which triggers localized audio waveforms directly through your active output channel. If hardware lines are fully muted, the app handles notifications by launching a high-visibility modal pop-up banner.</p>
             </div>
-
             <div class="faq-card">
                 <h4>Q: Does using the split stopwatch module strain background browser processing?</h4>
                 <p>A: Not at all. Our tracking scripts run on highly efficient delta calculations that measure the time difference between your start click and the current moment. This lightweight script layout eliminates background processing strain, keeping your browser fast and responsive.</p>
             </div>
         </section>
-    </div>
+    </main>
 
     <footer>
         <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
@@ -666,8 +675,8 @@
                 osc.type = 'sine';
                 osc.frequency.value = 880; // Secure pitch notification frequency
                 gain.gain.setValueAtTime(1, context.currentTime);
-                osc.start();
                 gain.gain.exponentialRampToValueAtTime(0.001, context.currentTime + 1.5);
+                osc.start();
                 osc.stop(context.currentTime + 1.5);
             } catch (e) {
                 console.log("Audio pipeline initializing requires user interaction focus first.");
