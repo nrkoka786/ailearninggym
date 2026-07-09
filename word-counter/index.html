@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Word Counter & Text Analyzer | AI Learning Gym</title>
+    <title>Free Online Word Counter &amp; Text Analyzer | AI Learning Gym</title>
     <meta name="description" content="Count words, characters, and paragraphs in real-time. Free comprehensive manuscript text analyzer displaying estimated reading time scores.">
     <meta name="keywords" content="online word counter, character density counter, paragraph tracker tool, estimated reading time, essay word counter">
     
-    <meta property="og:title" content="Free Online Word Counter & Text Analyzer | AI Learning Gym">
+    <meta property="og:title" content="Free Online Word Counter &amp; Text Analyzer | AI Learning Gym">
     <meta property="og:description" content="Monitor exact draft limits and analyze typographic structures instantly inside our native text counting analytics dashboard.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ailearninggym.com/word-counter/">
@@ -125,7 +125,7 @@
             .metrics-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
-        .metric-card {
+        .summary-card-p {
             background: #f8fafc;
             border-left: 4px solid var(--accent-color);
             padding: 15px;
@@ -134,7 +134,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        .metric-card .num-val {
+        .summary-card-p .num-val {
             display: block;
             font-size: 1.8rem;
             font-weight: 700;
@@ -144,7 +144,7 @@
             font-family: monospace;
         }
 
-        .metric-card .label-text {
+        .summary-card-p .label-text {
             font-size: 0.8rem;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -179,6 +179,7 @@
             border-radius: 8px;
             border: 1px solid var(--card-border);
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: left;
         }
 
         .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
@@ -223,24 +224,24 @@
             </div>
 
             <section class="tool-wrapper" aria-label="Text Counter Workstation">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark); font-size: 1.3rem;">Real-Time Character & Word Analytics Dashboard</h2>
+                <h2 style="margin-bottom: 15px; color: var(--text-dark); font-size: 1.3rem;">Real-Time Character &amp; Word Analytics Dashboard</h2>
                 
                 <textarea id="analyzer-textarea" class="text-input-area" placeholder="Start typing or paste your content script elements here to monitor character lengths, structural densities, and paragraph breaks automatically..."></textarea>
 
                 <div class="metrics-grid">
-                    <div class="metric-card">
+                    <div class="summary-card-p">
                         <span id="word-count" class="num-val">0</span>
                         <span class="label-text">Words</span>
                     </div>
-                    <div class="metric-card">
+                    <div class="summary-card-p">
                         <span id="char-count" class="num-val">0</span>
                         <span class="label-text">Characters</span>
                     </div>
-                    <div class="metric-card">
+                    <div class="summary-card-p">
                         <span id="paragraph-count" class="num-val">0</span>
                         <span class="label-text">Paragraphs</span>
                     </div>
-                    <div class="metric-card">
+                    <div class="summary-card-p">
                         <span id="reading-time" class="num-val">0m</span>
                         <span class="label-text">Est. Read Time</span>
                     </div>
@@ -253,8 +254,28 @@
             </section>
 
             <section class="seo-section">
+                <h2>About this Tool &amp; User Guide</h2>
+                <p>The Free Online Word Counter &amp; Text Analyzer is an interactive, real-time linguistic monitoring dashboard engineered to calculate character densities, track paragraph structures, and project estimated reading durations entirely inside your browser. Built for web copywriters, academic authors, editors, and digital marketers, this application helps you audit document thresholds with absolute precision. Operating 100% client-side, the workspace processes all text entries inside your device's temporary local memory layers, keeping information completely private and safe from cloud data indexing or background tracking server loops.</p>
+
+                <h3>How to Operate the Real-Time Text Analyzer</h3>
+                <p>Monitoring manuscript lengths and reviewing textual parameters follows a simple, seamless layout process. Follow these instructions to audit your drafts:</p>
+                <ol>
+                    <li><strong>Input Draft Copy Placement:</strong> Type directly or paste your text lines into the primary container editing area marked <em>Real-Time Character &amp; Word Analytics Dashboard</em>.</li>
+                    <li><strong>Observe Live Metrics Calculation:</strong> Review the analytical metrics rows immediately. The front-end processing script reads your characters on every single keystroke, dynamically computing overall word volume balances, exact character lengths, paragraph breaks, and reading speeds.</li>
+                    <li><strong>Export Your Content Payload:</strong> Click the gray <em>Copy Text</em> action button to quickly capture your entire document straight to your computer's clipboard buffer.</li>
+                    <li><strong>Reset the Workspace Canvas:</strong> Click the red <em>Clear Sandbox</em> button to wipe the workspace input field, flushing out temporary cache parameters cleanly to begin a brand-new analysis loop.</li>
+                </ol>
+
+                <h3>Core Text Auditing Properties Detailed</h3>
+                <p>Our client-side processing core relies on robust character parsing methods to deliver reliable analysis tallies across separate metrics:</p>
+                <ul>
+                    <li><strong>Regular Expression Word Extraction:</strong> Standard word counting tools frequently map numbers incorrectly when parsing consecutive trailing spaces or carriage returns. This engine utilizes strict regular expression criteria (`/\s+/`) to isolate word structures cleanly based on true boundary changes.</li>
+                    <li><strong>Granular Paragraph Break Tracking:</strong> The script scans document blocks for explicit line-feed anchors (`\n+`), filtering out completely empty spaces to ensure that header gaps or structural carriage breaks do not throw off your paragraph totals.</li>
+                    <li><strong>Literacy Acceleration Projections:</strong> To compute actionable engagement parameters for authors, the tool applies a standardized literacy constant, evaluating overall text volume against an average reading comprehension speed of 200 words per minute.</li>
+                </ul>
+
                 <h2>Optimizing Content Metrics for Modern Search Standards</h2>
-                <p>Welcome to the advanced text auditing engine at AI Learning Gym. In the layout landscape of modern content production, calculating document length vectors is no longer just about tracking random spacing. It serves as a vital analytics process. Search indexing algorithms look for complete semantic content frameworks, meaning copywriters, student academics, and digital marketers require micro-level density visibility to target exact optimization markers smoothly.</p>
+                <p>In the layout landscape of modern content production, calculating document length vectors is no longer just about tracking random spacing. It serves as a vital analytics process. Search indexing algorithms look for complete semantic content frameworks, meaning copywriters, student academics, and digital marketers require micro-level density visibility to target exact optimization markers smoothly.</p>
                 
                 <h3>The Technical Breakdown of String Verification Logic</h3>
                 <p>Simple code parameters frequently fall out of sync when parsing messy space blocks or formatting carriage returns. Our client-side rendering architecture avoids basic index errors by employing targeted regular expressions. By executing global filters across raw input configurations, the tool separates hidden line breaks from formal sentence characters, guaranteeing pinpoint validation totals even when parsing complicated text files.</p>
@@ -272,7 +293,7 @@
                 <ul style="list-style-type: disc;">
                     <li><strong>Word Count Processing:</strong> Isolates individual string blocks by identifying white spaces, giving you an exact measurement for long-form content requirements.</li>
                     <li><strong>Character Allocation Matrix:</strong> Measures exact character arrays, crucial for drafting fine-tuned metadata tags or social media copy.</li>
-                    <li><strong>Sentence & Paragraph Isolation:</strong> Analyzes punctuation marks to measure total sentence structures, helping you evaluate reading ease and structural variety.</li>
+                    <li><strong>Sentence &amp; Paragraph Isolation:</strong> Analyzes punctuation marks to measure total sentence structures, helping you evaluate reading ease and structural variety.</li>
                 </ul>
 
                 <h3>Frequently Answered Text Counting Questions (FAQ)</h3>
@@ -290,6 +311,11 @@
                 <div class="faq-item">
                     <h4>Q: Why do different word counting tools show slightly different numbers?</h4>
                     <p>A: Variations happen because different programs use different formatting rules. Some counters treat hyphenated paths (like "privacy-first") as a single word, while others split them into two. Our analyzer handles compound terms, punctuation breaks, and spaces uniformly to match standard commercial publishing rules.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q: Can this text analyzer accurately calculate metrics for non-English character languages?</h4>
+                    <p>A: The underlying JavaScript string length tracker reads standard Unicode character weights correctly across all international languages, including accented characters and Asian glyphs. However, because languages like Chinese or Japanese do not separate words with space boundaries, word-splitting counts are optimized specifically for space-separated character frameworks.</p>
                 </div>
 
                 <h3>Streamlined Local Text Analytics</h3>
