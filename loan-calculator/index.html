@@ -52,9 +52,10 @@
             --text-muted: #64748b;
             --card-border: #e2e8f0;
             --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
         body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
         
         header {
@@ -65,7 +66,8 @@
             border-bottom: 4px solid var(--accent-color);
         }
         header h1 { font-size: 2rem; margin-bottom: 8px; }
-        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 5px; }
+        header p { color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 5px; font-weight: bold; }
         header a:hover { color: var(--accent-color); }
 
         /* Flexible Grid Base Architecture Layout */
@@ -166,6 +168,7 @@
             border-radius: 8px;
             border: 1px solid var(--card-border);
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: left;
         }
         .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
         .seo-section h3 { color: #34495e; margin: 25px 0 10px 0; font-size: 1.15rem; }
@@ -249,6 +252,26 @@
             </div>
 
             <main class="seo-section">
+                <h2>About this Tool &amp; User Guide</h2>
+                <p>The Free Loan Amortization Calculator is an interactive financial modeling workbench engineered to compute fixed-rate monthly installments and map comprehensive payment schedules natively inside your browser. Built for homebuyers, auto shoppers, and personal finance planners, this application isolates interest distribution metrics down to the single month. Operating 100% client-side, the utility processes all credit parameters locally inside your browser sandbox layout, providing absolute financial data privacy with no server caching or telemetry tracking loops.</p>
+
+                <h3>How to Use the Amortization Engine Workspace</h3>
+                <p>Modeling loan trajectories and checking your multi-year principal lifespans maps to a direct, intuitive workflow. Execute these steps to analyze your debt profiles:</p>
+                <ol>
+                    <li><strong>Establish Principal Balance:</strong> Input the base amount of capital you intend to borrow into the form field labeled <em>Loan Principal Balance ($)</em> (exclude any initial down payments).</li>
+                    <li><strong>Set Annual Interest Factor:</strong> Type the nominal fixed annual percentage rate (APR) assigned by your financing platform into the box marked <em>Annual Interest Rate (%)</em>.</li>
+                    <li><strong>Configure Loan Duration Term:</strong> Input the complete lifespan of the agreement in raw calendar years (such as 5, 15, or 30 years) inside the <em>Term Duration (Years)</em> configuration field.</li>
+                    <li><strong>Execute Financial Computation:</strong> Click the primary blue <em>Run Amortization Computation</em> action trigger. The system processes your entries instantly, revealing a comprehensive summary box along with a complete scrollable data table.</li>
+                </ol>
+
+                <h3>Core Financial Outputs Explained</h3>
+                <p>The calculation core outputs three integrated metrics that let you audit long-term borrowing variables smoothly:</p>
+                <ul>
+                    <li><strong>Monthly Installment (P+I):</strong> The fixed baseline payment required every month to clear your debt balance exactly at the end of the term. This incorporates both principal restoration and localized interest fees.</li>
+                    <li><strong>Cumulative Interest Cost:</strong> The complete lifetime fee paid directly to your lending bank for using their capital, showing the long-term financial premium of the loan.</li>
+                    <li><strong>Total Lifetime Expenditure:</strong> The absolute long-term cost of the liability, calculated by combining your initial borrowed principal with your cumulative interest fees.</li>
+                </ul>
+
                 <h2>Understanding the Mechanics of Loan Amortization Schedules</h2>
                 <p>When entering a long-term borrowing arrangement—such as a fixed-rate mortgage, automobile purchase agreement, or business installment line—the headline interest parameter tells only part of the story. To map out your actual financial future, you need to understand exactly how each monthly payment is divided. This process is governed by a mathematical standard known as <strong>amortization</strong>.</p>
                 <p>Our client-side computation engine parses your principal baseline against active calendar-rate vectors to build an instantaneous payment schedule. This breakdown allows you to visualize exactly how your debt reduces over time, helping you make smart, strategic financial decisions right from your browser.</p>
@@ -264,19 +287,14 @@
                 <h3>The Fundamental Amortization Formula Explained</h3>
                 <p>To calculate the systematic fixed monthly installment amount required to completely wipe out a debt balance, financial systems rely on a standard mathematical equation:</p>
                 
-                <p style="text-align: center; font-weight: 700; margin: 20px 0; font-size: 1.2rem; background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid var(--card-border); font-family: monospace; color: var(--text-dark);">
-                    M = P &times; <span style="display: inline-block; vertical-align: middle; text-align: center; margin: 0 4px;">
-                        <span style="display: block; border-bottom: 1px solid var(--text-dark); padding: 0 4px;">i(1 + i)<sup>n</sup></span>
-                        <span style="display: block; padding: 0 4px;">(1 + i)<sup>n</sup> - 1</span>
-                    </span>
-                </p>
+                $$M = P \times \frac{i(1 + i)^n}{(1 + i)^n - 1}$$
                 
                 <p>Where the variable items are mapped across specific profiles:</p>
                 <ul style="margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; list-style-type: disc;">
-                    <li style="margin-bottom: 8px;"><strong>M:</strong> The total calculated regular installment payment required each month.</li>
-                    <li style="margin-bottom: 8px;"><strong>P:</strong> The initial principal capital balance borrowed.</li>
-                    <li style="margin-bottom: 8px;"><strong>i:</strong> The periodic interest factor (computed by dividing the nominal annual percentage rate by 12 monthly cycles).</li>
-                    <li style="margin-bottom: 8px;"><strong>n:</strong> The complete tracking collection of total payments (calculated by multiplying the term lifespan years by 12).</li>
+                    <li style="margin-bottom: 8px;"><strong>$M$:</strong> The total calculated regular installment payment required each month.</li>
+                    <li style="margin-bottom: 8px;"><strong>$P$:</strong> The initial principal capital balance borrowed.</li>
+                    <li style="margin-bottom: 8px;"><strong>$i$:</strong> The periodic interest factor (computed by dividing the nominal annual percentage rate by 12 monthly cycles).</li>
+                    <li style="margin-bottom: 8px;"><strong>$n$:</strong> The complete tracking collection of total payments (calculated by multiplying the term lifespan years by 12).</li>
                 </ul>
 
                 <div class="ad-container">
@@ -303,6 +321,11 @@
                 <div class="faq-item">
                     <h4>Q: How does choosing a shorter loan term change my long-term costs?</h4>
                     <p>A: Selecting a shorter loan lifespan (like a 15-year term instead of a 30-year option) increases your individual monthly payment amount. However, because it wipes out the core principal balance much faster, it significantly reduces the cumulative lifetime interest fees you pay over the life of the loan.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q: Can I apply extra monthly payments inside this standard amortization layout tracking framework?</h4>
+                    <p>A: This baseline app models fixed structural schedules under static payment timelines to help you understand your baseline liabilities clearly. Applying extra payments accelerations bypasses normal lifecycle durations dynamically, dropping your long-term cumulative interest overhead drastically.</p>
                 </div>
             </main>
         </div>
