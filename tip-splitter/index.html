@@ -9,7 +9,6 @@
     <meta property="og:title" content="Free Instant Tip Calculator &amp; Bill Splitter | AI Learning Gym">
     <meta property="og:description" content="Calculate exact gratuity shares and group billing tallies across custom party sizes using a fast, local browser sandbox.">
 
-    <!-- GLOBAL GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,7 +17,6 @@
       gtag('config', 'G-RPRW3TN403');
     </script>
 
-    <!-- GLOBAL GOOGLE ADSENSE SCRIPT -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
 
     <style>
@@ -203,6 +201,8 @@
         .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
         .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
         .seo-section p { margin-bottom: 15px; color: #4a5568; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
 
         /* --- Standard Footer --- */
         footer {
@@ -227,7 +227,6 @@
         
         <main class="main-content">
             
-            <!-- 1️⃣ LIVE ADSENSE DISPLAY SLOT: TOP BANNER -->
             <div class="ad-container">
                 <ins class="adsbygoogle"
                      style="display:block"
@@ -261,7 +260,6 @@
                     <input type="number" id="party-size" class="tip-input" value="1" min="1" step="1" oninput="calculateBillSplit()">
                 </div>
 
-                <!-- LIVE OUTPUT PRESENTATION MATRIX -->
                 <div class="results-matrix">
                     <div class="result-card">
                         <div class="result-title">Total Tip Amount</div>
@@ -279,13 +277,32 @@
             </section>
 
             <section class="seo-section">
+                <h2>About this Tool &amp; User Guide</h2>
+                <p>The Free Instant Tip Calculator &amp; Bill Splitter is an interactive financial dashboard built to compute dining gratuities and divide group check expenses instantly inside your client browser viewport. Engineered for group diners, banquet managers, and service staff tracking tips, this responsive panel structures billing outputs automatically. Operating completely client-side, the utility guarantees total database isolation by processing billing values entirely inside temporary local memory spaces, keeping your transaction parameters completely private.</p>
+
+                <h3>How to Operate the Instant Bill Splitter Panels</h3>
+                <p>Calculating custom gratuity values and allocating fractional party shares follows an easy, non-invasive data workflow:</p>
+                <ol>
+                    <li><strong>Enter the Base Bill:</strong> Input your pre-tax or post-tax check total directly into the entry box marked <em>Base Bill Amount ($)</em>. </li>
+                    <li><strong>Adjust Gratuity Percentage:</strong> Scroll the interactive <em>Tip Percentage</em> range slider left or right to dynamically map targeted service levels (supports settings from 0% up to 50%).</li>
+                    <li><strong>Define Party Size Parameters:</strong> Enter the absolute count of individuals sharing the check into the input field marked <em>Number of People splitting</em>.</li>
+                    <li><strong>Review the Live Output Matrix:</strong> Observe the display grid cards, which update instantly on every single keystroke or slider adjustment to reveal total tip amounts, the combined grand total bill, and the precise share each person owes.</li>
+                </ol>
+
+                <h3>Core Arithmetic Framework Detailed</h3>
+                <p>This group financial tool utilizes clean mathematical rounding filters to deliver precise billing allocations safely:</p>
+                <ul>
+                    <li><strong>Real-Time Recalculation Loops:</strong> The engine bounds key inputs via frontend listeners, instantly processing changes across all variables concurrently to prevent broken totals or manual recalculation loops.</li>
+                    <li><strong>Floating-Point Error Prevention:</strong> Standard computer processing loops often create slight rounding anomalies when dividing fractional numbers. This tool uses exact decimal constraints (`toFixed(2)`) to make sure every individual split adds up perfectly to match the final receipt.</li>
+                    <li><strong>Local Sandbox Memory Caching:</strong> Your entry values, party counts, and calculated shares exist strictly within temporary DOM allocations and clear instantly when you refresh the page or exit the tab view.</li>
+                </ul>
+
                 <h2>The Social and Economic Logic of Gratuity Calculations</h2>
-                <p>Welcome to the financial math utilities desk at AI Learning Gym. Computing table totals, coordinating standard service percentages, and dividing group bills at restaurant tables can break up a great evening out. Using a fast, browser-based tool allows group dinners to handle calculations accurately without awkward delays or math errors.</p>
+                <p>Computing table totals, coordinating standard service percentages, and dividing group bills at restaurant tables can break up a great evening out. Using a fast, browser-based tool allows group dinners to handle calculations accurately without awkward delays or math errors.</p>
                 
                 <h3>Understanding standard tip rates across industries</h3>
                 <p>Gratuity percentages differ based on the type of service, geographic location, and group size. While a 15% to 20% baseline is standard for sit-down dining services in many regions, specialized catering setups or large holiday parties might use distinct internal calculations or mandatory house service charges. Running numbers through a slider lets you see different service levels instantly.</p>
 
-                <!-- 2️⃣ LIVE ADSENSE DISPLAY SLOT: IN-ARTICLE UNIT -->
                 <div class="ad-container">
                     <ins class="adsbygoogle"
                          style="display:block"
@@ -299,7 +316,7 @@
                 </div>
 
                 <h3>Preventing Check Math Errors and Floating-Point Issues</h3>
-                <p>Calculations handled manually on scraps of paper or back-of-the-envelope estimations frequently introduce errors, especially when dealing with tax allocations or uneven split distributions. Our system uses crisp rounding logic built into the script matrix. This ensures numbers align exactly to the cent ($0.01$), making sure every split adds up cleanly to match the final receipt total.</p>
+                <p>Calculations handled manually on scraps of paper or back-of-the-envelope estimations frequently introduce errors, especially when dealing with tax allocations or uneven split distributions. Our system uses database-grade rounding logic built into the script matrix. This ensures numbers align exactly to the cent ($0.01$), making sure every split adds up cleanly to match the final receipt total.</p>
                 
                 <h3>Frequently Answered Financial Utility Questions (FAQ)</h3>
                 <p><strong>Q: Does this tool store any payment information or dining logs?</strong><br>
@@ -307,11 +324,13 @@
                 
                 <p><strong>Q: Can I use this calculator offline if the restaurant has poor reception?</strong><br>
                 A: Yes. Once the initial dashboard page loads on your browser canvas, the underlying JavaScript code block requires zero external database updates. It will continue calculating instantly even if you lose network access during your dinner.</p>
+
+                <p><strong>Q: Should I calculate my tip percentage values from the pre-tax bill or the post-tax bill total?</strong><br>
+                A: Standard social protocol varies by region, but most traditional guidelines suggest calculating gratuity based on the pre-tax subtotal. This ensures you tip specifically for the core food and hospitality services provided, rather than adding a premium on localized government tax fees.</p>
             </section>
 
         </main>
 
-        <!-- 3️⃣ LIVE ADSENSE DISPLAY SLOT: STICKY SIDEBAR -->
         <aside style="position: sticky; top: 20px;">
             <ins class="adsbygoogle"
                  style="display:block"
@@ -328,12 +347,12 @@
 
     <footer>
         <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
+        <div class="footer-links" style="margin-top: 15px;">
             <a href="/privacy-policy.html">Privacy Policy</a> | 
             <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a>
+            <a href="/contact.html">Contact Support</a> |
             <a href="/sitemap.html">Site Map Directory</a>
-        </p>
+        </div>
     </footer>
 
     <script>
