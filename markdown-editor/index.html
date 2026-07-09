@@ -181,6 +181,8 @@
         .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
         .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
         .seo-section p { margin-bottom: 15px; color: #4a5568; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
 
         /* --- Standard Footer --- */
         footer {
@@ -237,8 +239,27 @@
             </section>
 
             <section class="seo-section">
+                <h2>About this Tool &amp; User Guide</h2>
+                <p>The Free Online Markdown Live Preview Editor is an interactive, split-pane text editor designed to compile Markdown typography notation into standard semantic HTML code blocks on the fly. Created for system engineers, documentation specialists, technical copywriters, and software architects, this application handles documentation layouts smoothly. Operating strictly client-side, the panel ensures absolute isolation for your technical data by parsing markup values entirely locally inside your browser memory context, keeping drafts safe from external database logging or cloud data profiling streams.</p>
+
+                <h3>How to Operate the Side-by-Side Markdown Workspace</h3>
+                <p>Drafting documentation structures or editing your README files maps to a direct, frictionless process. Execute these steps to handle your data payloads:</p>
+                <ol>
+                    <li><strong>Write Syntax Markups:</strong> Enter your shorthand markup text directly into the left panel marked <em>Markdown Syntax Input</em>. The editor is initialized with a structural template to guide basic usage.</li>
+                    <li><strong>Analyze the Live Preview Render:</strong> Review the right panel marked <em>Instant Live Preview Rendering</em>. The processing script parses your changes automatically on every keystroke, refreshing heading trees, bullet arrays, and bold accents instantly.</li>
+                    <li><strong>Export Compiled HTML Outputs:</strong> Click the primary blue <em>Copy Formatted HTML</em> button above the split grid. The engine reads the virtual DOM state, captures the compiled backend markup strings, and locks it straight onto your clipboard framework for easy integration into web projects.</li>
+                </ol>
+
+                <h3>Core Parsing Filters Detailed</h3>
+                <p>This markup editor runs a sequential pipeline of multi-character regular expression string filters to transform plain text into rich layouts:</p>
+                <ul>
+                    <li><strong>Lightweight Block Conversions:</strong> The script scans leading characters across line divisions, converting hash boundaries (`#`) into standard document header elements (`&lt;h1&gt;` through `&lt;h3&gt;`) and dash prefixes (`-`) into structured unordered list nodes (`&lt;ul&gt;&lt;li&gt;`) smoothly.</li>
+                    <li><strong>Synchronized Vertical Scrolling:</strong> To maintain perfect context alignment on widescreen desktop displays when editing long technical files, the interface calculates scroll positions on the fly and moves the preview canvas proportionally.</li>
+                    <li><strong>XSS Sanitation Protection:</strong> Before executing style conversions, the processor runs background sanitizations, neutralizing raw character vectors like `&lt;` and `&gt;` to ensure you can document complex HTML tag code blocks safely without triggering cross-site scripting issues.</li>
+                </ul>
+
                 <h2>The Role of Lightweight Markup Languages in Technical Writing</h2>
-                <p>Welcome to the structured composition sandbox at AI Learning Gym. In modern software engineering pipelines, technical writing projects, and global repository frameworks like GitHub, communicating ideas clearly requires structured layout designs. While full HTML scripts provide exhaustive layout flexibility, writing them out manually during fast note-taking can slow productivity down. This is why technical professionals rely on Markdown text tools.</p>
+                <p>In modern software engineering pipelines, technical writing projects, and global repository frameworks like GitHub, communicating ideas clearly requires structured layout designs. While full HTML scripts provide exhaustive layout flexibility, writing them out manually during fast note-taking can slow productivity down. This is why technical professionals rely on Markdown text tools.</p>
                 
                 <h3>Understanding the Parsing Rules of Structured Text Elements</h3>
                 <p>Created by John Gruber in 2004, **Markdown** works by parsing basic plain text syntax arrangements into valid semantic rich-text blocks. Using simple character parameters like hashes (`#`) tells compilation scripts to produce structured headers. Wrapping phrases in asterisks (`**`) flags text loops for bold presentation, while dashes (`-`) build out tidy unordered list matrices. This simple syntax lets you format web pages accurately without breaking your flow.</p>
@@ -259,11 +280,20 @@
                 <p>Many traditional markup conversion systems pass your editing drafts to an external cloud database to render the final HTML results. This method presents serious data leaks if you are drafting private technical files or internal software specs. Our platform eliminates this vulnerability by processing translations entirely locally in your device's browser front-end memory. Your private notes stay strictly under your control.</p>
                 
                 <h3>Frequently Answered Formatting Questions (FAQ)</h3>
-                <p><strong>Q: Does this editor support standard code block formatting highlights?</strong><br>
-                A: Yes. Enclosing a snippet within triple backtick elements (<code>```</code>) automatically converts text arrays into a clean monospace code container block module. This setup makes it easy to read code scripts, check variables, and preview styling configurations before launching your project.</p>
+                <div class="faq-item">
+                    <h4>Q: Does this editor support standard code block formatting highlights?</h4>
+                    <p>A: Yes. Enclosing a snippet within triple backtick elements (<code>```</code>) automatically converts text arrays into a clean monospace code container block module. This setup makes it easy to read code scripts, check variables, and preview styling configurations before launching your project.</p>
+                </div>
                 
-                <p><strong>Q: How do the synchronized scroll mapping elements maintain layout consistency?</strong><br>
-                A: The underlying JavaScript engine links scroll positions across containers. When you scroll through long markdown blocks, the live HTML frame shifts proportionally. This ensures your active text and visual layouts stay aligned perfectly across widescreen displays.</p>
+                <div class="faq-item">
+                    <h4>Q: How do the synchronized scroll mapping elements maintain layout consistency?</h4>
+                    <p>A: The underlying JavaScript engine links scroll positions across containers. When you scroll through long markdown blocks, the live HTML frame shifts proportionally. This ensures your active text and visual layouts stay aligned perfectly across widescreen displays.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q: Can I use inline HTML tags directly alongside standard Markdown symbols inside the editor?</h4>
+                    <p>A: This platform is optimized specifically as a lightweight local markdown validator and intentionally escapes raw bracket inputs to prioritize security. For complex hybrid layouts containing advanced iframe integrations or customized table grids, we recommend passing your raw exported HTML output into your primary IDE text editor layer.</p>
+                </div>
             </section>
 
         </main>
@@ -284,12 +314,12 @@
 
     <footer>
         <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
+        <div class="footer-links" style="margin-top: 15px;">
             <a href="/privacy-policy.html">Privacy Policy</a> | 
             <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a>
+            <a href="/contact.html">Contact Support</a> |
             <a href="/sitemap.html">Site Map Directory</a>
-        </p>
+        </div>
     </footer>
 
     <script>
