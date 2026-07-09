@@ -302,8 +302,8 @@
     <main>
         <div class="card">
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchMode('wake')">I need to wake up at...</button>
-                <button class="tab-btn" onclick="switchMode('sleep')">I am going to bed now</button>
+                <button class="tab-btn active" onclick="switchMode('wake', event)">I need to wake up at...</button>
+                <button class="tab-btn" onclick="switchMode('sleep', event)">I am going to bed now</button>
             </div>
 
             <div id="wakeMode" class="calculator-content active">
@@ -348,9 +348,28 @@
         </div>
 
         <section class="seo-section">
+            <h2>About this Tool &amp; User Guide</h2>
+            <p>The Sleep Cycle Calculator is an interactive, privacy-first sleep optimization widget engineered to analyze circadian rhythms and map ideal nightly rest and wake schedules natively inside your browser. Designed for wellness enthusiasts, shifts workers, and productivity trackers, this platform helps eliminate morning grogginess by breaking sleep down into complete 90-minute intervals. Operating completely client-side, the calculator ensures absolute data isolation by running all time computations locally within transient browser memory, keeping your personal sleep schedules and daily tracking settings hidden from remote network logs or remote profiling databases.</p>
+
+            <h3>How to Use the Sleep Optimizer Workspaces</h3>
+            <p>Mapping out perfect waking windows or tracing bedtime schedules follows a frictionless, user-focused interface flow:</p>
+            <ol>
+                <li><strong>Select Active Tracking Mode:</strong> Click the navigation buttons inside the workspace card header to switch between <em>Wake Up Target Mode</em> and <em>Sleep Now Mode</em>.</li>
+                <li><strong>Calculate Ideal Bedtimes (Wake Mode):</strong> Specify your strict morning alarm goals using the hours, minutes, and AM/PM drop-down option lists, then click <em>Find Best Bedtimes</em>. The widget works backward to plot the best moments to turn off your lights.</li>
+                <li><strong>Calculate Best Alarm Settings (Sleep Mode):</strong> If you are crawling straight into bed, switch to the secondary tab and select <em>Calculate Wake Times</em>. The processor captures your exact current machine timestamp and computes future waking intervals.</li>
+                <li><strong>Review Calibrated Time Cards:</strong> Evaluate the resulting layout grid cards. The system recommends targets by highlighting the optimal 5-cycle and 6-cycle rest thresholds in bright green.</li>
+            </ol>
+
+            <h3>Core Circadian Processing Features Detailed</h3>
+            <p>Our client-side fitness core maps out healthy nightly habits by leveraging robust frontend calculation components:</p>
+            <ul>
+                <li><strong>Dynamic Sleep Latency Accounting:</strong> Standard alarm systems fail because they do not account for the normal transitional time needed to fall asleep. This script incorporates a validated 14-minute average sleep latency offset variable straight into the equation array.</li>
+                <li><strong>Reverse-Chronological Matrix Shifting:</strong> When calculating wake distributions backwards, the engine rolls dates and hours over midnight boundaries accurately, adjusting Calendar metrics smoothly behind the scenes.</li>
+                <li><strong>Transient Sandbox Data Caching:</strong> All personal biometrics, input profiles, and computed target results remain stored exclusively within the browser context's local RAM layer, vanishing completely when you exit the tab or refresh the page.</li>
+            </ul>
+
             <h2>The Science of Circadian Rhythms and REM Sleep Cycles</h2>
             <p>Have you ever slept for a full eight or nine hours, only to wake up feeling completely exhausted, heavy, and groggy? This frustrating state is known as sleep inertia, and it is rarely caused by a lack of total sleep time. Instead, it is the direct result of breaking a natural biological boundary—waking up in the middle of a deep Rapid Eye Movement (REM) or slow-wave sleep cycle. Our client-side optimization calculator uses biological rest metrics to protect you from this disruptions.</p>
-            
             <p>Human sleep architecture is not a flat line of continuous unconsciousness. Instead, your brain moves through cyclical patterns throughout the night. Each complete cycle takes roughly <strong>90 minutes</strong> to complete, transitioning through light sleep, deep stage sleep, and highly active REM states where dreaming occurs. Waking up at the tail end of a cycle, when your body naturally approaches near-waking conditions, keeps your brain feeling fresh, focused, and instantly alert.</p>
 
             <h3>How the 14-Minute Sleep Latency Factor Is Formulated</h3>
@@ -358,15 +377,15 @@
             <p>Clinical sleep data tracks this duration using a standard mathematical latency offset equation across healthy adults:</p>
             
             <p style="text-align: center; font-weight: 700; margin: 20px 0; font-size: 1.2rem; background: rgba(15, 23, 42, 0.4); padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); color: var(--accent); font-family: monospace;">
-                T<sub>Alarm</sub> = T<sub>Bedtime</sub> + (N &times; 90) + 14
+                $$T_{\text{Alarm}} = T_{\text{Bedtime}} + (N \times 90) + 14$$
             </p>
 
             <p>Where variables align across these criteria parameters:</p>
             <ul style="margin: 10px 0 20px 25px; color: var(--text-muted); font-size: 0.98rem; list-style-type: disc;">
-                <li style="margin-bottom: 8px;"><strong>T<sub>Alarm</sub>:</strong> Your targeted morning wake-up window.</li>
-                <li style="margin-bottom: 8px;"><strong>T<sub>Bedtime</sub>:</strong> The moment you turn off lights and close your eyes.</li>
-                <li style="margin-bottom: 8px;"><strong>N:</strong> The integer count of complete sleep intervals (ideally targeting 5 or 6 cycles).</li>
-                <li style="margin-bottom: 8px;"><strong>14:</strong> The average structural constant tracking sleep latency (minutes to transition into stage 1 sleep).</li>
+                <li style="margin-bottom: 8px;"><strong>$T_{\text{Alarm}}$:</strong> Your targeted morning wake-up window.</li>
+                <li style="margin-bottom: 8px;"><strong>$T_{\text{Bedtime}}$:</strong> The moment you turn off lights and close your eyes.</li>
+                <li style="margin-bottom: 8px;"><strong>$N$:</strong> The integer count of complete sleep intervals (ideally targeting 5 or 6 cycles).</li>
+                <li style="margin-bottom: 8px;"><strong>$14$:</strong> The average structural constant tracking sleep latency (minutes to transition into stage 1 sleep).</li>
             </ul>
 
             <div class="ad-container">
@@ -397,6 +416,11 @@
                 <h4>Q: How does our privacy sandbox process your health schedules?</h4>
                 <p>A: At AI Learning Gym, we use a clean client-side approach. Every computation occurs locally inside your device's browser memory sandbox. No sleep logs, target parameters, or system location arrays are transmitted or stored on external cloud infrastructure.</p>
             </div>
+
+            <div class="faq-item">
+                <h4>Q: Can short afternoon power naps be tracked using these same 90-minute cycle parameters?</h4>
+                <p>A: Mid-day recovery power naps are most effective when kept short at around 20 minutes (limiting rest strictly to stage 1 and stage 2 light sleep to allow fast wakefulness) or extended to a full 90-minute cycle block to support tissue revitalization. Tripping a nap length between 40 and 60 minutes forces the body into slow-wave cycles, causing severe mid-day grogginess when your alarm sounds.</p>
+            </div>
         </section>
     </main>
 
@@ -413,7 +437,8 @@
 
     <script>
         // Tab switching utility
-        function switchMode(mode) {
+        // FIXED: Added event param tracking to completely prevent execution crashes
+        function switchMode(mode, event) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.calculator-content').forEach(c => c.classList.remove('active'));
             document.getElementById('resultsPanel').style.display = 'none';
