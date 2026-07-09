@@ -264,7 +264,7 @@
 
         .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
         .seo-section h3 { color: #34495e; margin: 25px 0 10px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; line-height: 1.6; }
         .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
         .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
 
@@ -289,7 +289,7 @@
 <body>
 
     <header>
-        <h1>Precision Time & Focus Workstation</h1>
+        <h1>Precision Time &amp; Focus Workstation</h1>
         <p>Utilize client-side interval blocks and millisecond split timing entirely inside your browser memory sandbox.</p>
         <a href="/">&larr; Return to AI Learning Gym Hub</a>
     </header>
@@ -353,8 +353,28 @@
             </div>
 
             <section class="seo-section">
+                <h2>About this Tool &amp; User Guide</h2>
+                <p>The Free Minimalist Online Pomodoro Timer &amp; Stopwatch is a dual-mode, browser-native focus workstation engineered to deploy systematic study blocks and record high-precision millisecond lap metrics on the fly. Created for programmers, software developers, writers, and technical project trackers, this platform combines two distinct timekeeping mechanics into a single clean viewport. Operating completely client-side, the panel guarantees absolute privacy by processing all runtime counters and interval tracking arrays inside local temporary device memory stacks, keeping your focus logs completely hidden from remote databases.</p>
+
+                <h3>How to Operate the Focus and Timing Studio</h3>
+                <p>Navigating between your project management loops and checking performance benchmarks follows an accessible, dual-tab layout workflow:</p>
+                <ol>
+                    <li><strong>Isolate Your Working Mode:</strong> Click the configuration tab triggers below the main ad placement to swap smoothly between the <em>Pomodoro Timer</em> and the <em>Precision Stopwatch</em> panels.</li>
+                    <li><strong>Run the Pomodoro Focus Loop:</strong> Click any of the pre-configured interval buttons (Standard Focus, Short Break, Long Break, or Deep Work) to lock your target cycle. Click <em>Start</em> to initiate the countdown. When your session ends, the browser sounds an internal alert chime natively.</li>
+                    <li><strong>Operate the Split Stopwatch:</strong> Switch to the stopwatch view and click <em>Start</em> to activate the counter. Click the <em>Lap</em> button while the timer is running to append millisecond split points straight to the dynamic, reverse-chronological list container box below.</li>
+                    <li><strong>Reset or Pause:</strong> Click the primary green button at any time during a session to pause execution, or hit <em>Reset</em> to clear local memory buffers and restore the baseline clock readings.</li>
+                </ol>
+
+                <h3>Core Programmatic Timing Mechanics Detailed</h3>
+                <p>Our client-side processing core handles time tracking through advanced front-end script components:</p>
+                <ul>
+                    <li><strong>Hardware Delta Time Calculations:</strong> To prevent the tracking delays common in standard browser loops when tabs are minimized, the stopwatch measures differences against absolute hardware timestamps. It calculates elapsed durations by subtracting your initial click time from the current moment, ensuring millisecond precision even when running in the background.</li>
+                    <li><strong>Web Audio Oscillator Synthesis:</strong> When focus blocks complete, the interface triggers your browser's native Web Audio API, synthesizing an explicit sine-wave tone (A5 pitch at 880Hz) entirely in memory without loading external sound files.</li>
+                    <li><strong>Dynamic Page Title Syncing:</strong> The Pomodoro countdown synchronizes its live timer strings directly with the browser tab's title element (`document.title`), allowing you to monitor your remaining focus time easily while multitasking across other windows.</li>
+                </ul>
+
                 <h2>The Cognitive Science Behind Time Tracking and the Pomodoro Framework</h2>
-                <p>Welcome to the production workspace at AI Learning Gym. Time is arguably the most valuable finite resource for engineers, writers, and knowledge workers. Managing it efficiently requires structured focus strategies. Our browser-based suite bridges two separate execution models: structured cyclical intervals via the Pomodoro Technique and unconstrained runtime monitoring via our mechanical Precision Stopwatch tool.</p>
+                <p>Time is arguably the most valuable finite resource for engineers, writers, and knowledge workers. Managing it efficiently requires structured focus strategies. Our browser-based suite bridges two separate execution models: structured cyclical intervals via the Pomodoro Technique and unconstrained runtime monitoring via our mechanical Precision Stopwatch tool.</p>
                 
                 <h3>Maximizing Creative Focus with the Pomodoro Strategy</h3>
                 <p>Developed by Francesco Cirillo in the late 1980s, the Pomodoro Technique uses a simple concept: split your workday into clear 25-minute intervals (called "Pomodoros") separated by brief 5-minute mental breaks. This cyclical pattern avoids cognitive fatigue, sustains executive attention spans, and prevents standard workday burnout. Running this process inside a sandboxed client-side application means zero distraction prompts or configuration popups break your focused workflow.</p>
@@ -383,7 +403,6 @@
                 </ol>
 
                 <h3>Frequently Answered Productivity Questions (FAQ)</h3>
-                
                 <div class="faq-item">
                     <h4>Q: Does this web application continue calculating tracking records if I switch background tabs?</h4>
                     <p>A: Yes. The timing loops rely on absolute system timestamps rather than unstable variable tick delays. This ensures your timers stay completely accurate down to the millisecond, even if your browser reduces background tab performance to save memory.</p>
@@ -397,6 +416,11 @@
                 <div class="faq-item">
                     <h4>Q: Why is a client-side layout better than traditional online timers?</h4>
                     <p>A: Traditional portals utilize extensive server synchronization frameworks that constantly log active tracking statistics, location parameters, and background usage configurations. AI Learning Gym isolates operations inside your hardware sandbox, preventing data leaks or external tracking scripts from interrupting deep focus cycles.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q: Can I adjust the core time values manually beyond the built-in interval buttons?</h4>
+                    <p>A: This version centers around minimalist productivity guidelines, locking focus blocks to standard structural intervals (5m, 15m, 25m, 50m) to minimize setup friction and keep you focused on deep work. For broader custom countdown selections, you can use our sister Time Studio application hub.</p>
                 </div>
             </section>
 
@@ -444,9 +468,10 @@
         let lapCounter = 0;
 
         /* --- View Toggle Logic Configuration --- */
-        function switchView(target) {
+        // FIXED: Declared cleanly in global context to fix execution exceptions
+        window.switchView = function(target) {
             activeView = target;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.mode-tabs .tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
 
             if(target === 'pomo') {
@@ -456,17 +481,17 @@
                 document.getElementById('tab-stop').classList.add('active');
                 document.getElementById('panel-stop').classList.add('active');
             }
-        }
+        };
 
         /* ================= POMODORO TIMER SCRIPT LOGIC ================= */
-        function setPomoInterval(minutes, label) {
+        window.setPomoInterval = function(minutes, label) {
             resetPomo();
             pomoSecondsLeft = minutes * 60;
             pomoDurationTotal = minutes * 60;
             currentPomoLabel = label;
             document.getElementById('pomo-status').innerText = currentPomoLabel;
             renderPomoDisplay();
-        }
+        };
 
         function renderPomoDisplay() {
             const mins = Math.floor(pomoSecondsLeft / 60);
@@ -476,7 +501,7 @@
             document.title = `(${formattedTime}) Pomodoro & Stopwatch | AI Learning Gym`;
         }
 
-        function togglePomo() {
+        window.togglePomo = function() {
             const btn = document.getElementById('pomo-start-btn');
             if(pomoWorker) {
                 // Handle Active Pausing Events
@@ -499,9 +524,9 @@
                     }
                 }, 1000);
             }
-        }
+        };
 
-        function resetPomo() {
+        window.resetPomo = function() {
             clearInterval(pomoWorker);
             pomoWorker = null;
             pomoSecondsLeft = pomoDurationTotal;
@@ -510,7 +535,7 @@
             btn.classList.remove('paused');
             renderPomoDisplay();
             document.title = "Free Minimalist Online Pomodoro Timer & Stopwatch | AI Learning Gym";
-        }
+        };
 
         /* ================= STOPWATCH SCRIPT LOGIC ================= */
         function renderStopwatchDisplay() {
@@ -523,7 +548,7 @@
                 `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${ms.toString().padStart(2, '0')}`;
         }
 
-        function toggleStopwatch() {
+        window.toggleStopwatch = function() {
             const btn = document.getElementById('stop-start-btn');
             const lapBtn = document.getElementById('stop-lap-btn');
             
@@ -548,9 +573,9 @@
                     renderStopwatchDisplay();
                 }, 30); // Native 30ms interface tick frequency
             }
-        }
+        };
 
-        function recordLap() {
+        window.recordLap = function() {
             if(!stopwatchWorker) return;
             lapCounter++;
             const container = document.getElementById('laps-container');
@@ -561,9 +586,9 @@
             div.className = 'lap-item';
             div.innerHTML = `<span>Lap ${lapCounter.toString().padStart(2, '0')}</span> <span>${currentTimestampText}</span>`;
             container.insertBefore(div, container.firstChild); // Prepend lap record to list
-        }
+        };
 
-        function resetStopwatch() {
+        window.resetStopwatch = function() {
             clearInterval(stopwatchWorker);
             stopwatchWorker = null;
             swElapsedTime = 0;
@@ -575,7 +600,7 @@
             document.getElementById('laps-container').innerHTML = '';
             document.getElementById('lap-records').style.display = 'none';
             renderStopwatchDisplay();
-        }
+        };
 
         /* ================= CLIENT-SIDE NATIVE WEB AUDIO API CHIME ================= */
         function triggerSystemChime() {
@@ -602,6 +627,5 @@
                 console.error("Audio API synthesis block blocked by user interaction profiles.", e);
             }
         }
-    </script>
 </body>
 </html>
