@@ -223,6 +223,8 @@
         .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
         .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
         .seo-section p { margin-bottom: 15px; color: #4a5568; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
 
         /* --- Standard Footer --- */
         footer {
@@ -261,12 +263,12 @@
 
             <section class="tool-wrapper">
                 <nav class="tabs-nav">
-                    <button class="tab-btn active" onclick="switchConverter(event, 'length-panel')">📏 Length</button>
+                    <button class="tab-btn active" onclick="switchConverter(event, 'length-panel')">衡量 Length</button>
                     <button class="tab-btn" onclick="switchConverter(event, 'weight-panel')">⚖️ Weight &amp; Mass</button>
                     <button class="tab-btn" onclick="switchConverter(event, 'temp-panel')">🌡️ Temperature</button>
                 </nav>
 
-                <div id="length-panel" class="tab-content active">
+                <div class="tab-content active" id="length-panel">
                     <div class="converter-grid">
                         <div class="input-group">
                             <label for="length-value-from">From Value:</label>
@@ -306,7 +308,7 @@
                     </div>
                 </div>
 
-                <div id="weight-panel" class="tab-content">
+                <div class="tab-content" id="weight-panel">
                     <div class="converter-grid">
                         <div class="input-group">
                             <label for="weight-value-from">From Value:</label>
@@ -342,7 +344,7 @@
                     </div>
                 </div>
 
-                <div id="temp-panel" class="tab-content">
+                <div class="tab-content" id="temp-panel">
                     <div class="converter-grid">
                         <div class="input-group">
                             <label for="temp-value-from">From Value:</label>
@@ -378,8 +380,28 @@
             </section>
 
             <section class="seo-section">
+                <h2>About this Tool &amp; User Guide</h2>
+                <p>The Free Online Universal Unit Converter is a multi-mode data translation framework engineered to execute immediate, high-fidelity conversions across length, mass, and temperature systems. Built for students, global commerce workers, engineers, and culinary planners, this application resolves scaling calculations without complex manual formulas. Operating 100% client-side, the panel ensures absolute database isolation by running calculations completely inside your local browser layout sandbox, keeping parameters private and safe from third-party server tracking loops.</p>
+
+                <h3>How to Operate the Universal Unit Converter</h3>
+                <p>Navigating between parameter tabs and managing separate measurement dimensions follows a straightforward workflow:</p>
+                <ol>
+                    <li><strong>Isolate Your Dimensional Workspace:</strong> Click any of the top tab navigation elements (Length, Weight &amp; Mass, or Temperature) to activate your specific measurement category panel.</li>
+                    <li><strong>Establish From/To Units:</strong> Use the drop-down menu selectors to set your baseline input unit (e.g., Inches) and target output unit (e.g., Centimeters).</li>
+                    <li><strong>Input Operational Values:</strong> Type your measurement properties inside either numerical form field. The system features bi-directional listeners, updating the opposing calculation value field instantly.</li>
+                    <li><strong>Review the Matrix Equivalents:</strong> Scan the custom dashboard container at the footer of each panel, which tracks and displays the calculation mapped across all metric and customary variables simultaneously.</li>
+                </ol>
+
+                <h3>Core Cross-Scaling Mechanics Detailed</h3>
+                <p>Our client-side processing suite computes physical dimensional translations through optimized algebraic algorithms:</p>
+                <ul>
+                    <li><strong>Bi-Directional Input Synchronization:</strong> The script embeds input event tracking that automatically flips calculation vectors based on which form box receives numbers, letting users work forwards or backwards smoothly.</li>
+                    <li><strong>Floating-Point Compensation:</strong> JavaScript engines frequently introduce slight arithmetic quirks when dividing floating-point integers. This module limits precision systematically up to five flexible decimal points using an internal `stripPrecision` filter block to keep values highly accurate.</li>
+                    <li><strong>Non-Linear Thermal Solvers:</strong> While length and mass systems translate via fixed multiplication metrics, temperature scales use offset formulas. The engine routes inputs into a normalized Celsius base before computing secondary Kelvin and Fahrenheit properties.</li>
+                </ul>
+
                 <h2>The Practical Necessity of Metric and Imperial Unit Standardization</h2>
-                <p>Welcome to the multi-parameter metric analysis engine at AI Learning Gym. In global commerce, scientific exploration, and daily technical operations, shifting values cleanly between the International System of Units (Metric) and the United States Customary System (Imperial) is a daily necessity. Computational rounding slips can introduce significant operational discrepancies, making a client-side digital calculation node highly beneficial.</p>
+                <p>In global commerce, scientific exploration, and daily technical operations, shifting values cleanly between the International System of Units (Metric) and the United States Customary System (Imperial) is a daily necessity. Computational rounding slips can introduce significant operational discrepancies, making a client-side digital calculation node highly beneficial.</p>
                 
                 <h3>Understanding Standard Length, Mass, and Thermal Equations</h3>
                 <p>Varying conversion workflows rely on distinct physical baseline standards. Linear tracking structures (like converting centimeters to inches or miles to meters) navigate exact, unchanging geometric ratios. Mass evaluations require distinct calculations to handle differences between gravitational pounds and base metrics like grams. Thermal scales utilize completely different formulas, shifting between absolute zero thresholds like Kelvin and traditional relative models like Fahrenheit or Celsius.</p>
@@ -400,11 +422,20 @@
                 <p>Most basic calculators online only reveal a single conversion value pairs per request. Our universal utility dashboard features an immediate matrix tracking table layout. When you input an individual metric, the software automatically loops through every available unit tier simultaneously, rendering comprehensive structural breakdowns instantly to keep your research workflow uninterrupted.</p>
                 
                 <h3>Frequently Answered Unit Metric Questions (FAQ)</h3>
-                <p><strong>Q: Are the weights or lengths I calculate processed on your web servers?</strong><br>
-                A: No. Total data privacy remains structural across our application network. All calculations process natively inside your desktop or mobile device viewport canvas using fast client-side scripts. No parameters are tracked, cached, or compiled externally.</p>
+                <div class="faq-item">
+                    <h4>Q: Are the weights or lengths I calculate processed on your web servers?</h4>
+                    <p>A: No. Total data privacy remains structural across our application network. All calculations process natively inside your desktop or mobile device viewport canvas using fast client-side scripts. No parameters are tracked, cached, or compiled externally.</p>
+                </div>
                 
-                <p><strong>Q: How many decimal places of precision does this conversion module maintain?</strong><br>
-                A: The module script isolates calculations up to 5 flexible decimal points to avoid common JavaScript floating-point rounding quirks, ensuring clean accuracy for student assignments, travel plans, or engineering specs.</p>
+                <div class="faq-item">
+                    <h4>Q: How many decimal places of precision does this conversion module maintain?</h4>
+                    <p>A: The module script isolates calculations up to 5 flexible decimal points to avoid common JavaScript floating-point rounding quirks, ensuring clean accuracy for student assignments, travel plans, or engineering specs.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Q: Why do temperature conversions use custom formula blocks instead of simple ratio multiplication grids?</h4>
+                    <p>A: Length and mass parameters map directly to absolute scales where a value of zero equates to nothing. Temperature scales, however, do not share a common zero boundary. For instance, $0^\circ\text{C}$ equals $32^\circ\text{F}$ and $273.15\text{K}$. Because the baseline metrics scale with offset origins, the system must translate them using parenthesized multiplier formulas ($F = C \times \frac{9}{5} + 32$) to ensure mathematical truth.</p>
+                </div>
             </section>
 
         </main>
@@ -425,12 +456,12 @@
 
     <footer>
         <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
+        <div class="footer-links" style="margin-top: 15px;">
             <a href="/privacy-policy.html">Privacy Policy</a> | 
             <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a>
+            <a href="/contact.html">Contact Support</a> |
             <a href="/sitemap.html">Site Map Directory</a>
-        </p>
+        </div>
     </footer>
 
     <script>
