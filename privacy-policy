@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | AI Learning Gym</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+         crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #ffffff; padding: 25px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+        .container { max-width: 800px; margin: 30px auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h2 { color: var(--text-dark); margin: 25px 0 10px 0; font-size: 1.3rem; border-bottom: 1px solid var(--card-border); padding-bottom: 5px; }
+        p { margin-bottom: 15px; color: #4a5568; font-size: 0.95rem; }
+        ul { margin: 0 0 15px 20px; color: #4a5568; font-size: 0.95rem; }
+        li { margin-bottom: 5px; }
+        footer { background-color: var(--primary-color); color: #a0aec0; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Learning Gym</h1>
+        <a href="/">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p><strong>Last Updated: May 2026</strong></p>
+        <p>At AI Learning Gym, accessible from ailearninggym.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by AI Learning Gym and how we use it.</p>
+
+        <h2>1. Client-Side Data Processing (Your Privacy)</h2>
+        <p>AI Learning Gym operates primarily as a client-side utility portal. All transformations, calculations, text formatting, and graphic modifications handled by our tools (such as the Word Counter, Image Resizer, Password Generator, and JSON Formatter) execute directly within your local web browser's memory. Your input files, text passages, and images are never sent, cached, or saved on our servers.</p>
+
+        <h2>2. Log Files & Traffic Analytics</h2>
+        <p>Like most standard websites, AI Learning Gym utilizes Google Analytics to analyze site performance and understand general visitor traffic. Google Analytics collects standard, non-personally identifiable information, including your internet protocol (IP) address, browser type, internet service provider (ISP), date/time stamps, referring/exit pages, and click counts. We use this data strictly to monitor user engagement metrics and keep our tools optimized.</p>
+
+        <h2>3. Google AdSense & Cookies</h2>
+        <p>Google is a third-party vendor on our site. It uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to ailearninggym.com and other sites on the internet. Visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy.</p>
+
+        <h2>4. Third-Party Privacy Policies</h2>
+        <p>AI Learning Gym's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers (like Google AdSense) for more detailed information regarding their practices and opt-out instructions.</p>
+
+        <h2>5. Consent</h2>
+        <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
