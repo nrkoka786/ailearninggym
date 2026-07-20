@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How AI Content Detectors Work: Burstiness and Perplexity Explained | AI Learning Gym</title>
+    <meta name="description" content="Learn how AI content detectors actually work — what burstiness and perplexity measure, why they matter, and why no detector is perfectly accurate.">
+    <meta name="keywords" content="how AI detectors work, burstiness perplexity explained, detect AI writing, ChatGPT content detector, AI text detection">
+    <meta property="og:title" content="How AI Content Detectors Work | AI Learning Gym Blog">
+    <meta property="og:description" content="A plain-English explanation of burstiness, perplexity, and why AI text detection is harder than it looks.">
+    <meta property="og:type" content="article">
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        @media (min-width: 992px) {
+            .container { display: grid; grid-template-columns: 3fr 1fr; align-items: start; }
+        }
+
+        .main-content-wrapper { display: flex; flex-direction: column; gap: 20px; }
+
+        .seo-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: left;
+        }
+        .article-title { color: var(--text-dark); font-size: 1.8rem; margin-bottom: 10px; line-height: 1.3; }
+        .article-meta { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border); }
+        .article-meta span { margin-right: 16px; }
+        .tag { display: inline-block; background: var(--accent-color); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 12px; }
+
+        .seo-section h2 { color: var(--text-dark); margin: 30px 0 12px; font-size: 1.35rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
+        .seo-section h3 { color: #34495e; margin: 22px 0 8px; font-size: 1.1rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 18px 25px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
+        .seo-section strong { color: var(--text-dark); }
+
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+            padding: 16px 18px;
+            margin: 20px 0;
+            color: #2c3e50;
+            font-size: 0.96rem;
+        }
+
+        .faq-item { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent-color); }
+        .faq-item h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        .faq-item p { margin-bottom: 0; color: #4a5568; font-size: 0.92rem; }
+
+        .cta-box {
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 8px;
+            padding: 22px;
+            text-align: center;
+        }
+        .cta-box p { color: #cbd5e1; margin-bottom: 12px; font-size: 0.96rem; }
+        .cta-box a {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .cta-box a:hover { background: #2980b9; }
+
+        .sidebar-ad { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-widget { background: #ffffff; border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .sidebar-widget h3 { color: var(--text-dark); font-size: 1rem; margin-bottom: 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        .sidebar-widget ul { list-style: none; padding: 0; }
+        .sidebar-widget ul li { margin-bottom: 8px; }
+        .sidebar-widget ul li a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; }
+        .sidebar-widget ul li a:hover { text-decoration: underline; }
+        .ad-container { margin: 10px 0; text-align: center; width: 100%; }
+
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+        footer p { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>📖 AI Learning Gym Blog</h1>
+    <p>Practical guides and tutorials for developers, creators, and curious people.</p>
+    <a href="/blog/">← Back to All Articles</a>
+</header>
+
+<div class="container">
+    <div class="main-content-wrapper">
+
+        <div class="seo-section">
+            <span class="tag">AI Tools</span>
+            <h1 class="article-title">How AI Content Detectors Work: Burstiness and Perplexity Explained</h1>
+            <div class="article-meta">
+                <span>📅 July 2026</span>
+                <span>⏱ 7 min read</span>
+                <span>🔧 Related tool: <a href="/ai-detector/" style="color: var(--accent-color);">AI Content Detector</a></span>
+            </div>
+
+            <p>AI content detectors have become a popular topic — teachers use them to check student submissions, editors use them to verify article authenticity, and marketers use them to review outsourced copy. But most people using these tools have no idea how they actually work.</p>
+
+            <p>This article explains the two main signals that most AI detectors measure: <strong>perplexity</strong> and <strong>burstiness</strong>. Once you understand what these mean, you'll also understand why no detector is perfectly accurate — and what that means for how you should interpret the results.</p>
+
+            <h2>What AI Language Models Actually Do</h2>
+            <p>To understand how detection works, it helps to first understand how AI models generate text. When you ask ChatGPT or Claude to write something, the model is essentially predicting the next word based on everything that came before it — over and over, one token at a time.</p>
+            <p>These models are trained on enormous amounts of text, so they've learned which words and phrases tend to follow other words and phrases. When they generate text, they tend to pick statistically likely, "safe" word choices. This produces text that's fluent and grammatically correct — but also somewhat predictable.</p>
+            <p>Human writers, on the other hand, make idiosyncratic choices. They use unusual metaphors, switch sentence lengths unexpectedly, make small grammatical quirks, and bring in references that surprise you. This unpredictability is what detectors try to measure.</p>
+
+            <h2>Perplexity: How Predictable Is the Text?</h2>
+            <p><strong>Perplexity</strong> is a measure of how surprised a language model is by a sequence of text. Low perplexity means the text was easy to predict — the kind of output an AI model would naturally generate. High perplexity means the text was harder to predict, suggesting a more idiosyncratic human writer.</p>
+
+            <div class="highlight-box">
+                <strong>Simple analogy:</strong> Imagine you're guessing the next word in a sentence. "The cat sat on the ___." You'd probably guess "mat" or "floor" — low perplexity. But "The cat sat on the existential precipice of Tuesday" would surprise you — high perplexity. AI models tend to write the first kind of sentence. Humans write both.
+            </div>
+
+            <p>AI detectors run your text through a language model and measure how easily the model could have predicted each word. If the text scores consistently low perplexity, it's flagged as potentially AI-generated.</p>
+
+            <h2>Burstiness: How Varied Is the Sentence Structure?</h2>
+            <p><strong>Burstiness</strong> refers to the variation in sentence lengths throughout a piece of writing. Human writing tends to be "bursty" — you might have two very short sentences, then a long complex one, then a medium one. This irregular rhythm is natural to how people actually think and write.</p>
+            <p>AI models tend to produce text with much more uniform sentence lengths. They're optimized for readability, which means they gravitate toward sentences in the 15–20 word range. The rhythm is smooth — but also monotonous.</p>
+
+            <p>Mathematically, burstiness is measured using the <strong>standard deviation of sentence lengths</strong>. A high standard deviation means sentence lengths vary a lot (more human-like). A low standard deviation means sentences are uniformly similar in length (more AI-like).</p>
+
+            <h2>Why These Signals Work (But Not Perfectly)</h2>
+            <p>These two metrics — perplexity and burstiness — capture something real about the difference between AI and human writing. But there are important limitations:</p>
+            <ul>
+                <li><strong>Some humans write uniformly.</strong> Technical writers, people writing in a second language, or anyone following a strict style guide may produce low-burstiness text that detectors flag as AI.</li>
+                <li><strong>AI can be prompted to write with variation.</strong> If you specifically ask an AI to use varied sentence lengths and unconventional word choices, it can do so — reducing its detectability significantly.</li>
+                <li><strong>Short text is unreliable.</strong> With fewer than 100–150 words, there isn't enough data to calculate meaningful statistics. Most detectors perform poorly on short passages.</li>
+                <li><strong>Edited AI text is harder to detect.</strong> If a human edits and rewrites AI-generated text, the statistical fingerprints get blurred.</li>
+            </ul>
+
+            <h2>What Other Signals Do Detectors Use?</h2>
+            <p>Beyond perplexity and burstiness, some detectors look at additional patterns:</p>
+            <ul>
+                <li><strong>Transitional word density:</strong> AI models frequently use words like "furthermore," "moreover," "it's worth noting," and "in conclusion." High density of these phrases is a soft signal for AI authorship.</li>
+                <li><strong>Vocabulary diversity:</strong> AI text sometimes uses a narrower range of vocabulary than a human expert would, especially on specialized topics.</li>
+                <li><strong>Structural predictability:</strong> AI-generated articles often follow very predictable structures — introduction, numbered points, conclusion — that can be identified as a pattern.</li>
+            </ul>
+
+            <h2>How to Interpret Detection Results</h2>
+            <p>If you're using an AI detector, treat the result as a signal, not a verdict. A 70% AI probability score doesn't mean the text is definitely AI-generated — it means the text has statistical characteristics that overlap with AI output.</p>
+            <p>The most reliable way to use these tools is to look at them in context. A piece of text that scores high on AI probability <em>and</em> was written suspiciously quickly by someone with no track record of that writing quality is worth a closer look. A piece that scores moderately high from a known skilled writer may simply be their natural efficient style.</p>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h4>Can I use an AI detector to catch plagiarism?</h4>
+                <p>AI detectors and plagiarism checkers are different tools. Plagiarism checkers compare text against known sources. AI detectors analyze statistical patterns. They can both flag issues, but for different reasons — you should use both separately, not one instead of the other.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Why does my own writing sometimes get flagged as AI?</h4>
+                <p>This is more common than people expect. Writers who have a clear, structured style — especially those who write professionally — can produce text with low burstiness and consistent vocabulary that triggers AI detection. It doesn't mean you write like a robot; it means your style is consistent.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Are browser-based detectors as accurate as paid services?</h4>
+                <p>Paid services like Originality.ai and GPTZero use more sophisticated models and larger training sets. Simple client-side detectors like ours use heuristic rules (burstiness, transition word density) that are transparent and fast but less accurate overall. Use free tools for a quick check and paid tools when the stakes are higher.</p>
+            </div>
+
+            <div class="cta-box" style="margin-top: 30px;">
+                <p>Try our free AI Content Detector — runs entirely in your browser, no data uploaded.</p>
+                <a href="/ai-detector/">Open AI Detector Tool →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <aside class="sidebar-ad">
+        <div class="ad-container">
+            <!-- AdSense Ad Unit -->
+        </div>
+        <div class="sidebar-widget">
+            <h3>🔧 Try the Tool</h3>
+            <ul>
+                <li><a href="/ai-detector/">AI Content Detector</a></li>
+                <li><a href="/word-counter/">Word & Character Counter</a></li>
+                <li><a href="/diff-checker/">Document Diff Checker</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>📖 More Articles</h3>
+            <ul>
+                <li><a href="/blog/how-to-create-secure-passwords/">How to Create Secure Passwords</a></li>
+                <li><a href="/blog/json-formatting-guide/">Why JSON Formatting Matters</a></li>
+                <li><a href="/blog/base64-encoding-explained/">What Is Base64 Encoding?</a></li>
+                <li><a href="/blog/">View All Articles</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p style="margin-top: 12px;">
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact Support</a> |
+        <a href="/sitemap.html">Site Map Directory</a>
+    </p>
+</footer>
+
+</body>
+</html>
