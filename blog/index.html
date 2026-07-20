@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Guides | AI Learning Gym</title>
+    <meta name="description" content="Practical guides and tutorials on AI tools, developer utilities, personal finance calculators, and productivity techniques. Learn how the tools work and when to use them.">
+    <meta name="keywords" content="AI tools guide, developer tutorials, productivity tips, finance calculator explained, BMR TDEE guide, pomodoro technique, JSON formatting">
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        @media (min-width: 992px) {
+            .container {
+                display: grid;
+                grid-template-columns: 3fr 1fr;
+                align-items: start;
+            }
+        }
+
+        .main-content-wrapper { display: flex; flex-direction: column; gap: 20px; }
+
+        .app-canvas {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .app-canvas h2 { color: var(--text-dark); font-size: 1.4rem; margin-bottom: 5px; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
+        .app-canvas p.intro { color: var(--text-muted); margin: 10px 0 20px; font-size: 0.98rem; }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        @media (min-width: 640px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        .blog-card {
+            background: #f8fafc;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--accent-color);
+            text-decoration: none;
+            display: block;
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+        .blog-card:hover { box-shadow: 0 6px 16px rgba(52,152,219,0.13); transform: translateY(-2px); }
+        .blog-card .tag {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 9px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .blog-card h3 { color: var(--text-dark); font-size: 1.05rem; margin-bottom: 6px; line-height: 1.4; }
+        .blog-card p { color: #4a5568; font-size: 0.9rem; margin-bottom: 10px; }
+        .blog-card .meta { color: var(--text-muted); font-size: 0.8rem; }
+
+        .seo-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
+
+        .sidebar-ad { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-widget {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .sidebar-widget h3 { color: var(--text-dark); font-size: 1rem; margin-bottom: 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        .sidebar-widget ul { list-style: none; padding: 0; }
+        .sidebar-widget ul li { margin-bottom: 8px; }
+        .sidebar-widget ul li a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; }
+        .sidebar-widget ul li a:hover { text-decoration: underline; }
+        .ad-container { margin: 10px 0; text-align: center; width: 100%; }
+
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+        footer p { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>📖 Blog & Guides</h1>
+    <p>Practical tutorials and plain-English explanations for developers, students, and curious people.</p>
+    <a href="/">← Return to AI Learning Gym Hub</a>
+</header>
+
+<div class="container">
+    <div class="main-content-wrapper">
+
+        <div class="app-canvas">
+            <h2>All Articles</h2>
+            <p class="intro">In-depth guides on AI, developer tools, personal finance, and productivity — written in plain English.</p>
+            <div class="blog-grid">
+
+                <a class="blog-card" href="/blog/how-to-detect-ai-content/">
+                    <span class="tag">AI Tools</span>
+                    <h3>How AI Content Detectors Work: Burstiness and Perplexity Explained</h3>
+                    <p>Learn what burstiness and perplexity actually measure, and why no detector is 100% accurate.</p>
+                    <div class="meta">July 2026 &middot; 7 min read</div>
+                </a>
+
+                <a class="blog-card" href="/blog/json-formatting-guide/">
+                    <span class="tag">Developer</span>
+                    <h3>Why JSON Formatting Matters (And How to Fix Broken JSON)</h3>
+                    <p>A practical guide to reading, formatting, and debugging JSON — with common mistakes and how to avoid them.</p>
+                    <div class="meta">July 2026 &middot; 6 min read</div>
+                </a>
+
+                <a class="blog-card" href="/blog/bmr-tdee-explained/">
+                    <span class="tag">Health</span>
+                    <h3>BMR vs TDEE: How to Actually Calculate Your Daily Calorie Needs</h3>
+                    <p>The difference between BMR and TDEE, how activity multipliers work, and what the numbers mean for your goals.</p>
+                    <div class="meta">July 2026 &middot; 7 min read</div>
+                </a>
+
+                <a class="blog-card" href="/blog/pomodoro-technique/">
+                    <span class="tag">Productivity</span>
+                    <h3>The Pomodoro Technique Explained: Does the 25-Minute Method Actually Work?</h3>
+                    <p>How the Pomodoro method works, the science behind it, and how to adapt it to your workflow.</p>
+                    <div class="meta">July 2026 &middot; 6 min read</div>
+                </a>
+
+                <a class="blog-card" href="/blog/how-to-create-secure-passwords/">
+                    <span class="tag">Security</span>
+                    <h3>How to Create a Truly Secure Password (Without Forgetting It)</h3>
+                    <p>What makes a password strong, how attackers crack weak ones, and practical strategies that actually work.</p>
+                    <div class="meta">July 2026 &middot; 6 min read</div>
+                </a>
+
+                <a class="blog-card" href="/blog/understanding-loan-amortization/">
+                    <span class="tag">Finance</span>
+                    <h3>Understanding Loan Amortization: Why You Pay So Much Interest Early</h3>
+                    <p>How monthly loan payments are split between principal and interest — and how to use that knowledge to save money.</p>
+                    <div class="meta">July 2026 &middot; 7 min read</div>
+                </a>
+
+                <a class="blog-card" href="/blog/base64-encoding-explained/">
+                    <span class="tag">Developer</span>
+                    <h3>What Is Base64 Encoding and When Should You Use It?</h3>
+                    <p>A clear explanation of what Base64 is, what it's not, and the common situations where developers need it.</p>
+                    <div class="meta">July 2026 &middot; 5 min read</div>
+                </a>
+
+                <a class="blog-card" href="/blog/rem-sleep-cycles/">
+                    <span class="tag">Health</span>
+                    <h3>REM Sleep Cycles Explained: How to Wake Up Actually Rested</h3>
+                    <p>What happens in each sleep stage, why the timing of your alarm matters, and how to plan your sleep schedule.</p>
+                    <div class="meta">July 2026 &middot; 6 min read</div>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="seo-section">
+            <h2>About This Blog</h2>
+            <p>The AI Learning Gym blog covers the concepts behind our tools — not just how to use them, but why they work. If you've ever wondered how an AI detector actually measures text, or why your loan seems to barely touch the principal in the early years, this is where you'll find the answers.</p>
+            <p>All articles are written in plain English, with real examples. No jargon for its own sake. New guides are published regularly as we expand our tool library.</p>
+        </div>
+
+    </div>
+
+    <aside class="sidebar-ad">
+        <div class="ad-container">
+            <!-- AdSense Ad Unit -->
+        </div>
+        <div class="sidebar-widget">
+            <h3>🔧 Popular Tools</h3>
+            <ul>
+                <li><a href="/ai-detector/">AI Content Detector</a></li>
+                <li><a href="/json-formatter/">JSON Formatter</a></li>
+                <li><a href="/password-generator/">Password Generator</a></li>
+                <li><a href="/loan-calculator/">Loan Calculator</a></li>
+                <li><a href="/bmr-calculator/">BMR & TDEE Calculator</a></li>
+                <li><a href="/sleep-calculator/">Sleep Cycle Calculator</a></li>
+                <li><a href="/pomodoro-timer/">Pomodoro Timer</a></li>
+                <li><a href="/base64/">Base64 Encoder</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>📂 Categories</h3>
+            <ul>
+                <li><a href="#">AI Tools</a></li>
+                <li><a href="#">Developer</a></li>
+                <li><a href="#">Health & Wellness</a></li>
+                <li><a href="#">Personal Finance</a></li>
+                <li><a href="#">Productivity</a></li>
+                <li><a href="#">Security</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p style="margin-top: 12px;">
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact Support</a> |
+        <a href="/sitemap.html">Site Map Directory</a>
+    </p>
+</footer>
+
+</body>
+</html>
