@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMR vs TDEE: How to Actually Calculate Your Daily Calorie Needs | AI Learning Gym</title>
+    <meta name="description" content="Learn the difference between BMR and TDEE, how activity multipliers work, and what your numbers actually mean for weight loss, maintenance, or muscle gain.">
+    <meta name="keywords" content="BMR vs TDEE explained, daily calorie needs calculator, basal metabolic rate, total daily energy expenditure, how to calculate calories">
+    <meta property="og:title" content="BMR vs TDEE Explained | AI Learning Gym Blog">
+    <meta property="og:type" content="article">
+    <style>
+        :root { --primary-color: #1a252f; --accent-color: #3498db; --text-dark: #2c3e50; --text-muted: #64748b; --card-border: #e2e8f0; --success-color: #2ecc71; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #ffffff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        @media (min-width: 992px) { .container { display: grid; grid-template-columns: 3fr 1fr; align-items: start; } }
+        .main-content-wrapper { display: flex; flex-direction: column; gap: 20px; }
+        .seo-section { background: #ffffff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); text-align: left; }
+        .article-title { color: var(--text-dark); font-size: 1.8rem; margin-bottom: 10px; line-height: 1.3; }
+        .article-meta { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border); }
+        .article-meta span { margin-right: 16px; }
+        .tag { display: inline-block; background: #2ecc71; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 12px; }
+        .seo-section h2 { color: var(--text-dark); margin: 30px 0 12px; font-size: 1.35rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
+        .seo-section h3 { color: #34495e; margin: 22px 0 8px; font-size: 1.1rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 18px 25px; color: #4a5568; font-size: 0.98rem; }
+        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
+        .seo-section strong { color: var(--text-dark); }
+        .highlight-box { background: #f0fff4; border-left: 4px solid var(--success-color); border-radius: 4px; padding: 16px 18px; margin: 20px 0; color: #2c3e50; font-size: 0.96rem; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.92rem; }
+        .data-table th { background: #f1f5f9; color: var(--text-dark); font-weight: 700; padding: 10px 12px; border-bottom: 2px solid var(--card-border); text-align: left; }
+        .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); color: #4a5568; }
+        .data-table tr:hover { background: #f8fafc; }
+        .faq-item { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent-color); }
+        .faq-item h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        .faq-item p { margin-bottom: 0; color: #4a5568; font-size: 0.92rem; }
+        .cta-box { background: var(--primary-color); color: #fff; border-radius: 8px; padding: 22px; text-align: center; margin-top: 30px; }
+        .cta-box p { color: #cbd5e1; margin-bottom: 12px; font-size: 0.96rem; }
+        .cta-box a { display: inline-block; background: var(--accent-color); color: #fff; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+        .cta-box a:hover { background: #2980b9; }
+        .sidebar-ad { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-widget { background: #ffffff; border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .sidebar-widget h3 { color: var(--text-dark); font-size: 1rem; margin-bottom: 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        .sidebar-widget ul { list-style: none; padding: 0; }
+        .sidebar-widget ul li { margin-bottom: 8px; }
+        .sidebar-widget ul li a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; }
+        .sidebar-widget ul li a:hover { text-decoration: underline; }
+        .ad-container { margin: 10px 0; text-align: center; width: 100%; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+        footer p { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>📖 AI Learning Gym Blog</h1>
+    <p>Practical guides and tutorials for developers, creators, and curious people.</p>
+    <a href="/blog/">← Back to All Articles</a>
+</header>
+
+<div class="container">
+    <div class="main-content-wrapper">
+        <div class="seo-section">
+            <span class="tag">Health</span>
+            <h1 class="article-title">BMR vs TDEE: How to Actually Calculate Your Daily Calorie Needs</h1>
+            <div class="article-meta">
+                <span>📅 July 2026</span>
+                <span>⏱ 7 min read</span>
+                <span>🔧 Related tool: <a href="/bmr-calculator/" style="color: var(--accent-color);">BMR & TDEE Calculator</a></span>
+            </div>
+
+            <p>Whether your goal is to lose weight, maintain your current weight, or build muscle, the first step is understanding how many calories your body actually needs. Two numbers sit at the center of this: <strong>BMR</strong> (Basal Metabolic Rate) and <strong>TDEE</strong> (Total Daily Energy Expenditure). They're related but measure different things, and confusing them leads to plans that don't work.</p>
+            <p>This article explains what each number means, how it's calculated, and how to use your numbers practically — without getting lost in formulas.</p>
+
+            <h2>What Is BMR?</h2>
+            <p>Your Basal Metabolic Rate is the number of calories your body burns at complete rest — just to keep you alive. This includes breathing, circulating blood, regulating temperature, and running all your organs. Think of it as the energy cost of simply existing.</p>
+            <p>BMR accounts for the majority of your total calorie burn — typically 60–75% of it. It's determined primarily by:</p>
+            <ul>
+                <li><strong>Body weight and height</strong> — more mass requires more energy to maintain</li>
+                <li><strong>Age</strong> — BMR tends to decline slightly as you get older</li>
+                <li><strong>Sex</strong> — males typically have higher BMR due to greater muscle mass on average</li>
+                <li><strong>Muscle mass</strong> — muscle tissue burns more calories at rest than fat tissue</li>
+            </ul>
+            <p>BMR is a theoretical number — it's what you'd burn if you stayed in bed all day without moving. Nobody actually lives at their BMR, which is where TDEE comes in.</p>
+
+            <h2>What Is TDEE?</h2>
+            <p>Your Total Daily Energy Expenditure is the total number of calories you burn in a typical day, accounting for all your physical activity. TDEE = BMR multiplied by an activity factor.</p>
+            <p>It includes:</p>
+            <ul>
+                <li><strong>BMR</strong> — your resting metabolic rate</li>
+                <li><strong>NEAT</strong> — Non-Exercise Activity Thermogenesis (fidgeting, walking around, standing)</li>
+                <li><strong>EAT</strong> — Exercise Activity Thermogenesis (deliberate workouts)</li>
+                <li><strong>TEF</strong> — Thermic Effect of Food (calories burned digesting food, roughly 10% of intake)</li>
+            </ul>
+            <p>TDEE is the number you actually care about for setting your calorie target. If you eat at your TDEE, your weight stays the same. Below it, you lose weight. Above it, you gain.</p>
+
+            <h2>The Activity Multipliers Explained</h2>
+            <p>Most BMR/TDEE calculators use the Mifflin-St Jeor equation for BMR, then multiply by one of these activity factors:</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr><th>Activity Level</th><th>Description</th><th>Multiplier</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Sedentary</td><td>Desk job, little or no exercise</td><td>× 1.2</td></tr>
+                    <tr><td>Lightly Active</td><td>Light exercise 1–3 days/week</td><td>× 1.375</td></tr>
+                    <tr><td>Moderately Active</td><td>Moderate exercise 3–5 days/week</td><td>× 1.55</td></tr>
+                    <tr><td>Very Active</td><td>Hard exercise 6–7 days/week</td><td>× 1.725</td></tr>
+                    <tr><td>Extra Active</td><td>Physical job + hard training, or twice-daily training</td><td>× 1.9</td></tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Common mistake:</strong> Most people overestimate their activity level. If you work at a desk and go to the gym 3 times a week, you're probably "Lightly Active," not "Moderately Active." When in doubt, choose the lower level — it's easier to add calories than explain why you're not losing weight.
+            </div>
+
+            <h2>How to Use Your TDEE</h2>
+            <p>Once you know your TDEE, you can set a calorie target based on your goal:</p>
+            <ul>
+                <li><strong>Weight loss:</strong> Eat 300–500 calories below your TDEE. This creates a deficit that translates to roughly 0.5–1 lb of fat loss per week. Avoid very large deficits — they tend to cause muscle loss and rebound hunger.</li>
+                <li><strong>Maintenance:</strong> Eat at your TDEE. Your weight stays roughly stable.</li>
+                <li><strong>Muscle gain (bulk):</strong> Eat 250–500 calories above your TDEE. A modest surplus supports muscle building without excessive fat gain.</li>
+            </ul>
+
+            <h2>Why Your TDEE Number Isn't Exact</h2>
+            <p>The equations used to calculate BMR and TDEE are statistical estimates based on population averages. Your actual metabolic rate can vary from the formula by 10–15% in either direction. This is normal.</p>
+            <p>The best way to use a TDEE calculator is as a starting point. Eat at your calculated TDEE for 2–3 weeks and track your weight. If you're losing weight faster than expected, your actual TDEE is likely lower than the estimate (or you're underestimating intake). If you're not losing weight at a supposed deficit, either your intake is higher than you think, or your TDEE is lower than calculated.</p>
+            <p>Adjust based on real-world results rather than trusting the number blindly.</p>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h4>Should I eat at my BMR if I want to lose weight fast?</h4>
+                <p>No. Eating at your BMR (i.e., a very large deficit) can lead to muscle loss, nutrient deficiencies, fatigue, and metabolic adaptation. A moderate deficit of 300–500 calories below TDEE is much more sustainable and preserves more muscle mass.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Does my TDEE change if I exercise more?</h4>
+                <p>Yes — if you consistently increase your activity level, your TDEE increases. However, the body also adapts over time and can partially compensate through reduced NEAT (you unconsciously move less outside of exercise). This is why some people hit weight loss plateaus despite consistent exercise.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Which formula is more accurate — Mifflin-St Jeor or Harris-Benedict?</h4>
+                <p>Research generally shows the Mifflin-St Jeor equation (developed in 1990) to be more accurate for most people than the older Harris-Benedict equation. For people with a very high or very low body fat percentage, neither formula is particularly accurate — a metabolic test or RMR (Resting Metabolic Rate) measurement from a clinic is more precise.</p>
+            </div>
+
+            <div class="cta-box">
+                <p>Calculate your BMR and TDEE instantly — no account needed, runs in your browser.</p>
+                <a href="/bmr-calculator/">Open BMR & TDEE Calculator →</a>
+            </div>
+        </div>
+    </div>
+
+    <aside class="sidebar-ad">
+        <div class="ad-container"><!-- AdSense Ad Unit --></div>
+        <div class="sidebar-widget">
+            <h3>🔧 Try the Tool</h3>
+            <ul>
+                <li><a href="/bmr-calculator/">BMR & TDEE Calculator</a></li>
+                <li><a href="/bmi-calculator/">BMI Calculator</a></li>
+                <li><a href="/sleep-calculator/">Sleep Cycle Calculator</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>📖 More Articles</h3>
+            <ul>
+                <li><a href="/blog/rem-sleep-cycles/">REM Sleep Cycles Explained</a></li>
+                <li><a href="/blog/pomodoro-technique/">The Pomodoro Technique</a></li>
+                <li><a href="/blog/understanding-loan-amortization/">Understanding Loan Amortization</a></li>
+                <li><a href="/blog/">View All Articles</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p style="margin-top: 12px;">
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact Support</a> |
+        <a href="/sitemap.html">Site Map Directory</a>
+    </p>
+</footer>
+</body>
+</html>
