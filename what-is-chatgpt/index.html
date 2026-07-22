@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is ChatGPT? OpenAI's AI Explained | AI Learning Gym</title>
+    <meta name="description" content="A clear, beginner-friendly guide to ChatGPT — what it is, how it works, the GPT model history, key features, pricing, and how it compares to Claude and Grok.">
+    <meta name="keywords" content="what is ChatGPT, ChatGPT explained, GPT-4o explained, OpenAI AI guide, ChatGPT vs Claude, ChatGPT features, how ChatGPT works">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 992px) { .container { grid-template-columns: 3fr 1fr; } }
+        .main-content { display: flex; flex-direction: column; gap: 20px; }
+        .content-card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .tag { display: inline-block; background: #1a6b41; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; }
+        .page-title { font-size: 1.9rem; color: var(--text-dark); margin-bottom: 10px; line-height: 1.3; }
+        .page-meta { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border); }
+        h2 { color: var(--text-dark); font-size: 1.35rem; margin: 28px 0 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
+        h3 { color: #34495e; font-size: 1.1rem; margin: 20px 0 8px; }
+        p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 10px 0 18px 25px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .video-placeholder { background: #1a252f; border-radius: 8px; padding: 40px 20px; text-align: center; margin: 24px 0; color: #cbd5e1; }
+        .video-placeholder .play-icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.6; }
+        .video-placeholder p { color: #94a3b8; margin: 0; font-size: 0.9rem; }
+        .video-placeholder .video-title { color: #e2e8f0; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+        .highlight-box { background: #eafaf1; border-left: 4px solid #1a6b41; border-radius: 4px; padding: 14px 18px; margin: 16px 0; color: var(--text-dark); font-size: 0.95rem; }
+        .timeline { list-style: none; margin: 0 0 24px; padding: 0; }
+        .timeline li { padding: 12px 12px 12px 20px; border-left: 3px solid var(--accent-color); margin-bottom: 10px; background: #f8fafc; border-radius: 0 4px 4px 0; }
+        .timeline li strong { display: block; color: var(--text-dark); margin-bottom: 4px; }
+        .timeline li span { color: #4a5568; font-size: 0.92rem; }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.92rem; }
+        .compare-table th { background: var(--primary-color); color: #fff; padding: 10px 12px; text-align: left; }
+        .compare-table td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); color: #4a5568; }
+        .compare-table tr:hover { background: #f8fafc; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; font-size: 1rem; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .cta-box { background: var(--primary-color); color: #fff; border-radius: 8px; padding: 22px; text-align: center; margin-top: 10px; }
+        .cta-box p { color: #cbd5e1; margin-bottom: 12px; font-size: 0.96rem; }
+        .cta-box a { display: inline-block; background: var(--accent-color); color: #fff; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.95rem; margin: 4px; }
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-widget { background: #fff; border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; }
+        .sidebar-widget h3 { color: var(--text-dark); font-size: 1rem; margin: 0 0 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        .sidebar-widget ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar-widget ul li { margin-bottom: 8px; }
+        .sidebar-widget ul li a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; }
+        .sidebar-widget ul li a:hover { text-decoration: underline; }
+        .ad-container { margin: 15px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🏋️ AI Learning Gym</h1>
+    <p>Learn how the world's leading AI models work</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+    <div class="main-content">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="content-card">
+            <span class="tag">AI Model Guide</span>
+            <h1 class="page-title">What Is ChatGPT? OpenAI's AI Assistant Explained</h1>
+            <div class="page-meta">📅 July 2026 &nbsp;|&nbsp; ⏱ 7 min read &nbsp;|&nbsp; 🏢 Made by OpenAI</div>
+
+            <p>ChatGPT is an AI assistant made by OpenAI that lets you have a conversation with a large language model. Since its launch in November 2022, it has become the most widely used AI product in the world, with hundreds of millions of users. This guide explains what ChatGPT is, how it evolved, what it can do, and how it fits into the AI landscape today.</p>
+
+            <!-- VIDEO EMBED SECTION -->
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <div class="video-title">ChatGPT Explained – Video Overview</div>
+                <p>Video coming soon. Replace this section with your YouTube embed code.</p>
+            </div>
+            <!-- TO ADD YOUR VIDEO: Replace the div above with:
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen style="border-radius:8px; display:block;"></iframe> -->
+
+            <h2>What is ChatGPT?</h2>
+            <p>ChatGPT stands for Chat Generative Pre-trained Transformer. That's a mouthful, but the important part is the word "chat" — it's a conversational interface built on top of OpenAI's GPT family of AI models. When you type a message, the model reads it, predicts the most appropriate and helpful continuation, and generates a response. It doesn't search a database or look things up in real time — it draws on patterns learned during training.</p>
+            <p>The chat format made GPT-class AI accessible for the first time. Instead of needing programming skills to call an API, anyone could open a browser and start a conversation. That simplicity drove the fastest consumer product adoption in tech history — reaching 100 million users in just two months after launch.</p>
+
+            <h2>Who makes ChatGPT?</h2>
+            <p>ChatGPT is made by OpenAI, a company founded in 2015 in San Francisco. OpenAI started as a nonprofit research lab with backing from figures including Elon Musk, Sam Altman, Peter Thiel, and Reid Hoffman. It later became a "capped-profit" company to attract the investment needed for large-scale AI research. Sam Altman is the CEO. Microsoft has invested heavily in OpenAI and has integrated its models throughout the Microsoft product ecosystem, including GitHub Copilot, Bing, and Microsoft 365 Copilot.</p>
+
+            <h2>A brief history of GPT models</h2>
+            <ul class="timeline">
+                <li><strong>GPT-1 (2018)</strong><span>OpenAI's first language model. Proved that generative pre-training on text could produce capable language understanding.</span></li>
+                <li><strong>GPT-2 (2019)</strong><span>Generated coherent multi-paragraph text. OpenAI initially withheld the full model over concerns it could be misused for misinformation.</span></li>
+                <li><strong>GPT-3 (2020)</strong><span>A major leap — 175 billion parameters. Became the backbone of early AI writing and coding tools. Released via API.</span></li>
+                <li><strong>ChatGPT (Nov 2022)</strong><span>Built on a version of GPT-3.5 fine-tuned with human feedback (RLHF). The chat interface triggered mass adoption.</span></li>
+                <li><strong>GPT-4 (Mar 2023)</strong><span>Multimodal — could process images as well as text. Significant improvement in reasoning, coding, and accuracy.</span></li>
+                <li><strong>GPT-4o (May 2024)</strong><span>"Omni" — faster and cheaper than GPT-4, with native voice, image, and video understanding. Became the default model.</span></li>
+                <li><strong>o1 / o3 / o4 series (2024–2025)</strong><span>OpenAI's "reasoning" models that spend more time thinking before responding. Especially strong on math, science, and complex logic problems.</span></li>
+            </ul>
+
+            <h2>What can ChatGPT do?</h2>
+            <p>ChatGPT supports a wide range of tasks, including:</p>
+            <ul>
+                <li><strong>Writing and editing</strong> — drafting emails, essays, blog posts, marketing copy, resumes</li>
+                <li><strong>Coding</strong> — writing, explaining, and debugging code in most programming languages</li>
+                <li><strong>Image analysis</strong> — reading charts, photos, screenshots, and documents you upload</li>
+                <li><strong>Image generation</strong> — creating images from text prompts using DALL-E (built into the Plus and Team plans)</li>
+                <li><strong>Web browsing</strong> — fetching real-time information from the internet (available in paid plans)</li>
+                <li><strong>Voice conversation</strong> — talking back and forth with a surprisingly natural voice interface</li>
+                <li><strong>Custom GPTs</strong> — building or using specialized chatbots tailored to specific tasks or datasets</li>
+                <li><strong>Data analysis</strong> — uploading spreadsheets and asking questions or creating charts</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Context window:</strong> GPT-4o supports up to 128,000 tokens of context — roughly 96,000 words. This lets you paste in long documents, entire articles, or lengthy code files and ask questions about them. OpenAI's o1 model supports up to 200,000 tokens.
+            </div>
+
+            <h2>ChatGPT plans and pricing</h2>
+            <ul>
+                <li><strong>Free</strong> — access to GPT-4o with daily usage limits; no image generation, limited web browsing</li>
+                <li><strong>ChatGPT Plus — $20/month</strong> — higher usage limits, image generation with DALL-E, full web browsing, voice, access to newer models</li>
+                <li><strong>ChatGPT Team — $30/user/month</strong> — shared workspace for teams, no training on your data by default</li>
+                <li><strong>ChatGPT Enterprise</strong> — custom pricing; enterprise-grade privacy, admin controls, unlimited usage</li>
+                <li><strong>OpenAI API</strong> — pay-per-token access for developers building their own applications</li>
+            </ul>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2>How ChatGPT compares to Claude and Grok</h2>
+            <table class="compare-table">
+                <thead>
+                    <tr><th>Feature</th><th>ChatGPT</th><th>Claude</th><th>Grok</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Made by</td><td>OpenAI</td><td>Anthropic</td><td>xAI</td></tr>
+                    <tr><td>Image generation</td><td>Yes (DALL-E)</td><td>No</td><td>Yes (Aurora)</td></tr>
+                    <tr><td>Web browsing</td><td>Yes</td><td>Limited</td><td>Yes (real-time)</td></tr>
+                    <tr><td>X/Twitter integration</td><td>No</td><td>No</td><td>Yes (native)</td></tr>
+                    <tr><td>Context window</td><td>128K tokens</td><td>200K tokens</td><td>131K tokens</td></tr>
+                    <tr><td>Free tier</td><td>Yes</td><td>Yes</td><td>Yes (via X Premium)</td></tr>
+                    <tr><td>Paid plan</td><td>$20/mo</td><td>$20/mo</td><td>Included in X Premium+</td></tr>
+                    <tr><td>Known strength</td><td>Breadth, image gen, voice</td><td>Coding, long docs, accuracy</td><td>Real-time info, X data</td></tr>
+                </tbody>
+            </table>
+
+            <h2>Frequently asked questions</h2>
+            <div class="faq-item">
+                <h4>Is ChatGPT free to use?</h4>
+                <p>Yes. ChatGPT has a free tier that includes access to GPT-4o with daily usage limits. ChatGPT Plus at $20/month unlocks higher limits, DALL-E image generation, web browsing, and access to advanced models.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Does ChatGPT browse the internet?</h4>
+                <p>Yes — paid plans include a browsing tool that lets ChatGPT search the web for current information. The free tier has more limited access to this feature.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can ChatGPT generate images?</h4>
+                <p>Yes. ChatGPT Plus and higher plans include DALL-E image generation built directly into the chat interface. You describe what you want and it creates the image.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is ChatGPT safe to use for sensitive work?</h4>
+                <p>By default, OpenAI may use conversations to train future models. You can turn off training in your account settings. Team and Enterprise plans offer stronger privacy guarantees where your data is not used for training.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What's the difference between ChatGPT and the OpenAI API?</h4>
+                <p>ChatGPT is the consumer product — a chat interface you use in a browser or app. The OpenAI API is a developer service that lets you build your own applications on top of GPT models. They use the same underlying AI, but the API gives developers more control and flexibility.</p>
+            </div>
+
+            <div class="cta-box">
+                <p>Build better AI prompts with our free tools</p>
+                <a href="/ai-prompt-builder/">AI Prompt Builder</a>
+                <a href="/ai-image-prompt-generator/">Image Prompt Generator</a>
+            </div>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        <div class="sidebar-widget">
+            <h3>🤖 More AI Guides</h3>
+            <ul>
+                <li><a href="/what-is-claude/">What Is Claude?</a></li>
+                <li><a href="/what-is-grok/">What Is Grok?</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>🔧 Related Tools</h3>
+            <ul>
+                <li><a href="/ai-prompt-builder/">AI Prompt Builder</a></li>
+                <li><a href="/ai-image-prompt-generator/">Image Prompt Generator</a></li>
+                <li><a href="/token-counter/">Token Counter</a></li>
+                <li><a href="/ai-detector/">AI Content Detector</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>📖 From the Blog</h3>
+            <ul>
+                <li><a href="/blog/how-to-detect-ai-content/">How AI Detectors Work</a></li>
+                <li><a href="/blog/how-to-create-secure-passwords/">How to Create Secure Passwords</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+</body>
+</html>
