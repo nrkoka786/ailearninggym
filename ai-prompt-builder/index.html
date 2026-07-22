@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Builder – Write Better ChatGPT & Claude Prompts | AI Learning Gym</title>
+    <meta name="description" content="Build structured, effective AI prompts for ChatGPT, Claude, and Gemini. Fill in the fields and get a ready-to-copy prompt. Free, runs in your browser.">
+    <meta name="keywords" content="AI prompt builder, ChatGPT prompt generator, Claude prompt template, prompt engineering tool, better AI prompts, prompt framework">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 992px) { .container { grid-template-columns: 3fr 1fr; } }
+        .main-content { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .tool-wrapper { background: #f8f9fa; border: 1px solid var(--card-border); border-radius: 6px; padding: 25px; margin-bottom: 30px; }
+        .template-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .template-btn { background: #fff; border: 2px solid var(--card-border); border-radius: 20px; padding: 6px 14px; font-size: 0.85rem; cursor: pointer; font-weight: 600; color: var(--text-dark); transition: all 0.2s; }
+        .template-btn:hover, .template-btn.active { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
+        @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        label { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); }
+        .field-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: -4px; }
+        input[type="text"], select, textarea.short { width: 100%; padding: 10px 12px; font-size: 0.95rem; border: 2px solid #cbd5e1; border-radius: 4px; background: #fff; }
+        textarea.short { height: 80px; resize: vertical; }
+        textarea.tall { width: 100%; height: 120px; padding: 10px 12px; font-size: 0.95rem; border: 2px solid #cbd5e1; border-radius: 4px; background: #fff; resize: vertical; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-color); }
+        .build-btn { background: var(--accent-color); color: #fff; border: none; padding: 12px 28px; border-radius: 4px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; transition: background 0.2s; margin-bottom: 20px; }
+        .build-btn:hover { background: #2980b9; }
+        .output-box { background: #1e2a38; color: #e2e8f0; border-radius: 6px; padding: 18px; font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; min-height: 120px; position: relative; display: none; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: var(--accent-color); color: #fff; border: none; padding: 6px 14px; border-radius: 4px; font-size: 0.82rem; font-weight: 700; cursor: pointer; }
+        .copy-btn.copied { background: var(--success-color); }
+        .seo-section { border-top: 2px solid #edf2f7; padding-top: 30px; margin-top: 20px; }
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; }
+        .seo-section li { margin-bottom: 8px; }
+        .highlight-box { background: #f0f7ff; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px 18px; margin: 16px 0; color: var(--text-dark); font-size: 0.95rem; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 15px 0; text-align: center; width: 100%; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+<header>
+    <h1>AI Learning Gym Utilities</h1>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+<div class="container">
+    <main class="main-content">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="tool-wrapper">
+            <h2 style="margin-bottom:15px; color:var(--text-dark);">AI Prompt Builder</h2>
+
+            <p style="color:var(--text-muted); margin-bottom:16px; font-size:0.93rem;">Start from a template or fill in the fields manually. Click "Build Prompt" to generate a structured, ready-to-copy prompt.</p>
+
+            <div class="template-bar" id="template-bar">
+                <button class="template-btn" onclick="loadTemplate('general')">General Task</button>
+                <button class="template-btn" onclick="loadTemplate('write')">Writing & Editing</button>
+                <button class="template-btn" onclick="loadTemplate('code')">Coding Help</button>
+                <button class="template-btn" onclick="loadTemplate('summarize')">Summarize</button>
+                <button class="template-btn" onclick="loadTemplate('analyze')">Analysis</button>
+                <button class="template-btn" onclick="loadTemplate('email')">Email Draft</button>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="role">Role / Persona</label>
+                    <p class="field-hint">What expert should the AI act as?</p>
+                    <input type="text" id="role" placeholder="e.g. experienced software engineer, marketing copywriter">
+                </div>
+                <div class="form-group">
+                    <label for="tone">Tone</label>
+                    <p class="field-hint">How should the response sound?</p>
+                    <select id="tone">
+                        <option value="">-- Select tone --</option>
+                        <option>Professional</option>
+                        <option>Friendly and conversational</option>
+                        <option>Formal</option>
+                        <option>Concise and direct</option>
+                        <option>Simple and easy to understand</option>
+                        <option>Enthusiastic</option>
+                        <option>Neutral and objective</option>
+                        <option>Technical</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label for="context">Context / Background</label>
+                    <p class="field-hint">What background does the AI need to know?</p>
+                    <textarea class="short" id="context" placeholder="e.g. I am writing a blog post for small business owners who are new to email marketing..."></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="task">Task / Instructions</label>
+                    <p class="field-hint">What do you want the AI to do?</p>
+                    <textarea class="tall" id="task" placeholder="e.g. Write a 300-word introduction that explains why email marketing matters for small businesses and includes three key benefits..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="format">Output Format</label>
+                    <p class="field-hint">How should the response be structured?</p>
+                    <select id="format">
+                        <option value="">-- Select format --</option>
+                        <option>Flowing paragraphs</option>
+                        <option>Bullet points</option>
+                        <option>Numbered list</option>
+                        <option>Table</option>
+                        <option>Step-by-step instructions</option>
+                        <option>Q&amp;A format</option>
+                        <option>Code with comments</option>
+                        <option>Short answer (under 100 words)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="audience">Target Audience</label>
+                    <p class="field-hint">Who will read the output?</p>
+                    <input type="text" id="audience" placeholder="e.g. beginners, senior developers, marketing managers">
+                </div>
+                <div class="form-group full-width">
+                    <label for="constraints">Constraints / What to Avoid</label>
+                    <p class="field-hint">Anything the AI should NOT do or include?</p>
+                    <textarea class="short" id="constraints" placeholder="e.g. Do not use jargon. Avoid mentioning specific brands. Keep it under 200 words."></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="example">Example (optional)</label>
+                    <p class="field-hint">Show the AI the style or format you want</p>
+                    <textarea class="short" id="example" placeholder="e.g. Here's an example of the tone I want: 'Email marketing isn't just for big brands. Here's why it works for anyone...'"></textarea>
+                </div>
+            </div>
+
+            <button class="build-btn" onclick="buildPrompt()">Build Prompt →</button>
+
+            <div class="output-box" id="output-box">
+                <button class="copy-btn" id="copy-btn" onclick="copyPrompt()">Copy</button>
+                <span id="output-text"></span>
+            </div>
+        </section>
+
+        <section class="seo-section">
+            <h2>About This Tool</h2>
+            <p>The AI Prompt Builder helps you write structured prompts for ChatGPT, Claude, Gemini, and other AI assistants. Instead of typing freeform requests that often produce generic results, this tool guides you through the key components of an effective prompt and assembles them into a format that gets consistently better responses.</p>
+
+            <h3>Why prompt structure matters</h3>
+            <p>The most common reason AI responses disappoint is a vague prompt. When you ask "write me a blog post about marketing," the AI has no idea who the audience is, what tone you want, how long it should be, or what angle to take. It defaults to something generic.</p>
+            <p>A structured prompt removes that ambiguity. When you specify the role, context, task, format, and constraints, the AI has everything it needs to produce something genuinely useful on the first try — which saves you time editing or re-prompting.</p>
+
+            <div class="highlight-box">
+                <strong>The difference in practice:</strong> "Write a product description for my coffee mug" vs. "You are an e-commerce copywriter. Write a 60-word product description for a 12oz ceramic coffee mug targeted at remote workers. Tone: warm and slightly humorous. Emphasize the double-wall insulation. Avoid clichés like 'perfect gift'." The second prompt gets you something usable immediately.
+            </div>
+
+            <h3>The six components of an effective prompt</h3>
+            <ul>
+                <li><strong>Role:</strong> Giving the AI a persona focuses its responses. "You are a tax attorney" produces more precise answers than asking with no role.</li>
+                <li><strong>Context:</strong> Background information the AI needs to give relevant answers. The more specific, the better.</li>
+                <li><strong>Task:</strong> Exactly what you want done. Use action verbs: write, summarize, compare, explain, list, translate.</li>
+                <li><strong>Format:</strong> Tell the AI how to structure its output — bullets, paragraphs, tables, code blocks.</li>
+                <li><strong>Audience:</strong> Who is the output for? A response for a beginner should read very differently from one for an expert.</li>
+                <li><strong>Constraints:</strong> What to avoid. Length limits, topics to skip, styles that don't fit your use case.</li>
+            </ul>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h3>Frequently asked questions</h3>
+            <div class="faq-item">
+                <h4>Does this work for ChatGPT, Claude, and Gemini?</h4>
+                <p>Yes. The prompt structure this tool generates works well across all major AI assistants. The role, context, and task format is a universal pattern — not specific to any one model.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do I need to fill in every field?</h4>
+                <p>No. The only required field is the Task — what you want the AI to do. Every other field is optional but adds precision. Start with just the task and add fields if the results aren't specific enough.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is my prompt saved or stored?</h4>
+                <p>No. Everything runs in your browser locally. Nothing is sent to any server. Your prompts, including any sensitive context you add, stay entirely on your device.</p>
+            </div>
+        </section>
+    </main>
+
+    <aside>
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact Support</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    const templates = {
+        general: { role: 'helpful expert', context: '', task: 'Explain [topic] clearly and concisely.', format: 'Flowing paragraphs', audience: 'general audience', constraints: 'Keep it under 300 words. Use plain language.', example: '' },
+        write: { role: 'professional copywriter and editor', context: 'I am writing content for [describe your website or publication].', task: 'Write [type of content] about [topic]. It should be approximately [length] words.', format: 'Flowing paragraphs', audience: '', constraints: 'Avoid passive voice. Do not use filler phrases like "In conclusion" or "It is important to note."', example: '' },
+        code: { role: 'senior software engineer', context: 'I am working on a [language/framework] project. [Describe what the code needs to do.]', task: 'Write a function that [specific task]. Include error handling.', format: 'Code with comments', audience: 'developers', constraints: 'Use modern syntax. Add inline comments explaining non-obvious logic.', example: '' },
+        summarize: { role: 'expert summarizer', context: '', task: 'Summarize the following text in [number] bullet points, capturing only the most important points:\n\n[Paste your text here]', format: 'Bullet points', audience: '', constraints: 'Do not add information not present in the original text. Be concise.', example: '' },
+        analyze: { role: 'analytical expert', context: '', task: 'Analyze [topic or content] and identify the key strengths, weaknesses, and opportunities.', format: 'Numbered list', audience: '', constraints: 'Be objective. Support each point with a specific reason.', example: '' },
+        email: { role: 'professional business writer', context: 'I need to send an email to [recipient, e.g. a client, my manager, a vendor].', task: 'Write a professional email that [goal of the email, e.g. follows up on a proposal, requests a meeting, apologizes for a delay].', format: 'Flowing paragraphs', audience: '', constraints: 'Keep it under 150 words. Be polite but direct. Do not use overly formal language.', example: '' }
+    };
+
+    function loadTemplate(key) {
+        const t = templates[key];
+        document.getElementById('role').value = t.role;
+        document.getElementById('context').value = t.context;
+        document.getElementById('task').value = t.task;
+        document.getElementById('format').value = t.format;
+        document.getElementById('audience').value = t.audience;
+        document.getElementById('constraints').value = t.constraints;
+        document.getElementById('example').value = t.example;
+        document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+
+    function buildPrompt() {
+        const role = document.getElementById('role').value.trim();
+        const context = document.getElementById('context').value.trim();
+        const task = document.getElementById('task').value.trim();
+        const format = document.getElementById('format').value;
+        const audience = document.getElementById('audience').value.trim();
+        const constraints = document.getElementById('constraints').value.trim();
+        const example = document.getElementById('example').value.trim();
+
+        if (!task) { alert('Please fill in at least the Task field.'); return; }
+
+        let parts = [];
+        if (role) parts.push(`You are a ${role}.`);
+        if (context) parts.push(`Context: ${context}`);
+        parts.push(`Task: ${task}`);
+        if (audience) parts.push(`Audience: ${audience}`);
+        if (format) parts.push(`Format: ${format}`);
+        if (constraints) parts.push(`Important: ${constraints}`);
+        if (example) parts.push(`Example of the style I want:\n${example}`);
+
+        const prompt = parts.join('\n\n');
+        document.getElementById('output-text').textContent = prompt;
+        const box = document.getElementById('output-box');
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        document.getElementById('copy-btn').textContent = 'Copy';
+        document.getElementById('copy-btn').classList.remove('copied');
+    }
+
+    function copyPrompt() {
+        const text = document.getElementById('output-text').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+        });
+    }
+</script>
+</body>
+</html>
