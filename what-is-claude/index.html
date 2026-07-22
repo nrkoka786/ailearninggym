@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is Claude AI? Anthropic's AI Explained | AI Learning Gym</title>
+    <meta name="description" content="A clear, beginner-friendly explanation of Claude AI — what it is, how it works, what it's good at, and how it compares to ChatGPT. Everything you need to know about Anthropic's AI.">
+    <meta name="keywords" content="what is Claude AI, Claude Anthropic explained, Claude vs ChatGPT, Claude AI guide, Anthropic AI model, Claude 3.5 Sonnet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 992px) { .container { grid-template-columns: 3fr 1fr; } }
+        .main-content { display: flex; flex-direction: column; gap: 20px; }
+        .content-card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .tag { display: inline-block; background: #6c3483; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; }
+        .page-title { font-size: 1.9rem; color: var(--text-dark); margin-bottom: 10px; line-height: 1.3; }
+        .page-meta { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border); }
+        h2 { color: var(--text-dark); font-size: 1.35rem; margin: 28px 0 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
+        h3 { color: #34495e; font-size: 1.1rem; margin: 20px 0 8px; }
+        p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 10px 0 18px 25px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .video-placeholder { background: #1a252f; border-radius: 8px; padding: 40px 20px; text-align: center; margin: 24px 0; color: #cbd5e1; }
+        .video-placeholder .play-icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.6; }
+        .video-placeholder p { color: #94a3b8; margin: 0; font-size: 0.9rem; }
+        .video-placeholder .video-title { color: #e2e8f0; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+        /* REPLACE THIS COMMENT WITH YOUR YOUTUBE EMBED:
+           <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+           frameborder="0" allowfullscreen style="border-radius:8px;"></iframe> */
+        .highlight-box { background: #f5eef8; border-left: 4px solid #6c3483; border-radius: 4px; padding: 14px 18px; margin: 16px 0; color: var(--text-dark); font-size: 0.95rem; }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.92rem; }
+        .compare-table th { background: var(--primary-color); color: #fff; padding: 10px 12px; text-align: left; }
+        .compare-table td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); color: #4a5568; }
+        .compare-table tr:hover { background: #f8fafc; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; font-size: 1rem; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .cta-box { background: var(--primary-color); color: #fff; border-radius: 8px; padding: 22px; text-align: center; margin-top: 10px; }
+        .cta-box p { color: #cbd5e1; margin-bottom: 12px; font-size: 0.96rem; }
+        .cta-box a { display: inline-block; background: var(--accent-color); color: #fff; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.95rem; margin: 4px; }
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-widget { background: #fff; border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; }
+        .sidebar-widget h3 { color: var(--text-dark); font-size: 1rem; margin: 0 0 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        .sidebar-widget ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar-widget ul li { margin-bottom: 8px; }
+        .sidebar-widget ul li a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; }
+        .sidebar-widget ul li a:hover { text-decoration: underline; }
+        .ad-container { margin: 15px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🏋️ AI Learning Gym</h1>
+    <p>Learn how the world's leading AI models work</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+    <div class="main-content">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="content-card">
+            <span class="tag">AI Model Guide</span>
+            <h1 class="page-title">What Is Claude AI? Anthropic's Model Explained</h1>
+            <div class="page-meta">📅 July 2026 &nbsp;|&nbsp; ⏱ 7 min read &nbsp;|&nbsp; 🏢 Made by Anthropic</div>
+
+            <p>Claude is an AI assistant made by Anthropic, a company founded in 2021 by former OpenAI researchers including Dario Amodei and Daniela Amodei. It's one of the most capable AI models available today, widely used for writing, coding, research, and analysis. This guide explains what Claude is, how it works, what it's particularly good at, and how it fits into the broader AI landscape.</p>
+
+            <!-- VIDEO EMBED SECTION -->
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <div class="video-title">Claude AI Explained – Video Overview</div>
+                <p>Video coming soon. Replace this section with your YouTube embed code.</p>
+            </div>
+            <!-- TO ADD YOUR VIDEO: Replace the div above with:
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen style="border-radius:8px; display:block;"></iframe> -->
+
+            <h2>What is Claude?</h2>
+            <p>Claude is a large language model (LLM) — a type of AI that has been trained on enormous amounts of text to understand and generate human language. When you type a question or request, Claude reads it, predicts what a helpful and accurate response would look like, and writes it out. It doesn't retrieve information from a database like a search engine — it generates responses based on patterns learned during training.</p>
+            <p>The name "Claude" comes from Claude Shannon, the mathematician who founded information theory — a nod to Anthropic's roots in AI safety research.</p>
+
+            <h2>Who makes Claude?</h2>
+            <p>Claude is made by Anthropic, an AI safety company based in San Francisco. Anthropic was founded in 2021 by Dario Amodei (CEO), Daniela Amodei (President), and several other researchers who previously worked at OpenAI. The company's primary focus is on building AI that is safe, reliable, and interpretable — understanding not just what AI does, but why it does it.</p>
+            <p>Anthropic developed a training approach called <strong>Constitutional AI</strong>, which teaches Claude to follow a set of principles — to be helpful, harmless, and honest — rather than simply optimizing for user approval. This is one of the reasons Claude tends to push back on harmful requests and acknowledge uncertainty rather than fabricate confident-sounding answers.</p>
+
+            <h2>What are Claude's main versions?</h2>
+            <p>Anthropic releases Claude in multiple versions designed for different use cases and budgets:</p>
+            <ul>
+                <li><strong>Claude Opus</strong> — the most capable model, designed for complex reasoning, deep analysis, and demanding tasks. Best for users who need top-tier performance and don't mind slower response times.</li>
+                <li><strong>Claude Sonnet</strong> — the most popular balance of capability and speed. Handles most professional tasks — writing, coding, research — at a faster pace than Opus.</li>
+                <li><strong>Claude Haiku</strong> — the fastest and most affordable version. Ideal for high-volume applications where speed matters more than maximum depth.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Context window:</strong> Claude supports up to 200,000 tokens of context — roughly 150,000 words, or about 500 pages of text — in a single conversation. This makes it exceptionally useful for analyzing long documents, reviewing entire codebases, or maintaining detailed context over extended work sessions.
+            </div>
+
+            <h2>What is Claude particularly good at?</h2>
+            <p>Claude has earned a strong reputation in several specific areas:</p>
+            <ul>
+                <li><strong>Writing and editing</strong> — Claude produces clean, natural prose and gives specific, actionable editing feedback rather than vague suggestions.</li>
+                <li><strong>Coding</strong> — It's widely considered one of the strongest AI coding assistants available, capable of writing, debugging, and explaining code across most languages.</li>
+                <li><strong>Long document analysis</strong> — Its large context window lets it read and summarize entire reports, contracts, or research papers in one pass.</li>
+                <li><strong>Following complex instructions</strong> — Claude is particularly good at sticking to detailed, multi-part instructions without drifting or ignoring constraints.</li>
+                <li><strong>Honesty about uncertainty</strong> — Unlike some AI models, Claude is more likely to say "I'm not sure" than to confidently fabricate an answer.</li>
+            </ul>
+
+            <h2>How do you access Claude?</h2>
+            <ul>
+                <li><strong>claude.ai</strong> — the web and mobile chat interface. Free tier available; Claude Pro at $20/month gives access to more powerful models and higher usage limits.</li>
+                <li><strong>Anthropic API</strong> — for developers building applications. Pricing is per token (charged per amount of text processed).</li>
+                <li><strong>Claude Code</strong> — a command-line tool for developers to use Claude directly in their terminal for coding tasks.</li>
+                <li><strong>Third-party apps</strong> — Claude is integrated into tools like Amazon Bedrock, Google Cloud Vertex AI, and various productivity apps.</li>
+            </ul>
+
+            <h2>How does Claude compare to ChatGPT?</h2>
+            <table class="compare-table">
+                <thead>
+                    <tr><th>Feature</th><th>Claude</th><th>ChatGPT</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Made by</td><td>Anthropic</td><td>OpenAI</td></tr>
+                    <tr><td>Context window</td><td>Up to 200K tokens</td><td>Up to 128K tokens (GPT-4o)</td></tr>
+                    <tr><td>Image generation</td><td>No (text only)</td><td>Yes (via DALL-E)</td></tr>
+                    <tr><td>Web browsing</td><td>Limited</td><td>Yes (with tools)</td></tr>
+                    <tr><td>Known strength</td><td>Coding, long documents, following instructions</td><td>General tasks, plugins, image creation</td></tr>
+                    <tr><td>Free tier</td><td>Yes</td><td>Yes</td></tr>
+                    <tr><td>Paid plan</td><td>$20/month (Pro)</td><td>$20/month (Plus)</td></tr>
+                </tbody>
+            </table>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2>Frequently asked questions</h2>
+            <div class="faq-item">
+                <h4>Is Claude free to use?</h4>
+                <p>Yes. Claude has a free tier at claude.ai that gives access to Claude Sonnet with daily usage limits. Claude Pro ($20/month) removes most limits and gives access to the most powerful models including Opus.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Does Claude have access to the internet?</h4>
+                <p>Claude's knowledge comes from its training data, which has a cutoff date. It does not browse the internet in real time by default, though some integrations may add web search capability.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is Claude safe to use for sensitive work?</h4>
+                <p>Anthropic takes privacy seriously and publishes usage policies. For highly sensitive or confidential work, check Anthropic's current data handling policies. Enterprise plans offer additional privacy controls.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can Claude generate images?</h4>
+                <p>No — Claude is a text-only model. It can describe images, analyze images you upload, and help you write prompts for image generators, but it does not create images itself.</p>
+            </div>
+
+            <div class="cta-box">
+                <p>Try our AI tools to put your Claude knowledge into practice</p>
+                <a href="/ai-prompt-builder/">AI Prompt Builder</a>
+                <a href="/token-counter/">Token Counter</a>
+            </div>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        <div class="sidebar-widget">
+            <h3>🤖 More AI Guides</h3>
+            <ul>
+                <li><a href="/what-is-chatgpt/">What Is ChatGPT?</a></li>
+                <li><a href="/what-is-grok/">What Is Grok?</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>🔧 Related Tools</h3>
+            <ul>
+                <li><a href="/ai-prompt-builder/">AI Prompt Builder</a></li>
+                <li><a href="/token-counter/">Token Counter</a></li>
+                <li><a href="/ai-image-prompt-generator/">Image Prompt Generator</a></li>
+                <li><a href="/ai-detector/">AI Content Detector</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>📖 From the Blog</h3>
+            <ul>
+                <li><a href="/blog/how-to-detect-ai-content/">How AI Detectors Work</a></li>
+                <li><a href="/blog/how-to-create-secure-passwords/">How to Create Secure Passwords</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+</body>
+</html>
