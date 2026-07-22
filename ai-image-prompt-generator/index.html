@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Prompt Generator – Midjourney, DALL-E & Stable Diffusion | AI Learning Gym</title>
+    <meta name="description" content="Generate detailed image prompts for Midjourney, DALL-E 3, and Stable Diffusion. Fill in subject, style, lighting, and mood — get a ready-to-copy prompt instantly.">
+    <meta name="keywords" content="AI image prompt generator, Midjourney prompt builder, DALL-E prompt generator, Stable Diffusion prompts, image prompt template, text to image prompts">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 992px) { .container { grid-template-columns: 3fr 1fr; } }
+        .main-content { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .tool-wrapper { background: #f8f9fa; border: 1px solid var(--card-border); border-radius: 6px; padding: 25px; margin-bottom: 30px; }
+        .platform-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .platform-btn { background: #fff; border: 2px solid var(--card-border); border-radius: 6px; padding: 8px 16px; font-size: 0.88rem; cursor: pointer; font-weight: 700; color: var(--text-dark); transition: all 0.2s; }
+        .platform-btn:hover { border-color: var(--accent-color); }
+        .platform-btn.active { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
+        @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        label { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); }
+        .field-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: -4px; }
+        input[type="text"], select { width: 100%; padding: 10px 12px; font-size: 0.95rem; border: 2px solid #cbd5e1; border-radius: 4px; background: #fff; }
+        textarea.desc { width: 100%; height: 90px; padding: 10px 12px; font-size: 0.95rem; border: 2px solid #cbd5e1; border-radius: 4px; background: #fff; resize: vertical; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-color); }
+        .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: #fff; border: 2px solid var(--card-border); border-radius: 20px; padding: 5px 12px; font-size: 0.82rem; cursor: pointer; color: var(--text-dark); transition: all 0.2s; user-select: none; }
+        .tag:hover { border-color: var(--accent-color); }
+        .tag.selected { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+        .build-btn { background: var(--accent-color); color: #fff; border: none; padding: 12px 28px; border-radius: 4px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; transition: background 0.2s; margin-bottom: 20px; }
+        .build-btn:hover { background: #2980b9; }
+        .output-box { background: #1e2a38; color: #e2e8f0; border-radius: 6px; padding: 18px; font-size: 0.95rem; line-height: 1.7; position: relative; display: none; }
+        .output-label { font-size: 0.78rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .output-text { word-break: break-word; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: var(--accent-color); color: #fff; border: none; padding: 6px 14px; border-radius: 4px; font-size: 0.82rem; font-weight: 700; cursor: pointer; }
+        .copy-btn.copied { background: var(--success-color); }
+        .seo-section { border-top: 2px solid #edf2f7; padding-top: 30px; margin-top: 20px; }
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+        .seo-section ul { margin: 10px 0 20px 25px; color: #4a5568; }
+        .seo-section li { margin-bottom: 8px; }
+        .highlight-box { background: #f0f7ff; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px 18px; margin: 16px 0; color: var(--text-dark); font-size: 0.95rem; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 15px 0; text-align: center; width: 100%; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+<header>
+    <h1>AI Learning Gym Utilities</h1>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+<div class="container">
+    <main class="main-content">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="tool-wrapper">
+            <h2 style="margin-bottom:8px; color:var(--text-dark);">AI Image Prompt Generator</h2>
+            <p style="color:var(--text-muted); margin-bottom:16px; font-size:0.93rem;">Select your platform, fill in the details, and get a detailed prompt ready to paste into your image generator.</p>
+
+            <div style="margin-bottom:16px;">
+                <label style="font-size:0.88rem; font-weight:700; color:var(--text-dark); display:block; margin-bottom:8px;">Platform</label>
+                <div class="platform-bar">
+                    <button class="platform-btn active" onclick="setPlatform(this, 'midjourney')">Midjourney</button>
+                    <button class="platform-btn" onclick="setPlatform(this, 'dalle')">DALL-E 3</button>
+                    <button class="platform-btn" onclick="setPlatform(this, 'stable')">Stable Diffusion</button>
+                    <button class="platform-btn" onclick="setPlatform(this, 'general')">General / Other</button>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label for="subject">Subject / Main Description <span style="color:#e74c3c;">*</span></label>
+                    <p class="field-hint">Describe the main subject of your image in detail</p>
+                    <textarea class="desc" id="subject" placeholder="e.g. a lone astronaut standing on a red rocky planet, looking up at two moons rising over the horizon"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Art Style</label>
+                    <p class="field-hint">Click to select (multiple allowed)</p>
+                    <div class="tag-group" id="style-tags">
+                        <span class="tag" onclick="toggleTag(this)">Photorealistic</span>
+                        <span class="tag" onclick="toggleTag(this)">Digital illustration</span>
+                        <span class="tag" onclick="toggleTag(this)">Oil painting</span>
+                        <span class="tag" onclick="toggleTag(this)">Watercolor</span>
+                        <span class="tag" onclick="toggleTag(this)">Pencil sketch</span>
+                        <span class="tag" onclick="toggleTag(this)">3D render</span>
+                        <span class="tag" onclick="toggleTag(this)">Anime / manga</span>
+                        <span class="tag" onclick="toggleTag(this)">Pixel art</span>
+                        <span class="tag" onclick="toggleTag(this)">Concept art</span>
+                        <span class="tag" onclick="toggleTag(this)">Vintage / retro</span>
+                        <span class="tag" onclick="toggleTag(this)">Minimalist</span>
+                        <span class="tag" onclick="toggleTag(this)">Surrealist</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Lighting</label>
+                    <p class="field-hint">Click to select</p>
+                    <div class="tag-group" id="lighting-tags">
+                        <span class="tag" onclick="toggleTag(this)">Golden hour</span>
+                        <span class="tag" onclick="toggleTag(this)">Dramatic shadows</span>
+                        <span class="tag" onclick="toggleTag(this)">Soft natural light</span>
+                        <span class="tag" onclick="toggleTag(this)">Studio lighting</span>
+                        <span class="tag" onclick="toggleTag(this)">Neon glow</span>
+                        <span class="tag" onclick="toggleTag(this)">Moonlight</span>
+                        <span class="tag" onclick="toggleTag(this)">Backlit / silhouette</span>
+                        <span class="tag" onclick="toggleTag(this)">Volumetric light rays</span>
+                        <span class="tag" onclick="toggleTag(this)">Overcast / diffused</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Mood / Atmosphere</label>
+                    <p class="field-hint">Click to select</p>
+                    <div class="tag-group" id="mood-tags">
+                        <span class="tag" onclick="toggleTag(this)">Epic and cinematic</span>
+                        <span class="tag" onclick="toggleTag(this)">Peaceful and serene</span>
+                        <span class="tag" onclick="toggleTag(this)">Dark and mysterious</span>
+                        <span class="tag" onclick="toggleTag(this)">Whimsical and playful</span>
+                        <span class="tag" onclick="toggleTag(this)">Melancholic</span>
+                        <span class="tag" onclick="toggleTag(this)">Futuristic</span>
+                        <span class="tag" onclick="toggleTag(this)">Nostalgic</span>
+                        <span class="tag" onclick="toggleTag(this)">Cozy and warm</span>
+                        <span class="tag" onclick="toggleTag(this)">Eerie and unsettling</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Color Palette</label>
+                    <p class="field-hint">Click to select</p>
+                    <div class="tag-group" id="color-tags">
+                        <span class="tag" onclick="toggleTag(this)">Warm earthy tones</span>
+                        <span class="tag" onclick="toggleTag(this)">Cool blues and greens</span>
+                        <span class="tag" onclick="toggleTag(this)">Vibrant and saturated</span>
+                        <span class="tag" onclick="toggleTag(this)">Muted and desaturated</span>
+                        <span class="tag" onclick="toggleTag(this)">Monochromatic</span>
+                        <span class="tag" onclick="toggleTag(this)">Black and white</span>
+                        <span class="tag" onclick="toggleTag(this)">Pastel tones</span>
+                        <span class="tag" onclick="toggleTag(this)">Neon and vivid</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="composition">Composition / Shot Type</label>
+                    <select id="composition">
+                        <option value="">-- Select --</option>
+                        <option>Close-up portrait</option>
+                        <option>Full body shot</option>
+                        <option>Wide establishing shot</option>
+                        <option>Bird's eye view</option>
+                        <option>Low angle shot</option>
+                        <option>Over-the-shoulder view</option>
+                        <option>Macro / extreme close-up</option>
+                        <option>Panoramic landscape</option>
+                        <option>Symmetrical composition</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="aspect">Aspect Ratio</label>
+                    <select id="aspect">
+                        <option value="">-- Default --</option>
+                        <option value="--ar 1:1">1:1 Square</option>
+                        <option value="--ar 16:9">16:9 Widescreen</option>
+                        <option value="--ar 9:16">9:16 Portrait / Mobile</option>
+                        <option value="--ar 4:3">4:3 Standard</option>
+                        <option value="--ar 3:2">3:2 Photography</option>
+                        <option value="--ar 21:9">21:9 Cinematic</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quality">Quality Modifiers</label>
+                    <select id="quality">
+                        <option value="">-- None --</option>
+                        <option>highly detailed, 8K resolution</option>
+                        <option>hyperrealistic, ultra-detailed</option>
+                        <option>award-winning photography</option>
+                        <option>trending on ArtStation</option>
+                        <option>sharp focus, intricate details</option>
+                        <option>cinematic quality, film grain</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="extra">Additional Details (optional)</label>
+                    <p class="field-hint">Anything else to include — specific colors, time period, objects, textures</p>
+                    <textarea class="desc" id="extra" placeholder="e.g. worn leather boots visible, dust particles in the air, faint city lights in the distance"></textarea>
+                </div>
+            </div>
+
+            <button class="build-btn" onclick="generatePrompt()">Generate Image Prompt →</button>
+
+            <div class="output-box" id="output-box">
+                <button class="copy-btn" id="copy-btn" onclick="copyPrompt()">Copy</button>
+                <div class="output-label" id="platform-label">MIDJOURNEY PROMPT</div>
+                <div class="output-text" id="output-text"></div>
+            </div>
+        </section>
+
+        <section class="seo-section">
+            <h2>About This Tool</h2>
+            <p>This AI image prompt generator helps you build detailed, structured prompts for text-to-image AI tools like Midjourney, DALL-E 3, and Stable Diffusion. Rather than guessing which words to use, you select from proven descriptors for style, lighting, mood, and composition — then the tool assembles them into a format that consistently produces better images.</p>
+
+            <h3>Why prompts matter for AI image generation</h3>
+            <p>AI image generators are powerful, but they're sensitive to how you describe things. A vague prompt like "a forest at night" can produce anything from a dark horror scene to a calm moonlit woodland. Adding specific lighting ("moonlight filtering through trees"), mood ("peaceful and serene"), and style ("oil painting") dramatically narrows what the AI produces — and gets you much closer to what you actually imagined.</p>
+            <p>Professional AI artists spend as much time on their prompts as beginners do re-generating images dozens of times. Learning which descriptors to use — and in what order — is one of the key skills of working effectively with image generation tools.</p>
+
+            <div class="highlight-box">
+                <strong>Prompt order matters in Midjourney:</strong> Words at the beginning of your prompt carry more weight than words at the end. Put your most important descriptors (subject, style) first, and quality modifiers like "highly detailed" or "8K" at the end.
+            </div>
+
+            <h3>Differences between platforms</h3>
+            <ul>
+                <li><strong>Midjourney</strong> responds well to artistic style descriptors, artist name references, and the --ar ratio parameter. It tends to produce more aesthetically polished results by default.</li>
+                <li><strong>DALL-E 3</strong> (via ChatGPT) understands natural language descriptions better and handles complex scenes well. It's more literal than Midjourney — describe exactly what you want rather than using shorthand terms.</li>
+                <li><strong>Stable Diffusion</strong> benefits from explicit technical descriptors and negative prompts (telling the model what NOT to include). It's the most customizable but requires more prompt engineering.</li>
+            </ul>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h3>Frequently asked questions</h3>
+            <div class="faq-item">
+                <h4>Can I use these prompts directly in Midjourney?</h4>
+                <p>Yes. Copy the generated prompt and paste it directly into the Midjourney Discord bot using the /imagine command. The --ar parameter for aspect ratio is included automatically when you select one.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How many style tags should I select?</h4>
+                <p>Two or three style descriptors is usually ideal. Selecting too many conflicting styles (e.g. "oil painting" and "pixel art" together) can confuse the model and produce inconsistent results. Pick the style that matters most and add one complementary descriptor.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is my prompt saved anywhere?</h4>
+                <p>No. This tool runs entirely in your browser. Nothing is uploaded or stored. Your prompts stay on your device.</p>
+            </div>
+        </section>
+    </main>
+
+    <aside>
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact Support</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    let currentPlatform = 'midjourney';
+
+    function setPlatform(btn, platform) {
+        currentPlatform = platform;
+        document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const aspectSelect = document.getElementById('aspect');
+        if (platform === 'midjourney') {
+            Array.from(aspectSelect.options).forEach(o => {
+                if (o.value && !o.value.startsWith('--ar')) o.value = '--ar ' + o.text.split(' ')[0];
+            });
+        }
+    }
+
+    function toggleTag(el) {
+        el.classList.toggle('selected');
+    }
+
+    function getSelectedTags(groupId) {
+        return Array.from(document.querySelectorAll(`#${groupId} .tag.selected`)).map(t => t.textContent);
+    }
+
+    function generatePrompt() {
+        const subject = document.getElementById('subject').value.trim();
+        if (!subject) { alert('Please describe the subject of your image.'); return; }
+
+        const styles = getSelectedTags('style-tags');
+        const lighting = getSelectedTags('lighting-tags');
+        const moods = getSelectedTags('mood-tags');
+        const colors = getSelectedTags('color-tags');
+        const composition = document.getElementById('composition').value;
+        const aspect = document.getElementById('aspect').value;
+        const quality = document.getElementById('quality').value;
+        const extra = document.getElementById('extra').value.trim();
+
+        let parts = [subject];
+        if (styles.length) parts.push(styles.join(', '));
+        if (composition) parts.push(composition);
+        if (lighting.length) parts.push(lighting.join(', '));
+        if (moods.length) parts.push(moods.join(', '));
+        if (colors.length) parts.push(colors.join(', '));
+        if (extra) parts.push(extra);
+        if (quality) parts.push(quality);
+
+        let prompt = parts.join(', ');
+
+        if (currentPlatform === 'midjourney' && aspect) {
+            prompt += ' ' + aspect;
+        }
+
+        const labels = { midjourney: 'MIDJOURNEY PROMPT', dalle: 'DALL-E 3 PROMPT', stable: 'STABLE DIFFUSION PROMPT', general: 'IMAGE PROMPT' };
+        document.getElementById('platform-label').textContent = labels[currentPlatform] || 'IMAGE PROMPT';
+        document.getElementById('output-text').textContent = prompt;
+        const box = document.getElementById('output-box');
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        document.getElementById('copy-btn').textContent = 'Copy';
+        document.getElementById('copy-btn').classList.remove('copied');
+    }
+
+    function copyPrompt() {
+        const text = document.getElementById('output-text').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copy-btn');
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+        });
+    }
+</script>
+</body>
+</html>
