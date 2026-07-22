@@ -1,6 +1,7 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
- 
+
   <!--  Root Hub  -->
   <url>
     <loc>https://ailearninggym.com/</loc>
@@ -8,7 +9,27 @@
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
- 
+
+  <!--  AI Prompt & API Tools  -->
+  <url>
+    <loc>https://ailearninggym.com/token-counter/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ailearninggym.com/ai-prompt-builder/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ailearninggym.com/ai-image-prompt-generator/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!--  Blog & Guides  -->
   <url>
     <loc>https://ailearninggym.com/blog/</loc>
@@ -64,7 +85,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
- 
+
   <!--  NEW TOOLS ADDED TODAY  -->
   <url>
     <loc>https://ailearninggym.com/ai-detector/</loc>
@@ -102,7 +123,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
- 
+
   <!--  EXISTING TOOLS PORTFOLIO  -->
   <url>
     <loc>https://ailearninggym.com/word-counter/</loc>
@@ -224,5 +245,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
- 
+
 </urlset>
