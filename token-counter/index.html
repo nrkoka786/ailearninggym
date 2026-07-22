@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Token Counter – Count GPT, Claude & Gemini Tokens Free | AI Learning Gym</title>
+    <meta name="description" content="Count how many tokens your text uses for GPT-4, Claude, and Gemini models. Estimate API costs instantly. Free browser-based token counter — nothing is uploaded.">
+    <meta name="keywords" content="token counter, GPT token counter, Claude token counter, AI token calculator, OpenAI tokens, API cost estimator, tiktoken online">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 1.6rem; }
+        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 992px) { .container { grid-template-columns: 3fr 1fr; } }
+        .main-content { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .tool-wrapper { background: #f8f9fa; border: 1px solid var(--card-border); border-radius: 6px; padding: 25px; margin-bottom: 30px; }
+        .input-label { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; display: block; }
+        textarea { width: 100%; height: 180px; padding: 12px; font-size: 1rem; border: 2px solid #cbd5e1; border-radius: 4px; resize: vertical; background: #fff; margin-bottom: 20px; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .stat-card { background: #fff; border: 1px solid var(--card-border); border-radius: 6px; padding: 16px; text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 800; color: var(--accent-color); line-height: 1; }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cost-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+        .cost-table th { background: var(--primary-color); color: #fff; padding: 10px 12px; text-align: left; }
+        .cost-table td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); color: var(--text-dark); }
+        .cost-table tr:hover { background: #f8fafc; }
+        .cost-table .model-name { font-weight: 600; }
+        .section-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+        .seo-section { border-top: 2px solid #edf2f7; padding-top: 30px; margin-top: 20px; }
+        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
+        .seo-section h3 { color: #34495e; margin: 20px 0 8px; font-size: 1.15rem; }
+        .seo-section p { margin-bottom: 15px; color: #4a5568; }
+        .seo-section ul { margin: 10px 0 20px 25px; color: #4a5568; }
+        .seo-section ul li { margin-bottom: 8px; }
+        .highlight-box { background: #f0f7ff; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px 18px; margin: 16px 0; color: var(--text-dark); font-size: 0.95rem; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 15px 0; text-align: center; width: 100%; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+<header>
+    <h1>AI Learning Gym Utilities</h1>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+<div class="container">
+    <main class="main-content">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="tool-wrapper">
+            <h2 style="margin-bottom:15px; color:var(--text-dark);">AI Token Counter</h2>
+            <label class="input-label" for="input-text">Paste your text or prompt below:</label>
+            <textarea id="input-text" placeholder="Paste your prompt or text here to count tokens and estimate API costs..." oninput="analyze()"></textarea>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="token-count">0</div>
+                    <div class="stat-label">Tokens (est.)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="word-count">0</div>
+                    <div class="stat-label">Words</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="char-count">0</div>
+                    <div class="stat-label">Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="sentence-count">0</div>
+                    <div class="stat-label">Sentences</div>
+                </div>
+            </div>
+
+            <p class="section-title">Estimated API cost by model (input tokens only):</p>
+            <table class="cost-table">
+                <thead>
+                    <tr><th>Model</th><th>Provider</th><th>Price per 1M tokens</th><th>Your cost (est.)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="model-name">GPT-4o</td><td>OpenAI</td><td>$2.50</td><td id="cost-gpt4o">$0.000000</td></tr>
+                    <tr><td class="model-name">GPT-4o mini</td><td>OpenAI</td><td>$0.15</td><td id="cost-gpt4mini">$0.000000</td></tr>
+                    <tr><td class="model-name">GPT-3.5 Turbo</td><td>OpenAI</td><td>$0.50</td><td id="cost-gpt35">$0.000000</td></tr>
+                    <tr><td class="model-name">Claude Sonnet</td><td>Anthropic</td><td>$3.00</td><td id="cost-claude-sonnet">$0.000000</td></tr>
+                    <tr><td class="model-name">Claude Haiku</td><td>Anthropic</td><td>$0.25</td><td id="cost-claude-haiku">$0.000000</td></tr>
+                    <tr><td class="model-name">Gemini 1.5 Flash</td><td>Google</td><td>$0.075</td><td id="cost-gemini-flash">$0.000000</td></tr>
+                    <tr><td class="model-name">Gemini 1.5 Pro</td><td>Google</td><td>$1.25</td><td id="cost-gemini-pro">$0.000000</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-top:10px;">Token count is an approximation using the ~4 characters per token rule. Actual counts may vary slightly by model. Prices are approximate and subject to change — check provider pricing pages for current rates.</p>
+        </section>
+
+        <section class="seo-section">
+            <h2>About This Tool</h2>
+            <p>This token counter estimates how many tokens your text uses when sent to AI models like GPT-4, Claude, or Gemini. It also shows you the approximate cost for each major model so you can budget your API usage before you run a request.</p>
+
+            <h3>What is a token?</h3>
+            <p>AI language models don't read text the way humans do — they break it into chunks called tokens. A token is roughly 4 characters of English text, though this varies. Common short words like "the" or "is" are usually one token. Longer or rarer words may split into two or three tokens. Punctuation often counts as its own token.</p>
+            <p>As a general rule of thumb: 100 tokens ≈ 75 words. A typical paragraph is around 50–80 tokens. A full page of text is roughly 500–700 tokens.</p>
+
+            <div class="highlight-box">
+                <strong>Why this matters:</strong> AI API providers charge per token. If you're building an application that calls an AI API thousands of times per day, small prompt optimizations can add up to significant cost savings. Knowing your token count before you run a request helps you stay within context limits and control costs.
+            </div>
+
+            <h3>Context window limits</h3>
+            <p>Every AI model has a maximum number of tokens it can process in a single request — called the context window. If your prompt plus the expected response exceeds this limit, the model will either truncate your input or return an error. Common limits:</p>
+            <ul>
+                <li><strong>GPT-4o:</strong> 128,000 tokens</li>
+                <li><strong>GPT-3.5 Turbo:</strong> 16,385 tokens</li>
+                <li><strong>Claude 3.5 Sonnet:</strong> 200,000 tokens</li>
+                <li><strong>Gemini 1.5 Pro:</strong> 1,000,000 tokens</li>
+            </ul>
+
+            <h3>How to reduce token usage</h3>
+            <p>If you're optimizing prompts for cost or context limits, a few practical approaches help. Remove filler phrases that don't add meaning — "Please could you kindly" can simply be "Please." Use bullet points instead of full paragraphs where possible, since they convey information more compactly. Avoid repeating context in every message in a multi-turn conversation — models retain prior messages automatically. For system prompts, be specific but concise: one clear sentence is usually better than three vague ones.</p>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h3>Frequently asked questions</h3>
+            <div class="faq-item">
+                <h4>Why doesn't my token count exactly match OpenAI's tokenizer?</h4>
+                <p>This tool uses the standard approximation of 4 characters per token, which is accurate for most English text within about 5–10%. OpenAI's exact tokenizer (tiktoken) uses a specific byte-pair encoding algorithm that varies by model. For precise counts, use OpenAI's Tokenizer Playground — but for budgeting and planning, this approximation is reliable.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do different languages use more tokens?</h4>
+                <p>Yes — non-Latin languages like Chinese, Japanese, Arabic, and Korean typically use more tokens per word than English. A Chinese character may use 1–3 tokens, making text in those languages significantly more expensive to process through AI APIs than equivalent English text.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Does this tool send my text anywhere?</h4>
+                <p>No. All counting happens locally in your browser using JavaScript. Your text is never sent to any server. This makes the tool safe for counting tokens in confidential documents or internal prompts.</p>
+            </div>
+        </section>
+    </main>
+
+    <aside>
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact Support</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    function countTokens(text) {
+        if (!text.trim()) return 0;
+        // ~4 chars per token approximation (OpenAI's standard rule of thumb)
+        return Math.ceil(text.length / 4);
+    }
+
+    function analyze() {
+        const text = document.getElementById('input-text').value;
+        const tokens = countTokens(text);
+        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).filter(w => w.length > 0).length;
+        const chars = text.length;
+        const sentences = text.trim() === '' ? 0 : text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+
+        document.getElementById('token-count').textContent = tokens.toLocaleString();
+        document.getElementById('word-count').textContent = words.toLocaleString();
+        document.getElementById('char-count').textContent = chars.toLocaleString();
+        document.getElementById('sentence-count').textContent = sentences.toLocaleString();
+
+        const prices = {
+            'gpt4o': 2.50,
+            'gpt4mini': 0.15,
+            'gpt35': 0.50,
+            'claude-sonnet': 3.00,
+            'claude-haiku': 0.25,
+            'gemini-flash': 0.075,
+            'gemini-pro': 1.25
+        };
+
+        for (const [key, price] of Object.entries(prices)) {
+            const cost = (tokens / 1000000) * price;
+            const formatted = cost < 0.000001 ? '$0.000000' : '$' + cost.toFixed(6);
+            document.getElementById('cost-' + key).textContent = formatted;
+        }
+    }
+
+    analyze();
+</script>
+</body>
+</html>
