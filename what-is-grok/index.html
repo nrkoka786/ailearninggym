@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is Grok AI? xAI's Model Explained | AI Learning Gym</title>
+    <meta name="description" content="A plain-language guide to Grok AI — what it is, how xAI built it, what makes it different from ChatGPT and Claude, real-time data access, and how to use it.">
+    <meta name="keywords" content="what is Grok AI, Grok xAI explained, Grok vs ChatGPT, Elon Musk AI, Grok features, X AI assistant, Grok 3 guide">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 992px) { .container { grid-template-columns: 3fr 1fr; } }
+        .main-content { display: flex; flex-direction: column; gap: 20px; }
+        .content-card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .tag { display: inline-block; background: #1c4e80; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; }
+        .page-title { font-size: 1.9rem; color: var(--text-dark); margin-bottom: 10px; line-height: 1.3; }
+        .page-meta { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border); }
+        h2 { color: var(--text-dark); font-size: 1.35rem; margin: 28px 0 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
+        h3 { color: #34495e; font-size: 1.1rem; margin: 20px 0 8px; }
+        p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 10px 0 18px 25px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .video-placeholder { background: #1a252f; border-radius: 8px; padding: 40px 20px; text-align: center; margin: 24px 0; color: #cbd5e1; }
+        .video-placeholder .play-icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.6; }
+        .video-placeholder p { color: #94a3b8; margin: 0; font-size: 0.9rem; }
+        .video-placeholder .video-title { color: #e2e8f0; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+        .highlight-box { background: #ebf5fb; border-left: 4px solid #1c4e80; border-radius: 4px; padding: 14px 18px; margin: 16px 0; color: var(--text-dark); font-size: 0.95rem; }
+        .timeline { list-style: none; margin: 0 0 24px; padding: 0; }
+        .timeline li { padding: 12px 12px 12px 20px; border-left: 3px solid var(--accent-color); margin-bottom: 10px; background: #f8fafc; border-radius: 0 4px 4px 0; }
+        .timeline li strong { display: block; color: var(--text-dark); margin-bottom: 4px; }
+        .timeline li span { color: #4a5568; font-size: 0.92rem; }
+        .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.92rem; }
+        .compare-table th { background: var(--primary-color); color: #fff; padding: 10px 12px; text-align: left; }
+        .compare-table td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); color: #4a5568; }
+        .compare-table tr:hover { background: #f8fafc; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; font-size: 1rem; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .cta-box { background: var(--primary-color); color: #fff; border-radius: 8px; padding: 22px; text-align: center; margin-top: 10px; }
+        .cta-box p { color: #cbd5e1; margin-bottom: 12px; font-size: 0.96rem; }
+        .cta-box a { display: inline-block; background: var(--accent-color); color: #fff; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.95rem; margin: 4px; }
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-widget { background: #fff; border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; }
+        .sidebar-widget h3 { color: var(--text-dark); font-size: 1rem; margin: 0 0 12px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        .sidebar-widget ul { list-style: none; padding: 0; margin: 0; }
+        .sidebar-widget ul li { margin-bottom: 8px; }
+        .sidebar-widget ul li a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; }
+        .sidebar-widget ul li a:hover { text-decoration: underline; }
+        .ad-container { margin: 15px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🏋️ AI Learning Gym</h1>
+    <p>Learn how the world's leading AI models work</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+    <div class="main-content">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="content-card">
+            <span class="tag">AI Model Guide</span>
+            <h1 class="page-title">What Is Grok AI? xAI's Assistant Explained</h1>
+            <div class="page-meta">📅 July 2026 &nbsp;|&nbsp; ⏱ 6 min read &nbsp;|&nbsp; 🏢 Made by xAI</div>
+
+            <p>Grok is an AI assistant built by xAI, the AI company founded by Elon Musk in 2023. It's one of the newer major AI models on the market, and it has a few characteristics that set it apart from ChatGPT and Claude — particularly its real-time access to information on X (formerly Twitter) and its notably direct, sometimes irreverent personality. This guide explains what Grok is, how it developed, what it's good at, and how to use it.</p>
+
+            <!-- VIDEO EMBED SECTION -->
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <div class="video-title">Grok AI Explained – Video Overview</div>
+                <p>Video coming soon. Replace this section with your YouTube embed code.</p>
+            </div>
+            <!-- TO ADD YOUR VIDEO: Replace the div above with:
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen style="border-radius:8px; display:block;"></iframe> -->
+
+            <h2>What is Grok?</h2>
+            <p>Grok is a large language model — an AI trained on massive amounts of text that can understand questions and generate useful, human-like responses. The name "Grok" comes from Robert Heinlein's 1961 science fiction novel <em>Stranger in a Strange Land</em>, where it means to understand something so thoroughly you become one with it. That's xAI's stated aspiration for the model: to deeply understand the world and the humans in it.</p>
+            <p>What makes Grok distinctive is its integration with X (Twitter). While ChatGPT and Claude largely rely on training data with a cutoff date, Grok can pull real-time posts and trending information from X, giving it a feed of current events that no other major AI has by default.</p>
+
+            <h2>Who makes Grok?</h2>
+            <p>Grok is made by xAI, an AI company founded by Elon Musk in July 2023. Musk was an early backer and board member of OpenAI but departed from its board in 2018. He founded xAI as a competing AI lab, staffed significantly by researchers who had worked at OpenAI, DeepMind, Google Brain, Microsoft, and Tesla. xAI is separate from X Corp (which owns X/Twitter) and Tesla, but all three companies are closely connected through Musk's leadership and shared infrastructure.</p>
+            <p>Grok was initially developed using X's computing infrastructure and trained partly on the full X post archive — a dataset that no other AI company has access to.</p>
+
+            <h2>Grok model versions</h2>
+            <ul class="timeline">
+                <li><strong>Grok-1 (Nov 2023)</strong><span>The first version, launched exclusively for X Premium+ subscribers. Positioned as a "fun" model with a personality designed to be witty and willing to answer edgier questions other AI declined.</span></li>
+                <li><strong>Grok-1.5 (Mar 2024)</strong><span>Major improvement in reasoning and coding. xAI open-sourced the Grok-1 weights in March 2024, making it one of the largest open-source language models available.</span></li>
+                <li><strong>Grok-2 (Aug 2024)</strong><span>Added image generation capabilities via Aurora, xAI's in-house image model. Became competitive with GPT-4o on major benchmarks.</span></li>
+                <li><strong>Grok-3 (Feb 2025)</strong><span>xAI's most capable model at launch, with significantly improved reasoning, math, and science performance. Trained on a custom supercomputer cluster (Colossus) in Memphis, Tennessee.</span></li>
+            </ul>
+
+            <h2>What can Grok do?</h2>
+            <ul>
+                <li><strong>Real-time X/Twitter data</strong> — Grok can search posts on X for current information, trending topics, and breaking news, giving it up-to-date context other AI often lacks</li>
+                <li><strong>Web search</strong> — Can browse the web in real time to supplement answers with current sources</li>
+                <li><strong>Image generation</strong> — Creates images using the Aurora image model, accessible directly in conversation</li>
+                <li><strong>Image analysis</strong> — Can read and describe images you upload</li>
+                <li><strong>Coding and analysis</strong> — Capable of writing, debugging, and explaining code; competitive with GPT-4o on developer benchmarks</li>
+                <li><strong>Long-form reasoning</strong> — Grok-3 and its "Think" mode reason through problems step by step before answering, similar to OpenAI's o1/o3 series</li>
+                <li><strong>Voice mode</strong> — Available in the Grok mobile app for voice conversations</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>The X advantage:</strong> Grok is the only major AI with native, real-time access to X's full post archive. If you're following a breaking news story, tracking a public figure's recent statements, or researching a viral conversation, Grok can pull directly from X posts in ways ChatGPT and Claude cannot.
+            </div>
+
+            <h2>How do you access Grok?</h2>
+            <ul>
+                <li><strong>X (Twitter)</strong> — Grok is built into X's mobile app and website. X Premium subscribers get access; X Premium+ gets the most powerful version with higher usage limits.</li>
+                <li><strong>grok.com</strong> — A standalone web interface separate from X.</li>
+                <li><strong>xAI API</strong> — For developers, available at api.x.ai with pay-per-token pricing.</li>
+                <li><strong>Grok mobile app</strong> — A dedicated iOS and Android app with voice mode.</li>
+            </ul>
+
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2>How Grok compares to ChatGPT and Claude</h2>
+            <table class="compare-table">
+                <thead>
+                    <tr><th>Feature</th><th>Grok</th><th>ChatGPT</th><th>Claude</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Made by</td><td>xAI</td><td>OpenAI</td><td>Anthropic</td></tr>
+                    <tr><td>Real-time X/Twitter data</td><td>Yes (native)</td><td>No</td><td>No</td></tr>
+                    <tr><td>Web browsing</td><td>Yes</td><td>Yes</td><td>Limited</td></tr>
+                    <tr><td>Image generation</td><td>Yes (Aurora)</td><td>Yes (DALL-E)</td><td>No</td></tr>
+                    <tr><td>Context window</td><td>131K tokens</td><td>128K tokens</td><td>200K tokens</td></tr>
+                    <tr><td>Open source</td><td>Grok-1 weights (partial)</td><td>No</td><td>No</td></tr>
+                    <tr><td>Personality</td><td>Direct, witty, fewer refusals</td><td>Balanced, helpful</td><td>Careful, thorough</td></tr>
+                    <tr><td>Free access</td><td>Limited via X Premium</td><td>Yes (chatgpt.com)</td><td>Yes (claude.ai)</td></tr>
+                </tbody>
+            </table>
+
+            <h2>Frequently asked questions</h2>
+            <div class="faq-item">
+                <h4>Is Grok free to use?</h4>
+                <p>A limited version is available for free via X and grok.com. Full access, including higher usage limits and the most powerful Grok models, requires X Premium ($8/month) or X Premium+ ($22/month).</p>
+            </div>
+            <div class="faq-item">
+                <h4>What makes Grok different from ChatGPT?</h4>
+                <p>The biggest difference is real-time X data access and a notably less filtered personality. Grok will engage with topics other AI models tend to avoid, and its training on X posts gives it different cultural knowledge and a more casual, direct tone.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is Grok's code open source?</h4>
+                <p>xAI open-sourced the weights for Grok-1 in March 2024, making it one of the largest openly available language models. Grok-2 and Grok-3 have not been open-sourced.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can Grok see what's trending on X right now?</h4>
+                <p>Yes. Grok has direct access to X posts and can search for recent content. This makes it particularly useful for questions about current events, breaking news, or what people are saying about a topic in real time.</p>
+            </div>
+
+            <div class="cta-box">
+                <p>Practice writing AI prompts with our free tools</p>
+                <a href="/ai-prompt-builder/">AI Prompt Builder</a>
+                <a href="/token-counter/">Token Counter</a>
+            </div>
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <div class="ad-container">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        <div class="sidebar-widget">
+            <h3>🤖 More AI Guides</h3>
+            <ul>
+                <li><a href="/what-is-claude/">What Is Claude?</a></li>
+                <li><a href="/what-is-chatgpt/">What Is ChatGPT?</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>🔧 Related Tools</h3>
+            <ul>
+                <li><a href="/ai-prompt-builder/">AI Prompt Builder</a></li>
+                <li><a href="/ai-image-prompt-generator/">Image Prompt Generator</a></li>
+                <li><a href="/token-counter/">Token Counter</a></li>
+                <li><a href="/ai-detector/">AI Content Detector</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-widget">
+            <h3>📖 From the Blog</h3>
+            <ul>
+                <li><a href="/blog/how-to-detect-ai-content/">How AI Detectors Work</a></li>
+                <li><a href="/blog/how-to-create-secure-passwords/">How to Create Secure Passwords</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+</body>
+</html>
