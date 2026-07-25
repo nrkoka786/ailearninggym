@@ -1,14 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Text Case Converter | AI Learning Gym</title>
-    <meta name="description" content="Transform your text typography casing instantly. Convert text strings between UPPERCASE, lowercase, Sentence case, and Title Case effortlessly.">
-    <meta name="keywords" content="text case converter, title case tool, sentence case generator, change text capitalization, string formatter online">
-    <meta property="og:title" content="Free Online Text Case Converter | AI Learning Gym">
-    <meta property="og:description" content="Clean up and convert typography text casings instantly with a built-in character and word counting display framework.">
-
+    <title>Free Text Case Converter | UPPERCASE, lowercase, Title Case | AI Learning Gym</title>
+    <meta name="description" content="Convert text between UPPERCASE, lowercase, Sentence case, and Title Case instantly. Free online case converter — works in your browser, nothing stored.">
+    <meta name="keywords" content="text case converter, uppercase converter, lowercase converter, title case tool, sentence case generator">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,351 +14,186 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
-            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- Live Ad Container Classes --- */
-        .ad-container {
-            margin: 15px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Case Transformer App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .text-input-area {
-            width: 100%;
-            height: 200px;
-            padding: 15px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-            resize: vertical;
-            margin-bottom: 15px;
-        }
-
-        .text-input-area:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        .btn-panel {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .transform-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-
-        .transform-btn:hover { background-color: var(--accent-color); }
-
-        .utility-btn {
-            background-color: #7f8c8d;
-        }
-        .utility-btn:hover { background-color: #95a5a6; }
-
-        .meta-stats {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        textarea { width: 100%; height: 160px; padding: 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.98rem; resize: vertical; color: var(--text-dark); line-height: 1.6; margin-bottom: 14px; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .btn-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .btn-case { padding: 9px 16px; background: var(--primary-color); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.88rem; font-weight: 600; }
+        .btn-case:hover { background: var(--accent-color); }
+        .btn-action { padding: 9px 16px; background: #e2e8f0; color: var(--text-dark); border: none; border-radius: 6px; cursor: pointer; font-size: 0.88rem; font-weight: 600; }
+        .btn-action:hover { background: #cbd5e1; }
+        .stats { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free text tools for writers and developers</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            <section class="tool-wrapper">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Accurate Text Case Converter</h2>
-                
-                <textarea id="text-input" class="text-input-area" placeholder="Type or paste your text content here to transform casing parameters instantly..."></textarea>
+    <div class="card">
+        <h2>Text Case Converter</h2>
+        <textarea id="inputText" placeholder="Type or paste your text here..."></textarea>
+        <div class="btn-grid">
+            <button class="btn-case" onclick="convert('upper')">UPPERCASE</button>
+            <button class="btn-case" onclick="convert('lower')">lowercase</button>
+            <button class="btn-case" onclick="convert('sentence')">Sentence case</button>
+            <button class="btn-case" onclick="convert('title')">Title Case</button>
+            <button class="btn-case" onclick="convert('capitalize')">Capitalize Words</button>
+        </div>
+        <div class="btn-grid">
+            <button class="btn-action" onclick="copyResult()">Copy Result</button>
+            <button class="btn-action" onclick="clearAll()">Clear</button>
+        </div>
+        <div class="stats" id="stats">Characters: 0 | Words: 0</div>
+    </div>
 
-                <div class="btn-panel">
-                    <button class="transform-btn" onclick="convertCase('upper')">UPPERCASE</button>
-                    <button class="transform-btn" onclick="convertCase('lower')">lowercase</button>
-                    <button class="transform-btn" onclick="convertCase('sentence')">Sentence case</button>
-                    <button class="transform-btn" onclick="convertCase('title')">Title Case</button>
-                    <button class="transform-btn" onclick="convertCase('capitalize')">Capitalize Words</button>
-                    <button class="transform-btn utility-btn" id="copy-btn" onclick="copyText()">Copy Result</button>
-                    <button class="transform-btn utility-btn" style="background-color: #e74c3c;" onclick="clearText()">Clear</button>
-                </div>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-                <div class="meta-stats" id="stats-display">
-                    Characters: 0 | Words: 0 | Sentences: 0
-                </div>
-            </section>
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This case converter lets you change the capitalization of any text with one click. Paste your text, pick a format, and the result appears instantly in the same box — ready to copy.</p>
 
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Online Text Case Converter is an interactive, browser-native text-formatting panel designed to re-structure string capitalizations instantaneously. Engineered for authors, web developers, copy editors, and data scrubbing processes, this utility provides clean, automated transitions between formatting cases without altering special punctuations or multi-byte glyph layouts. Operating entirely client-side, the converter processes inputs directly inside local viewport memory, ensuring zero data persistence and total text privacy.</p>
+        <h3>What each format does</h3>
+        <ul>
+            <li><strong>UPPERCASE</strong> — converts every letter to capitals. Useful for headings, labels, or emphasis.</li>
+            <li><strong>lowercase</strong> — converts every letter to small. Useful for cleaning up text typed with caps lock on.</li>
+            <li><strong>Sentence case</strong> — capitalizes only the first letter of each sentence. Good for fixing copy-pasted text that lost its formatting.</li>
+            <li><strong>Title Case</strong> — capitalizes the first letter of each major word. Standard for article headlines, book titles, and headings.</li>
+            <li><strong>Capitalize Words</strong> — capitalizes the first letter of every word, including small words like "the" and "and". Useful for names and lists.</li>
+        </ul>
 
-                <h3>How to Use the Text Case Converter</h3>
-                <p>Normalizing mixed-case text variations or adapting headline distributions is straightforward. Follow these instructions to transform your text content layers:</p>
-                <ol>
-                    <li><strong>Paste Source Strings:</strong> Place your unformatted plain text directly into the central main editing field marked <em>Accurate Text Case Converter</em>.</li>
-                    <li><strong>Track Real-Time Analysis:</strong> Observe the active metadata panel below the inputs, which counts overall character allocations, words, and isolated sentence divisions dynamically as you interact with the tool.</li>
-                    <li><strong>Select Transformation Mode:</strong> Click any of the primary formatting action options (such as UPPERCASE, lowercase, Sentence case, or Title Case) to force the transformation scripts instantly.</li>
-                    <li><strong>Export the Formatted Output:</strong> Click the gray <em>Copy Result</em> utility trigger to capture your modified, uniformly structured text string directly to your device clipboard.</li>
-                </ol>
+        <h3>When would you use this?</h3>
+        <ul>
+            <li>Someone sent you text in ALL CAPS and you want to make it readable.</li>
+            <li>You're formatting a headline and need consistent title case.</li>
+            <li>You're cleaning up data exported from a spreadsheet or database.</li>
+            <li>You need to match a specific capitalization style for a document or website.</li>
+        </ul>
 
-                <h3>Core Typography Formatting States Detailed</h3>
-                <p>This web dashboard supports five modular styling variations built with robust string-replacement conditions:</p>
-                <ul>
-                    <li><strong>UPPERCASE / lowercase:</strong> Uniformly forces all alphanumeric text vectors into broad capitalized properties or small baseline blocks. This is ideal for cleaning up legacy syntax errors or unintentional caps-lock entries.</li>
-                    <li><strong>Sentence Case:</strong> Analyzes ending punctuations and automatically updates only the leading word parameters following a period, question mark, or exclamation point block.</li>
-                    <li><strong>Title Case &amp; Capitalize Words:</strong> Capitalize Words capitalizes every single string boundary in sequence, while Title Case maps capitalizing constraints smartly to format main headings, professional logs, and article titles.</li>
-                </ul>
+        <h3>Title Case vs. Capitalize Words — what's the difference?</h3>
+        <p>Title Case follows standard editorial rules — it skips capitalizing small connecting words like "a", "the", "and", "of", and "in" when they appear in the middle of a title. Capitalize Words capitalizes every single word without exception. For most article or blog headlines, Title Case is the conventional choice.</p>
 
-                <h2>The Practical Importance of Content Case Normalization</h2>
-                <p>Welcome to the typography processing engine at AI Learning Gym. In modern digital publishing, consistent typography casing establishes visual authority and improves consumer comprehension. Accidentally leaving the CAPS LOCK toggled on can ruin drafts or data configurations, requiring specialized software formatters to cleanly rewrite documents instead of manually typing them out from scratch.</p>
-                
-                <h3>Understanding Structural Writing Standardizations</h3>
-                <p>Varying text variations operate under distinct grammatical rule structures across media networks. Standard Sentence Case isolates and targets capital parameters exclusively onto the initial alphabetical letter of a standalone paragraph or period split. Title formatting models, universally applied across legal systems and journalistic headers, amplify the significance of major noun structures while lowering trivial standard prepositions.</p>
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is my text stored anywhere?</h4>
+            <p>No. Everything runs in your browser. Your text is never sent to any server and disappears when you close the tab.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does it handle special characters and emojis?</h4>
+            <p>Yes — the converter only changes the case of letters and leaves everything else (punctuation, numbers, emojis, symbols) untouched.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I convert very long documents?</h4>
+            <p>Yes. There's no character limit — paste as much text as you need and it converts instantly.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does it work for non-English text?</h4>
+            <p>It works for most Latin-script languages (French, Spanish, German, etc.). For languages without a case distinction (like Chinese, Japanese, or Arabic), the text will pass through unchanged.</p>
+        </div>
+    </div>
 
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2027849186057550"
-                         data-ad-slot="1105246416"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
+</div>
 
-                <h3>Why Programmers and Editors Leverage Automation Tools</h3>
-                <p>For data administrators and search engine optimization analysts, shifting raw text strings across uppercase, snake_case, or clean descriptive headings is a routine task. Bulk data scrubbing strategies utilize local browser transformations to standardize text configurations seamlessly, ensuring corporate data pools look uniform before archiving assets into cloud systems.</p>
-                
-                <h3>Frequently Answered Text Modification Questions (FAQ)</h3>
-                <p><strong>Q: Does this converter parse hidden special font symbols or emojis safely?</strong><br>
-                A: Yes. The underlying JavaScript algorithms scan basic string layout configurations, leaving intricate punctuation scripts, code symbols, and native graphic characters completely untouched while exclusively altering relevant text casings.</p>
-                
-                <p><strong>Q: Is my pasted text document analyzed or cached on external server nodes?</strong><br>
-                A: No. Data protection is standard across our platform. Your pasted character data blocks exist solely inside your browser's local sandbox memory stack. The operations execute client-side, making it completely secure for private files.</p>
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
 
-                <p><strong>Q: How does the Sentence Case script isolate boundaries accurately inside abbreviations?</strong><br>
-                A: The algorithm filters character groupings via regex anchors mapping spacing patterns following punctuation. If text tracks inline periods without clear white space characters immediately after (such as standard URLs like 'site.com' or structural acronyms like 'U.S.A.'), it bypasses capitalization loops to protect formatting context.</p>
+<script>
+    const input = document.getElementById('inputText');
 
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free Online Case Converter</h3>
-                <p>Transforming text blocks with our Case Converter is instant. Paste your content strings into the input container above and select your target styling transformation. You can instantly shift between UPPERCASE, lowercase, sentence case, or capitalized formats seamlessly.</p>
-                
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 20px 0 8px 0;">Streamlined Text Formatting Workflows</h3>
-                <p>This layout offers copywriters and developers a seamless way to clean up content files without running complex formulas. Built entirely on native front-end formatting logic, your pasted documents are processed instantly inside browser memory, keeping your text totally private.</p>
-            </section>
+    input.addEventListener('input', updateStats);
 
-        </main>
+    function updateStats() {
+        const text = input.value;
+        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+        document.getElementById('stats').textContent = `Characters: ${text.length} | Words: ${words}`;
+    }
 
-        <aside style="position: sticky; top: 20px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
-
-    </div> 
-
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
-
-    <script>
-        const textInput = document.getElementById("text-input");
-        const statsDisplay = document.getElementById("stats-display");
-        const copyBtn = document.getElementById("copy-btn");
-
-        // Real-time counter logic loop
-        textInput.addEventListener("input", updateMetrics);
-
-        function updateMetrics() {
-            const rawText = textInput.value;
-            const charCount = rawText.length;
-            
-            // Calculate true word arrays
-            const cleanWords = rawText.trim().split(/\s+/).filter(word => word.length > 0);
-            const wordCount = cleanWords.length;
-
-            // Calculate sentences via common end marks (. ! ?)
-            const sentenceCount = rawText.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).length;
-
-            statsDisplay.innerText = `Characters: ${charCount.toLocaleString()} | Words: ${wordCount.toLocaleString()} | Sentences: ${sentenceCount.toLocaleString()}`;
+    function convert(type) {
+        let text = input.value;
+        if (!text) return;
+        switch(type) {
+            case 'upper': text = text.toUpperCase(); break;
+            case 'lower': text = text.toLowerCase(); break;
+            case 'sentence':
+                text = text.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, c => c.toUpperCase());
+                break;
+            case 'title':
+                const minorWords = ['a','an','the','and','but','or','for','nor','on','at','to','by','in','of','up','as'];
+                text = text.toLowerCase().split(' ').map((word, i) => {
+                    if (i === 0 || !minorWords.includes(word)) return word.charAt(0).toUpperCase() + word.slice(1);
+                    return word;
+                }).join(' ');
+                break;
+            case 'capitalize':
+                text = text.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+                break;
         }
+        input.value = text;
+        updateStats();
+    }
 
-        function convertCase(mode) {
-            let currentText = textInput.value;
-            if (!currentText.trim()) return;
+    function copyResult() {
+        if (input.value) navigator.clipboard.writeText(input.value);
+    }
 
-            switch (mode) {
-                case 'upper':
-                    textInput.value = currentText.toUpperCase();
-                    break;
-                case 'lower':
-                    textInput.value = currentText.toLowerCase();
-                    break;
-                case 'sentence':
-                    // Lowercase everything, then capitalize characters following periods
-                    textInput.value = currentText.toLowerCase().replace(/(^\s*|[.!?]\s+)([a-z])/g, (match, p1, p2) => p1 + p2.toUpperCase());
-                    break;
-                case 'title':
-                    // Standard journalistic title capitalization logic
-                    textInput.value = currentText.toLowerCase().split(' ').map(word => {
-                        return (word.charAt(0).toUpperCase() + word.slice(1));
-                    }).join(' ');
-                    break;
-                case 'capitalize':
-                    textInput.value = currentText.replace(/\b[a-z]/g, letter => letter.toUpperCase());
-                    break;
-            }
-            updateMetrics();
-        }
-
-        function copyText() {
-            if (!textInput.value) return;
-            navigator.clipboard.writeText(textInput.value);
-            
-            const baseText = copyBtn.innerText;
-            copyBtn.innerText = "Copied!";
-            copyBtn.style.backgroundColor = "var(--success-color)";
-            
-            setTimeout(() => {
-                copyBtn.innerText = baseText;
-                copyBtn.style.backgroundColor = "#7f8c8d";
-            }, 1200);
-        }
-
-        function clearText() {
-            textInput.value = "";
-            updateMetrics();
-        }
-    </script>
+    function clearAll() {
+        input.value = '';
+        updateStats();
+    }
+</script>
 </body>
 </html>
