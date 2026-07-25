@@ -1,14 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free WhatsApp Link Generator with Pre-filled Text | AI Learning Gym</title>
-    <meta name="description" content="Create custom click-to-chat links for WhatsApp with pre-filled greeting message templates. Accelerate business lead generation and contact pipelines.">
-    <meta name="keywords" content="whatsapp link generator, free click to chat code, wa me link creator, pre filled custom greeting message, custom marketing link">
-    <meta property="og:title" content="Free WhatsApp Link Generator with Pre-filled Text | AI Learning Gym">
-    <meta property="og:description" content="Build URL-safe WhatsApp shortcodes instantly using client-side formatting parameters to scale your customer conversion pipelines.">
-
+    <title>Free WhatsApp Link Generator | Create Click-to-Chat Links | AI Learning Gym</title>
+    <meta name="description" content="Create a WhatsApp click-to-chat link instantly. Add a pre-filled message and share it anywhere. No phone number saved — works for any WhatsApp number.">
+    <meta name="keywords" content="whatsapp link generator, click to chat whatsapp, whatsapp api link, whatsapp direct link, wa.me link generator">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,392 +14,238 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550"
-         crossorigin="anonymous"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
-            --whatsapp-green: #25d366;
-            --whatsapp-dark: #128c7e;
+            --whatsapp: #25D366;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- AdSense Spaces --- */
-        .adsense-placeholder {
-            background-color: #eaeaea;
-            border: 2px dashed #bbb;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .top-banner-ad { width: 100%; height: 90px; }
-        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
-        .inline-content-ad { width: 100%; height: 250px; }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Generator App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 700;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .phone-input-wrapper {
-            display: flex;
-            gap: 10px;
-        }
-
-        .country-code {
-            width: 80px;
-            padding: 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        .main-phone {
-            flex-grow: 1;
-            padding: 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .custom-textarea {
-            width: 100%;
-            height: 100px;
-            padding: 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-            resize: vertical;
-        }
-
-        .country-code:focus, .main-phone:focus, .custom-textarea:focus {
-            outline: none;
-            border-color: var(--whatsapp-dark);
-        }
-
-        /* Link Display Box */
-        .output-box {
-            background-color: #ffffff;
-            border: 1px solid var(--card-border);
-            border-left: 5px solid var(--whatsapp-green);
-            border-radius: 4px;
-            padding: 20px;
-            margin-top: 20px;
-            word-break: break-all;
-        }
-
-        .generated-url {
-            font-family: monospace;
-            font-size: 1rem;
-            color: var(--whatsapp-dark);
-            background: #f1f5f9;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .btn-panel {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .action-btn {
-            background-color: var(--whatsapp-green);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: background 0.2s;
-        }
-        .action-btn:hover { background-color: var(--whatsapp-dark); }
-
-        .test-btn {
-            background-color: #7f8c8d;
-        }
-        .test-btn:hover { background-color: #95a5a6; }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 750px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-group { margin-bottom: 18px; }
+        .input-group label { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; font-size: 0.95rem; }
+        .input-group .hint { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
+        .phone-row { display: flex; gap: 10px; }
+        .phone-row select { width: 130px; flex-shrink: 0; padding: 10px 8px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.9rem; color: var(--text-dark); }
+        .phone-row input { flex: 1; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); }
+        .phone-row input:focus, select:focus { outline: none; border-color: var(--accent-color); }
+        textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.98rem; color: var(--text-dark); resize: vertical; height: 90px; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .btn { padding: 11px 22px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-whatsapp { background: var(--whatsapp); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .result-box { display: none; background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 16px; margin-top: 4px; }
+        .result-box label { font-weight: 600; color: var(--text-dark); font-size: 0.88rem; margin-bottom: 8px; display: block; }
+        .link-display { font-family: monospace; font-size: 0.85rem; color: var(--accent-color); word-break: break-all; background: #fff; border: 1px solid var(--card-border); border-radius: 5px; padding: 10px 12px; margin-bottom: 10px; }
+        .result-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free tools for businesses and creators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="adsense-placeholder top-banner-ad">
-                [ AdSense Space: Leaderboard Banner Unit ]
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+        <h2>WhatsApp Link Generator</h2>
+
+        <div class="input-group">
+            <label>WhatsApp Phone Number</label>
+            <div class="phone-row">
+                <select id="countryCode">
+                    <option value="1">🇺🇸 +1 (US/CA)</option>
+                    <option value="44">🇬🇧 +44 (UK)</option>
+                    <option value="91">🇮🇳 +91 (India)</option>
+                    <option value="55">🇧🇷 +55 (Brazil)</option>
+                    <option value="52">🇲🇽 +52 (Mexico)</option>
+                    <option value="49">🇩🇪 +49 (Germany)</option>
+                    <option value="33">🇫🇷 +33 (France)</option>
+                    <option value="34">🇪🇸 +34 (Spain)</option>
+                    <option value="39">🇮🇹 +39 (Italy)</option>
+                    <option value="61">🇦🇺 +61 (Australia)</option>
+                    <option value="65">🇸🇬 +65 (Singapore)</option>
+                    <option value="971">🇦🇪 +971 (UAE)</option>
+                    <option value="966">🇸🇦 +966 (Saudi Arabia)</option>
+                    <option value="92">🇵🇰 +92 (Pakistan)</option>
+                    <option value="62">🇮🇩 +62 (Indonesia)</option>
+                    <option value="234">🇳🇬 +234 (Nigeria)</option>
+                    <option value="27">🇿🇦 +27 (South Africa)</option>
+                    <option value="254">🇰🇪 +254 (Kenya)</option>
+                    <option value="20">🇪🇬 +20 (Egypt)</option>
+                    <option value="60">🇲🇾 +60 (Malaysia)</option>
+                    <option value="63">🇵🇭 +63 (Philippines)</option>
+                    <option value="84">🇻🇳 +84 (Vietnam)</option>
+                    <option value="82">🇰🇷 +82 (South Korea)</option>
+                    <option value="81">🇯🇵 +81 (Japan)</option>
+                    <option value="86">🇨🇳 +86 (China)</option>
+                    <option value="7">🇷🇺 +7 (Russia)</option>
+                    <option value="380">🇺🇦 +380 (Ukraine)</option>
+                    <option value="31">🇳🇱 +31 (Netherlands)</option>
+                    <option value="46">🇸🇪 +46 (Sweden)</option>
+                    <option value="47">🇳🇴 +47 (Norway)</option>
+                    <option value="45">🇩🇰 +45 (Denmark)</option>
+                    <option value="41">🇨🇭 +41 (Switzerland)</option>
+                    <option value="43">🇦🇹 +43 (Austria)</option>
+                    <option value="48">🇵🇱 +48 (Poland)</option>
+                    <option value="90">🇹🇷 +90 (Turkey)</option>
+                    <option value="972">🇮🇱 +972 (Israel)</option>
+                    <option value="54">🇦🇷 +54 (Argentina)</option>
+                    <option value="56">🇨🇱 +56 (Chile)</option>
+                    <option value="57">🇨🇴 +57 (Colombia)</option>
+                    <option value="51">🇵🇪 +51 (Peru)</option>
+                </select>
+                <input type="tel" id="phoneNumber" placeholder="5551234567 (digits only, no spaces)">
             </div>
+            <div class="hint">Enter the number without the country code, spaces, or dashes.</div>
+        </div>
 
-            <section class="tool-wrapper">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Instant WhatsApp Click-to-Chat Link Generator</h2>
-                
-                <div class="form-group">
-                    <label>WhatsApp Phone Number (Include Country Code, No Symbols):</label>
-                    <div class="phone-input-wrapper">
-                        <input type="text" id="country-code" class="country-code" placeholder="1" value="1">
-                        <input type="tel" id="phone-number" class="main-phone" placeholder="5551234567">
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; display: block;">*Example: 1 for US, 44 for UK, 91 for India. Omit any leading zeros or plus symbols.</span>
-                </div>
+        <div class="input-group">
+            <label>Pre-filled Message (optional)</label>
+            <textarea id="message" placeholder="Hi, I'd like to know more about your services..."></textarea>
+            <div class="hint">The person who clicks your link will see this message ready to send.</div>
+        </div>
 
-                <div class="form-group">
-                    <label for="custom-message">Pre-filled Welcome Message (Optional):</label>
-                    <textarea id="custom-message" class="custom-textarea" placeholder="Hello! I am interested in your services. Please provide more details..."></textarea>
-                </div>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="generate()">Generate Link</button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+        </div>
 
-                <div class="output-box">
-                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-dark); display: block; margin-bottom: 6px;">Your Generated Click-to-Chat URL:</span>
-                    <span id="generated-url-display" class="generated-url">https://wa.me/</span>
-                    
-                    <div class="btn-panel">
-                        <button class="action-btn" id="copy-btn" onclick="copyLink()">Copy Generated Link</button>
-                        <button class="action-btn test-btn" id="test-btn" onclick="testLink()">Test Link (Open Chat)</button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free WhatsApp Link Generator with Pre-filled Text is an interactive web marketing panel engineered to transform regular phone numbers and custom greeting messages into short, optimized click-to-chat links instantly. Built specifically for independent sales professionals, customer support departments, and digital content managers, this platform automates the creation of WhatsApp communication links. Operating entirely client-side, the panel guarantees absolute security for your business contact lists by compiling strings completely within your temporary browser memory sandbox, keeping numbers hidden from external caching databases.</p>
-
-                <h3>How to Operate the Click-to-Chat Link Creator Workspace</h3>
-                <p>Formulating URL-safe conversational shortcodes or generating text templates follows a non-invasive, direct layout process:</p>
-                <ol>
-                    <li><strong>Set Country Code Parameters:</strong> Type your target geographic country prefix value into the small <em>Country Code</em> entry field (omit any leading zeros, spaces, or plus symbols).</li>
-                    <li><strong>Provide the Primary Phone Number:</strong> Enter your full business mobile contact number inside the main <em>Phone Number</em> field. The background script instantly cleans up formatting characters.</li>
-                    <li><strong>Draft an Optional Welcome Greeting:</strong> Type a pre-filled greeting message layout template into the text area window. This acts as an initial icebreaker prompt for your customers.</li>
-                    <li><strong>Copy or Test the Generated Link:</strong> Check the live green display container. Click <em>Copy Generated Link</em> to save the string, or click <em>Test Link</em> to safely launch a separate browser tab to verify compatibility with the official WhatsApp app layer.</li>
-                </ol>
-
-                <h3>Core URL Serialization Features Detailed</h3>
-                <p>This business communications widget combines optimized text manipulation filters to provide responsive link configurations:</p>
-                <ul>
-                    <li><strong>Automated Alphanumeric Cleansing:</strong> The script embeds input listeners that strip out illegal character variables like parentheses, dashes, or plus signs from your phone entries on the fly, ensuring compliance with strict global API routing standards.</li>
-                    <li><strong>Native encodeURIComponent Serialization:</strong> To prevent compilation crashes or cut-off problems caused by special symbols (such as spaces, line breaks, or emojis) in your custom message, the system routes strings through a native percentage encoder pipeline securely.</li>
-                    <li><strong>Frictionless Transient State:</strong> Your input configurations, text greeting layouts, and resulting wa.me links live exclusively within local DOM fields and vanish permanently the moment you exit the tab viewport.</li>
-                </ul>
-
-                <h2>Maximizing Customer Conversion with Click-to-Chat Links</h2>
-                <p>In the hyper-accelerated modern consumer space, frictional barriers crush incoming transitional leads. Forcing mobile users to manually copy a ten-digit string, open their contacts, assign a name field, and reload a messaging interface causes massive customer drop-off. Custom shortcuts bridge that layout divide instantly.</p>
-                
-                <h3>The Engineering Logic: How wa.me API Structures Work</h3>
-                <p>The standard architecture driving this utility utilizes the secure global API domain framework provided natively by WhatsApp. When a client-side layout constructs a formatted destination query, it transforms standard alphanumeric spacing arrays into URL-safe hexadecimal text values (such as rendering a character space as `%20`). When a mobile application layer reads this payload, it bypasses traditional address validation and boots up a matching chat instantly.</p>
-
-                <div class="adsense-placeholder inline-content-ad">
-                    [ AdSense Space: Rectangular In-Article Unit ]
-                </div>
-
-                <h3>Strategic Link Placement Across Social Media Ecosystems</h3>
-                <p>Deploying automated hyperlinked shortcuts alters organic lead capture strategies dramatically across public networks. Independent creators leverage these assets inside Instagram profiles, TikTok introductory biography fields, and digital business layouts. Pre-filling an intentional text template means your brand categorizes incoming requests instantly, streamlining customer sorting pipelines from day one.</p>
-                
-                <h3>Frequently Answered Link Routing Questions (FAQ)</h3>
-                <p><strong>Q: Does generating these direct chat URLs capture my target phone values?</strong><br>
-                A: No. Data protection is absolute across the AI Learning Gym. All URL generation routines compile locally inside your front-end RAM memory stack using immediate string joins. No database pipelines ever parse or cache your customer contacts.</p>
-                
-                <p><strong>Q: Why does the routing fail if I include a leading "+" symbol?</strong><br>
-                A: The official mobile communication handlers strictly parse numerical strings exclusively. Adding bracket marks, punctuation breaks, dashes, or prefix variables breaks the routing map. Strip all symbols to guarantee universal performance.</p>
-
-                <p><strong>Q: Can I format custom text markers like bold or italic weights inside the pre-filled welcome message container?</strong><br>
-                A: Yes. The official WhatsApp application layer parses standard native markdown styling symbols perfectly. You can safely embed asterisks for bold highlights (e.g., `*Bold Text*`) or underscores for italic spans (e.g., `_Italics_`) straight into our text area block, and the generator will compile them cleanly into your URL string.</p>
-
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free WhatsApp Link Generator</h3>
-                <p>Constructing click-to-chat shortcodes with our WhatsApp Link Generator is simple. Provide your target mobile phone number (including international country codes) into the field, draft an optional pre-filled greeting message template, and generate your custom marketing link.</p>
-                
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">Accelerate Customer Messaging Pipelines</h3>
-                <p>This utility enables small businesses and support desks to create quick chat links for Instagram, emails, or landing pages. Our generator strings are built instantly on the fly using client-side formatting parameters, meaning your target business contact numbers remain entirely private.</p>
-            </section>
-
-        </main>
-
-        <aside>
-            <div class="adsense-placeholder sidebar-ad">
-                [ AdSense Space: Large Skyscraper (Sticky Display) ]
+        <div class="result-box" id="resultBox">
+            <label>Your WhatsApp Link</label>
+            <div class="link-display" id="generatedLink"></div>
+            <div class="result-actions">
+                <button class="btn btn-secondary" onclick="copyLink()">Copy Link</button>
+                <button class="btn btn-whatsapp" onclick="testLink()">Test Link</button>
             </div>
-        </aside>
+        </div>
+    </div>
 
-    </div> 
-    
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-    <script>
-        const countryInput = document.getElementById("country-code");
-        const phoneInput = document.getElementById("phone-number");
-        const messageInput = document.getElementById("custom-message");
-        const urlDisplay = document.getElementById("generated-url-display");
-        const copyBtn = document.getElementById("copy-btn");
+    <div class="card">
+        <h2>About WhatsApp Click-to-Chat Links</h2>
+        <p>A WhatsApp click-to-chat link lets anyone start a conversation with you on WhatsApp in one tap — even if they haven't saved your number. When someone clicks the link, WhatsApp opens with the conversation ready to go. If you added a pre-filled message, it appears in the text box so the person can send it with a single tap.</p>
 
-        // Attach live input listeners to construct the link dynamically
-        [countryInput, phoneInput, messageInput].forEach(element => {
-            element.addEventListener("input", constructWhatsAppLink);
-        });
+        <h3>Where to use your WhatsApp link</h3>
+        <ul>
+            <li><strong>Your website</strong> — add a "Chat on WhatsApp" button so visitors can reach you instantly</li>
+            <li><strong>Email signature</strong> — let email contacts reach you on WhatsApp with one click</li>
+            <li><strong>Social media bio</strong> — Instagram, TikTok, and Twitter bios that allow links</li>
+            <li><strong>Business cards</strong> — add as a QR code or short link</li>
+            <li><strong>Marketing campaigns</strong> — include in ads to give customers a direct line to your team</li>
+            <li><strong>Customer support</strong> — reduce friction for customers who prefer WhatsApp over email</li>
+        </ul>
 
-        function constructWhatsAppLink() {
-            // Strip spaces, dashes, plus signs, and leading zeros from inputs
-            const cleanCountry = countryInput.value.replace(/[^0-9]/g, '');
-            const cleanPhone = phoneInput.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
-            const rawMessage = messageInput.value;
+        <h3>How the link works</h3>
+        <p>The link uses WhatsApp's official <strong>wa.me</strong> short URL format. When clicked on a phone with WhatsApp installed, it opens the app directly to a new conversation. On a desktop browser, it redirects to WhatsApp Web. The phone number and message are encoded in the URL — nothing is stored or tracked by this tool.</p>
 
-            if (!cleanPhone) {
-                urlDisplay.innerText = "https://wa.me/";
-                return;
-            }
+        <h3>Tips for writing a good pre-filled message</h3>
+        <p>Keep it short and natural. Something like "Hi, I'd like more information about your products" works well. Don't write the full message for them — the goal is just to give them a starting point so they don't have to think about what to say. A good pre-filled message can significantly increase the number of people who complete the conversation.</p>
 
-            // Base format configuration
-            let finalUrl = `https://wa.me/${cleanCountry}${cleanPhone}`;
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Do I need a WhatsApp Business account to use this?</h4>
+            <p>No. These links work with regular personal WhatsApp accounts and WhatsApp Business accounts. The link just points to a phone number — WhatsApp handles the rest.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Will my phone number be visible when someone clicks the link?</h4>
+            <p>Yes — when the person opens the link, they see your number as the recipient of the conversation before they send anything. There's no way to hide it in a standard WhatsApp link.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What if the person clicking the link doesn't have WhatsApp?</h4>
+            <p>They'll be directed to WhatsApp's website and prompted to download the app. If they're on desktop, they'll be taken to WhatsApp Web and may need to sign in.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I use this link on a button on my website?</h4>
+            <p>Yes — copy the generated link and add it as the <code style="background:#f1f5f9; padding:2px 5px; border-radius:3px; font-family:monospace; font-size:0.9em;">href</code> attribute of a button or anchor tag on your site. Many businesses style it with WhatsApp's green color (#25D366) to make it instantly recognizable.</p>
+        </div>
+    </div>
 
-            // If a custom welcome message exists, encode it cleanly for URI safety
-            if (rawMessage.trim() !== "") {
-                finalUrl += `?text=${encodeURIComponent(rawMessage)}`;
-            }
+</div>
 
-            urlDisplay.innerText = finalUrl;
-        }
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
 
-        function copyLink() {
-            const currentUrl = urlDisplay.innerText;
-            if (currentUrl === "https://wa.me/") {
-                alert("Please enter a phone number configuration first!");
-                return;
-            }
+<script>
+    let generatedUrl = '';
 
-            navigator.clipboard.writeText(currentUrl);
-            
-            const originalText = copyBtn.innerText;
-            copyBtn.innerText = "Copied URL!";
-            copyBtn.style.backgroundColor = "#128c7e";
-            
-            setTimeout(() => {
-                copyBtn.innerText = originalText;
-                copyBtn.style.backgroundColor = "var(--whatsapp-green)";
-            }, 1200);
-        }
+    function generate() {
+        const cc = document.getElementById('countryCode').value;
+        const num = document.getElementById('phoneNumber').value.replace(/\D/g, '');
+        if (!num) { alert('Please enter a phone number.'); return; }
+        const msg = document.getElementById('message').value.trim();
+        const full = cc + num;
+        generatedUrl = msg
+            ? `https://wa.me/${full}?text=${encodeURIComponent(msg)}`
+            : `https://wa.me/${full}`;
+        document.getElementById('generatedLink').textContent = generatedUrl;
+        document.getElementById('resultBox').style.display = 'block';
+    }
 
-        function testLink() {
-            const currentUrl = urlDisplay.innerText;
-            if (currentUrl === "https://wa.me/") {
-                alert("Please enter a phone number configuration first to test!");
-                return;
-            }
-            // Safely spawn a new window tab to test link compatibility
-            window.open(currentUrl, '_blank');
-        }
-    </script>
+    function copyLink() {
+        if (generatedUrl) navigator.clipboard.writeText(generatedUrl);
+    }
+
+    function testLink() {
+        if (generatedUrl) window.open(generatedUrl, '_blank');
+    }
+
+    function clearAll() {
+        document.getElementById('phoneNumber').value = '';
+        document.getElementById('message').value = '';
+        document.getElementById('resultBox').style.display = 'none';
+        generatedUrl = '';
+    }
+</script>
 </body>
 </html>
