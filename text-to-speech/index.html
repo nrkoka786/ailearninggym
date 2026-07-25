@@ -1,14 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Text to Speech (TTS) Reader | AI Learning Gym</title>
-    <meta name="description" content="Convert written text into natural spoken narration. Free web-based TTS engine with customizable voice lists, adjustments for speed rates, and pitch tuning.">
-    <meta name="keywords" content="free text to speech online, tts audio reader, convert text to voice, natural voice reader, web speech api tool">
-    <meta property="og:title" content="Free Online Text to Speech (TTS) Reader | AI Learning Gym">
-    <meta property="og:description" content="Synthesize clear vocal audio playback loops from your documents using native local system device voice profiles.">
-
+    <title>Free Text to Speech | Listen to Any Text Out Loud | AI Learning Gym</title>
+    <meta name="description" content="Convert any text to speech instantly. Choose from available voices, adjust speed and pitch, and listen right in your browser. Free, no sign-up.">
+    <meta name="keywords" content="text to speech, TTS, listen to text, read aloud, text reader, online TTS, speech synthesis">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,415 +14,258 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550"
-         crossorigin="anonymous"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
-            --success-color: #2ecc71;
-            --danger-color: #e74c3c;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- AdSense Spaces --- */
-        .adsense-placeholder {
-            background-color: #eaeaea;
-            border: 2px dashed #bbb;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .top-banner-ad { width: 100%; height: 90px; }
-        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
-        .inline-content-ad { width: 100%; height: 250px; }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- TTS Engine App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .input-textarea {
-            width: 100%;
-            height: 180px;
-            padding: 12px;
-            font-size: 1rem;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            resize: vertical;
-            margin-bottom: 15px;
-        }
-
-        .input-textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        /* Audio Tuning Interface Panel */
-        .control-panel {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid var(--card-border);
-            margin-bottom: 20px;
-        }
-
-        @media (min-width: 600px) {
-            .control-panel { grid-template-columns: 1fr 1fr; }
-        }
-
-        .panel-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .panel-group label {
-            font-weight: 700;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-        }
-
-        .select-voice {
-            width: 100%;
-            padding: 8px 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            background-color: white;
-        }
-
-        .range-slider {
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .btn-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .audio-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px 22px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.2s;
-        }
-
-        .audio-btn:hover { background-color: #2980b9; }
-        .stop-btn { background-color: var(--danger-color); }
-        .stop-btn:hover { background-color: #c0392b; }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        textarea { width: 100%; height: 180px; padding: 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.98rem; resize: vertical; color: var(--text-dark); line-height: 1.6; margin-bottom: 16px; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .controls { grid-template-columns: 1fr; } }
+        .ctrl-group label { display: block; font-weight: 600; color: var(--text-dark); font-size: 0.88rem; margin-bottom: 6px; }
+        .ctrl-group select { width: 100%; padding: 8px 10px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.9rem; color: var(--text-dark); }
+        .slider-row { display: flex; align-items: center; gap: 10px; }
+        .slider-row input[type="range"] { flex: 1; accent-color: var(--accent-color); }
+        .slider-row span { font-size: 0.9rem; font-weight: 700; color: var(--accent-color); min-width: 35px; text-align: right; }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+        .btn { padding: 11px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-play { background: var(--accent-color); color: #fff; font-size: 1rem; }
+        .btn-stop { background: #e74c3c; color: #fff; }
+        .btn-pause { background: #f39c12; color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .char-count { font-size: 0.82rem; color: var(--text-muted); margin-top: -10px; margin-bottom: 12px; }
+        .notice { background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 12px 14px; font-size: 0.88rem; color: #92400e; margin-bottom: 16px; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free accessibility and productivity tools</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="adsense-placeholder top-banner-ad">
-                [ AdSense Space: Leaderboard Banner Unit ]
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+        <h2>Text to Speech</h2>
+
+        <div class="notice" id="noSupport" style="display:none">
+            ⚠️ Your browser doesn't support the Web Speech API. Please try Chrome, Edge, or Safari for text-to-speech.
+        </div>
+
+        <textarea id="textInput" placeholder="Type or paste text here and click Listen..." oninput="updateCount()">Welcome to AI Learning Gym. This free text-to-speech tool reads any text aloud using your browser's built-in voice engine. Try changing the voice, speed, and pitch to find what works best for you.</textarea>
+        <div class="char-count" id="charCount">Characters: 266</div>
+
+        <div class="controls">
+            <div class="ctrl-group">
+                <label>Voice</label>
+                <select id="voiceSelect"></select>
             </div>
-
-            <section class="tool-wrapper">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Natural Text to Speech Reader Engine</h2>
-                
-                <textarea id="text-speech-input" class="input-textarea" placeholder="Type or paste paragraphs here. Click 'Speak Content' to stream synthesized narration directly from your browser speakers..."></textarea>
-
-                <div class="control-panel">
-                    <div class="panel-group" style="grid-column: 1 / -1;">
-                        <label for="voice-select">Available System Voices</label>
-                        <select id="voice-select" class="select-voice">
-                            <option value="">Loading system voice profiles...</option>
-                        </select>
-                    </div>
-                    
-                    <div class="panel-group">
-                        <label id="speed-label" for="rate-range">Playback Speed: 1.0x</label>
-                        <input type="range" id="rate-range" class="range-slider" min="0.5" max="2" step="0.1" value="1">
-                    </div>
-
-                    <div class="panel-group">
-                        <label id="pitch-label" for="pitch-range">Voice Pitch: 1.0</label>
-                        <input type="range" id="pitch-range" class="range-slider" min="0.5" max="1.5" step="0.1" value="1">
-                    </div>
+            <div class="ctrl-group">
+                <label>Speed: <span id="rateVal">1.0×</span></label>
+                <div class="slider-row">
+                    <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1" oninput="document.getElementById('rateVal').textContent=this.value+'×'">
                 </div>
-
-                <div class="btn-row">
-                    <button class="audio-btn" id="speak-btn">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        Speak Content
-                    </button>
-                    <button class="audio-btn stop-btn" id="stop-btn">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                        Stop Audio
-                    </button>
-                </div>
-            </section>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Online Text to Speech (TTS) Reader is an interactive vocal synthesis dashboard engineered to transform written text paragraphs into spoken audio streams natively within your web client. Designed for content proofreaders, students, language learners, and accessibility optimization, this utility interfaces directly with your browser's audio channels. Operating completely client-side, the synthesizer ensures absolute data isolation by parsing string profiles locally inside your temporary machine RAM layers, keeping confidential text fully protected from third-party server logging.</p>
-
-                <h3>How to Operate the Local Speech Synthesis Workbench</h3>
-                <p>Converting plain document text layouts into customizable spoken narrations follows a non-invasive, lightweight workflow:</p>
-                <ol>
-                    <li><strong>Input Target Copy Blocks:</strong> Type or paste your written editorial manuscripts, notes, or data rows straight into the central text workspace container marked <em>Natural Text to Speech Reader Engine</em>.</li>
-                    <li><strong>Isolate a System Voice Profile:</strong> Click the <em>Available System Voices</em> drop-down option menu to browse and pick your preferred native linguistic voice model (compiled relative to your operating system's locale registry).</li>
-                    <li><strong>Tune Playback Properties:</strong> Adjust the horizontal sliders to fine-tune your performance parameters: accelerate or slow down the <em>Playback Speed</em> rate, or configure the <em>Voice Pitch</em> to modify tone frequencies cleanly.</li>
-                    <li><strong>Control the Speaker Streams:</strong> Click the blue <em>Speak Content</em> action trigger to compile variables and initialize local vocal streaming. Click the red <em>Stop Audio</em> button at any moment to cancel the current execution immediately.</li>
-                </ol>
-
-                <h3>Core Web Speech API Features Detailed</h3>
-                <p>This synthesizer leverages optimized browser audio logic subsystems to output fluid verbal waveforms safely:</p>
-                <ul>
-                    <li><strong>Native window.speechSynthesis Integrations:</strong> The core script coordinates text processing directly with your device's pre-installed hardware-level speech engines, executing speech generation entirely offline without draining cellular data plans.</li>
-                    <li><strong>Dynamic GetVoices Event Tracking:</strong> Because browser architectures instantiate available system voice profiles asynchronously, the engine applies a custom listener routine (`onvoiceschanged`) to capture changes dynamically across Chrome, Safari, and Edge systems.</li>
-                    <li><strong>Frictionless Utterance Caching:</strong> All instantiated string objects, pitch variables, and speed adjustments sit contained within a temporary, isolated instance sandbox (`SpeechSynthesisUtterance`), which vanishes completely the instant the panel tab is closed.</li>
-                </ul>
-
-                <h2>The Advancement of Speech Synthesis Protocols in Modern Web Tools</h2>
-                <p>Synthetic spoken engineering, universally known as Text-to-Speech (TTS), represents a critical landmark in global software design. By translating digital script strings into smooth natural voice signals, online tools break down accessibility hurdles for vision-impaired audiences and streamline multi-tasking windows for digital professionals.</p>
-                
-                <h3>Understanding Local Browser Speech Waveform Engines</h3>
-                <p>Traditional audio synthesis models relied completely on remote server computations, transmitting bulky recorded sound layers down network paths and draining mobile data plans. Contemporary layouts use advanced native rendering boards embedded right inside your device's core operating hardware. This client-side canvas gives scripts direct permission to access precise micro-tonal accents without external lag.</p>
-
-                <div class="adsense-placeholder inline-content-ad">
-                    [ AdSense Space: Rectangular In-Article Unit ]
-                </div>
-
-                <h3>Why Content Producers and Editors Use Proofreading Narration</h3>
-                <p>For independent copywriters, digital novelists, and search engine optimization specialists, audio proofing reveals layout problems that human eyes frequently ignore. Listening to text read aloud flags formatting repeats, broken punctuation, or uneven sentence structure immediately. Adjusting speech speed markers up or down lets analytical groups review long documentation projects in half the time.</p>
-                
-                <h3>Frequently Answered Audio Generation Questions (FAQ)</h3>
-                <p><strong>Q: Are my confidential document files recorded or sent to speech tracking networks?</strong><br>
-                A: No. Privacy safety is locked into our operational framework. Because the code calls local synthesized speech arrays built into your specific machine memory stack, your data rows remain entirely internal to your secure device window.</p>
-                
-                <p><strong>Q: Why do voice list profiles vary across different computer screens?</strong><br>
-                A: The application syncs directly with the pre-installed default voice lists on your current operating system (Windows, macOS, iOS, or Android). As computer manufacturers expand their native system voice options, this tool updates automatically.</p>
-
-                <p><strong>Q: Why does the playback occasionally pause midway through reading a very long multi-paragraph document?</strong><br>
-                A: Certain browser engines restrict background task runtimes, which can occasionally truncate long string streams. To ensure completely fluid audio playback across massive text layers, we recommend dividing long documents into short, manageable section blocks.</p>
-            </section>
-
-        </main>
-
-        <aside>
-            <div class="adsense-placeholder sidebar-ad">
-                [ AdSense Space: Large Skyscraper (Sticky Display) ]
             </div>
-        </aside>
+            <div class="ctrl-group">
+                <label>Pitch: <span id="pitchVal">1.0</span></label>
+                <div class="slider-row">
+                    <input type="range" id="pitch" min="0.5" max="2" step="0.1" value="1" oninput="document.getElementById('pitchVal').textContent=this.value">
+                </div>
+            </div>
+        </div>
 
-    </div> 
+        <div class="btn-row">
+            <button class="btn btn-play" id="playBtn" onclick="speak()">▶ Listen</button>
+            <button class="btn btn-pause" id="pauseBtn" onclick="togglePause()" disabled>⏸ Pause</button>
+            <button class="btn btn-stop" id="stopBtn" onclick="stopSpeech()" disabled>⏹ Stop</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('textInput').value=''; updateCount()">Clear</button>
+        </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const speakBtn = document.getElementById("speak-btn");
-            const stopBtn = document.getElementById("stop-btn");
-            const textInput = document.getElementById("text-speech-input");
-            const voiceSelect = document.getElementById("voice-select");
-            const rateRange = document.getElementById("rate-range");
-            const pitchRange = document.getElementById("pitch-range");
-            const speedLabel = document.getElementById("speed-label");
-            const pitchLabel = document.getElementById("pitch-label");
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This text-to-speech tool uses your browser's built-in speech engine to read text aloud. You can adjust the voice, reading speed, and pitch to make it more comfortable to listen to. There's no account needed, and your text is never sent anywhere.</p>
 
-            let speechEngine = window.speechSynthesis;
-            let systemVoices = [];
+        <h3>Who uses text-to-speech?</h3>
+        <ul>
+            <li><strong>Proofreading</strong> — listening to your writing is one of the best ways to catch awkward sentences and typos you'd miss reading silently.</li>
+            <li><strong>Accessibility</strong> — people with dyslexia, visual impairments, or reading difficulties benefit from having text read aloud.</li>
+            <li><strong>Language learning</strong> — hear how words and phrases sound in a language you're studying.</li>
+            <li><strong>Multitasking</strong> — listen to an article, email, or document while doing something else.</li>
+            <li><strong>Tired eyes</strong> — after a long day of screen time, listening is easier than reading.</li>
+        </ul>
 
-            // Compile localized device system voice lists
-            function populateVoiceList() {
-                if (!speechEngine) return;
-                
-                systemVoices = speechEngine.getVoices();
-                voiceSelect.innerHTML = "";
+        <h3>Tips for better results</h3>
+        <ul>
+            <li>Use a <strong>slower speed</strong> (0.7–0.8×) for complex technical content or when learning.</li>
+            <li>Use a <strong>faster speed</strong> (1.3–1.5×) for skimming long articles or emails.</li>
+            <li>Different voices have different strengths — some sound more natural for conversational text, others for formal reading.</li>
+            <li>Punctuation helps the voice engine know where to pause — well-formatted text with proper commas and periods sounds more natural.</li>
+        </ul>
 
-                if (systemVoices.length === 0) {
-                    const opt = document.createElement("option");
-                    opt.textContent = "Default Browser Voice Profile";
-                    opt.value = "default";
-                    voiceSelect.appendChild(opt);
-                    return;
-                }
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Why does my browser show only a few voices?</h4>
+            <p>The voices available depend on your operating system and browser. Chrome and Edge typically offer more voices than Firefox and Safari. On Windows, you can add additional voices in Settings → Time & Language → Speech. On Mac, you can add voices in System Settings → Accessibility → Spoken Content.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is there a limit to how much text I can read?</h4>
+            <p>Most browsers handle several paragraphs comfortably. Very long texts (thousands of words) may have issues depending on the browser. If you're reading a long document, try breaking it into smaller sections.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does this work offline?</h4>
+            <p>The basic voices on your device work offline since they're stored locally. Some browser voices (like Google's natural-sounding voices in Chrome) require an internet connection because they use cloud processing.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I save the audio as a file?</h4>
+            <p>This tool uses your browser's built-in speech synthesizer, which plays audio directly and doesn't support saving to a file. To save text-to-speech audio, you'd need a dedicated TTS app or service that exports MP3 files.</p>
+        </div>
+    </div>
 
-                systemVoices.forEach((voice) => {
-                    const optionElement = document.createElement("option");
-                    optionElement.textContent = `${voice.name} (${voice.lang})`;
-                    optionElement.value = voice.name;
-                    
-                    // Default fallback selection helper
-                    if (voice.default) {
-                        optionElement.selected = true;
-                    }
-                    voiceSelect.appendChild(optionElement);
-                });
-            }
+</div>
 
-            populateVoiceList();
-            // Chrome and Safari async loading listeners
-            if (speechEngine && speechEngine.onvoiceschanged !== undefined) {
-                speechEngine.onvoiceschanged = populateVoiceList;
-            }
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
 
-            // Sync range labels dynamically
-            rateRange.addEventListener("input", (e) => {
-                speedLabel.innerText = `Playback Speed: ${e.target.value}x`;
-            });
+<script>
+    const synth = window.speechSynthesis;
 
-            pitchRange.addEventListener("input", (e) => {
-                pitchLabel.innerText = `Voice Pitch: ${e.target.value}`;
-            });
+    if (!synth) {
+        document.getElementById('noSupport').style.display = 'block';
+        document.getElementById('playBtn').disabled = true;
+    }
 
-            // Playback engine logic execution loop
-            speakBtn.addEventListener("click", () => {
-                if (!speechEngine) {
-                    alert("Your browser does not natively support speech synthesis api arrays!");
-                    return;
-                }
+    let voices = [];
+    let utterance = null;
+    let paused = false;
 
-                // If currently speaking, clear track before firing a new sequence
-                speechEngine.cancel();
-
-                const rawSpeechText = textInput.value.trim();
-                if (!rawSpeechText) {
-                    alert("Please input some text parameters to generate speech outputs!");
-                    return;
-                }
-
-                const utterance = new SpeechSynthesisUtterance(rawSpeechText);
-                
-                // Track down matching voice identity selections
-                const selectedVoiceName = voiceSelect.value;
-                const matchedVoice = systemVoices.find(v => v.name === selectedVoiceName);
-                if (matchedVoice) {
-                    utterance.voice = matchedVoice;
-                }
-
-                // Set user-defined pitch and speed rate configurations
-                utterance.rate = parseFloat(rateRange.value);
-                utterance.pitch = parseFloat(pitchRange.value);
-
-                speechEngine.speak(utterance);
-            });
-
-            stopBtn.addEventListener("click", () => {
-                if (speechEngine) {
-                    speechEngine.cancel();
-                }
-            });
+    function loadVoices() {
+        voices = synth.getVoices();
+        const select = document.getElementById('voiceSelect');
+        select.innerHTML = '';
+        voices.forEach((v, i) => {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = `${v.name} (${v.lang})`;
+            if (v.default) opt.selected = true;
+            select.appendChild(opt);
         });
-    </script>
+        if (!select.options.length) {
+            select.innerHTML = '<option>Loading voices…</option>';
+        }
+    }
+
+    loadVoices();
+    if (synth.onvoiceschanged !== undefined) {
+        synth.onvoiceschanged = loadVoices;
+    }
+
+    function speak() {
+        if (!synth) return;
+        stopSpeech();
+
+        const text = document.getElementById('textInput').value.trim();
+        if (!text) return;
+
+        utterance = new SpeechSynthesisUtterance(text);
+        const voiceIdx = document.getElementById('voiceSelect').value;
+        if (voices[voiceIdx]) utterance.voice = voices[voiceIdx];
+        utterance.rate = parseFloat(document.getElementById('rate').value);
+        utterance.pitch = parseFloat(document.getElementById('pitch').value);
+
+        utterance.onend = () => resetButtons();
+        utterance.onerror = () => resetButtons();
+
+        synth.speak(utterance);
+        document.getElementById('pauseBtn').disabled = false;
+        document.getElementById('stopBtn').disabled = false;
+        document.getElementById('playBtn').disabled = true;
+        paused = false;
+    }
+
+    function togglePause() {
+        if (!synth) return;
+        if (paused) {
+            synth.resume();
+            document.getElementById('pauseBtn').textContent = '⏸ Pause';
+            paused = false;
+        } else {
+            synth.pause();
+            document.getElementById('pauseBtn').textContent = '▶ Resume';
+            paused = true;
+        }
+    }
+
+    function stopSpeech() {
+        if (!synth) return;
+        synth.cancel();
+        resetButtons();
+    }
+
+    function resetButtons() {
+        document.getElementById('playBtn').disabled = false;
+        document.getElementById('pauseBtn').disabled = true;
+        document.getElementById('stopBtn').disabled = true;
+        document.getElementById('pauseBtn').textContent = '⏸ Pause';
+        paused = false;
+    }
+
+    function updateCount() {
+        const len = document.getElementById('textInput').value.length;
+        document.getElementById('charCount').textContent = 'Characters: ' + len.toLocaleString();
+    }
+</script>
 </body>
 </html>
