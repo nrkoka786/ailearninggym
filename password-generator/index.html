@@ -1,216 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Password Generator &amp; Strength Tester | AI Learning Gym</title>
-    <meta name="description" content="Create cryptographically secure, randomized passwords instantly. Custom lengths, symbols, and numbers with real-time brute-force crack time analysis.">
-    <meta name="keywords" content="secure password generator, random password creator, strong password tester, password strength analyzer, brute force tool">
-    <meta property="og:title" content="Secure Password Generator &amp; Strength Tester | AI Learning Gym">
-    <meta property="og:description" content="Generate strong, randomized passwords and analyze their cryptographic strength completely offline in your local browser sandbox.">
-    <style>
-        /* --- Core Layout & Styling Matrix --- */
-        :root {
-            --primary-color: #1a252f;
-            --accent-color: #3498db;
-            --text-dark: #2c3e50;
-            --text-muted: #64748b;
-            --card-border: #e2e8f0;
-            --success-color: #2ecc71;
-            --warning-color: #f1c40f;
-            --danger-color: #e74c3c;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- AdSense Spaces --- */
-        .adsense-placeholder {
-            background-color: #eaeaea;
-            border: 2px dashed #bbb;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .top-banner-ad { width: 100%; height: 90px; }
-        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
-        .inline-content-ad { width: 100%; height: 250px; }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Password App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .output-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .password-display {
-            width: 100%;
-            padding: 12px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.2rem;
-            font-weight: bold;
-            background: #ffffff;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            color: #2c3e50;
-            letter-spacing: 1px;
-        }
-
-        .action-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .action-btn:hover { background-color: #2980b9; }
-
-        .copy-btn { background-color: #7f8c8d; }
-        .copy-btn:hover { background-color: #95a5a6; }
-
-        /* Strength Meter Bar */
-        .strength-meter {
-            height: 8px;
-            width: 100%;
-            background-color: #e2e8f0;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            overflow: hidden;
-        }
-
-        .strength-bar {
-            height: 100%;
-            width: 0%;
-            transition: width 0.3s ease, background-color 0.3s ease;
-        }
-
-        .strength-text {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: var(--text-dark);
-            margin-bottom: 25px;
-        }
-
-        /* Controls Panel */
-        .controls-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid var(--card-border);
-        }
-
-        @media (min-width: 600px) {
-            .controls-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        .control-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .control-group label {
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .slider-container {
-            grid-column: 1 / -1;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; border-bottom: 1px solid #edf2f7; padding-bottom: 6px; }
-        .seo-section h3 { color: #34495e; margin: 25px 0 10px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
-    </style>
+    <title>Free Password Generator | Strong Random Passwords | AI Learning Gym</title>
+    <meta name="description" content="Generate strong, random passwords instantly. Choose length, symbols, and character types. Free, runs in your browser — your passwords are never stored.">
+    <meta name="keywords" content="password generator, random password, strong password, secure password maker, free password tool">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -218,255 +14,227 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .password-display { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .password-display input { flex: 1; padding: 14px; font-size: 1.1rem; font-family: monospace; border: 1px solid var(--card-border); border-radius: 6px; color: var(--text-dark); background: #f8fafc; letter-spacing: 0.05em; }
+        .btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .strength-bar { height: 8px; border-radius: 4px; background: #e2e8f0; margin: 8px 0; overflow: hidden; }
+        .strength-fill { height: 100%; border-radius: 4px; transition: width 0.3s, background 0.3s; }
+        .strength-label { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
+        .option-group { margin-bottom: 14px; }
+        .option-group label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.95rem; color: var(--text-dark); }
+        .option-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent-color); }
+        .length-row { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+        .length-row label { font-weight: 600; color: var(--text-dark); font-size: 0.95rem; white-space: nowrap; }
+        .length-row input[type="range"] { flex: 1; accent-color: var(--accent-color); }
+        .length-row span { font-weight: 700; color: var(--accent-color); font-size: 1.1rem; min-width: 30px; text-align: right; }
+        .btn-row { margin-top: 16px; display: flex; gap: 10px; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free browser tools for everyday tasks</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="adsense-placeholder top-banner-ad">
-                [ AdSense Space: Leaderboard Banner Unit ]
-            </div>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            <section class="tool-wrapper">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Random Password Generator &amp; Strength Analyzer</h2>
-                
-                <div class="output-container">
-                    <input type="text" id="password-output" class="password-display" readonly value="">
-                    <button id="copy-btn" class="action-btn copy-btn">Copy</button>
-                    <button id="generate-btn" class="action-btn">Regen</button>
-                </div>
+    <div class="card">
+        <h2>Password Generator</h2>
 
-                <div class="strength-meter">
-                    <div id="strength-bar" class="strength-bar"></div>
-                </div>
-                <div id="strength-text" class="strength-text">Crack Time: Checking...</div>
+        <div class="password-display">
+            <input type="text" id="passwordOutput" readonly placeholder="Your password will appear here">
+            <button class="btn btn-secondary" onclick="copyPassword()">Copy</button>
+        </div>
 
-                <div class="controls-grid">
-                    <div class="slider-container">
-                        <label id="length-label" for="length-slider">Password Length: 16 characters</label>
-                        <input type="range" id="length-slider" min="6" max="50" value="16" style="width: 100%;">
-                    </div>
-                    <div class="control-group">
-                        <input type="checkbox" id="include-uppercase" checked>
-                        <label for="include-uppercase">Include Uppercase (A-Z)</label>
-                    </div>
-                    <div class="control-group">
-                        <input type="checkbox" id="include-lowercase" checked>
-                        <label for="include-lowercase">Include Lowercase (a-z)</label>
-                    </div>
-                    <div class="control-group">
-                        <input type="checkbox" id="include-numbers" checked>
-                        <label for="include-numbers">Include Numbers (0-9)</label>
-                    </div>
-                    <div class="control-group">
-                        <input type="checkbox" id="include-symbols" checked>
-                        <label for="include-symbols">Include Symbols (!@#$%)</label>
-                    </div>
-                </div>
-            </section>
+        <div class="strength-bar"><div class="strength-fill" id="strengthFill" style="width:0%"></div></div>
+        <div class="strength-label" id="strengthLabel">Strength: —</div>
 
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Secure Password Generator &amp; Strength Tester is an interactive, privacy-first cybersecurity utility engineered to compute cryptographically secure access keys and evaluate brute-force crack timelines entirely inside your browser. Built for data administrators, developers, and privacy-conscious web users, this application isolates sensitive credential creations from remote networks. Operating 100% client-side, the panel processes entropy metrics locally within transient viewport variables, keeping structural passwords entirely private and hidden from cloud caches or server logs.</p>
+        <div class="length-row">
+            <label for="lengthSlider">Length:</label>
+            <input type="range" id="lengthSlider" min="6" max="50" value="16">
+            <span id="lengthDisplay">16</span>
+        </div>
 
-                <h3>How to Operate the Password Studio</h3>
-                <p>Configuring customized string configurations and verifying cryptographic resistance profiles follows an easy, frictionless workflow:</p>
-                <ol>
-                    <li><strong>Set String Length Parameters:</strong> Move the <em>Password Length</em> horizontal slider control to establish your precise character count limits (supports lengths ranging from 6 up to 50 positions).</li>
-                    <li><strong>Choose Character Complexity Sets:</strong> Toggle the option checkboxes to define your available token index pools, choosing between Uppercase (A-Z), Lowercase (a-z), Numeric digits (0-9), or Special Symbols (!@#$%).</li>
-                    <li><strong>Execute Real-Time Generation:</strong> The client engine captures any form interaction instantly. Click the primary <em>Regen</em> button to cycle structural character values and generate a new secure pattern.</li>
-                    <li><strong>Audit Strength &amp; Export:</strong> Inspect the color-coded visual progress bar and estimated brute-force decryption window text. Click the gray <em>Copy</em> button to save the secure result directly to your machine's clipboard.</li>
-                </ol>
+        <div class="option-group"><label><input type="checkbox" id="useUpper" checked> Uppercase letters (A–Z)</label></div>
+        <div class="option-group"><label><input type="checkbox" id="useLower" checked> Lowercase letters (a–z)</label></div>
+        <div class="option-group"><label><input type="checkbox" id="useNumbers" checked> Numbers (0–9)</label></div>
+        <div class="option-group"><label><input type="checkbox" id="useSymbols" checked> Symbols (!@#$%)</label></div>
 
-                <h3>Core Cryptographic Safeguards Detailed</h3>
-                <p>This security hub relies on optimized native browser features to output random text chains safely:</p>
-                <ul>
-                    <li><strong>Web Crypto API Randomization:</strong> Most basic generators leverage default math functions (`Math.random()`), which produce predictable pseudo-random sequences vulnerable to seed tracking. This tool forces entropy through the hardware-level Web Crypto API (`window.crypto.getRandomValues`), building cryptographically isolated sequences.</li>
-                    <li><strong>Logarithmic Entropy Assessments:</strong> The tester measures mathematical strength by calculating total bit entropy, evaluating the string length against the total size of your selected character pool.</li>
-                    <li><strong>Sandbox Architecture Isolation:</strong> Your parameters, outputs, and clipboard arrays disappear permanently when you clear selections or exit the view, protecting your credentials from hidden background malware caches.</li>
-                </ul>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="generatePassword()">Generate New Password</button>
+        </div>
+    </div>
 
-                <h2>Why Strong Passwords Are Vital For Cyber Security Protection</h2>
-                <p>In the modern era of automated cyber threats, basic credential patterns fail within fractions of a single second. Malicious bot networks utilize optimized distributed hardware matrices to cycle through trillions of common string variants, meaning traditional, easily guessable passwords offer virtually zero protection.</p>
-                
-                <h3>Understanding Entropy: The Core Math Behind True Encryption Strength</h3>
-                <p>Password security is mathematically measured via computational entropy bits. Entropy defines the pure randomness and overall statistical unpredictability of an alphanumeric array. When you increase your credential length and blend varying character pools (combining numbers, capital text blocks, and special punctuation indicators), the pool of possible permutations grows exponentially.</p>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-                <p>The exact cryptographic bit strength is modeled using the fundamental information theory equation:</p>
-                <div style="background: rgba(0, 0, 0, 0.02); padding: 15px; border-radius: 6px; border: 1px solid var(--card-border); color: var(--accent-color); font-family: monospace; margin: 20px 0; font-size: 1.1rem; text-align: center;">
-                    $$E = L \times \log_2(R)$$
-                </div>
-                <p>Where $E$ represents the calculated bit entropy score, $L$ represents the absolute string character length, and $R$ matches the total radices count of the available character pool sizing limits.</p>
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This password generator creates strong, random passwords using your browser's built-in secure random number generator. You can control the length and which types of characters to include. Your generated passwords are never sent to any server.</p>
 
-                <div class="adsense-placeholder inline-content-ad">
-                    [ AdSense Space: Rectangular In-Article Unit ]
-                </div>
+        <h3>How to use it</h3>
+        <ol>
+            <li>Choose your password length using the slider (longer is stronger).</li>
+            <li>Check or uncheck character types — uppercase, lowercase, numbers, and symbols.</li>
+            <li>Click <strong>Generate New Password</strong> to create a new one.</li>
+            <li>Click <strong>Copy</strong> to copy it to your clipboard.</li>
+        </ol>
 
-                <h3>How Brute-Force Engines Estimate Total Decryption Windows</h3>
-                <p>Our real-time mathematical analyzer estimates crack thresholds by evaluating your string length against modern computer processing speeds. A standard, short 8-character string consisting solely of lowercase letters yields roughly 200 billion permutations—something an entry-level smartphone GPU can crack in minutes. Expanding that layout to a 16-character randomized string creates a security wall that would take multi-million dollar computing clusters millions of years to breach.</p>
-                
-                <h3>Frequently Answered Cyber Security Questions (FAQ)</h3>
-                <div class="faq-item">
-                    <h4>Q: Are my newly generated credentials stored anywhere on your host network?</h4>
-                    <p>A: No. This tool is built entirely inside a client-side JavaScript architecture. Every single string generation and mathematical crack-time calculations occurs locally in your browser memory window. No data values are ever broadcast to an external database server.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h4>Q: What makes a credential string completely un-crackable?</h4>
-                    <p>A: True safety depends on length and pattern isolation. Avoid using common word configurations or substituting simple character numbers (like changing an 'E' to a '3'). Long, entirely randomized patterns provide the highest defense profiles across all network layers.</p>
-                </div>
+        <h3>What makes a password strong?</h3>
+        <p>Password strength comes down to two things: length and randomness. Here's a quick guide:</p>
+        <ul>
+            <li><strong>8 characters</strong> — minimum for most sites, but weak by modern standards</li>
+            <li><strong>12 characters</strong> — good for most personal accounts</li>
+            <li><strong>16+ characters</strong> — strong; recommended for email, banking, and work accounts</li>
+            <li><strong>20+ characters</strong> — very strong; use for password manager master passwords</li>
+        </ul>
+        <p>Adding symbols and numbers increases strength significantly. A 16-character password with all character types would take billions of years to crack by brute force.</p>
 
-                <div class="faq-item">
-                    <h4>Q: What minimum bit entropy score should I target for secure corporate accounts?</h4>
-                    <p>A: For personal user profiles, tracking a baseline entropy score above 60 bits provides normal security safety. For master network databases, secure API access tokens, or sensitive administrative system accounts, configuring strings that exceed 80 to 100 bits of entropy is highly recommended to block automated offline attacks.</p>
-                </div>
+        <h3>Tips for managing passwords</h3>
+        <ul>
+            <li><strong>Use a different password for every account.</strong> If one site gets hacked, your other accounts stay safe.</li>
+            <li><strong>Use a password manager</strong> like Bitwarden, 1Password, or your browser's built-in manager to store passwords securely.</li>
+            <li><strong>Never reuse passwords</strong> across email, banking, or social media accounts.</li>
+            <li><strong>Enable two-factor authentication (2FA)</strong> wherever possible — even a weak password becomes much harder to exploit with 2FA enabled.</li>
+        </ul>
 
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free Online Password Generator</h3>
-                <p>Building secure credentials with our Password Generator takes only a single click. Adjust your length parameters, choose your preferred combination of uppercase letters, numbers, and symbols, and click generate to instantly compile a randomized, cryptographically secure string.</p>
-                
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">Why Safe Local Passwords Matter</h3>
-                <p>Generating sensitive access credentials over external cloud connections presents massive security vulnerabilities. This utility handles your algorithmic string criteria entirely within your browser's local sandbox memory space. No values are transmitted over the web, guaranteeing total isolation from server logs.</p>
-            </section>
+        <h3>Frequently asked questions</h3>
 
-        </main>
+        <div class="faq-item">
+            <h4>Are the generated passwords stored anywhere?</h4>
+            <p>No. Passwords are generated entirely in your browser using JavaScript. Nothing is sent to any server. Closing the tab clears everything.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is this truly random?</h4>
+            <p>Yes. This tool uses the Web Crypto API (<code>window.crypto.getRandomValues</code>), which generates cryptographically secure random numbers — the same standard used in security software. It's far more unpredictable than basic random number generators.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What if a site doesn't allow symbols?</h4>
+            <p>Just uncheck the Symbols option. The generator will create a password using only the character types you've selected.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Should I use a passphrase instead?</h4>
+            <p>Passphrases (like "correct-horse-battery-staple") are an alternative approach — they're easier to remember and can be very strong if long enough. For accounts where you need to type the password regularly without a manager, a passphrase can be a good choice.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why not just use something I can remember?</h4>
+            <p>Memorable passwords tend to follow patterns — names, birthdays, dictionary words — that attackers can exploit. A random 16-character password is exponentially harder to crack than "MyDog$Fluffy2019", even though the latter feels complex.</p>
+        </div>
+    </div>
 
-        <aside>
-            <div class="adsense-placeholder sidebar-ad">
-                [ AdSense Space: Large Skyscraper (Sticky Display) ]
-            </div>
-        </aside>
+</div>
 
-    </div> <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const passwordOutput = document.getElementById("password-output");
-            const lengthSlider = document.getElementById("length-slider");
-            const lengthLabel = document.getElementById("length-label");
-            const uppercaseCheck = document.getElementById("include-uppercase");
-            const lowercaseCheck = document.getElementById("include-lowercase");
-            const numbersCheck = document.getElementById("include-numbers");
-            const symbolsCheck = document.getElementById("include-symbols");
-            const generateBtn = document.getElementById("generate-btn");
-            const copyBtn = document.getElementById("copy-btn");
-            const strengthBar = document.getElementById("strength-bar");
-            const strengthText = document.getElementById("strength-text");
+<script>
+    const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lower = 'abcdefghijklmnopqrstuvwxyz';
+    const numbers = '0123456789';
+    const symbols = '!@#$%^&*()-_=+[]{}|;:,.<>?';
 
-            const charSets = {
-                uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-                lowercase: "abcdefghijklmnopqrstuvwxyz",
-                numbers: "0123456789",
-                symbols: "!@#$%^&*()_+-=[]{}|;:,.<>?"
-            };
+    document.getElementById('lengthSlider').addEventListener('input', function() {
+        document.getElementById('lengthDisplay').textContent = this.value;
+        generatePassword();
+    });
 
-            function generatePassword() {
-                let allowedChars = "";
-                if (uppercaseCheck.checked) allowedChars += charSets.uppercase;
-                if (lowercaseCheck.checked) allowedChars += charSets.lowercase;
-                if (numbersCheck.checked) allowedChars += charSets.numbers;
-                if (symbolsCheck.checked) allowedChars += charSets.symbols;
+    ['useUpper','useLower','useNumbers','useSymbols'].forEach(id => {
+        document.getElementById(id).addEventListener('change', generatePassword);
+    });
 
-                const length = parseInt(lengthSlider.value);
-                
-                if (allowedChars === "") {
-                    passwordOutput.value = "Select an option!";
-                    strengthBar.style.width = "0%";
-                    strengthText.innerText = "Crack Time: Checking...";
-                    return;
-                }
+    function generatePassword() {
+        let charset = '';
+        if (document.getElementById('useUpper').checked) charset += upper;
+        if (document.getElementById('useLower').checked) charset += lower;
+        if (document.getElementById('useNumbers').checked) charset += numbers;
+        if (document.getElementById('useSymbols').checked) charset += symbols;
 
-                let password = "";
-                // Secure random array selection matrix
-                const cryptoArray = new Uint32Array(length);
-                window.crypto.getRandomValues(cryptoArray);
+        if (!charset) { document.getElementById('passwordOutput').value = ''; return; }
 
-                for (let i = 0; i < length; i++) {
-                    password += allowedChars[cryptoArray[i] % allowedChars.length];
-                }
+        const length = parseInt(document.getElementById('lengthSlider').value);
+        const array = new Uint32Array(length);
+        window.crypto.getRandomValues(array);
+        let password = '';
+        for (let i = 0; i < length; i++) {
+            password += charset[array[i] % charset.length];
+        }
+        document.getElementById('passwordOutput').value = password;
+        updateStrength(password, charset.length);
+    }
 
-                passwordOutput.value = password;
-                evaluateStrength(password, allowedChars.length);
-            }
+    function updateStrength(password, charsetSize) {
+        const entropy = password.length * Math.log2(charsetSize);
+        let label, color, width;
+        if (entropy < 40) { label = 'Weak'; color = '#e74c3c'; width = '25%'; }
+        else if (entropy < 60) { label = 'Fair'; color = '#f39c12'; width = '50%'; }
+        else if (entropy < 80) { label = 'Strong'; color = '#2ecc71'; width = '75%'; }
+        else { label = 'Very Strong'; color = '#27ae60'; width = '100%'; }
 
-            function evaluateStrength(password, poolSize) {
-                if (!password || poolSize === 0) return;
-                
-                const length = password.length;
-                // Basic entropy formula calculation: Log2(PoolSize^Length)
-                const entropy = length * (Math.log(poolSize) / Math.log(2));
-                
-                let timeString = "";
-                let color = "var(--danger-color)";
-                let barWidth = "25%";
+        document.getElementById('strengthFill').style.width = width;
+        document.getElementById('strengthFill').style.background = color;
+        document.getElementById('strengthLabel').textContent = 'Strength: ' + label;
+    }
 
-                if (entropy < 40) {
-                    timeString = "Under a few seconds (Very Weak)";
-                    color = "var(--danger-color)";
-                    barWidth = "25%";
-                } else if (entropy >= 40 && entropy < 60) {
-                    timeString = "A few hours to days (Weak)";
-                    color = "var(--warning-color)";
-                    barWidth = "50%";
-                } else if (entropy >= 60 && entropy < 80) {
-                    timeString = "Several months to years (Medium)";
-                    color = "#3498db";
-                    barWidth = "75%";
-                } else {
-                    timeString = "Millions of centuries (Indestructible)";
-                    color = "var(--success-color)";
-                    barWidth = "100%";
-                }
+    function copyPassword() {
+        const val = document.getElementById('passwordOutput').value;
+        if (val) navigator.clipboard.writeText(val);
+    }
 
-                strengthBar.style.width = barWidth;
-                strengthBar.style.backgroundColor = color;
-                strengthText.innerText = `Estimated Crack Time: ${timeString}`;
-            }
-
-            // Sync slider numbers dynamically
-            lengthSlider.addEventListener("input", (e) => {
-                lengthLabel.innerText = `Password Length: ${e.target.value} characters`;
-                generatePassword();
-            });
-
-            [uppercaseCheck, lowercaseCheck, numbersCheck, symbolsCheck].forEach(item => {
-                item.addEventListener("change", generatePassword);
-            });
-
-            generateBtn.addEventListener("click", generatePassword);
-
-            copyBtn.addEventListener("click", () => {
-                if (passwordOutput.value && passwordOutput.value !== "Select an option!") {
-                    navigator.clipboard.writeText(passwordOutput.value);
-                    const originalText = copyBtn.innerText;
-                    copyBtn.innerText = "Copied!";
-                    copyBtn.style.backgroundColor = "var(--success-color)";
-                    setTimeout(() => {
-                        copyBtn.innerText = originalText;
-                        copyBtn.style.backgroundColor = "#7f8c8d";
-                    }, 1200);
-                }
-            });
-
-            // Initial auto-generation execution
-            generatePassword();
-        });
-    </script>
+    generatePassword();
+</script>
 </body>
 </html>
