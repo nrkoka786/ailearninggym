@@ -1,14 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Visual Text Diff Checker | AI Learning Gym</title>
-    <meta name="description" content="Compare two text documents side-by-side to highlight variations. Free online text diff tool isolates line removals and additions instantly.">
-    <meta name="keywords" content="visual diff checker, compare text online, find text differences, side by side code comparison, string mutation checker">
-    <meta property="og:title" content="Free Online Visual Text Diff Checker | AI Learning Gym">
-    <meta property="og:description" content="Cross-examine editorial manuscripts or source code changes with visual line-by-line mismatch tracking indicators.">
-
+    <title>Free Text Diff Checker | Compare Two Texts Side by Side | AI Learning Gym</title>
+    <meta name="description" content="Compare two texts and instantly see what changed. Our diff checker highlights additions and deletions line by line. Free, runs in your browser.">
+    <meta name="keywords" content="diff checker, text comparison, compare text, find differences, text diff tool, document compare">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,411 +14,245 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
-            --success-bg: #d4edda;
-            --success-color: #155724;
-            --danger-bg: #f8d7da;
-            --danger-color: #721c24;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- Live Ad Container Classes --- */
-        .ad-container {
-            margin: 15px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Diff Engine App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .split-workspace {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        @media (min-width: 768px) {
-            .split-workspace { grid-template-columns: 1fr 1fr; }
-        }
-
-        .pane-header {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-        }
-
-        .diff-textarea {
-            width: 100%;
-            height: 200px;
-            padding: 12px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            resize: vertical;
-            background: #ffffff;
-        }
-
-        .diff-textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        .btn-panel {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .compare-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.2s;
-        }
-        .compare-btn:hover { background-color: #2980b9; }
-
-        .clear-btn {
-            background-color: #7f8c8d;
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.2s;
-        }
-        .clear-btn:hover { background-color: #95a5a6; }
-
-        /* Visual Output Code Viewports */
-        .diff-output-container {
-            display: none;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            border-top: 2px dashed var(--card-border);
-            padding-top: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .diff-output-container { grid-template-columns: 1fr 1fr; }
-        }
-
-        .diff-display {
-            width: 100%;
-            min-height: 200px;
-            max-height: 400px;
-            padding: 12px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 4px;
-            overflow: auto;
-            background: #ffffff;
-            white-space: pre-wrap;
-        }
-
-        /* Line highlighting modification markers */
-        .line-added { background-color: var(--success-bg); color: var(--success-color); display: block; width: 100%; font-weight: bold; }
-        .line-removed { background-color: var(--danger-bg); color: var(--danger-color); display: block; width: 100%; text-decoration: line-through; }
-        .line-equal { display: block; color: #555; }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 960px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+        @media (max-width: 650px) { .input-grid { grid-template-columns: 1fr; } }
+        .input-label { font-weight: 600; color: var(--text-dark); font-size: 0.9rem; margin-bottom: 6px; display: block; }
+        textarea { width: 100%; height: 200px; padding: 12px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.88rem; font-family: monospace; resize: vertical; color: var(--text-dark); line-height: 1.5; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .btn-row { display: flex; gap: 10px; margin-bottom: 16px; }
+        .btn { padding: 10px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .diff-output { display: none; border: 1px solid var(--card-border); border-radius: 6px; overflow: hidden; }
+        .diff-header { display: grid; grid-template-columns: 1fr 1fr; background: var(--primary-color); color: #fff; font-size: 0.85rem; font-weight: 600; }
+        .diff-header div { padding: 8px 14px; }
+        .diff-body { font-family: monospace; font-size: 0.85rem; line-height: 1.6; }
+        .diff-row { display: grid; grid-template-columns: 1fr 1fr; }
+        .diff-row:nth-child(even) { background: #fafafa; }
+        .diff-cell { padding: 4px 14px; border-right: 1px solid var(--card-border); word-break: break-word; }
+        .diff-cell:last-child { border-right: none; }
+        .line-removed { background: #fef2f2; color: #991b1b; }
+        .line-added { background: #f0fdf4; color: #166534; }
+        .line-same { color: #4a5568; }
+        .stats { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px; }
+        .stats span { font-weight: 700; }
+        .stats .added { color: #166534; }
+        .stats .removed { color: #991b1b; }
+        .legend { display: flex; gap: 16px; font-size: 0.85rem; margin-bottom: 10px; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-dot { width: 14px; height: 14px; border-radius: 3px; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free tools for writers and developers</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+        <h2>Text Diff Checker</h2>
+        <div class="input-grid">
+            <div>
+                <span class="input-label">Original Text</span>
+                <textarea id="text1" placeholder="Paste the original (old) version here..."></textarea>
             </div>
+            <div>
+                <span class="input-label">Modified Text</span>
+                <textarea id="text2" placeholder="Paste the modified (new) version here..."></textarea>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="compare()">Compare</button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+        </div>
 
-            <section class="tool-wrapper">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Side-by-Side Visual Document Comparison Tool</h2>
-                
-                <div class="split-workspace">
-                    <div>
-                        <div class="pane-header">Original Base Document (Text A):</div>
-                        <textarea id="text-a" class="diff-textarea" placeholder="Paste your original text string, article layout, or source code branch parameters here..."></textarea>
-                    </div>
-                    <div>
-                        <div class="pane-header">Updated Modified Document (Text B):</div>
-                        <textarea id="text-b" class="diff-textarea" placeholder="Paste your updated text modifications here to isolate alterations instantly..."></textarea>
-                    </div>
+        <div id="diffResult">
+            <div class="stats" id="stats" style="display:none"></div>
+            <div class="legend">
+                <div class="legend-item"><div class="legend-dot" style="background:#fef2f2; border:1px solid #fca5a5;"></div> Removed</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#f0fdf4; border:1px solid #86efac;"></div> Added</div>
+            </div>
+            <div class="diff-output" id="diffOutput">
+                <div class="diff-header">
+                    <div>Original</div>
+                    <div>Modified</div>
                 </div>
+                <div class="diff-body" id="diffBody"></div>
+            </div>
+        </div>
+    </div>
 
-                <div class="btn-panel">
-                    <button class="compare-btn" onclick="calculateDiff()">Compare Documents</button>
-                    <button class="clear-btn" onclick="clearWorkspace()">Clear Fields</button>
-                </div>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-                <div class="diff-output-container" id="output-wrapper">
-                    <div>
-                        <div class="pane-header">Original File Breakdown:</div>
-                        <div id="output-a" class="diff-display"></div>
-                    </div>
-                    <div>
-                        <div class="pane-header">Modified File Breakdown:</div>
-                        <div id="output-b" class="diff-display"></div>
-                    </div>
-                </div>
-            </section>
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This diff checker compares two pieces of text line by line and highlights what's different. Lines that were removed show on the left in red; lines that were added show on the right in green. Lines that are the same appear in both columns without highlighting.</p>
 
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Online Visual Text Diff Checker is a side-by-side comparative analysis dashboard engineered to spot textual variations, script alterations, and structural string updates instantly. Optimized for version tracking, text document editing, and structural data cleanup, this platform processes raw strings line-by-line. Operating strictly client-side, the utility performs comparisons locally within your browser sandbox, guaranteeing absolute privacy by leaving your source code lines completely isolated from remote storage layers.</p>
+        <h3>When is a diff checker useful?</h3>
+        <ul>
+            <li><strong>Reviewing document edits</strong> — compare a draft before and after feedback to see exactly what changed.</li>
+            <li><strong>Checking code changes</strong> — spot differences between two versions of a script or config file.</li>
+            <li><strong>Proofreading</strong> — paste two versions of an article or email to find accidental deletions or additions.</li>
+            <li><strong>Version history</strong> — if you saved two copies of a file and aren't sure what changed, this shows you instantly.</li>
+        </ul>
 
-                <h3>How to Operate the Visual Comparison Workspace</h3>
-                <p>Auditing draft variations or identifying file adjustments maps to an intuitive process. Execute these functional steps to process your files:</p>
-                <ol>
-                    <li><strong>Set Up Baseline Target (Text A):</strong> Paste your starting text, master manuscript, or source script array into the left workspace container marked <em>Original Base Document (Text A)</em>.</li>
-                    <li><strong>Set Up Modified Version (Text B):</strong> Paste your updated documentation branch or current copy variant into the adjacent field marked <em>Updated Modified Document (Text B)</em>.</li>
-                    <li><strong>Run the Differential Analyzer:</strong> Click the blue <em>Compare Documents</em> action trigger to initialize the local line-by-line evaluation parser.</li>
-                    <li><strong>Analyze Visual Mutations:</strong> Review the twin output code blocks generated underneath. The system highlights modified segments immediately: matching text lines remain neutral, removed sections turn red with a strike-through indicator, and new insertions turn bright green.</li>
-                    <li><strong>Reset the Dashboard:</strong> Click <em>Clear Fields</em> to empty all text areas and hide the output panels, preparing the memory frame for a new analysis loop.</li>
-                </ol>
+        <h3>How it works</h3>
+        <p>The tool splits both texts into lines and compares them using a longest common subsequence (LCS) approach — the same method used by tools like Git's <code style="background:#f1f5f9; padding:2px 5px; border-radius:3px; font-family:monospace; font-size:0.9em;">git diff</code>. Lines that appear in both versions are considered unchanged; everything else is flagged as added or removed.</p>
 
-                <h3>Core Comparative Features Detailed</h3>
-                <p>Our client-side text processing framework applies synchronized index array queries to deliver accurate visual difference highlights:</p>
-                <ul>
-                    <li><strong>Carriage Return Line Segregation:</strong> The script scans string contents and splits parameters into discrete index rows using carriage return anchors (`\n`). This process preserves structural indentation context perfectly for both programming files and basic text paragraphs.</li>
-                    <li><strong>XSS Protection &amp; Safe HTML Escaping:</strong> To prevent unexpected script execution or formatting rendering failures when parsing source code (like raw HTML/XML tags), the engine includes an internal translation wrapper that converts characters like `&lt;` and `&gt;` securely before displaying results.</li>
-                    <li><strong>Transient Memory Caching:</strong> All compared lines and generated outputs exist exclusively within the browser viewport's virtual DOM structure, vanishing permanently upon tab termination.</li>
-                </ul>
+        <h3>Tips for getting the best results</h3>
+        <ul>
+            <li>For documents, make sure both versions use the same line breaks — some programs (especially on Windows vs. Mac) format line endings differently.</li>
+            <li>If you're comparing code, keep indentation consistent — a line with an extra space is treated as a different line.</li>
+            <li>For large documents, focus on the highlighted lines — unchanged lines are shown for context but don't need review.</li>
+        </ul>
 
-                <h2>The Role of Text Differentiation Algorithms in Quality Control</h2>
-                <p>Welcome to the document auditing engine at AI Learning Gym. Tracking micro-modifications between separate editorial lines or code scripts is foundational to software version management and copy editing. Manually cross-examining long textual lines frequently induces fatigue, leading to oversight. Utilizing an automated differential tracking layout isolates additions instantly.</p>
-                
-                <h3>How Line-by-Line Comparative Parsers Process Strings</h3>
-                <p>Digital text validation suites evaluate differences by breaking text data down into separate localized index arrays bounded by carriage returns. The underlying code sequentially walks matching array indexes down the document timeline, looking for changes. When an item index falls out of sync, the engine isolates whether a line block was deleted or newly injected into the system framework.</p>
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is my text uploaded anywhere?</h4>
+            <p>No. All comparison happens locally in your browser using JavaScript. Your text never leaves your computer — safe for confidential documents, code, and private content.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I compare very long documents?</h4>
+            <p>Yes, though very large texts (thousands of lines) may take a moment to process. For extremely long files, consider breaking them into sections for faster comparison.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does it detect changes within a line, or only whole lines?</h4>
+            <p>This tool compares at the line level — if a single word in a long sentence changed, the whole line will be flagged. For word-level highlighting within a line, you'd need a more advanced diff tool.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How is this different from using Ctrl+F to search?</h4>
+            <p>Ctrl+F finds specific words, but it won't show you what's different between two versions. A diff tool shows the complete picture of every change — additions, deletions, and unchanged context — all at once.</p>
+        </div>
+    </div>
 
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2027849186057550"
-                         data-ad-slot="1105246416"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
+</div>
 
-                <h3>Why Developers, Editors, and Legal Teams Rely on Diff Engines</h3>
-                <p>Isolating line mutations provides massive commercial utility across varied professional divisions. Code developers run internal adjustments to trace script conflicts before pushing projects to shared platforms. Content managers track precise adjustments across copy drafts to check freelancer revisions, and corporate legal groups compare contract versions to ensure no hidden liability clauses were inserted into agreement forms.</p>
-                
-                <h3>Frequently Answered Document Checking Questions (FAQ)</h3>
-                <p><strong>Q: Are my submitted document lines uploaded onto a server or cloud cache?</strong><br>
-                A: No. Privacy security is absolute inside our utility network. The differentiation compilation occurs purely inside your browser rendering viewport using native JavaScript. No text lines are saved or shared across cloud pipelines.</p>
-                
-                <p><strong>Q: Does this checker flag single letter anomalies within a modified sentence?</strong><br>
-                A: This lightweight tool operates using clean line-by-line verification arrays, highlighting complete rows that contain changes. This provides a highly clean visual bird's-eye view for organizing long documentation modules.</p>
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
 
-                <p><strong>Q: How does the comparison script handle blank or empty spacing lines smoothly?</strong><br>
-                A: When the analyzer matches an empty line index, the system applies a non-breaking HTML white space entity (`&amp;nbsp;`) to the display code. This keeps your side-by-side row alignments perfectly synced visually, even when one document has extra line breaks.</p>
+<script>
+    function lcs(a, b) {
+        const m = a.length, n = b.length;
+        const dp = Array.from({length: m+1}, () => new Array(n+1).fill(0));
+        for (let i = 1; i <= m; i++)
+            for (let j = 1; j <= n; j++)
+                dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j], dp[i][j-1]);
+        let i = m, j = n, result = [];
+        while (i > 0 && j > 0) {
+            if (a[i-1] === b[j-1]) { result.push({type:'same', val:a[i-1]}); i--; j--; }
+            else if (dp[i-1][j] > dp[i][j-1]) { result.push({type:'removed', val:a[i-1]}); i--; }
+            else { result.push({type:'added', val:b[j-1]}); j--; }
+        }
+        while (i > 0) { result.push({type:'removed', val:a[i-1]}); i--; }
+        while (j > 0) { result.push({type:'added', val:b[j-1]}); j--; }
+        return result.reverse();
+    }
 
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free Online Document Diff Checker</h3>
-                <p>Isolating text mutations with our Document Diff Checker is fast and accurate. Input your original source code block or text manuscript into the first display box, place your revised document layout into the adjacent container, and run a side-by-side string comparison instantly.</p>
-                
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">Isolate Code and Text Variations Safely</h3>
-                <p>Perfect for developers auditing script adjustments or editors reviewing copy updates. The comparison engine scans individual character weights locally using front-end string comparison arrays, keeping your documents secure and off external databases.</p>
-            </section>
+    function compare() {
+        const t1 = document.getElementById('text1').value.split('\n');
+        const t2 = document.getElementById('text2').value.split('\n');
+        const diff = lcs(t1, t2);
 
-        </main>
+        let body = '';
+        let added = 0, removed = 0;
 
-        <aside style="position: sticky; top: 20px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
-
-    </div> 
-
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
-
-    <script>
-        function calculateDiff() {
-            const textA = document.getElementById("text-a").value;
-            const textB = document.getElementById("text-b").value;
-            
-            const outputWrapper = document.getElementById("output-wrapper");
-            const outputA = document.getElementById("output-a");
-            const outputB = document.getElementById("output-b");
-
-            // Split raw strings into distinct array parameters bounded by line breaks
-            const linesA = textA.split('\n');
-            const linesB = textB.split('\n');
-
-            let htmlA = "";
-            let htmlB = "";
-
-            const maxLines = Math.max(linesA.length, linesB.length);
-
-            // Synchronous array exploration matrix
-            for (let i = 0; i < maxLines; i++) {
-                const lineA = linesA[i];
-                const lineB = linesB[i];
-
-                if (lineA === lineB) {
-                    // Lines match identically
-                    if (lineA !== undefined) {
-                        htmlA += `<span class="line-equal">${escapeHTML(lineA) || '&nbsp;'}</span>`;
-                        htmlB += `<span class="line-equal">${escapeHTML(lineB) || '&nbsp;'}</span>`;
-                    }
+        // Pair up removed/added lines
+        let i = 0;
+        while (i < diff.length) {
+            const d = diff[i];
+            if (d.type === 'same') {
+                body += `<div class="diff-row"><div class="diff-cell line-same">${escape(d.val)}&nbsp;</div><div class="diff-cell line-same">${escape(d.val)}&nbsp;</div></div>`;
+                i++;
+            } else if (d.type === 'removed') {
+                // look ahead for corresponding added
+                const next = diff[i+1];
+                if (next && next.type === 'added') {
+                    body += `<div class="diff-row"><div class="diff-cell line-removed">${escape(d.val)}&nbsp;</div><div class="diff-cell line-added">${escape(next.val)}&nbsp;</div></div>`;
+                    removed++; added++; i += 2;
                 } else {
-                    // Mismatches detected - isolate values
-                    if (lineA !== undefined && lineB !== undefined) {
-                        htmlA += `<span class="line-removed">- ${escapeHTML(lineA) || '&nbsp;'}</span>`;
-                        htmlB += `<span class="line-added">+ ${escapeHTML(lineB) || '&nbsp;'}</span>`;
-                    } else if (lineA !== undefined) {
-                        // Line was deleted from document tracking completely
-                        htmlA += `<span class="line-removed">- ${escapeHTML(lineA)}</span>`;
-                    } else if (lineB !== undefined) {
-                        // Line is completely new insertion
-                        htmlB += `<span class="line-added">+ ${escapeHTML(lineB)}</span>`;
-                    }
+                    body += `<div class="diff-row"><div class="diff-cell line-removed">${escape(d.val)}&nbsp;</div><div class="diff-cell"></div></div>`;
+                    removed++; i++;
                 }
+            } else {
+                body += `<div class="diff-row"><div class="diff-cell"></div><div class="diff-cell line-added">${escape(d.val)}&nbsp;</div></div>`;
+                added++; i++;
             }
-
-            outputA.innerHTML = htmlA || "<i>Field was empty</i>";
-            outputB.innerHTML = htmlB || "<i>Field was empty</i>";
-            outputWrapper.style.display = "grid";
         }
 
-        // Secure string mapping sanitizer helper
-        function escapeHTML(str) {
-            if (!str) return str;
-            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        }
+        document.getElementById('diffBody').innerHTML = body || '<div style="padding:12px 14px; color:#64748b;">No differences found — the texts are identical.</div>';
+        document.getElementById('diffOutput').style.display = 'block';
 
-        function clearWorkspace() {
-            document.getElementById("text-a").value = "";
-            document.getElementById("text-b").value = "";
-            document.getElementById("output-a").innerHTML = "";
-            document.getElementById("output-b").innerHTML = "";
-            document.getElementById("output-wrapper").style.display = "none";
-        }
-    </script>
+        const statsEl = document.getElementById('stats');
+        statsEl.innerHTML = `<span class="added">+${added} line${added!==1?'s':''} added</span> &nbsp; <span class="removed">−${removed} line${removed!==1?'s':''} removed</span>`;
+        statsEl.style.display = 'block';
+    }
+
+    function escape(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function clearAll() {
+        document.getElementById('text1').value = '';
+        document.getElementById('text2').value = '';
+        document.getElementById('diffBody').innerHTML = '';
+        document.getElementById('diffOutput').style.display = 'none';
+        document.getElementById('stats').style.display = 'none';
+    }
+</script>
 </body>
 </html>
