@@ -1,17 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Loan Amortization Calculator | Privacy-First | AI Learning Gym</title>
-    <meta name="description" content="Calculate fixed-rate monthly loan payments and instantly inspect a comprehensive amortization schedule table. 100% private client-side calculator.">
-    <meta name="keywords" content="loan amortization calculator, monthly payment calculator, principal and interest schedule, mortgage payoff estimator, free finance utility">
-    
-    <meta property="og:title" content="Free Loan Amortization Calculator | AI Learning Gym">
-    <meta property="og:description" content="Compute exact fixed loan monthly profiles and view a systematic principal/interest breakdown matrix entirely in your browser sandbox.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ailearninggym.com/loan-calculator/">
-
+    <title>Free Loan Calculator & Amortization Schedule | AI Learning Gym</title>
+    <meta name="description" content="Calculate your monthly loan payment and see a full amortization schedule. Free online loan calculator for mortgages, auto loans, and personal loans.">
+    <meta name="keywords" content="loan calculator, amortization calculator, monthly payment calculator, mortgage calculator, loan schedule">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -19,31 +14,7 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
-    <script type="application/ld:json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Loan Amortization Calculator Engine",
-      "description": "A privacy-first, client-side calculator that computes fixed-rate monthly loan payments and displays full systematic amortization profiles splitting principal from interest balances.",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web Browser",
-      "browserRequirements": "Requires JavaScript support. Fully executed client-side.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "AI Learning Gym",
-        "url": "https://ailearninggym.com"
-      }
-    }
-    </script>
-
     <style>
         :root {
             --primary-color: #1a252f;
@@ -51,372 +22,194 @@
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
-            --success-color: #2ecc71;
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
         body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
-        
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
         header h1 { font-size: 2rem; margin-bottom: 8px; }
-        header p { color: #cbd5e1; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 5px; font-weight: bold; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
         header a:hover { color: var(--accent-color); }
-
-        /* Flexible Grid Base Architecture Layout */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) { 
-            .container { 
-                display: grid;
-                grid-template-columns: 3fr 1fr; 
-                align-items: start; /* Fix: Stops stretch distortion during inactive ad states */
-            } 
-        }
-
-        .main-content-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .ad-container { margin: 10px 0; text-align: center; width: 100%; }
-
-        /* Workspace Core Component Cards */
-        .app-canvas {
-            background: #ffffff; 
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-        
-        .input-group {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        @media (min-width: 600px) { .input-group { grid-template-columns: repeat(3, 1fr); } }
-        
-        .form-control { display: flex; flex-direction: column; }
-        .form-control label { font-weight: 600; color: var(--text-dark); margin-bottom: 5px; font-size: 0.9rem; }
-        .form-control input { padding: 10px; border: 1px solid var(--card-border); border-radius: 4px; font-size: 1rem; outline: none; }
-        .form-control input:focus { border-color: var(--accent-color); }
-        
-        .calc-btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.2s;
-        }
-        .calc-btn:hover { background-color: #2980b9; }
-
-        /* Performance Output Summary Elements */
-        .results-summary {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-top: 25px;
-            display: none;
-        }
-        @media (min-width: 600px) { .results-summary { grid-template-columns: repeat(3, 1fr); } }
-        
-        .summary-card {
-            background: #f8fafc;
-            border-left: 4px solid var(--accent-color);
-            padding: 15px;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .summary-card.highlight { border-left-color: var(--success-color); }
-        .summary-card p { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .summary-card h3 { font-size: 1.4rem; color: var(--text-dark); margin-top: 2px; font-family: monospace; }
-
-        /* Schedule Matrix Table Area */
-        .table-responsive { width: 100%; overflow-x: auto; margin-top: 25px; display: none; max-height: 500px; border: 1px solid var(--card-border); border-radius: 4px; }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
-        th, td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); }
-        th { background-color: #f1f5f9; color: var(--text-dark); font-weight: 700; position: sticky; top: 0; }
-        td { color: #4a5568; }
-        tr:hover { background-color: #f8fafc; }
-
-        /* Rich Content & SEO Document Architecture */
-        .seo-section { 
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            text-align: left;
-        }
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
-        .seo-section h3 { color: #34495e; margin: 25px 0 10px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* Structured accordion list cards */
-        .faq-item { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent-color); }
-        .faq-item h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 5px; }
-        .faq-item p { margin-bottom: 0; color: #4a5568; font-size: 0.92rem; }
-
-        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 0.9rem; }
-        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; font-size: 0.95rem; }
+        .input-group input { width: 100%; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); }
+        .btn { width: 100%; padding: 12px; background: var(--accent-color); color: #fff; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 8px; }
+        .btn:hover { opacity: 0.9; }
+        .results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+        @media (max-width: 600px) { .results { grid-template-columns: 1fr; } }
+        .result-card { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 16px; text-align: center; }
+        .result-card.highlight { background: var(--primary-color); border-color: var(--primary-color); }
+        .result-label { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px; }
+        .result-card.highlight .result-label { color: #94a3b8; }
+        .result-value { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); }
+        .result-card.highlight .result-value { color: #fff; }
+        .table-wrap { overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th { background: var(--primary-color); color: #fff; padding: 10px 12px; text-align: right; }
+        th:first-child { text-align: center; }
+        td { padding: 8px 12px; border-bottom: 1px solid var(--card-border); color: #4a5568; text-align: right; }
+        td:first-child { text-align: center; }
+        tr:hover { background: #f8fafc; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
         footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free financial calculators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>Fixed Loan Amortization Engine</h1>
-        <p>Compute transparent interest distributions safely with zero cloud data synchronization dependencies.</p>
-        <a href="/">&larr; Return to AI Learning Gym Hub</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <div class="main-content-wrapper">
-            
-            <section class="app-canvas" aria-label="Loan Calculator Tool UI">
-                <div class="input-group">
-                    <div class="form-control">
-                        <label for="loanAmount">Loan Principal Balance ($)</label>
-                        <input type="number" id="loanAmount" placeholder="e.g. 250000" value="100000">
-                    </div>
-                    <div class="form-control">
-                        <label for="interestRate">Annual Interest Rate (%)</label>
-                        <input type="number" id="interestRate" step="0.01" placeholder="e.g. 5.5" value="6.0">
-                    </div>
-                    <div class="form-control">
-                        <label for="loanTerm">Term Duration (Years)</label>
-                        <input type="number" id="loanTerm" placeholder="e.g. 30" value="15">
-                    </div>
-                </div>
-                <button class="calc-btn" onclick="calculateLoanProfile()">Run Amortization Computation</button>
-
-                <div class="results-summary" id="summaryBox">
-                    <div class="summary-card highlight">
-                        <p>Monthly Installment (P+I)</p>
-                        <h3 id="monthlyPaymentDisplay">$0.00</h3>
-                    </div>
-                    <div class="summary-card">
-                        <p>Cumulative Interest Cost</p>
-                        <h3 id="totalInterestDisplay">$0.00</h3>
-                    </div>
-                    <div class="summary-card">
-                        <p>Total Lifetime Expenditure</p>
-                        <h3 id="totalCostDisplay">$0.00</h3>
-                    </div>
-                </div>
-
-                <div class="table-responsive" id="tableWrapper">
-                    <table id="amortizationTable">
-                        <thead>
-                            <tr>
-                                <th>Payment #</th>
-                                <th>Principal Paid</th>
-                                <th>Interest Paid</th>
-                                <th>Total Paid To Date</th>
-                                <th>Remaining Balance</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </section>
-
-            <div class="ad-container">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-
-            <main class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Loan Amortization Calculator is an interactive financial modeling workbench engineered to compute fixed-rate monthly installments and map comprehensive payment schedules natively inside your browser. Built for homebuyers, auto shoppers, and personal finance planners, this application isolates interest distribution metrics down to the single month. Operating 100% client-side, the utility processes all credit parameters locally inside your browser sandbox layout, providing absolute financial data privacy with no server caching or telemetry tracking loops.</p>
-
-                <h3>How to Use the Amortization Engine Workspace</h3>
-                <p>Modeling loan trajectories and checking your multi-year principal lifespans maps to a direct, intuitive workflow. Execute these steps to analyze your debt profiles:</p>
-                <ol>
-                    <li><strong>Establish Principal Balance:</strong> Input the base amount of capital you intend to borrow into the form field labeled <em>Loan Principal Balance ($)</em> (exclude any initial down payments).</li>
-                    <li><strong>Set Annual Interest Factor:</strong> Type the nominal fixed annual percentage rate (APR) assigned by your financing platform into the box marked <em>Annual Interest Rate (%)</em>.</li>
-                    <li><strong>Configure Loan Duration Term:</strong> Input the complete lifespan of the agreement in raw calendar years (such as 5, 15, or 30 years) inside the <em>Term Duration (Years)</em> configuration field.</li>
-                    <li><strong>Execute Financial Computation:</strong> Click the primary blue <em>Run Amortization Computation</em> action trigger. The system processes your entries instantly, revealing a comprehensive summary box along with a complete scrollable data table.</li>
-                </ol>
-
-                <h3>Core Financial Outputs Explained</h3>
-                <p>The calculation core outputs three integrated metrics that let you audit long-term borrowing variables smoothly:</p>
-                <ul>
-                    <li><strong>Monthly Installment (P+I):</strong> The fixed baseline payment required every month to clear your debt balance exactly at the end of the term. This incorporates both principal restoration and localized interest fees.</li>
-                    <li><strong>Cumulative Interest Cost:</strong> The complete lifetime fee paid directly to your lending bank for using their capital, showing the long-term financial premium of the loan.</li>
-                    <li><strong>Total Lifetime Expenditure:</strong> The absolute long-term cost of the liability, calculated by combining your initial borrowed principal with your cumulative interest fees.</li>
-                </ul>
-
-                <h2>Understanding the Mechanics of Loan Amortization Schedules</h2>
-                <p>When entering a long-term borrowing arrangement—such as a fixed-rate mortgage, automobile purchase agreement, or business installment line—the headline interest parameter tells only part of the story. To map out your actual financial future, you need to understand exactly how each monthly payment is divided. This process is governed by a mathematical standard known as <strong>amortization</strong>.</p>
-                <p>Our client-side computation engine parses your principal baseline against active calendar-rate vectors to build an instantaneous payment schedule. This breakdown allows you to visualize exactly how your debt reduces over time, helping you make smart, strategic financial decisions right from your browser.</p>
-
-                <h3>How to Use This Free Amortization Tool</h3>
-                <p>Our workspace runs entirely locally without any annoying sign-ups or tracking lag. Follow these clear steps to chart your payoff trajectory:</p>
-                <ol>
-                    <li><strong>Enter Loan Principal Balance:</strong> Input the base amount of money you intend to borrow (excluding down payments).</li>
-                    <li><strong>Provide Annual Interest Rate:</strong> Put in the fixed rate assigned by your lender (e.g., 6.5%).</li>
-                    <li><strong>Specify Term Lifespan:</strong> Enter how many years the loan agreement spans (e.g., 15 or 30 years).</li>
-                </ol>
-
-                <h3>The Fundamental Amortization Formula Explained</h3>
-                <p>To calculate the systematic fixed monthly installment amount required to completely wipe out a debt balance, financial systems rely on a standard mathematical equation:</p>
-                
-                $$M = P \times \frac{i(1 + i)^n}{(1 + i)^n - 1}$$
-                
-                <p>Where the variable items are mapped across specific profiles:</p>
-                <ul style="margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; list-style-type: disc;">
-                    <li style="margin-bottom: 8px;"><strong>$M$:</strong> The total calculated regular installment payment required each month.</li>
-                    <li style="margin-bottom: 8px;"><strong>$P$:</strong> The initial principal capital balance borrowed.</li>
-                    <li style="margin-bottom: 8px;"><strong>$i$:</strong> The periodic interest factor (computed by dividing the nominal annual percentage rate by 12 monthly cycles).</li>
-                    <li style="margin-bottom: 8px;"><strong>$n$:</strong> The complete tracking collection of total payments (calculated by multiplying the term lifespan years by 12).</li>
-                </ul>
-
-                <div class="ad-container">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
-
-                <h3>Why Privacy-First Local Calculations Matter in Modern Finance</h3>
-                <p>Most online financial calculators transmit your sensitive credit estimates, real estate purchase budgets, or personal capital records directly to external cloud servers. This method allows platforms to build user profiling sets or target you with aggressive financial ads. The AI Learning Gym uses a modern <strong>privacy-first frontend architecture</strong> to change this.</p>
-                <p>Every single number you enter into this tool remains trapped inside your browser's local sandbox memory. No servers are pinged, no external trackers collect your numbers, and no cookies are left behind to profile your finances. It is clean, safe, and lightning-fast code executing solely on your physical device hardware.</p>
-
-                <h3>Frequently Asked Financial Portfolio Questions</h3>
-                
-                <div class="faq-item">
-                    <h4>Q: What exactly is the difference between Loan Principal and Loan Interest?</h4>
-                    <p>A: The principal represents the actual initial capital lump-sum amount you borrow from a lender. The interest is the extra service fee the banking platform charges you for using their funds over your term lifespan.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Q: Why does the interest portion decrease every single month?</h4>
-                    <p>A: Interest is calculated directly from your remaining principal balance. Because each monthly payment reduces that outstanding balance, the interest fee shrinks slightly with each cycle, allowing a larger portion of your next payment to go toward paying down the core principal.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Q: How does choosing a shorter loan term change my long-term costs?</h4>
-                    <p>A: Selecting a shorter loan lifespan (like a 15-year term instead of a 30-year option) increases your individual monthly payment amount. However, because it wipes out the core principal balance much faster, it significantly reduces the cumulative lifetime interest fees you pay over the life of the loan.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Q: Can I apply extra monthly payments inside this standard amortization layout tracking framework?</h4>
-                    <p>A: This baseline app models fixed structural schedules under static payment timelines to help you understand your baseline liabilities clearly. Applying extra payments accelerations bypasses normal lifecycle durations dynamically, dropping your long-term cumulative interest overhead drastically.</p>
-                </div>
-            </main>
-        </div>
-
-        <aside class="sidebar-ad">
-            <div style="position: sticky; top: 20px;">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-        </aside>
-
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.85rem; color: #cbd5e1;">
-            <a href="/privacy.html">Privacy Policy</a> | 
-            <a href="/about.html">About Us</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> | 
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+    <div class="card">
+        <h2>Loan Calculator</h2>
+        <div class="input-group"><label>Loan Amount ($)</label><input type="number" id="principal" placeholder="e.g. 250000" min="1"></div>
+        <div class="input-group"><label>Annual Interest Rate (%)</label><input type="number" id="rate" placeholder="e.g. 6.5" min="0" step="0.01"></div>
+        <div class="input-group"><label>Loan Term (years)</label><input type="number" id="term" placeholder="e.g. 30" min="1"></div>
+        <button class="btn" onclick="calculate()">Calculate</button>
 
-    <script>
-        function calculateLoanProfile() {
-            // Extract raw UI inputs safely
-            const principal = parseFloat(document.getElementById('loanAmount').value);
-            const annualRate = parseFloat(document.getElementById('interestRate').value);
-            const totalYears = parseInt(document.getElementById('loanTerm').value);
+        <div class="results" id="results" style="display:none">
+            <div class="result-card highlight">
+                <div class="result-label">Monthly Payment</div>
+                <div class="result-value" id="monthly">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Total Interest Paid</div>
+                <div class="result-value" id="totalInterest">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Total Cost</div>
+                <div class="result-value" id="totalCost">$0</div>
+            </div>
+        </div>
 
-            // Validation Guard Rails
-            if (isNaN(principal) || isNaN(annualRate) || isNaN(totalYears) || principal <= 0 || annualRate <= 0 || totalYears <= 0) {
-                alert("Please input valid, positive financial values across all fields.");
-                return;
-            }
+        <div class="table-wrap" id="tableWrap" style="display:none">
+            <table id="scheduleTable">
+                <thead>
+                    <tr><th>#</th><th>Principal</th><th>Interest</th><th>Total Paid</th><th>Balance</th></tr>
+                </thead>
+                <tbody id="scheduleBody"></tbody>
+            </table>
+        </div>
+    </div>
 
-            // Perform Periodic Variable Conversions
-            const periodicInterestRate = (annualRate / 100) / 12;
-            const totalPaymentsCount = totalYears * 12;
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            // Compute Base Monthly Installment Value
-            const x = Math.pow(1 + periodicInterestRate, totalPaymentsCount);
-            const monthlyInstallment = (principal * periodicInterestRate * x) / (x - 1);
+    <div class="card">
+        <h2>About This Calculator</h2>
+        <p>This loan calculator shows your monthly payment and a full amortization schedule — a month-by-month breakdown of how much of each payment goes to principal versus interest. It works for mortgages, car loans, personal loans, and student loans.</p>
 
-            // Verify calculation sanity values before rendering elements
-            if (!isFinite(monthlyInstallment)) {
-                alert("Calculation error. Please review input criteria scopes.");
-                return;
-            }
+        <h3>How to use it</h3>
+        <ol>
+            <li><strong>Loan amount</strong> — enter the total amount you're borrowing (not including a down payment).</li>
+            <li><strong>Interest rate</strong> — enter the annual interest rate your lender quoted (e.g. 6.5).</li>
+            <li><strong>Loan term</strong> — enter how many years the loan runs (e.g. 15 or 30).</li>
+            <li>Click <strong>Calculate</strong> to see your monthly payment, total interest, and the full payment schedule.</li>
+        </ol>
 
-            // Initialize Accumulator Structures
-            let currentBalance = principal;
-            let cumulativeInterest = 0;
-            let cumulativePaidTotal = 0;
-            
-            const tbody = document.querySelector('#amortizationTable tbody');
-            tbody.innerHTML = ''; // Sanitize previous render trace assets
+        <h3>Why the early payments are mostly interest</h3>
+        <p>With a standard fixed-rate loan, your monthly payment stays the same throughout the loan — but what that payment covers changes every month. In the early years, most of each payment goes toward interest because you still owe a large balance. As you pay down the principal, the interest portion shrinks and more of your payment goes toward the actual loan balance. This is called amortization.</p>
+        <p>For example, on a 30-year $300,000 mortgage at 6.5%, your first payment might be about $1,896 — but roughly $1,625 of that goes to interest and only $271 reduces your balance. By year 25, the split reverses.</p>
 
-            // Generate Amortization Rows Step-by-Step
-            for (let i = 1; i <= totalPaymentsCount; i++) {
-                const interestAllocation = currentBalance * periodicInterestRate;
-                const monthlyInstallmentFixed = isNaN(monthlyInstallment) ? 0 : monthlyInstallment;
-                const interestAllocationFixed = isNaN(interestAllocation) ? 0 : interestAllocation;
-                const principalAllocation = monthlyInstallmentFixed - interestAllocationFixed;
-                
-                currentBalance -= principalAllocation;
-                cumulativeInterest += interestAllocationFixed;
-                cumulativePaidTotal += monthlyInstallmentFixed;
+        <h3>15-year vs. 30-year mortgage</h3>
+        <p>A 30-year mortgage gives you a lower monthly payment but costs significantly more in total interest. A 15-year mortgage has higher monthly payments but you pay off the loan faster and pay far less interest overall. Use this calculator to compare both options side by side.</p>
 
-                // Build Table Rows Cleanly
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><strong>${i}</strong></td>
-                    <td>$${principalAllocation.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-                    <td>$${interestAllocationFixed.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-                    <td>$${cumulativePaidTotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-                    <td>$${Math.max(0, currentBalance).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-                `;
-                tbody.appendChild(row);
-            }
+        <h3>Frequently asked questions</h3>
 
-            // Expose Metric Layout Summaries inside UI with comma separation formats
-            document.getElementById('monthlyPaymentDisplay').innerText = `$${monthlyInstallment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-            document.getElementById('totalInterestDisplay').innerText = `$${cumulativeInterest.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
-            document.getElementById('totalCostDisplay').innerText = `$${(principal + cumulativeInterest).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        <div class="faq-item">
+            <h4>What's the difference between principal and interest?</h4>
+            <p>Principal is the actual amount you borrowed. Interest is the fee your lender charges for lending you that money. Your monthly payment covers both — the amortization schedule below shows exactly how much goes to each.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does making extra payments save money?</h4>
+            <p>Yes — significantly. Any extra payment goes directly toward the principal, which reduces the balance interest is calculated on. Even one extra payment per year on a 30-year mortgage can cut years off the loan and save tens of thousands in interest.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What's APR vs. interest rate?</h4>
+            <p>The interest rate is what your lender charges on the loan itself. APR (Annual Percentage Rate) includes the interest rate plus fees like origination charges, making it a better measure of the true cost of borrowing. Use the interest rate (not APR) in this calculator for your monthly payment.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is my data stored?</h4>
+            <p>No. All calculations happen in your browser. Nothing is sent to any server.</p>
+        </div>
+    </div>
 
-            // Remove hidden states smoothly
-            document.getElementById('summaryBox').style.display = 'grid';
-            document.getElementById('tableWrapper').style.display = 'block';
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    function fmt(n) { return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+
+    function calculate() {
+        const P = parseFloat(document.getElementById('principal').value);
+        const annualRate = parseFloat(document.getElementById('rate').value);
+        const years = parseInt(document.getElementById('term').value);
+        if (!P || !annualRate || !years) return;
+
+        const r = annualRate / 100 / 12;
+        const n = years * 12;
+        const M = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+        const totalPaid = M * n;
+        const totalInterest = totalPaid - P;
+
+        document.getElementById('monthly').textContent = fmt(M);
+        document.getElementById('totalInterest').textContent = fmt(totalInterest);
+        document.getElementById('totalCost').textContent = fmt(totalPaid);
+        document.getElementById('results').style.display = 'grid';
+
+        let balance = P;
+        let cumulativePaid = 0;
+        const tbody = document.getElementById('scheduleBody');
+        tbody.innerHTML = '';
+
+        for (let i = 1; i <= n; i++) {
+            const interestPayment = balance * r;
+            const principalPayment = M - interestPayment;
+            balance -= principalPayment;
+            cumulativePaid += M;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${i}</td><td>${fmt(principalPayment)}</td><td>${fmt(interestPayment)}</td><td>${fmt(cumulativePaid)}</td><td>${fmt(Math.max(0, balance))}</td>`;
+            tbody.appendChild(tr);
         }
-    </script>
+        document.getElementById('tableWrap').style.display = 'block';
+    }
+</script>
 </body>
 </html>
