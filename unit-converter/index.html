@@ -1,14 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Universal Unit Converter | AI Learning Gym</title>
-    <meta name="description" content="Convert length, weight, and temperature metrics instantly. Free online multi-unit converter tool with accurate, real-time client-side calculations.">
-    <meta name="keywords" content="unit converter online, cm to inches, kg to lbs, celsius to fahrenheit, length converter, weight metric calculator">
-    <meta property="og:title" content="Free Online Universal Unit Converter | AI Learning Gym">
-    <meta property="og:description" content="Convert measurements across length, weight, and temperature instantly within a fast, privacy-first browser sandbox.">
-
+    <title>Free Unit Converter | Length, Weight, Temperature & More | AI Learning Gym</title>
+    <meta name="description" content="Convert between units of length, weight, temperature, volume, and speed. Free online unit converter — fast, accurate, and works in your browser.">
+    <meta name="keywords" content="unit converter, length converter, weight converter, temperature converter, metric to imperial, km to miles, kg to lbs, celsius to fahrenheit">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,619 +14,259 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
-            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- Live Ad Container Classes --- */
-        .ad-container {
-            margin: 15px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Converter App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .tabs-nav {
-            display: flex;
-            gap: 10px;
-            border-bottom: 2px solid var(--card-border);
-            margin-bottom: 25px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            background: none;
-            border: none;
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--text-muted);
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.2s;
-        }
-
-        .tab-btn.active {
-            color: var(--accent-color);
-            border-bottom-color: var(--accent-color);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Input Conversion Grid Controls */
-        .converter-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            align-items: end;
-            margin-bottom: 20px;
-        }
-
-        @media (min-width: 600px) {
-            .converter-grid {
-                grid-template-columns: 2fr 1fr 2fr 1fr;
-            }
-            .equals-sign {
-                text-align: center;
-                padding-bottom: 10px;
-                font-size: 1.5rem;
-                font-weight: bold;
-                color: var(--text-muted);
-            }
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .input-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .unit-input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .unit-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        .equals-sign {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-weight: bold;
-        }
-
-        .quick-results-box {
-            background: #ffffff;
-            border: 1px dashed var(--card-border);
-            border-radius: 6px;
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        .quick-results-title {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: var(--accent-color);
-            margin-bottom: 8px;
-        }
-
-        .quick-results-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-        }
-
-        @media (min-width: 500px) {
-            .quick-results-list { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .quick-item {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-        }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .tab-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+        .tab-btn { padding: 8px 16px; border: 1px solid var(--card-border); border-radius: 6px; background: #f8fafc; color: var(--text-muted); font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+        .tab-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .converter-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: end; margin-bottom: 16px; }
+        @media (max-width: 500px) { .converter-row { grid-template-columns: 1fr; } .swap-btn { display: none; } }
+        .conv-group label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+        .conv-group select { width: 100%; padding: 8px 10px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.9rem; color: var(--text-dark); }
+        .conv-group input { width: 100%; padding: 10px 12px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); margin-top: 6px; }
+        .swap-btn { padding: 8px 12px; background: #e2e8f0; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1rem; align-self: center; }
+        .swap-btn:hover { background: #cbd5e1; }
+        .result-display { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 16px; text-align: center; }
+        .result-display .result-value { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); }
+        .result-display .result-unit { font-size: 1rem; color: var(--text-muted); margin-top: 4px; }
+        .quick-ref { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .quick-ref th { background: var(--primary-color); color: #fff; padding: 8px 12px; text-align: left; }
+        .quick-ref td { padding: 8px 12px; border-bottom: 1px solid var(--card-border); color: #4a5568; }
+        .quick-ref tr:hover td { background: #f8fafc; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free measurement and conversion tools</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            <section class="tool-wrapper">
-                <nav class="tabs-nav">
-                    <button class="tab-btn active" onclick="switchConverter(event, 'length-panel')">衡量 Length</button>
-                    <button class="tab-btn" onclick="switchConverter(event, 'weight-panel')">⚖️ Weight &amp; Mass</button>
-                    <button class="tab-btn" onclick="switchConverter(event, 'temp-panel')">🌡️ Temperature</button>
-                </nav>
+    <div class="card">
+        <h2>Unit Converter</h2>
 
-                <div class="tab-content active" id="length-panel">
-                    <div class="converter-grid">
-                        <div class="input-group">
-                            <label for="length-value-from">From Value:</label>
-                            <input type="number" id="length-value-from" class="unit-input" value="1" oninput="processLengthConversion(true)">
-                        </div>
-                        <div class="input-group">
-                            <label for="length-unit-from">From Unit:</label>
-                            <select id="length-unit-from" class="unit-input" onchange="processLengthConversion(true)">
-                                <option value="cm">Centimeters (cm)</option>
-                                <option value="m">Meters (m)</option>
-                                <option value="in" selected>Inches (in)</option>
-                                <option value="ft">Feet (ft)</option>
-                                <option value="yd">Yards (yd)</option>
-                                <option value="mi">Miles (mi)</option>
-                            </select>
-                        </div>
-                        <div class="equals-sign">=</div>
-                        <div class="input-group">
-                            <label for="length-value-to">To Value:</label>
-                            <input type="number" id="length-value-to" class="unit-input" oninput="processLengthConversion(false)">
-                        </div>
-                        <div class="input-group">
-                            <label for="length-unit-to">To Unit:</label>
-                            <select id="length-unit-to" class="unit-input" onchange="processLengthConversion(true)">
-                                <option value="cm" selected>Centimeters (cm)</option>
-                                <option value="m">Meters (m)</option>
-                                <option value="in">Inches (in)</option>
-                                <option value="ft">Feet (ft)</option>
-                                <option value="yd">Yards (yd)</option>
-                                <option value="mi">Miles (mi)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="quick-results-box">
-                        <div class="quick-results-title">Full Matrix Equivalents</div>
-                        <div class="quick-results-list" id="length-matrix-list"></div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="weight-panel">
-                    <div class="converter-grid">
-                        <div class="input-group">
-                            <label for="weight-value-from">From Value:</label>
-                            <input type="number" id="weight-value-from" class="unit-input" value="1" oninput="processWeightConversion(true)">
-                        </div>
-                        <div class="input-group">
-                            <label for="weight-unit-from">From Unit:</label>
-                            <select id="weight-unit-from" class="unit-input" onchange="processWeightConversion(true)">
-                                <option value="g">Grams (g)</option>
-                                <option value="kg" selected>Kilograms (kg)</option>
-                                <option value="lbs">Pounds (lbs)</option>
-                                <option value="oz">Ounces (oz)</option>
-                            </select>
-                        </div>
-                        <div class="equals-sign">=</div>
-                        <div class="input-group">
-                            <label for="weight-value-to">To Value:</label>
-                            <input type="number" id="weight-value-to" class="unit-input" oninput="processWeightConversion(false)">
-                        </div>
-                        <div class="input-group">
-                            <label for="weight-unit-to">To Unit:</label>
-                            <select id="weight-unit-to" class="unit-input" onchange="processWeightConversion(true)">
-                                <option value="g">Grams (g)</option>
-                                <option value="kg">Kilograms (kg)</option>
-                                <option value="lbs" selected>Pounds (lbs)</option>
-                                <option value="oz">Ounces (oz)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="quick-results-box">
-                        <div class="quick-results-title">Full Matrix Equivalents</div>
-                        <div class="quick-results-list" id="weight-matrix-list"></div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="temp-panel">
-                    <div class="converter-grid">
-                        <div class="input-group">
-                            <label for="temp-value-from">From Value:</label>
-                            <input type="number" id="temp-value-from" class="unit-input" value="0" oninput="processTempConversion(true)">
-                        </div>
-                        <div class="input-group">
-                            <label for="temp-unit-from">From Unit:</label>
-                            <select id="temp-unit-from" class="unit-input" onchange="processTempConversion(true)">
-                                <option value="C" selected>Celsius (°C)</option>
-                                <option value="F">Fahrenheit (°F)</option>
-                                <option value="K">Kelvin (K)</option>
-                            </select>
-                        </div>
-                        <div class="equals-sign">=</div>
-                        <div class="input-group">
-                            <label for="temp-value-to">To Value:</label>
-                            <input type="number" id="temp-value-to" class="unit-input" oninput="processTempConversion(false)">
-                        </div>
-                        <div class="input-group">
-                            <label for="temp-unit-to">To Unit:</label>
-                            <select id="temp-unit-to" class="unit-input" onchange="processTempConversion(true)">
-                                <option value="C">Celsius (°C)</option>
-                                <option value="F" selected>Fahrenheit (°F)</option>
-                                <option value="K">Kelvin (K)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="quick-results-box">
-                        <div class="quick-results-title">Full Matrix Equivalents</div>
-                        <div class="quick-results-list" id="temp-matrix-list"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Online Universal Unit Converter is a multi-mode data translation framework engineered to execute immediate, high-fidelity conversions across length, mass, and temperature systems. Built for students, global commerce workers, engineers, and culinary planners, this application resolves scaling calculations without complex manual formulas. Operating 100% client-side, the panel ensures absolute database isolation by running calculations completely inside your local browser layout sandbox, keeping parameters private and safe from third-party server tracking loops.</p>
-
-                <h3>How to Operate the Universal Unit Converter</h3>
-                <p>Navigating between parameter tabs and managing separate measurement dimensions follows a straightforward workflow:</p>
-                <ol>
-                    <li><strong>Isolate Your Dimensional Workspace:</strong> Click any of the top tab navigation elements (Length, Weight &amp; Mass, or Temperature) to activate your specific measurement category panel.</li>
-                    <li><strong>Establish From/To Units:</strong> Use the drop-down menu selectors to set your baseline input unit (e.g., Inches) and target output unit (e.g., Centimeters).</li>
-                    <li><strong>Input Operational Values:</strong> Type your measurement properties inside either numerical form field. The system features bi-directional listeners, updating the opposing calculation value field instantly.</li>
-                    <li><strong>Review the Matrix Equivalents:</strong> Scan the custom dashboard container at the footer of each panel, which tracks and displays the calculation mapped across all metric and customary variables simultaneously.</li>
-                </ol>
-
-                <h3>Core Cross-Scaling Mechanics Detailed</h3>
-                <p>Our client-side processing suite computes physical dimensional translations through optimized algebraic algorithms:</p>
-                <ul>
-                    <li><strong>Bi-Directional Input Synchronization:</strong> The script embeds input event tracking that automatically flips calculation vectors based on which form box receives numbers, letting users work forwards or backwards smoothly.</li>
-                    <li><strong>Floating-Point Compensation:</strong> JavaScript engines frequently introduce slight arithmetic quirks when dividing floating-point integers. This module limits precision systematically up to five flexible decimal points using an internal `stripPrecision` filter block to keep values highly accurate.</li>
-                    <li><strong>Non-Linear Thermal Solvers:</strong> While length and mass systems translate via fixed multiplication metrics, temperature scales use offset formulas. The engine routes inputs into a normalized Celsius base before computing secondary Kelvin and Fahrenheit properties.</li>
-                </ul>
-
-                <h2>The Practical Necessity of Metric and Imperial Unit Standardization</h2>
-                <p>In global commerce, scientific exploration, and daily technical operations, shifting values cleanly between the International System of Units (Metric) and the United States Customary System (Imperial) is a daily necessity. Computational rounding slips can introduce significant operational discrepancies, making a client-side digital calculation node highly beneficial.</p>
-                
-                <h3>Understanding Standard Length, Mass, and Thermal Equations</h3>
-                <p>Varying conversion workflows rely on distinct physical baseline standards. Linear tracking structures (like converting centimeters to inches or miles to meters) navigate exact, unchanging geometric ratios. Mass evaluations require distinct calculations to handle differences between gravitational pounds and base metrics like grams. Thermal scales utilize completely different formulas, shifting between absolute zero thresholds like Kelvin and traditional relative models like Fahrenheit or Celsius.</p>
-
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2027849186057550"
-                         data-ad-slot="1105246416"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-
-                <h3>Why Complete Metric Matrix Previews Save Project Time</h3>
-                <p>Most basic calculators online only reveal a single conversion value pairs per request. Our universal utility dashboard features an immediate matrix tracking table layout. When you input an individual metric, the software automatically loops through every available unit tier simultaneously, rendering comprehensive structural breakdowns instantly to keep your research workflow uninterrupted.</p>
-                
-                <h3>Frequently Answered Unit Metric Questions (FAQ)</h3>
-                <div class="faq-item">
-                    <h4>Q: Are the weights or lengths I calculate processed on your web servers?</h4>
-                    <p>A: No. Total data privacy remains structural across our application network. All calculations process natively inside your desktop or mobile device viewport canvas using fast client-side scripts. No parameters are tracked, cached, or compiled externally.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h4>Q: How many decimal places of precision does this conversion module maintain?</h4>
-                    <p>A: The module script isolates calculations up to 5 flexible decimal points to avoid common JavaScript floating-point rounding quirks, ensuring clean accuracy for student assignments, travel plans, or engineering specs.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Q: Why do temperature conversions use custom formula blocks instead of simple ratio multiplication grids?</h4>
-                    <p>A: Length and mass parameters map directly to absolute scales where a value of zero equates to nothing. Temperature scales, however, do not share a common zero boundary. For instance, $0^\circ\text{C}$ equals $32^\circ\text{F}$ and $273.15\text{K}$. Because the baseline metrics scale with offset origins, the system must translate them using parenthesized multiplier formulas ($F = C \times \frac{9}{5} + 32$) to ensure mathematical truth.</p>
-                </div>
-            </section>
-
-        </main>
-
-        <aside style="position: sticky; top: 20px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
-
-    </div> 
-
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <div class="footer-links" style="margin-top: 15px;">
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="setCategory('length')">Length</button>
+            <button class="tab-btn" onclick="setCategory('weight')">Weight</button>
+            <button class="tab-btn" onclick="setCategory('temperature')">Temperature</button>
+            <button class="tab-btn" onclick="setCategory('volume')">Volume</button>
+            <button class="tab-btn" onclick="setCategory('speed')">Speed</button>
         </div>
-    </footer>
 
-    <script>
-        // Length conversion ratios relative to 1 Meter (m)
-        const lengthRatios = {
-            m: 1,
-            cm: 0.01,
-            in: 0.0254,
-            ft: 0.3048,
-            yd: 0.9144,
-            mi: 1609.344
-        };
+        <div class="converter-row">
+            <div class="conv-group">
+                <label>From</label>
+                <select id="fromUnit" onchange="convert()"></select>
+                <input type="number" id="fromValue" placeholder="Enter value" oninput="convert()">
+            </div>
+            <button class="swap-btn" onclick="swapUnits()" title="Swap units">⇄</button>
+            <div class="conv-group">
+                <label>To</label>
+                <select id="toUnit" onchange="convert()"></select>
+                <input type="number" id="toValue" placeholder="Result" readonly style="background:#f8fafc;">
+            </div>
+        </div>
+    </div>
 
-        // Weight conversion ratios relative to 1 Gram (g)
-        const weightRatios = {
-            g: 1,
-            kg: 1000,
-            lbs: 453.59237,
-            oz: 28.349523125
-        };
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-        function switchConverter(e, panelId) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
-            e.target.classList.add('active');
-            document.getElementById(panelId).classList.add('active');
+    <div class="card">
+        <h2>Common Conversions</h2>
+        <p>Here are some frequently needed conversions at a glance.</p>
+
+        <h3>Length</h3>
+        <table class="quick-ref">
+            <thead><tr><th>From</th><th>To</th><th>Multiply by</th></tr></thead>
+            <tbody>
+                <tr><td>Miles</td><td>Kilometers</td><td>1.609</td></tr>
+                <tr><td>Feet</td><td>Meters</td><td>0.3048</td></tr>
+                <tr><td>Inches</td><td>Centimeters</td><td>2.54</td></tr>
+                <tr><td>Yards</td><td>Meters</td><td>0.9144</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Weight</h3>
+        <table class="quick-ref">
+            <thead><tr><th>From</th><th>To</th><th>Multiply by</th></tr></thead>
+            <tbody>
+                <tr><td>Pounds (lbs)</td><td>Kilograms (kg)</td><td>0.4536</td></tr>
+                <tr><td>Kilograms</td><td>Pounds</td><td>2.2046</td></tr>
+                <tr><td>Ounces</td><td>Grams</td><td>28.35</td></tr>
+                <tr><td>Stone</td><td>Kilograms</td><td>6.35</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Temperature</h3>
+        <table class="quick-ref">
+            <thead><tr><th>From</th><th>To</th><th>Formula</th></tr></thead>
+            <tbody>
+                <tr><td>Celsius (°C)</td><td>Fahrenheit (°F)</td><td>(°C × 9/5) + 32</td></tr>
+                <tr><td>Fahrenheit (°F)</td><td>Celsius (°C)</td><td>(°F − 32) × 5/9</td></tr>
+                <tr><td>Celsius (°C)</td><td>Kelvin (K)</td><td>°C + 273.15</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Why metric and imperial are both still in use</h3>
+        <p>Most of the world uses the metric system (meters, kilograms, liters). The United States primarily uses the imperial system (feet, pounds, gallons), though science and medicine in the US use metric. The UK uses a mix — road distances are in miles, but food is often sold in grams. This is why unit converters are so useful for everyday tasks like cooking with foreign recipes, international travel, or online shopping from other countries.</p>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Why are my results slightly different from other converters?</h4>
+            <p>Minor differences come from rounding. This tool uses precise conversion factors and shows up to 6 significant figures. If you need more precision, avoid rounding intermediate results.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I convert in the other direction?</h4>
+            <p>Yes — just type a value in either field, or use the swap (⇄) button to flip the from/to units.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What's the difference between weight and mass?</h4>
+            <p>In everyday conversation, "weight" usually means mass — how much stuff is in an object. Technically, weight is the force of gravity on a mass, measured in Newtons. For everyday conversions (pounds to kilograms), the distinction doesn't matter.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does this tool work offline?</h4>
+            <p>All calculations run in your browser using JavaScript, so once the page is loaded, it works without an internet connection.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    const categories = {
+        length: {
+            units: ['Meter', 'Kilometer', 'Centimeter', 'Millimeter', 'Mile', 'Yard', 'Foot', 'Inch'],
+            toBase: {Meter:1, Kilometer:1000, Centimeter:0.01, Millimeter:0.001, Mile:1609.344, Yard:0.9144, Foot:0.3048, Inch:0.0254}
+        },
+        weight: {
+            units: ['Kilogram', 'Gram', 'Milligram', 'Pound', 'Ounce', 'Stone', 'Tonne'],
+            toBase: {Kilogram:1, Gram:0.001, Milligram:0.000001, Pound:0.453592, Ounce:0.0283495, Stone:6.35029, Tonne:1000}
+        },
+        temperature: {
+            units: ['Celsius', 'Fahrenheit', 'Kelvin'],
+            toBase: null // special handling
+        },
+        volume: {
+            units: ['Liter', 'Milliliter', 'Gallon (US)', 'Quart (US)', 'Pint (US)', 'Cup (US)', 'Fluid Ounce (US)', 'Cubic Meter'],
+            toBase: {'Liter':1, 'Milliliter':0.001, 'Gallon (US)':3.78541, 'Quart (US)':0.946353, 'Pint (US)':0.473176, 'Cup (US)':0.236588, 'Fluid Ounce (US)':0.0295735, 'Cubic Meter':1000}
+        },
+        speed: {
+            units: ['Meter/second', 'Kilometer/hour', 'Mile/hour', 'Foot/second', 'Knot'],
+            toBase: {'Meter/second':1, 'Kilometer/hour':0.277778, 'Mile/hour':0.44704, 'Foot/second':0.3048, 'Knot':0.514444}
         }
+    };
 
-        // --- Length Engine Calculations ---
-        function processLengthConversion(isFromInput) {
-            const valFrom = parseFloat(document.getElementById("length-value-from").value);
-            const valTo = parseFloat(document.getElementById("length-value-to").value);
-            const unitFrom = document.getElementById("length-unit-from").value;
-            const unitTo = document.getElementById("length-unit-to").value;
+    let currentCategory = 'length';
 
-            if (isNaN(valFrom) && isFromInput) return;
-            if (isNaN(valTo) && !isFromInput) return;
-
-            let baseInMeters = 0;
-            if (isFromInput) {
-                baseInMeters = valFrom * lengthRatios[unitFrom];
-                const finalVal = baseInMeters / lengthRatios[unitTo];
-                document.getElementById("length-value-to").value = stripPrecision(finalVal);
-            } else {
-                baseInMeters = valTo * lengthRatios[unitTo];
-                const finalVal = baseInMeters / lengthRatios[unitFrom];
-                document.getElementById("length-value-from").value = stripPrecision(finalVal);
-            }
-
-            // Populate multi-unit comparative preview matrix lists
-            const matrixContainer = document.getElementById("length-matrix-list");
-            matrixContainer.innerHTML = "";
-            const activeInputVal = parseFloat(document.getElementById("length-value-from").value) || 0;
-            const activeInputUnit = unitFrom;
-
-            Object.keys(lengthRatios).forEach(unitKey => {
-                const calculatedMetric = (activeInputVal * lengthRatios[activeInputUnit]) / lengthRatios[unitKey];
-                const displayItem = document.createElement("div");
-                displayItem.className = "quick-item";
-                displayItem.innerHTML = `<strong>${stripPrecision(calculatedMetric)}</strong> ${unitKey}`;
-                matrixContainer.appendChild(displayItem);
-            });
-        }
-
-        // --- Weight Engine Calculations ---
-        function processWeightConversion(isFromInput) {
-            const valFrom = parseFloat(document.getElementById("weight-value-from").value);
-            const valTo = parseFloat(document.getElementById("weight-value-to").value);
-            const unitFrom = document.getElementById("weight-unit-from").value;
-            const unitTo = document.getElementById("weight-unit-to").value;
-
-            if (isNaN(valFrom) && isFromInput) return;
-            if (isNaN(valTo) && !isFromInput) return;
-
-            let baseInGrams = 0;
-            if (isFromInput) {
-                baseInGrams = valFrom * weightRatios[unitFrom];
-                const finalVal = baseInGrams / weightRatios[unitTo];
-                document.getElementById("weight-value-to").value = stripPrecision(finalVal);
-            } else {
-                baseInGrams = valTo * weightRatios[unitTo];
-                const finalVal = baseInGrams / weightRatios[unitFrom];
-                document.getElementById("weight-value-from").value = stripPrecision(finalVal);
-            }
-
-            // Populate weight preview matrix layout options
-            const matrixContainer = document.getElementById("weight-matrix-list");
-            matrixContainer.innerHTML = "";
-            const activeInputVal = parseFloat(document.getElementById("weight-value-from").value) || 0;
-            const activeInputUnit = unitFrom;
-
-            Object.keys(weightRatios).forEach(unitKey => {
-                const calculatedMetric = (activeInputVal * weightRatios[activeInputUnit]) / weightRatios[unitKey];
-                const displayItem = document.createElement("div");
-                displayItem.className = "quick-item";
-                displayItem.innerHTML = `<strong>${stripPrecision(calculatedMetric)}</strong> ${unitKey}`;
-                matrixContainer.appendChild(displayItem);
-            });
-        }
-
-        // --- Temperature Engine Calculations (Non-linear formulas) ---
-        function processTempConversion(isFromInput) {
-            let valFrom = parseFloat(document.getElementById("temp-value-from").value);
-            let valTo = parseFloat(document.getElementById("temp-value-to").value);
-            const unitFrom = document.getElementById("temp-unit-from").value;
-            const unitTo = document.getElementById("temp-unit-to").value;
-
-            if (isNaN(valFrom) && isFromInput) return;
-            if (isNaN(valTo) && !isFromInput) return;
-
-            let activeValue = isFromInput ? valFrom : valTo;
-            let currentFromUnit = isFromInput ? unitFrom : unitTo;
-            let currentToUnit = isFromInput ? unitTo : unitFrom;
-
-            // Step 1: Normalize active configuration block value down to Celsius (°C)
-            let celsiusValue = 0;
-            if (currentFromUnit === "C") celsiusValue = activeValue;
-            else if (currentFromUnit === "F") celsiusValue = (activeValue - 32) * 5 / 9;
-            else if (currentFromUnit === "K") celsiusValue = activeValue - 273.15;
-
-            // Step 2: Target normalized value into requested destination formats
-            let targetedOutput = 0;
-            if (currentToUnit === "C") targetedOutput = celsiusValue;
-            else if (currentToUnit === "F") targetedOutput = (celsiusValue * 9 / 5) + 32;
-            else if (currentToUnit === "K") targetedOutput = celsiusValue + 273.15;
-
-            if (isFromInput) {
-                document.getElementById("temp-value-to").value = stripPrecision(targetedOutput);
-            } else {
-                document.getElementById("temp-value-from").value = stripPrecision(targetedOutput);
-            }
-
-            // Populate comparative matrix preview slots loop
-            const matrixContainer = document.getElementById("temp-matrix-list");
-            matrixContainer.innerHTML = "";
-            const baseInputVal = parseFloat(document.getElementById("temp-value-from").value) || 0;
-            
-            let referenceCelsius = 0;
-            if (unitFrom === "C") referenceCelsius = baseInputVal;
-            else if (unitFrom === "F") referenceCelsius = (baseInputVal - 32) * 5 / 9;
-            else if (unitFrom === "K") referenceCelsius = baseInputVal - 273.15;
-
-            const formats = [
-                { key: "°C", val: referenceCelsius },
-                { key: "°F", val: (referenceCelsius * 9 / 5) + 32 },
-                { key: "K", val: referenceCelsius + 273.15 }
-            ];
-
-            formats.forEach(f => {
-                const displayItem = document.createElement("div");
-                displayItem.className = "quick-item";
-                displayItem.innerHTML = `<strong>${stripPrecision(f.val)}</strong> ${f.key}`;
-                matrixContainer.appendChild(displayItem);
-            });
-        }
-
-        function stripPrecision(num) {
-            return Math.round((num + Number.EPSILON) * 100000) / 100000;
-        }
-
-        // Initialize execution on content rendering load
-        document.addEventListener("DOMContentLoaded", () => {
-            processLengthConversion(true);
-            processWeightConversion(true);
-            processTempConversion(true);
+    function setCategory(cat) {
+        currentCategory = cat;
+        document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+            btn.classList.toggle('active', Object.keys(categories)[i] === cat);
         });
-    </script>
+        populateSelects();
+        document.getElementById('fromValue').value = '';
+        document.getElementById('toValue').value = '';
+    }
+
+    function populateSelects() {
+        const cat = categories[currentCategory];
+        const from = document.getElementById('fromUnit');
+        const to = document.getElementById('toUnit');
+        from.innerHTML = '';
+        to.innerHTML = '';
+        cat.units.forEach((u, i) => {
+            from.innerHTML += `<option value="${u}">${u}</option>`;
+            to.innerHTML += `<option value="${u}" ${i===1?'selected':''}>${u}</option>`;
+        });
+    }
+
+    function convert() {
+        const fromUnit = document.getElementById('fromUnit').value;
+        const toUnit = document.getElementById('toUnit').value;
+        const fromVal = parseFloat(document.getElementById('fromValue').value);
+        if (isNaN(fromVal)) { document.getElementById('toValue').value = ''; return; }
+
+        let result;
+        if (currentCategory === 'temperature') {
+            let celsius;
+            if (fromUnit === 'Celsius') celsius = fromVal;
+            else if (fromUnit === 'Fahrenheit') celsius = (fromVal - 32) * 5/9;
+            else celsius = fromVal - 273.15;
+
+            if (toUnit === 'Celsius') result = celsius;
+            else if (toUnit === 'Fahrenheit') result = celsius * 9/5 + 32;
+            else result = celsius + 273.15;
+        } else {
+            const toBase = categories[currentCategory].toBase;
+            const baseValue = fromVal * toBase[fromUnit];
+            result = baseValue / toBase[toUnit];
+        }
+        document.getElementById('toValue').value = parseFloat(result.toPrecision(7));
+    }
+
+    function swapUnits() {
+        const from = document.getElementById('fromUnit');
+        const to = document.getElementById('toUnit');
+        const temp = from.value;
+        from.value = to.value;
+        to.value = temp;
+        convert();
+    }
+
+    // Init
+    populateSelects();
+</script>
 </body>
 </html>
