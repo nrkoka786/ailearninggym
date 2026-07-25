@@ -1,17 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online World Clock &amp; Timers | AI Learning Gym</title>
-    <meta name="description" content="Access high-precision real-time world timezone mapping engines paired with integrated web alarms, stopwatch split laps, and countdown intervals natively inside your browser.">
-    <meta name="keywords" content="online clock, world clock tracker, precision stopwatch, web alarm clock, countdown timer, timezone converter, productivity utilities">
-    
-    <meta property="og:title" content="Online World Clock &amp; Timers | AI Learning Gym">
-    <meta property="og:description" content="Monitor international temporal boundaries and manage high-precision split lap records natively inside your local browser memory sandbox.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ailearninggym.com/online-clock/">
-
+    <title>Free Online Clock | Current Time, Date & Stopwatch | AI Learning Gym</title>
+    <meta name="description" content="View the current time and date with a free online clock. Includes a stopwatch, countdown timer, and world clock for multiple time zones. Works in any browser.">
+    <meta name="keywords" content="online clock, current time, world clock, stopwatch online, countdown timer, digital clock, time zones">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -19,848 +14,324 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
-    <script type="application/ld:json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Atomic World Clock &amp; Precision Timing Studio",
-      "description": "A comprehensive, privacy-first time tracking suite providing integrated web alarms, customizable countdown intervals, millisecond stopwatch splits, and global timezone monitoring.",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Web Browser",
-      "browserRequirements": "Requires JavaScript support. Fully executed client-side.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "AI Learning Gym",
-        "url": "https://ailearninggym.com"
-      }
-    }
-    </script>
-
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --accent-blue: #38bdf8;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
             --primary-color: #1a252f;
-        }
-        
-        /* Slate Theme Profile Baseline */
-        .theme-slate {
-            --bg-dark: #0f1423;
-            --card-bg: #1d263b;
-            --accent-blue: #32b5f5;
-            --text-light: #ffffff;
-            --text-muted: #748ba7;
-            --border-color: #2b3852;
-        }
-
-        .theme-dark {
-            --bg-dark: #090d16;
-            --card-bg: #111827;
-            --accent-blue: #60a5fa;
-            --text-light: #f9fafb;
-            --text-muted: #6b7280;
-            --border-color: #1f2937;
-        }
-
-        .theme-light {
-            --bg-dark: #f1f5f9;
-            --card-bg: #ffffff;
-            --accent-blue: #0284c7;
-            --text-light: #0f172a;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
             --text-muted: #64748b;
-            --border-color: #cbd5e1;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            transition: background 0.3s;
-        }
-
-        .app-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-
-        /* --- Top Header & Theme Window --- */
-        .header-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .header-bar h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .theme-select {
-            background-color: var(--card-bg);
-            color: var(--text-light);
-            border: 1px solid var(--border-color);
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            outline: none;
-            font-size: 0.9rem;
-        }
-
-        /* --- Main Digital Display Canvas --- */
-        .main-display-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .time-digits {
-            font-size: 4.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            font-variant-numeric: tabular-nums;
-            color: var(--text-light);
-        }
-
-        .date-string {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* --- Tab Control Grid --- */
-        .tabs-nav {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            background-color: var(--card-bg);
-            padding: 8px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color);
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 12px 5px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .tab-btn:hover { color: var(--text-light); }
-        .tab-btn.active { background-color: var(--accent-blue); color: #ffffff; }
-
-        /* --- Content Panels Matrix --- */
-        .panel-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid var(--border-color);
-            min-height: 250px;
-            display: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 25px;
-        }
-
-        .panel-card.active { display: block; }
-
-        .panel-card h2 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        /* --- Layout Interface Controls --- */
-        .controls-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .input-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .time-select, .time-input {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            text-align: center;
-            width: 75px;
-            outline: none;
-        }
-        
-        .time-select-ampm { width: 90px; }
-
-        .btn {
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-primary { background-color: var(--accent-blue); color: #ffffff; }
-        .btn-primary:hover { opacity: 0.9; }
-        .btn-secondary { background-color: #64748b; color: #ffffff; }
-        .btn-secondary:hover { background-color: #475569; }
-        .btn-danger { background-color: #ef4444; color: #ffffff; }
-
-        /* --- Dynamic Inner Panels --- */
-        .timer-display, .stopwatch-display {
-            font-size: 3.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            font-variant-numeric: tabular-nums;
-            color: var(--text-light);
-        }
-
-        .lap-box {
-            margin-top: 20px;
-            max-height: 150px;
-            overflow-y: auto;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-        }
-
-        .lap-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 5px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            border-bottom: 1px dashed rgba(255,255,255,0.05);
-        }
-
-        /* --- World Grid Selector Framework --- */
-        .world-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        @media(min-width: 576px) { .world-grid { grid-template-columns: repeat(2, 1fr); } }
-
-        .world-item {
-            background-color: var(--bg-dark);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .zone-selector {
-            background-color: transparent;
-            border: none;
-            color: var(--text-light);
-            font-weight: 600;
-            padding: 4px 0;
-            cursor: pointer;
-            font-size: 1rem;
-            outline: none;
-            max-width: 60%;
-        }
-        
-        .zone-selector option {
-            background-color: var(--card-bg);
-            color: var(--text-light);
-        }
-
-        .world-time { 
-            font-variant-numeric: tabular-nums; 
-            color: var(--accent-blue); 
-            font-weight: 700; 
-            font-size: 1.1rem;
-        }
-
-        .status-alert {
-            text-align: center;
-            margin-top: 15px;
-            font-weight: 600;
-            color: var(--accent-blue);
-            font-size: 0.95rem;
-        }
-
-        /* --- Live Ad Layout Systems with Fixed Grid Centering --- */
-        .ad-container { 
-            margin: 35px auto; 
-            text-align: center; 
-            width: 100%; 
-            max-width: 728px;
-            height: 90px;
-            background: rgba(30, 41, 59, 0.25);
-            border: 1px dashed var(--border-color);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ad-container::before {
-            content: "Sponsored Advertisement Workspace";
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.5;
-            position: absolute;
-            z-index: 1;
-        }
-
-        .ad-container ins {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* --- Rich Content Documentation Area --- */
-        .seo-section {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            text-align: left;
-            margin-top: 10px;
-        }
-
-        .seo-section h2 { color: var(--text-light); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
-        .seo-section h3 { color: var(--accent-blue); margin: 25px 0 10px 0; font-size: 1.2rem; }
-        .seo-section p { margin-bottom: 15px; color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: var(--text-muted); font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        .faq-card { background: rgba(15, 23, 42, 0.3); border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent-blue); }
-        .faq-card h4 { color: var(--text-light); font-size: 1rem; margin-bottom: 5px; }
-        .faq-card p { margin-bottom: 0; color: var(--text-muted); font-size: 0.92rem; }
-
-        /* --- Standard Universal Footer --- */
-        footer {
-            width: 100%;
-            color: var(--text-muted);
-            padding: 40px 20px;
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-        }
-        footer a { color: var(--text-muted); text-decoration: none; margin: 0 10px; transition: color 0.2s; }
-        footer a:hover { color: var(--accent-blue); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .main-clock { text-align: center; padding: 20px 0 10px; }
+        .main-clock .time { font-size: 5rem; font-weight: 700; letter-spacing: -2px; color: var(--text-dark); line-height: 1; font-variant-numeric: tabular-nums; }
+        .main-clock .date { font-size: 1.1rem; color: var(--text-muted); margin-top: 10px; }
+        .main-clock .timezone { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+        .format-toggle { display: flex; justify-content: center; gap: 10px; margin: 14px 0; }
+        .fmt-btn { padding: 6px 18px; border: 1px solid var(--card-border); border-radius: 20px; background: #f8fafc; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; cursor: pointer; }
+        .fmt-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .world-clock { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin-top: 8px; }
+        .wc-card { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 12px 14px; }
+        .wc-city { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+        .wc-time { font-size: 1.4rem; font-weight: 700; color: var(--text-dark); font-variant-numeric: tabular-nums; }
+        .wc-date { font-size: 0.75rem; color: var(--text-muted); }
+        .stopwatch-display { text-align: center; font-size: 3.5rem; font-weight: 700; color: var(--text-dark); letter-spacing: -1px; font-variant-numeric: tabular-nums; margin-bottom: 16px; }
+        .btn-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .btn { padding: 10px 26px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-green { background: #2ecc71; color: #fff; }
+        .btn-red { background: #e74c3c; color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .laps { margin-top: 14px; max-height: 180px; overflow-y: auto; }
+        .lap-row { display: flex; justify-content: space-between; padding: 6px 10px; font-size: 0.88rem; border-bottom: 1px solid var(--card-border); }
+        .lap-row:nth-child(odd) { background: #f8fafc; }
+        .countdown-row { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 14px; flex-wrap: wrap; }
+        .cd-group { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .cd-group label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+        .cd-group input { width: 60px; padding: 8px; border: 1px solid var(--card-border); border-radius: 6px; text-align: center; font-size: 1rem; color: var(--text-dark); }
+        .countdown-display { text-align: center; font-size: 3.5rem; font-weight: 700; color: var(--text-dark); font-variant-numeric: tabular-nums; margin-bottom: 16px; }
+        .countdown-display.urgent { color: #e74c3c; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
-<body class="theme-slate">
+<body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free time and productivity tools</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <div class="app-container">
-        <div class="header-bar">
-            <h1>AI Learning Gym Time Studio</h1>
-            <select id="themeSelector" class="theme-select">
-                <option value="theme-slate">Dark Slate</option>
-                <option value="theme-dark">Deep Midnight</option>
-                <option value="theme-light">Crisp Light</option>
-            </select>
+<div class="container">
+
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Main Clock -->
+    <div class="card">
+        <h2>Current Time</h2>
+        <div class="main-clock">
+            <div class="time" id="mainTime">--:--:--</div>
+            <div class="date" id="mainDate"></div>
+            <div class="timezone" id="mainTz"></div>
+        </div>
+        <div class="format-toggle">
+            <button class="fmt-btn active" id="btn12" onclick="setFormat(12)">12-hour</button>
+            <button class="fmt-btn" id="btn24" onclick="setFormat(24)">24-hour</button>
         </div>
 
-        <div class="main-display-card">
-            <div id="masterTime" class="time-digits">00:00:00 AM</div>
-            <div id="masterDate" class="date-string">Loading Real-Time Matrix...</div>
+        <h3>World Clock</h3>
+        <div class="world-clock" id="worldClock"></div>
+    </div>
+
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Stopwatch -->
+    <div class="card">
+        <h2>Stopwatch</h2>
+        <div class="stopwatch-display" id="swDisplay">00:00.00</div>
+        <div class="btn-row">
+            <button class="btn btn-green" id="swStart" onclick="swToggle()">Start</button>
+            <button class="btn btn-secondary" onclick="swLap()">Lap</button>
+            <button class="btn btn-red" onclick="swReset()">Reset</button>
         </div>
+        <div class="laps" id="swLaps"></div>
+    </div>
 
-        <div class="tabs-nav">
-            <button class="tab-btn active" data-target="panel-alarm">⏰ Alarm</button>
-            <button class="tab-btn" data-target="panel-timer">⏳ Timer</button>
-            <button class="tab-btn" data-target="panel-stopwatch">⏱️ Stopwatch</button>
-            <button class="tab-btn" data-target="panel-world">🌐 World Clock</button>
+    <!-- Countdown -->
+    <div class="card">
+        <h2>Countdown Timer</h2>
+        <div class="countdown-row">
+            <div class="cd-group"><label>Hours</label><input type="number" id="cdH" value="0" min="0" max="99"></div>
+            <div class="cd-group"><label>Minutes</label><input type="number" id="cdM" value="5" min="0" max="59"></div>
+            <div class="cd-group"><label>Seconds</label><input type="number" id="cdS" value="0" min="0" max="59"></div>
         </div>
-
-        <div id="panel-alarm" class="panel-card active">
-            <h2>Set Web Alarm</h2>
-            <div class="input-group">
-                <select id="alarmHour" class="time-select">
-                    <option value="12">12</option><option value="01">01</option><option value="02">02</option>
-                    <option value="03">03</option><option value="04">04</option><option value="05">05</option>
-                    <option value="06">06</option><option value="07">07</option><option value="08">08</option>
-                    <option value="09">09</option><option value="10">10</option><option value="11">11</option>
-                </select>
-                <span style="font-size: 1.5rem; font-weight: bold;">:</span>
-                <select id="alarmMinute" class="time-select">
-                    <option value="00">00</option><option value="05">05</option><option value="10">10</option>
-                    <option value="15">15</option><option value="20">20</option><option value="25">25</option>
-                    <option value="30">30</option><option value="35">35</option><option value="40">40</option>
-                    <option value="45">45</option><option value="50">50</option><option value="55">55</option>
-                </select>
-                <select id="alarmAmpm" class="time-select time-select-ampm">
-                    <option value="AM">AM</option>
-                    <option value="PM">PM</option>
-                </select>
-            </div>
-            <div class="controls-row">
-                <button id="btnSetAlarm" class="btn btn-primary">Set Alarm</button>
-                <button id="btnClearAlarm" class="btn btn-secondary">Clear</button>
-            </div>
-            <div id="alarmStatus" class="status-alert"></div>
+        <div class="countdown-display" id="cdDisplay">05:00</div>
+        <div class="btn-row">
+            <button class="btn btn-green" id="cdStart" onclick="cdToggle()">Start</button>
+            <button class="btn btn-red" onclick="cdReset()">Reset</button>
         </div>
+    </div>
 
-        <div id="panel-timer" class="panel-card">
-            <h2>Countdown Interval Timer</h2>
-            <div id="timerInputArea" class="input-group">
-                <input type="number" id="timerMin" class="time-input" min="0" max="59" value="0" placeholder="MM">
-                <span style="font-size: 1.5rem; font-weight: bold;">:</span>
-                <input type="number" id="timerSec" class="time-input" min="0" max="59" value="30" placeholder="SS">
-            </div>
-            <div id="timerDisplay" class="timer-display" style="display: none;">00:30</div>
-            <div class="controls-row">
-                <button id="btnStartTimer" class="btn btn-primary">Start Timer</button>
-                <button id="btnResetTimer" class="btn btn-secondary">Reset</button>
-            </div>
+    <div class="card">
+        <h2>About This Page</h2>
+        <p>This online clock shows your current local time using your device's built-in clock. The world clock section displays the current time in major cities around the world so you can quickly check what time it is elsewhere for scheduling calls and meetings.</p>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is this clock accurate?</h4>
+            <p>Yes — the time displayed comes directly from your device's system clock, which syncs automatically with internet time servers on most computers and phones. It should be accurate to within a second or two.</p>
         </div>
-
-        <div id="panel-stopwatch" class="panel-card">
-            <h2>Precision Split Stopwatch</h2>
-            <div id="stopwatchDisplay" class="stopwatch-display">00:00.00</div>
-            <div class="controls-row">
-                <button id="btnStartStopwatch" class="btn btn-primary">Start</button>
-                <button id="btnLapStopwatch" class="btn btn-secondary" disabled>Lap</button>
-                <button id="btnResetStopwatch" class="btn btn-danger">Reset</button>
-            </div>
-            <div id="lapBox" class="lap-box"></div>
+        <div class="faq-item">
+            <h4>Why does the world clock show a different date for some cities?</h4>
+            <p>Some time zones cross midnight, meaning cities on the other side of the world may be on a different calendar date than your local time. For example, when it's 11 PM on Tuesday in New York, it's already Wednesday morning in Tokyo.</p>
         </div>
-
-        <div id="panel-world" class="panel-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                <h2>Global Timezone Monitors</h2>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">Change slots to track custom cities</span>
-            </div>
-            <div class="world-grid">
-                <div class="world-item">
-                    <select class="zone-selector" data-slot="1">
-                        <option value="Europe/London" selected>London (GMT)</option>
-                        <option value="America/New_York">New York (EST)</option>
-                        <option value="America/Chicago">Chicago (CST)</option>
-                        <option value="America/Los_Angeles">Los Angeles (PST)</option>
-                        <option value="Asia/Tokyo">Tokyo (JST)</option>
-                        <option value="Asia/Dubai">Dubai (GST)</option>
-                        <option value="Australia/Sydney">Sydney (AEST)</option>
-                        <option value="Europe/Paris">Paris (CET)</option>
-                        <option value="Asia/Kolkata">Mumbai (IST)</option>
-                        <option value="Asia/Singapore">Singapore (SGT)</option>
-                    </select>
-                    <span class="world-time" id="world-clock-1">00:00:00</span>
-                </div>
-                <div class="world-item">
-                    <select class="zone-selector" data-slot="2">
-                        <option value="Europe/London">London (GMT)</option>
-                        <option value="America/New_York" selected>New York (EST)</option>
-                        <option value="America/Chicago">Chicago (CST)</option>
-                        <option value="America/Los_Angeles">Los Angeles (PST)</option>
-                        <option value="Asia/Tokyo">Tokyo (JST)</option>
-                        <option value="Asia/Dubai">Dubai (GST)</option>
-                        <option value="Australia/Sydney">Sydney (AEST)</option>
-                        <option value="Europe/Paris">Paris (CET)</option>
-                        <option value="Asia/Kolkata">Mumbai (IST)</option>
-                        <option value="Asia/Singapore">Singapore (SGT)</option>
-                    </select>
-                    <span class="world-time" id="world-clock-2">00:00:00</span>
-                </div>
-                <div class="world-item">
-                    <select class="zone-selector" data-slot="3">
-                        <option value="Europe/London">London (GMT)</option>
-                        <option value="America/New_York">New York (EST)</option>
-                        <option value="America/Chicago">Chicago (CST)</option>
-                        <option value="America/Los_Angeles">Los Angeles (PST)</option>
-                        <option value="Asia/Tokyo" selected>Tokyo (JST)</option>
-                        <option value="Asia/Dubai">Dubai (GST)</option>
-                        <option value="Australia/Sydney">Sydney (AEST)</option>
-                        <option value="Europe/Paris">Paris (CET)</option>
-                        <option value="Asia/Kolkata">Mumbai (IST)</option>
-                        <option value="Asia/Singapore">Singapore (SGT)</option>
-                    </select>
-                    <span class="world-time" id="world-clock-3">00:00:00</span>
-                </div>
-                <div class="world-item">
-                    <select class="zone-selector" data-slot="4">
-                        <option value="Europe/London">London (GMT)</option>
-                        <option value="America/New_York">New York (EST)</option>
-                        <option value="America/Chicago">Chicago (CST)</option>
-                        <option value="America/Los_Angeles">Los Angeles (PST)</option>
-                        <option value="Asia/Tokyo">Tokyo (JST)</option>
-                        <option value="Asia/Dubai">Dubai (GST)</option>
-                        <option value="Australia/Sydney" selected>Sydney (AEST)</option>
-                        <option value="Europe/Paris">Paris (CET)</option>
-                        <option value="Asia/Kolkata">Mumbai (IST)</option>
-                        <option value="Asia/Singapore">Singapore (SGT)</option>
-                    </select>
-                    <span class="world-time" id="world-clock-4">00:00:00</span>
-                </div>
-            </div>
+        <div class="faq-item">
+            <h4>Does the countdown timer notify me when it ends?</h4>
+            <p>The countdown shows an alert and highlights the display in red when it reaches zero. For audio alerts, make sure your device volume is on — the page plays a brief sound notification when the countdown ends.</p>
         </div>
+    </div>
 
-        <div class="ad-container">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
+</div>
 
-        <section class="seo-section">
-            <h2>About this Tool &amp; User Guide</h2>
-            <p>The Online World Clock &amp; Precision Timing Studio is a browser-native time-management workstation featuring four modular functional sub-systems: an interactive Web Alarm framework, an interval Countdown Timer, a centisecond Split Stopwatch, and a live four-slot World Clock timezone engine. Built to eliminate execution lag, this utility calculates standard time shifts, countdown steps, and lap captures directly on your local device without sending your settings or tracking data to remote servers.</p>
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
 
-            <h3>How to Use the Integrated Timing Suite</h3>
-            <p>Navigating between the application panels and managing your time goals follows a clean, single-page interface layout:</p>
-            <ol>
-                <li><strong>Select Active Utility:</strong> Click the navigation tabs located above the dashboard (Alarm, Timer, Stopwatch, World Clock) to switch workspaces instantly.</li>
-                <li><strong>Configure Alarms &amp; Countdowns:</strong> Under the <em>Alarm</em> panel, choose your hours and minutes from the drop-down selectors and click <em>Set Alarm</em>. For countdown intervals, input your desired duration values inside the minutes/seconds fields and trigger <em>Start Timer</em>.</li>
-                <li><strong>Operate the Split Stopwatch:</strong> Launch the centisecond counter using the primary <em>Start</em> button. While active, use the <em>Lap</em> trigger to log specific split times to the scrollable lap history layout below.</li>
-                <li><strong>Customize World Clock Zones:</strong> Access the <em>World Clock</em> view panel to monitor global timelines concurrently. Click the drop-down menus within any of the four grid items to map your chosen international city instantly.</li>
-                <li><strong>Personalize the Visual Interface:</strong> Select your preferred display style using the theme selector at the top-right corner to toggle between Dark Slate, Deep Midnight, or Crisp Light.</li>
-            </ol>
+<script>
+    let clockFormat = 12;
+    const worldCities = [
+        { city: 'New York', tz: 'America/New_York' },
+        { city: 'London', tz: 'Europe/London' },
+        { city: 'Paris', tz: 'Europe/Paris' },
+        { city: 'Dubai', tz: 'Asia/Dubai' },
+        { city: 'Mumbai', tz: 'Asia/Kolkata' },
+        { city: 'Singapore', tz: 'Asia/Singapore' },
+        { city: 'Tokyo', tz: 'Asia/Tokyo' },
+        { city: 'Sydney', tz: 'Australia/Sydney' },
+        { city: 'Los Angeles', tz: 'America/Los_Angeles' },
+        { city: 'São Paulo', tz: 'America/Sao_Paulo' },
+        { city: 'Nairobi', tz: 'Africa/Nairobi' },
+        { city: 'Seoul', tz: 'Asia/Seoul' }
+    ];
 
-            <h3>Core Temporal Functions Detailed</h3>
-            <p>Our client-side architecture leverages advanced native browser APIs to ensure timing precision across separate views:</p>
-            <ul>
-                <li><strong>Delta Time Calculations:</strong> To prevent processing delay dependencies common in standard execution intervals, the stopwatch runs on hardware delta trackers. It compares your initial click moment with the active system timestamp, keeping loops precise down to the millisecond even if the tab sits idle in the background.</li>
-                <li><strong>Intl.DateTimeFormat Localization:</strong> The world clock grid bypasses hardcoded text conversions. Instead, it queries the browser's native Internationalization API (`Intl.DateTimeFormat`) to map time structures relative to localized standard IANA database rules on the fly.</li>
-                <li><strong>Audio Oscillator Synthesis:</strong> When countdown limits expire or alarms activate, the system triggers the browser's local Web Audio API, generating clear audio alert tones natively without relying on external `.mp3` file assets.</li>
-            </ul>
+    // Build world clock cards
+    const wc = document.getElementById('worldClock');
+    worldCities.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'wc-card';
+        div.innerHTML = `<div class="wc-city">${c.city}</div><div class="wc-time" id="wc-${c.tz.replace(/\//g,'-')}">--:--</div><div class="wc-date" id="wcd-${c.tz.replace(/\//g,'-')}"></div>`;
+        wc.appendChild(div);
+    });
 
-            <h2>The Engineering Mechanics of Distributed Time Coordination</h2>
-            <p>Welcome to the core temporal processing studio at AI Learning Gym. Across modern web frameworks, continuous integration pipelines, and international market environments, managing absolute time metrics is crucial. Standard network tools introduce connection delays when fetching data from remote cloud databases. This application removes those errors by executing your tracking routines locally via native client-side frameworks.</p>
-            <p>Managing workflows across boundaries requires an understanding of time structures. The international standard for time measurement is <strong>Coordinated Universal Time (UTC)</strong>, which establishes a baseline independent of regional daylight changes. By anchoring operations to a central timeline, developer environments avoid server logging issues, database out-of-sync alerts, and file merge errors.</p>
+    function setFormat(f) {
+        clockFormat = f;
+        document.getElementById('btn12').classList.toggle('active', f===12);
+        document.getElementById('btn24').classList.toggle('active', f===24);
+    }
 
-            <h3>Key Benefits of Client-Side Chronological Tracking</h3>
-            <p>Our platform interfaces directly with your hardware clock array using high-performance JavaScript loops. This structural design offers major technical advantages:</p>
-            <ul>
-                <li><strong>Zero Network Lag:</strong> By avoiding continuous HTTP requests to external time servers, calculations render instantly within your browser view.</li>
-                <li><strong>Local System Memory Security:</strong> Your specific alarm limits, countdown targets, and lap records are stored exclusively within your active sandbox memory layer. No operational footprints leave your device.</li>
-                <li><strong>Thread Accuracy:</strong> Timing intervals calculate based on absolute system timestamps rather than variable loop intervals. This keeps your stopwatch accurate down to the centisecond, even when the browser tab runs in the background.</li>
-            </ul>
+    function fmtTime(date, tz, fmt) {
+        return new Intl.DateTimeFormat('en-US', {
+            hour: 'numeric', minute: '2-digit', second: '2-digit',
+            hour12: fmt === 12, timeZone: tz
+        }).format(date);
+    }
 
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
+    function tick() {
+        const now = new Date();
+        // Main clock
+        const mainOpts = { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: clockFormat === 12 };
+        document.getElementById('mainTime').textContent = new Intl.DateTimeFormat('en-US', mainOpts).format(now);
+        document.getElementById('mainDate').textContent = now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+        document.getElementById('mainTz').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-            <h3>How to Implement an Effective Multi-Zone Sprint Routine</h3>
-            <p>If you are managing collaborative developments across multiple time zones, structure your milestones using this framework:</p>
-            <ol>
-                <li><strong>Set a Central Baseline:</strong> Standardize daily system configurations around Coordinated Universal Time (UTC) to simplify code deployments and log auditing.</li>
-                <li><strong>Monitor Local Team Zones:</strong> Use our World Clock view grid to monitor active business hours across remote regional development teams.</li>
-                <li><strong>Isolate Sprints:</strong> Use the countdown interval module to enforce strict focus limits during task reviews, minimizing cognitive fatigue.</li>
-            </ol>
-
-            <h3>Frequently Answered Time Keeping Questions</h3>
-            <div class="faq-card">
-                <h4>Q: Why do world clock values differ from basic calendar settings?</h4>
-                <p>A: World clocks use geographical time zone identifiers to calculate offsets from Coordinated Universal Time (UTC). This grid automatically adjusts for regional daylight saving mutations without shifting your local machine's base timeline settings.</p>
-            </div>
-            <div class="faq-card">
-                <h4>Q: How does the alert mechanism function if my computer volume is turned off?</h4>
-                <p>A: The system sounds alarms via the browser's integrated client-side Web Audio API, which triggers localized audio waveforms directly through your active output channel. If hardware lines are fully muted, the app handles notifications by launching a high-visibility modal pop-up banner.</p>
-            </div>
-            <div class="faq-card">
-                <h4>Q: Does using the split stopwatch module strain background browser processing?</h4>
-                <p>A: Not at all. Our tracking scripts run on highly efficient delta calculations that measure the time difference between your start click and the current moment. This lightweight script layout eliminates background processing strain, keeping your browser fast and responsive.</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p style="margin-top: 15px;">
-            <a href="/privacy.html">Privacy Policy</a> | 
-            <a href="/about.html">About Us</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> | 
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
-
-    <script>
-        // --- Tab Control Navigation State Engine ---
-        const tabs = document.querySelectorAll('.tab-btn');
-        const panels = document.querySelectorAll('.panel-card');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                panels.forEach(p => p.classList.remove('active'));
-
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.target).classList.add('active');
-            });
+        // World clocks
+        worldCities.forEach(c => {
+            const id = c.tz.replace(/\//g,'-');
+            const t = document.getElementById('wc-' + id);
+            const d = document.getElementById('wcd-' + id);
+            if (t) t.textContent = new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',hour12:clockFormat===12,timeZone:c.tz}).format(now);
+            if (d) d.textContent = new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',timeZone:c.tz}).format(now);
         });
+    }
+    setInterval(tick, 1000);
+    tick();
 
-        // --- Global Dashboard Theme Switching Logic ---
-        document.getElementById('themeSelector').addEventListener('change', (e) => {
-            document.body.className = e.target.value;
-        });
+    // Stopwatch
+    let swRunning = false, swStart = 0, swElapsed = 0, swInterval = null, lapCount = 0;
 
-        // --- Audio Synthesizer Engine (Self-Generating Sine Fallback) ---
-        function triggerBeepAlert() {
-            try {
-                const context = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = context.createOscillator();
-                const gain = context.createGain();
-                osc.connect(gain);
-                gain.connect(context.destination);
-                osc.type = 'sine';
-                osc.frequency.value = 880; // Secure pitch notification frequency
-                gain.gain.setValueAtTime(1, context.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, context.currentTime + 1.5);
-                osc.start();
-                osc.stop(context.currentTime + 1.5);
-            } catch (e) {
-                console.log("Audio pipeline initializing requires user interaction focus first.");
-            }
+    function swToggle() {
+        if (swRunning) {
+            clearInterval(swInterval);
+            swElapsed += Date.now() - swStart;
+            swRunning = false;
+            document.getElementById('swStart').textContent = 'Resume';
+            document.getElementById('swStart').className = 'btn btn-green';
+        } else {
+            swStart = Date.now();
+            swRunning = true;
+            document.getElementById('swStart').textContent = 'Pause';
+            document.getElementById('swStart').className = 'btn btn-red';
+            swInterval = setInterval(updateSw, 10);
         }
+    }
 
-        // --- Core Clock Operational Execution Loop ---
-        let targetAlarmTime = null;
+    function updateSw() {
+        const total = swElapsed + (swRunning ? Date.now() - swStart : 0);
+        const min = Math.floor(total/60000);
+        const sec = Math.floor((total%60000)/1000);
+        const ms = Math.floor((total%1000)/10);
+        document.getElementById('swDisplay').textContent = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}.${String(ms).padStart(2,'0')}`;
+    }
 
-        function updateMasterClock() {
-            const now = new Date();
-            
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            
-            hours = hours % 12;
-            hours = hours ? hours : 12; 
-            const cleanHours = String(hours).padStart(2, '0');
+    function swLap() {
+        if (!swRunning && swElapsed === 0) return;
+        lapCount++;
+        const text = document.getElementById('swDisplay').textContent;
+        const row = document.createElement('div');
+        row.className = 'lap-row';
+        row.innerHTML = `<span>Lap ${lapCount}</span><span>${text}</span>`;
+        document.getElementById('swLaps').prepend(row);
+    }
 
-            // Expose primary timeline node
-            const timestampString = `${cleanHours}:${minutes}:${seconds} ${ampm}`;
-            document.getElementById('masterTime').textContent = timestampString;
+    function swReset() {
+        clearInterval(swInterval);
+        swRunning = false; swElapsed = 0; lapCount = 0;
+        document.getElementById('swDisplay').textContent = '00:00.00';
+        document.getElementById('swStart').textContent = 'Start';
+        document.getElementById('swStart').className = 'btn btn-green';
+        document.getElementById('swLaps').innerHTML = '';
+    }
 
-            // Render descriptive calendar layout
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('masterDate').textContent = now.toLocaleDateString('en-US', dateOptions);
+    // Countdown
+    let cdRunning = false, cdRemaining = 0, cdInterval = null;
 
-            // Verify alarm constraints matching profile loops
-            if (targetAlarmTime) {
-                const currentMinuteCheck = `${cleanHours}:${minutes} ${ampm}`;
-                if (currentMinuteCheck === targetAlarmTime) {
-                    triggerBeepAlert();
-                    alert("⏰ AI Learning Gym Alert! Your scheduled alarm is ringing!");
-                    targetAlarmTime = null;
-                    document.getElementById('alarmStatus').textContent = "";
+    function cdToggle() {
+        if (cdRunning) {
+            clearInterval(cdInterval);
+            cdRunning = false;
+            document.getElementById('cdStart').textContent = 'Resume';
+            document.getElementById('cdStart').className = 'btn btn-green';
+        } else {
+            if (cdRemaining === 0) {
+                cdRemaining = (parseInt(document.getElementById('cdH').value)||0)*3600
+                    + (parseInt(document.getElementById('cdM').value)||0)*60
+                    + (parseInt(document.getElementById('cdS').value)||0);
+            }
+            if (cdRemaining <= 0) return;
+            cdRunning = true;
+            document.getElementById('cdStart').textContent = 'Pause';
+            document.getElementById('cdStart').className = 'btn btn-red';
+            document.getElementById('cdDisplay').classList.remove('urgent');
+            cdInterval = setInterval(() => {
+                cdRemaining--;
+                updateCd();
+                if (cdRemaining <= 0) {
+                    clearInterval(cdInterval);
+                    cdRunning = false;
+                    document.getElementById('cdDisplay').classList.add('urgent');
+                    document.getElementById('cdStart').textContent = 'Start';
+                    document.getElementById('cdStart').className = 'btn btn-green';
+                    try { const ctx = new AudioContext(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.frequency.value = 880; g.gain.setValueAtTime(0.4,ctx.currentTime); o.start(); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+0.8); o.stop(ctx.currentTime+0.8); } catch(e){}
                 }
-            }
-
-            // Parse and sync multi-zone custom selector nodes dynamically
-            const zoneSelectors = document.querySelectorAll('.zone-selector');
-            zoneSelectors.forEach(selector => {
-                const slotId = selector.dataset.slot;
-                const selectedTimezone = selector.value;
-                try {
-                    const localZoneString = new Date().toLocaleTimeString('en-US', {
-                        timeZone: selectedTimezone,
-                        hour12: false
-                    });
-                    document.getElementById(`world-clock-${slotId}`).textContent = localZoneString;
-                } catch (err) {
-                    document.getElementById(`world-clock-${slotId}`).textContent = "00:00:00";
-                }
-            });
+            }, 1000);
         }
-        setInterval(updateMasterClock, 1000);
-        updateMasterClock();
+    }
 
-        // --- WEBALARM SYSTEM CORES ---
-        document.getElementById('btnSetAlarm').addEventListener('click', () => {
-            const h = document.getElementById('alarmHour').value;
-            const m = document.getElementById('alarmMinute').value;
-            const ampm = document.getElementById('alarmAmpm').value;
-            targetAlarmTime = `${h}:${m} ${ampm}`;
-            document.getElementById('alarmStatus').textContent = `Alarm targeted securely for ${targetAlarmTime}`;
-        });
+    function updateCd() {
+        const h = Math.floor(cdRemaining/3600);
+        const m = Math.floor((cdRemaining%3600)/60);
+        const s = cdRemaining%60;
+        const str = h > 0
+            ? `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+            : `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        document.getElementById('cdDisplay').textContent = str;
+    }
 
-        document.getElementById('btnClearAlarm').addEventListener('click', () => {
-            targetAlarmTime = null;
-            document.getElementById('alarmStatus').textContent = "Alarm status cleared.";
-        });
-
-        // --- TIMER INTERVAL LOGIC SYSTEM ---
-        let timerInterval = null;
-        let totalTimerSeconds = 0;
-
-        const btnStartTimer = document.getElementById('btnStartTimer');
-        const timerDisplay = document.getElementById('timerDisplay');
-        const timerInputArea = document.getElementById('timerInputArea');
-
-        btnStartTimer.addEventListener('click', () => {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-                btnStartTimer.textContent = "Resume Timer";
-            } else {
-                if (totalTimerSeconds === 0) {
-                    const m = parseInt(document.getElementById('timerMin').value) || 0;
-                    const s = parseInt(document.getElementById('timerSec').value) || 0;
-                    totalTimerSeconds = (m * 60) + s;
-                }
-
-                if (totalTimerSeconds <= 0) return;
-
-                timerInputArea.style.display = 'none';
-                timerDisplay.style.display = 'block';
-                btnStartTimer.textContent = "Pause";
-
-                timerInterval = setInterval(() => {
-                    totalTimerSeconds--;
-                    
-                    const displayM = String(Math.floor(totalTimerSeconds / 60)).padStart(2, '0');
-                    const displayS = String(totalTimerSeconds % 60).padStart(2, '0');
-                    timerDisplay.textContent = `${displayM}:${displayS}`;
-
-                    if (totalTimerSeconds <= 0) {
-                        clearInterval(timerInterval);
-                        timerInterval = null;
-                        triggerBeepAlert();
-                        alert("⏳ Countdown threshold reached!");
-                        resetTimerInterface();
-                    }
-                }, 1000);
-            }
-        });
-
-        document.getElementById('btnResetTimer').addEventListener('click', resetTimerInterface);
-
-        function resetTimerInterface() {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            totalTimerSeconds = 0;
-            timerInputArea.style.display = 'flex';
-            timerDisplay.style.display = 'none';
-            btnStartTimer.textContent = "Start Timer";
-            document.getElementById('timerMin').value = "0";
-            document.getElementById('timerSec').value = "30";
-        }
-
-        // --- TRACKING STOPWATCH FRAMEWORKS ---
-        let stopwatchInterval = null;
-        let stopwatchStartTime = 0;
-        let elapsedTime = 0;
-        let lapCount = 0;
-
-        const btnStartStopwatch = document.getElementById('btnStartStopwatch');
-        const btnLapStopwatch = document.getElementById('btnLapStopwatch');
-        const stopwatchDisplay = document.getElementById('stopwatchDisplay');
-        const lapBox = document.getElementById('lapBox');
-
-        btnStartStopwatch.addEventListener('click', () => {
-            if (stopwatchInterval) {
-                clearInterval(stopwatchInterval);
-                elapsedTime += Date.now() - stopwatchStartTime;
-                stopwatchInterval = null;
-                btnStartStopwatch.textContent = "Resume";
-                btnLapStopwatch.disabled = true;
-            } else {
-                stopwatchStartTime = Date.now();
-                stopwatchInterval = setInterval(updateStopwatchDisplay, 10);
-                btnStartStopwatch.textContent = "Pause";
-                btnLapStopwatch.disabled = false;
-            }
-        });
-
-        btnLapStopwatch.addEventListener('click', () => {
-            lapCount++;
-            const currentLapTime = stopwatchDisplay.textContent;
-            const lapRow = document.createElement('div');
-            lapRow.className = 'lap-item';
-            lapRow.innerHTML = `<span>Split Designation Lap ${lapCount}</span><strong>${currentLapTime}</strong>`;
-            lapBox.prepend(lapRow);
-        });
-
-        document.getElementById('btnResetStopwatch').addEventListener('click', () => {
-            clearInterval(stopwatchInterval);
-            stopwatchInterval = null;
-            elapsedTime = 0;
-            lapCount = 0;
-            stopwatchDisplay.textContent = "00:00.00";
-            btnStartStopwatch.textContent = "Start";
-            btnLapStopwatch.disabled = true;
-            lapBox.innerHTML = "";
-        });
-
-        function updateStopwatchDisplay() {
-            const totalMs = elapsedTime + (Date.now() - stopwatchStartTime);
-            const minutes = String(Math.floor(totalMs / 60000)).padStart(2, '0');
-            const seconds = String(Math.floor((totalMs % 60000) / 1000)).padStart(2, '0');
-            const centiseconds = String(Math.floor((totalMs % 1000) / 10)).padStart(2, '0');
-            
-            stopwatchDisplay.textContent = `${minutes}:${seconds}.${centiseconds}`;
-        }
-    </script>
+    function cdReset() {
+        clearInterval(cdInterval);
+        cdRunning = false; cdRemaining = 0;
+        document.getElementById('cdDisplay').textContent = '00:00';
+        document.getElementById('cdDisplay').classList.remove('urgent');
+        document.getElementById('cdStart').textContent = 'Start';
+        document.getElementById('cdStart').className = 'btn btn-green';
+    }
+</script>
 </body>
 </html>
