@@ -1,199 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online QR Code Generator | AI Learning Gym</title>
-    <meta name="description" content="Generate data-dense, static QR codes instantly. Free online QR generator for URLs, text, and profiles. Privacy-first local browser generation with PNG download.">
-    <meta name="keywords" content="free qr code generator, online qr creator, static qr code, download qr code, privacy safe qr">
-    <meta property="og:title" content="Free Online QR Code Generator | AI Learning Gym">
-    <meta property="og:description" content="Create scannable static QR codes instantly for free. Privacy-first, client-side processing with high-res PNG download.">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-        /* --- Core Layout & Styling Matrix --- */
-        :root {
-            --primary-color: #1a252f;
-            --accent-color: #3498db;
-            --text-dark: #2c3e50;
-            --text-muted: #64748b;
-            --card-border: #e2e8f0;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 {
-            font-size: 1.6rem;
-        }
-
-        header a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        /* --- Two-Column Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container {
-                grid-template-columns: 3fr 1fr;
-            }
-        }
-
-        /* --- AdSense Spaces --- */
-        .adsense-placeholder {
-            background-color: #eaeaea;
-            border: 2px dashed #bbb;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .top-banner-ad { width: 100%; height: 90px; }
-        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
-        .inline-content-ad { width: 100%; height: 250px; }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Interactive QR App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .tool-title {
-            margin-bottom: 15px;
-            color: var(--text-dark);
-            font-size: 1.4rem;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--text-dark);
-        }
-
-        .input-box {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .input-box:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        /* Flex wrap centering for QR placement */
-        .qr-output-area {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 25px;
-            padding: 20px;
-            background: #ffffff;
-            border: 1px dashed #cbd5e1;
-            border-radius: 6px;
-            min-height: 240px;
-        }
-
-        #qrcode img {
-            border: 10px solid white;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .download-btn {
-            display: none; /* Controlled by script */
-            margin-top: 20px;
-            background-color: #2ecc71;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.2s;
-        }
-
-        .download-btn:hover { background-color: #27ae60; }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
-    </style>
+    <title>Free QR Code Generator | Create QR Codes Instantly | AI Learning Gym</title>
+    <meta name="description" content="Generate QR codes for URLs, text, phone numbers, and more. Free online QR code maker — create, download, and share in seconds. No sign-up needed.">
+    <meta name="keywords" content="QR code generator, create QR code, free QR code, QR code maker, URL to QR code, QR code download">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -201,179 +14,284 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550"
-         crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; font-size: 0.95rem; }
+        .input-group textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.98rem; color: var(--text-dark); resize: vertical; height: 90px; }
+        .input-group textarea:focus { outline: none; border-color: var(--accent-color); }
+        .options-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .options-row { grid-template-columns: 1fr; } }
+        .opt-group label { display: block; font-weight: 600; color: var(--text-dark); font-size: 0.88rem; margin-bottom: 6px; }
+        .opt-group select, .opt-group input[type="color"] { width: 100%; padding: 7px 10px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.9rem; color: var(--text-dark); }
+        .opt-group input[type="color"] { height: 38px; cursor: pointer; }
+        .btn { padding: 11px 28px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .qr-output { display: none; text-align: center; margin-top: 20px; }
+        #qrcode { display: inline-block; padding: 16px; background: #fff; border: 1px solid var(--card-border); border-radius: 8px; }
+        #qrcode canvas, #qrcode img { display: block; }
+        .qr-actions { margin-top: 14px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .type-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+        .type-tab { padding: 7px 14px; border: 1px solid var(--card-border); border-radius: 20px; background: #f8fafc; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+        .type-tab.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free tools for businesses and creators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="adsense-placeholder top-banner-ad">
-                [ AdSense Space: Leaderboard Banner Unit ]
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+        <h2>QR Code Generator</h2>
+
+        <div class="type-tabs">
+            <button class="type-tab active" onclick="setType('url', this)">Website URL</button>
+            <button class="type-tab" onclick="setType('text', this)">Plain Text</button>
+            <button class="type-tab" onclick="setType('email', this)">Email</button>
+            <button class="type-tab" onclick="setType('phone', this)">Phone</button>
+            <button class="type-tab" onclick="setType('sms', this)">SMS</button>
+            <button class="type-tab" onclick="setType('wifi', this)">Wi-Fi</button>
+        </div>
+
+        <div class="input-group">
+            <label id="inputLabel">Website URL</label>
+            <textarea id="qrInput" placeholder="https://example.com"></textarea>
+        </div>
+
+        <div class="options-row">
+            <div class="opt-group">
+                <label>Size</label>
+                <select id="qrSize">
+                    <option value="128">Small (128px)</option>
+                    <option value="200" selected>Medium (200px)</option>
+                    <option value="300">Large (300px)</option>
+                    <option value="400">Extra Large (400px)</option>
+                </select>
             </div>
-
-            <section class="tool-wrapper">
-                <h2 class="tool-title">Instant Static QR Code Generator</h2>
-                
-                <div class="input-group">
-                    <label for="qr-text">Enter text, profile string, or target URL address:</label>
-                    <input type="text" id="qr-text" class="input-box" placeholder="https://example.com" value="https://ailearninggym.com">
-                </div>
-
-                <div class="qr-output-area">
-                    <div id="qrcode"></div>
-                    <button id="download-btn" class="download-btn">Download QR Code (PNG)</button>
-                </div>
-            </section>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Online QR Code Generator is an interactive, browser-native data rasterization workspace designed to translate plain text strings, profile links, and URL paths into high-density 2D barcodes instantly. Built for marketers, business operators, and engineering teams, this tool manages script matrices seamlessly entirely client-side. Operating strictly within your local browser layout sandbox, this application guarantees complete data isolation by rendering matrix points inside transient memory fields, keeping targets safe from remote servers or database caching loops.</p>
-
-                <h3>How to Operate the Local QR Code Workspace</h3>
-                <p>Formulating scannable static barcodes and exporting high-resolution graphic elements follows a non-invasive, lightweight workflow:</p>
-                <ol>
-                    <li><strong>Establish the Target Value:</strong> Type or paste your configuration payload, profile sequence, or web address directly into the configuration input field marked <em>Enter text, profile string, or target URL address:</em>.</li>
-                    <li><strong>Observe Live Matrix Generation:</strong> Watch the system recalculate layout fields on the fly. The front-end compiler captures keystroke inputs instantly, recalculating module sizes and updating the visual square arrangement inside the output viewport.</li>
-                    <li><strong>Test the Scannable Node:</strong> Point any smartphone camera lens or optical scanner directly at your device screen viewport to verify your encoded string destination before exporting the layout asset.</li>
-                    <li><strong>Download the Graphic File:</strong> Click the green <em>Download QR Code (PNG)</em> button to instantly convert the localized data matrix into a clear image asset downloaded directly to your local file system.</li>
-                </ol>
-
-                <h3>Core Matrix Compilation Variables Detailed</h3>
-                <p>This utility combines optimized client script libraries with standard canvas drawing modules to establish stable data nodes:</p>
-                <ul>
-                    <li><strong>High-Fidelity Reed-Solomon Error Correction:</strong> The generation engine locks values under a strict configuration profile (`CorrectLevel.H`). This integrates up to 30% structural data restoration margins inside the barcode pixels, keeping the code scannable even if the printed paper suffers tears, dirt, or partial coverage in physical environments.</li>
-                    <li><strong>Corner Anchor Alignment Grids:</strong> The generated vector patterns feature three prominent, identical tracking blocks in the outer borders. These establish orientation axes for optical scanners, letting mobile devices read information accurately from any rotational angle.</li>
-                    <li><strong>Dual DOM Image Data Routing:</strong> The app leverages a delayed verification routine that securely converts virtual canvas vectors or base64 image streams into downloadable file download anchors, letting you run your entire conversion flow completely offline.</li>
-                </ul>
-
-                <h2>Comprehensive Guide to Utilizing Static QR Codes Effectively</h2>
-                <p>Quick Response matrix layouts, commonly recognized as QR matrices, serve as visual data hubs that bridge physical marketing print setups seamlessly with digital target variables. By utilizing responsive matrix processing, business modules translate intricate alphanumeric links into fast, scannable nodes.</p>
-                
-                <h3>The Technical Breakdown: How Matrix QR Engines Function</h3>
-                <p>Every pixel square positioned inside a generated QR container functions as structured code data tracking frameworks. Traditional layout tracking components (the large distinctive anchor blocks visible in the perimeter corners) allow smart camera frames to instantly map data matrices from varying visual degree orientations. This structural data integrity minimizes scan failure anomalies.</p>
-
-                <div class="adsense-placeholder inline-content-ad">
-                    [ AdSense Space: Rectangular In-Article Unit ]
-                </div>
-
-                <h3>Strategic Applications for Marketing Media Channels</h3>
-                <p>Incorporating static data links into target physical mediums accelerates modern customer retention. Business models leverage browser canvas tools to establish clear routes for digital lunch configurations, vCard contact information packets, operational physical coordinates, or instant messaging prompts across global application channels.</p>
-                
-                <h3>Frequently Answered Technical Questions (FAQ)</h3>
-                <p><strong>Q: Will my generated custom QR matrix code expire?</strong><br>
-                A: No. Because our tool generates standard static parameters natively within your web browser canvas framework, the raw structure directly locks your input values into the structural squares. The image remains functional indefinitely as long as your destination link remains active.</p>
-                
-                <p><strong>Q: Why does a more extensive URL path string alter the pixel layout size?</strong><br>
-                A: Static generators must structurally incorporate every single letter code parameter directly into the graphic grid density matrix. To preserve processing speed ratios, consider utilizing condensed clean URL configurations when generating high-density physical codes.</p>
-                
-                <p><strong>Q: Can I encode secure corporate Wi-Fi credentials or plain-text keys using this tool?</strong><br>
-                A: Yes. Because this application operates on a strict client-side architecture, you can securely paste plain text strings, administrative facility notes, or raw Wi-Fi credential keys. The transformation runs exclusively in local system RAM, meaning your parameters are never transferred over the web or exposed to third parties.</p>
-
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free Online QR Code Generator</h3>
-                <p>Using our web-based QR Code Generator is straightforward and instantaneous. Simply input your target URL, explicit text objects, or configuration credentials into the panel above, adjust any custom block scaling to match your project requirements, and download your crisp matrix symbol layout instantly.</p>
-                
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 20px 0 8px 0;">Why Privacy-First Local QR Generation Matters</h3>
-                <p>Unlike traditional cloud utilities that transmit your proprietary URLs or custom text strings across remote databases, this utility executes entirely within your browser's local sandbox memory space. Your raw strings and data parameters are never cached or saved on our servers, ensuring total peace of mind.</p>
-            </section>
-
-        </main>
-
-        <aside>
-            <div class="adsense-placeholder sidebar-ad">
-                [ AdSense Space: Large Skyscraper (Sticky Display) ]
+            <div class="opt-group">
+                <label>Foreground color</label>
+                <input type="color" id="fgColor" value="#000000">
             </div>
-        </aside>
+            <div class="opt-group">
+                <label>Background color</label>
+                <input type="color" id="bgColor" value="#ffffff">
+            </div>
+        </div>
 
-    </div> <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="generate()">Generate QR Code</button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+        </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const qrTextInput = document.getElementById("qr-text");
-            const qrCodeContainer = document.getElementById("qrcode");
-            const downloadBtn = document.getElementById("download-btn");
+        <div class="qr-output" id="qrOutput">
+            <div id="qrcode"></div>
+            <div class="qr-actions">
+                <button class="btn btn-primary" onclick="downloadQR()">Download PNG</button>
+            </div>
+        </div>
+    </div>
 
-            // Initialize the structural QRCode object class
-            const qrCodeGenerator = new QRCode(qrCodeContainer, {
-                text: qrTextInput.value,
-                width: 200,
-                height: 200,
-                colorDark: "#1a252f",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            // Delay listener helper to extract absolute image output data sources
-            const updateDownloadLink = () => {
-                setTimeout(() => {
-                    const qrImgElement = qrCodeContainer.querySelector("img");
-                    if (qrImgElement && qrImgElement.src) {
-                        downloadBtn.style.display = "inline-block";
-                    } else {
-                        // Failover check for canvas matrix structures
-                        const qrCanvasElement = qrCodeContainer.querySelector("canvas");
-                        if (qrCanvasElement) {
-                            downloadBtn.style.display = "inline-block";
-                        }
-                    }
-                }, 350);
-            };
+    <div class="card">
+        <h2>About QR Codes</h2>
+        <p>A QR code (short for Quick Response code) is a type of barcode that stores information in a grid of black and white squares. Smartphones can read them instantly using the camera app — no special app required on most modern phones. QR codes are one of the fastest ways to share a link, contact, or information in the physical world.</p>
 
-            // Initial compilation check
-            updateDownloadLink();
+        <h3>What can a QR code store?</h3>
+        <ul>
+            <li><strong>Website URLs</strong> — link to any webpage, landing page, or online shop</li>
+            <li><strong>Plain text</strong> — a message, address, or any information you want to share</li>
+            <li><strong>Email addresses</strong> — open a pre-addressed email on scan</li>
+            <li><strong>Phone numbers</strong> — let people call or save your number with one scan</li>
+            <li><strong>SMS messages</strong> — pre-fill a text message for the user to send</li>
+            <li><strong>Wi-Fi credentials</strong> — let guests join your network without reading out a password</li>
+        </ul>
 
-            // Setup keystroke listener event sequences for real-time compilation
-            qrTextInput.addEventListener("input", (event) => {
-                const cleanValue = event.target.value.trim();
-                if (cleanValue !== "") {
-                    qrCodeGenerator.clear();
-                    qrCodeGenerator.makeCode(cleanValue);
-                    updateDownloadLink();
-                } else {
-                    downloadBtn.style.display = "none";
-                }
-            });
+        <h3>Common uses for QR codes</h3>
+        <ul>
+            <li><strong>Restaurant menus</strong> — link to a digital menu from a table card</li>
+            <li><strong>Business cards</strong> — add a QR code that links to your website or LinkedIn profile</li>
+            <li><strong>Marketing materials</strong> — print on flyers, posters, or packaging to drive traffic online</li>
+            <li><strong>Events</strong> — use QR codes for ticketing, check-in, or sharing event details</li>
+            <li><strong>Product packaging</strong> — link to tutorials, warranty registration, or product pages</li>
+        </ul>
 
-            // Attach download routing processing logic click events
-            downloadBtn.addEventListener("click", () => {
-                const qrImg = qrCodeContainer.querySelector("img");
-                let saveUrl = "";
-                
-                if (qrImg && qrImg.src) {
-                    saveUrl = qrImg.src;
-                } else {
-                    const qrCanvas = qrCodeContainer.querySelector("canvas");
-                    if (qrCanvas) {
-                        saveUrl = qrCanvas.toDataURL("image/png");
-                    }
-                }
+        <h3>How to make your QR code work better</h3>
+        <p>Keep the URL short — long links create denser QR codes that are harder to scan. If you're linking to a long URL, consider using a URL shortener first. Print QR codes at a reasonable size — anything smaller than about 1 inch square can be difficult for cameras to read. Always test your QR code before printing large quantities.</p>
 
-                if (saveUrl !== "") {
-                    const fallbackAnchor = document.createElement("a");
-                    fallbackAnchor.href = saveUrl;
-                    fallbackAnchor.download = "ailearninggym-qrcode.png";
-                    document.body.appendChild(fallbackAnchor);
-                    fallbackAnchor.click();
-                    document.body.removeChild(fallbackAnchor);
-                }
-            });
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Do QR codes expire?</h4>
+            <p>The QR code itself doesn't expire — it's just encoded data. However, if the link inside the QR code goes to a webpage that gets deleted or moved, the code will stop working. For permanent use, make sure the destination URL won't change.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is there a character limit for QR codes?</h4>
+            <p>QR codes can store up to about 4,000 characters, but the more data you include, the denser and harder-to-scan the code becomes. For best results, keep URLs and text short — under 150 characters ideally.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I use QR codes for commercial printing?</h4>
+            <p>Yes. QR codes generated here are yours to use for any purpose, including commercial printing on packaging, signage, business cards, or marketing materials. The generated image is a standard PNG file.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How do I scan a QR code?</h4>
+            <p>On most modern smartphones, just open your camera app and point it at the QR code — a notification will appear with the link. If that doesn't work, look for a QR scanner option in your camera settings, or download a free QR scanner app.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    let currentType = 'url';
+    const placeholders = {
+        url: 'https://example.com',
+        text: 'Enter any text you want to encode...',
+        email: 'email@example.com',
+        phone: '+1 555 123 4567',
+        sms: '+1 555 123 4567',
+        wifi: 'NetworkName:Password:WPA'
+    };
+    const labels = {
+        url: 'Website URL',
+        text: 'Plain Text',
+        email: 'Email Address',
+        phone: 'Phone Number',
+        sms: 'Phone Number (for SMS)',
+        wifi: 'Wi-Fi (format: SSID:Password:WPA)'
+    };
+
+    function setType(type, btn) {
+        currentType = type;
+        document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('inputLabel').textContent = labels[type];
+        document.getElementById('qrInput').placeholder = placeholders[type];
+        document.getElementById('qrInput').value = '';
+        clearOutput();
+    }
+
+    function buildData() {
+        const val = document.getElementById('qrInput').value.trim();
+        if (!val) return '';
+        switch(currentType) {
+            case 'url': return val.startsWith('http') ? val : 'https://' + val;
+            case 'email': return 'mailto:' + val;
+            case 'phone': return 'tel:' + val.replace(/\s/g,'');
+            case 'sms': return 'sms:' + val.replace(/\s/g,'');
+            case 'wifi': {
+                const parts = val.split(':');
+                return `WIFI:T:${parts[2]||'WPA'};S:${parts[0]||''};P:${parts[1]||''};;`;
+            }
+            default: return val;
+        }
+    }
+
+    function generate() {
+        const data = buildData();
+        if (!data) { alert('Please enter some content first.'); return; }
+        const size = parseInt(document.getElementById('qrSize').value);
+        const fg = document.getElementById('fgColor').value;
+        const bg = document.getElementById('bgColor').value;
+
+        const container = document.getElementById('qrcode');
+        container.innerHTML = '';
+
+        new QRCode(container, {
+            text: data,
+            width: size,
+            height: size,
+            colorDark: fg,
+            colorLight: bg,
+            correctLevel: QRCode.CorrectLevel.M
         });
-    </script>
+
+        document.getElementById('qrOutput').style.display = 'block';
+    }
+
+    function downloadQR() {
+        const canvas = document.querySelector('#qrcode canvas');
+        const img = document.querySelector('#qrcode img');
+        if (canvas) {
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        } else if (img) {
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = img.src;
+            link.click();
+        }
+    }
+
+    function clearOutput() {
+        document.getElementById('qrcode').innerHTML = '';
+        document.getElementById('qrOutput').style.display = 'none';
+    }
+
+    function clearAll() {
+        document.getElementById('qrInput').value = '';
+        clearOutput();
+    }
+</script>
 </body>
 </html>
