@@ -1,16 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Minimalist Online Pomodoro Timer &amp; Stopwatch | AI Learning Gym</title>
-    <meta name="description" content="Boost your productivity with our free, minimalist online Pomodoro timer and stopwatch. Track work intervals, customizable breaks, and precise lap times natively in your browser.">
-    <meta name="keywords" content="pomodoro timer, online stopwatch, productivity timer, focus timer, study clock, interval timer, lap tracker, free web timer">
-    <meta property="og:title" content="Free Minimalist Online Pomodoro Timer &amp; Stopwatch | AI Learning Gym">
-    <meta property="og:description" content="A dual-mode, ultra-clean productivity clock featuring customizable time intervals, automated break tracking, and a high-precision lap stopwatch.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ailearninggym.com/pomodoro-timer/">
-
+    <title>Free Pomodoro Timer | Focus & Productivity Timer | AI Learning Gym</title>
+    <meta name="description" content="Stay focused with a free Pomodoro timer. Work for 25 minutes, take a 5-minute break, and repeat. Customizable intervals, desktop notifications, and no sign-up needed.">
+    <meta name="keywords" content="pomodoro timer, focus timer, productivity timer, work timer, pomodoro technique, 25 minute timer, study timer">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -18,614 +14,315 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
-    <script type="application/ld:json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Pomodoro Focus Timer & Precision Stopwatch Engine",
-      "description": "A privacy-first, dual-mode productivity utility providing customizable countdown intervals, automated cycle markers, and millisecond lap splits running directly in client-side memory frameworks.",
-      "applicationCategory": "ProductivityApplication",
-      "operatingSystem": "Web Browser",
-      "browserRequirements": "Requires JavaScript support. Fully executed client-side.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "AI Learning Gym",
-        "url": "https://ailearninggym.com"
-      }
-    }
-    </script>
-
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
-            --success-color: #2ecc71;
-            --break-color: #e67e22;
+            --work-color: #e74c3c;
+            --break-color: #2ecc71;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
         header h1 { font-size: 2rem; margin-bottom: 8px; }
-        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 5px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
         header a:hover { color: var(--accent-color); }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { 
-                display: grid;
-                grid-template-columns: 3fr 1fr; 
-                align-items: start;
-            }
-        }
-
-        /* --- Live Ad Container Classes --- */
-        .ad-container {
-            margin: 15px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* --- Mode Switch Tabs --- */
-        .mode-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--card-border);
-            padding-bottom: 10px;
-        }
-
-        .tab-btn {
-            background: none;
-            border: none;
-            padding: 10px 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s;
-            border-radius: 6px;
-        }
-
-        .tab-btn:hover { color: var(--text-dark); background: #f8f9fa; }
-        .tab-btn.active { color: var(--accent-color); background: #e0f2fe; }
-
-        /* --- Tool Configuration Area --- */
-        .tool-wrapper {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            text-align: center;
-        }
-
-        /* --- Big Digital Clock Display --- */
-        .time-display {
-            font-size: 5.5rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            font-family: monospace, sans-serif;
-            margin: 10px 0;
-            letter-spacing: -2px;
-        }
-
-        .status-label {
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        /* Preset Button Groups */
-        .preset-group {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .preset-btn {
-            background: #fff;
-            border: 1px solid var(--card-border);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--text-dark);
-            transition: all 0.2s;
-        }
-        .preset-btn:hover { border-color: var(--accent-color); background: #f0fdf4; }
-
-        /* Control Trigger Action Buttons */
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .btn-main {
-            background-color: var(--success-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.2s;
-            min-width: 120px;
-        }
-        .btn-main:hover { background-color: #27ae60; }
-        .btn-main.paused { background-color: #f1c40f; }
-        .btn-main.paused:hover { background-color: #d4ac0d; }
-
-        .btn-secondary {
-            background-color: #e2e8f0;
-            color: var(--text-dark);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.2s;
-        }
-        .btn-secondary:hover { background-color: #cbd5e1; }
-
-        /* Stopwatch Laps Element */
-        .lap-box {
-            margin-top: 25px;
-            max-height: 200px;
-            overflow-y: auto;
-            border-top: 1px solid var(--card-border);
-            padding-top: 15px;
-            text-align: left;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .lap-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 12px;
-            background: #fff;
-            border: 1px solid var(--card-border);
-            border-radius: 4px;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-            font-family: monospace;
-        }
-
-        /* View Toggle Logic */
-        .view-panel { display: none; }
-        .view-panel.active { display: block; }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
-        .seo-section h3 { color: #34495e; margin: 25px 0 10px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; line-height: 1.6; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* Structured accordion list cards */
-        .faq-item { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent-color); }
-        .faq-item h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 5px; }
-        .faq-item p { margin-bottom: 0; color: #4a5568; font-size: 0.92rem; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #cbd5e1;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-            font-size: 0.9rem;
-        }
-        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        .container { max-width: 700px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .mode-tabs { display: flex; gap: 0; margin-bottom: 24px; border: 1px solid var(--card-border); border-radius: 8px; overflow: hidden; }
+        .mode-tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; background: #f8fafc; color: var(--text-muted); font-weight: 700; font-size: 0.9rem; border: none; transition: all 0.2s; }
+        .mode-tab.work.active { background: var(--work-color); color: #fff; }
+        .mode-tab.break.active { background: var(--break-color); color: #fff; }
+        .mode-tab.long.active { background: var(--accent-color); color: #fff; }
+        .clock-display { text-align: center; margin: 10px 0 28px; }
+        .clock-display .time { font-size: 6rem; font-weight: 700; color: var(--text-dark); letter-spacing: -2px; line-height: 1; }
+        .clock-display .mode-label { font-size: 1rem; color: var(--text-muted); margin-top: 8px; font-weight: 600; }
+        .progress-ring { display: flex; justify-content: center; margin-bottom: 20px; }
+        .progress-ring svg { transform: rotate(-90deg); }
+        .progress-ring circle { transition: stroke-dashoffset 1s linear; }
+        .btn-row { display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; }
+        .btn { padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 700; }
+        .btn-start { background: var(--work-color); color: #fff; font-size: 1.1rem; padding: 14px 40px; }
+        .btn-start.break-mode { background: var(--break-color); }
+        .btn-start.long-mode { background: var(--accent-color); }
+        .btn-reset { background: #e2e8f0; color: var(--text-dark); }
+        .btn-skip { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .session-counter { text-align: center; margin-bottom: 10px; }
+        .session-dots { display: flex; justify-content: center; gap: 8px; margin-top: 6px; }
+        .dot { width: 14px; height: 14px; border-radius: 50%; background: #e2e8f0; }
+        .dot.done { background: var(--work-color); }
+        .settings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--card-border); }
+        @media (max-width: 480px) { .settings-grid { grid-template-columns: 1fr; } }
+        .setting-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+        .setting-group input { width: 100%; padding: 8px 10px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); text-align: center; }
+        .notif-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 0.88rem; color: var(--text-dark); }
+        .notif-row input { width: 18px; height: 18px; accent-color: var(--accent-color); }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
         footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free productivity and focus tools</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>Precision Time &amp; Focus Workstation</h1>
-        <p>Utilize client-side interval blocks and millisecond split timing entirely inside your browser memory sandbox.</p>
-        <a href="/">&larr; Return to AI Learning Gym Hub</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-
-            <div class="mode-tabs">
-                <button id="tab-pomo" class="tab-btn active" onclick="switchView('pomo')">⏱️ Pomodoro Timer</button>
-                <button id="tab-stop" class="tab-btn" onclick="switchView('stop')">🏁 Precision Stopwatch</button>
-            </div>
-
-            <div id="panel-pomo" class="view-panel active">
-                <section class="tool-wrapper" aria-label="Pomodoro Tracking Module">
-                    <div id="pomo-status" class="status-label">Focus Session</div>
-                    <div id="pomo-time" class="time-display">25:00</div>
-                    
-                    <div class="preset-group">
-                        <button class="preset-btn" onclick="setPomoInterval(25, 'Focus Session')">Standard Focus (25m)</button>
-                        <button class="preset-btn" onclick="setPomoInterval(5, 'Short Break')">Short Break (5m)</button>
-                        <button class="preset-btn" onclick="setPomoInterval(15, 'Long Break')">Long Break (15m)</button>
-                        <button class="preset-btn" onclick="setPomoInterval(50, 'Extended Focus')">Deep Work (50m)</button>
-                    </div>
-
-                    <div class="controls">
-                        <button id="pomo-start-btn" class="btn-main" onclick="togglePomo()">Start</button>
-                        <button class="btn-secondary" onclick="resetPomo()">Reset</button>
-                    </div>
-                </section>
-            </div>
-
-            <div id="panel-stop" class="view-panel">
-                <section class="tool-wrapper" aria-label="Stopwatch Tracking Module">
-                    <div class="status-label">High-Precision Elapsed Time</div>
-                    <div id="stop-time" class="time-display">00:00.00</div>
-                    
-                    <div class="controls" style="margin-bottom: 15px;">
-                        <button id="stop-start-btn" class="btn-main" onclick="toggleStopwatch()">Start</button>
-                        <button id="stop-lap-btn" class="btn-secondary" onclick="recordLap()" disabled>Lap</button>
-                        <button class="btn-secondary" onclick="resetStopwatch()">Reset</button>
-                    </div>
-
-                    <div id="lap-records" class="lap-box" style="display: none;">
-                        <h4 style="margin-bottom: 8px; color: var(--text-dark); font-size: 0.9rem;">Split Laps Array:</h4>
-                        <div id="laps-container"></div>
-                    </div>
-                </section>
-            </div>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Minimalist Online Pomodoro Timer &amp; Stopwatch is a dual-mode, browser-native focus workstation engineered to deploy systematic study blocks and record high-precision millisecond lap metrics on the fly. Created for programmers, software developers, writers, and technical project trackers, this platform combines two distinct timekeeping mechanics into a single clean viewport. Operating completely client-side, the panel guarantees absolute privacy by processing all runtime counters and interval tracking arrays inside local temporary device memory stacks, keeping your focus logs completely hidden from remote databases.</p>
-
-                <h3>How to Operate the Focus and Timing Studio</h3>
-                <p>Navigating between your project management loops and checking performance benchmarks follows an accessible, dual-tab layout workflow:</p>
-                <ol>
-                    <li><strong>Isolate Your Working Mode:</strong> Click the configuration tab triggers below the main ad placement to swap smoothly between the <em>Pomodoro Timer</em> and the <em>Precision Stopwatch</em> panels.</li>
-                    <li><strong>Run the Pomodoro Focus Loop:</strong> Click any of the pre-configured interval buttons (Standard Focus, Short Break, Long Break, or Deep Work) to lock your target cycle. Click <em>Start</em> to initiate the countdown. When your session ends, the browser sounds an internal alert chime natively.</li>
-                    <li><strong>Operate the Split Stopwatch:</strong> Switch to the stopwatch view and click <em>Start</em> to activate the counter. Click the <em>Lap</em> button while the timer is running to append millisecond split points straight to the dynamic, reverse-chronological list container box below.</li>
-                    <li><strong>Reset or Pause:</strong> Click the primary green button at any time during a session to pause execution, or hit <em>Reset</em> to clear local memory buffers and restore the baseline clock readings.</li>
-                </ol>
-
-                <h3>Core Programmatic Timing Mechanics Detailed</h3>
-                <p>Our client-side processing core handles time tracking through advanced front-end script components:</p>
-                <ul>
-                    <li><strong>Hardware Delta Time Calculations:</strong> To prevent the tracking delays common in standard browser loops when tabs are minimized, the stopwatch measures differences against absolute hardware timestamps. It calculates elapsed durations by subtracting your initial click time from the current moment, ensuring millisecond precision even when running in the background.</li>
-                    <li><strong>Web Audio Oscillator Synthesis:</strong> When focus blocks complete, the interface triggers your browser's native Web Audio API, synthesizing an explicit sine-wave tone (A5 pitch at 880Hz) entirely in memory without loading external sound files.</li>
-                    <li><strong>Dynamic Page Title Syncing:</strong> The Pomodoro countdown synchronizes its live timer strings directly with the browser tab's title element (`document.title`), allowing you to monitor your remaining focus time easily while multitasking across other windows.</li>
-                </ul>
-
-                <h2>The Cognitive Science Behind Time Tracking and the Pomodoro Framework</h2>
-                <p>Time is arguably the most valuable finite resource for engineers, writers, and knowledge workers. Managing it efficiently requires structured focus strategies. Our browser-based suite bridges two separate execution models: structured cyclical intervals via the Pomodoro Technique and unconstrained runtime monitoring via our mechanical Precision Stopwatch tool.</p>
-                
-                <h3>Maximizing Creative Focus with the Pomodoro Strategy</h3>
-                <p>Developed by Francesco Cirillo in the late 1980s, the Pomodoro Technique uses a simple concept: split your workday into clear 25-minute intervals (called "Pomodoros") separated by brief 5-minute mental breaks. This cyclical pattern avoids cognitive fatigue, sustains executive attention spans, and prevents standard workday burnout. Running this process inside a sandboxed client-side application means zero distraction prompts or configuration popups break your focused workflow.</p>
-
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2027849186057550"
-                         data-ad-slot="1105246416"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-
-                <h3>High-Precision Performance Benchmarking via Stopwatch Architecture</h3>
-                <p>While structured intervals keep your study and writing routines on track, precise runtime benchmarking is vital for mechanical assessment, competitive sports tracking, or technical code execution analysis. Our stopwatch engine handles millisecond tracking entirely in your local browser window. This setup lets you isolate specific step speeds and monitor performance vectors cleanly without sending telemetry signals back to a remote host.</p>
-                
-                <h3>How to Structure a Master Pomodoro Workflow</h3>
-                <p>To implement standard productivity interval mapping across technical sprints, maintain this chronological sequence loop:</p>
-                <ol>
-                    <li><strong>Initiate Focus Cycle:</strong> Select a target operational prompt and engage the 25-minute countdown card. Commit exclusively to a singular task outline.</li>
-                    <li><strong>Execute Short Recovery Block:</strong> When the system audio alert sounds, immediately transition to a 5-minute passive recovery interval. Clear your screen and rest your eyes.</li>
-                    <li><strong>Complete the Matrix Loop:</strong> Repeat this sequential chain four times. Once four focus blocks are finalized, reward your nervous system with a longer 15 or 30-minute breakout rest block.</li>
-                </ol>
-
-                <h3>Frequently Answered Productivity Questions (FAQ)</h3>
-                <div class="faq-item">
-                    <h4>Q: Does this web application continue calculating tracking records if I switch background tabs?</h4>
-                    <p>A: Yes. The timing loops rely on absolute system timestamps rather than unstable variable tick delays. This ensures your timers stay completely accurate down to the millisecond, even if your browser reduces background tab performance to save memory.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h4>Q: How does this tool sound an alert when an active countdown completes?</h4>
-                    <p>A: The interface utilizes your browser's native client-side Web Audio API to synthesize a clean chime. This removes the need to load bloated external media assets, keeping the code highly responsive and completely private.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Q: Why is a client-side layout better than traditional online timers?</h4>
-                    <p>A: Traditional portals utilize extensive server synchronization frameworks that constantly log active tracking statistics, location parameters, and background usage configurations. AI Learning Gym isolates operations inside your hardware sandbox, preventing data leaks or external tracking scripts from interrupting deep focus cycles.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Q: Can I adjust the core time values manually beyond the built-in interval buttons?</h4>
-                    <p>A: This version centers around minimalist productivity guidelines, locking focus blocks to standard structural intervals (5m, 15m, 25m, 50m) to minimize setup friction and keep you focused on deep work. For broader custom countdown selections, you can use our sister Time Studio application hub.</p>
-                </div>
-            </section>
-
-        </main>
-
-        <aside class="sidebar-ad" style="position: sticky; top: 20px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
-
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.85rem; color: #cbd5e1;">
-            <a href="/privacy.html">Privacy Policy</a> | 
-            <a href="/about.html">About Us</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> | 
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+    <div class="card">
+        <h2>Pomodoro Timer</h2>
+        <div class="mode-tabs">
+            <button class="mode-tab work active" onclick="switchMode('work')">Focus</button>
+            <button class="mode-tab break" onclick="switchMode('break')">Short Break</button>
+            <button class="mode-tab long" onclick="switchMode('long')">Long Break</button>
+        </div>
 
-    <script>
-        /* --- State Variable Allocation --- */
-        let activeView = 'pomo';
-        
-        // Pomodoro Core Elements
-        let pomoWorker = null;
-        let pomoSecondsLeft = 1500; // 25 Minutes Default
-        let pomoDurationTotal = 1500;
-        let currentPomoLabel = 'Focus Session';
-        
-        // Stopwatch Core Elements
-        let stopwatchWorker = null;
-        let swElapsedTime = 0; 
-        let swLastTimestamp = 0;
-        let lapCounter = 0;
+        <div class="clock-display">
+            <div class="time" id="timeDisplay">25:00</div>
+            <div class="mode-label" id="modeLabel">Focus Session</div>
+        </div>
 
-        /* --- View Toggle Logic Configuration --- */
-        // FIXED: Declared cleanly in global context to fix execution exceptions
-        window.switchView = function(target) {
-            activeView = target;
-            document.querySelectorAll('.mode-tabs .tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
+        <div class="btn-row">
+            <button class="btn btn-reset" onclick="reset()">Reset</button>
+            <button class="btn btn-start" id="startBtn" onclick="toggleTimer()">Start</button>
+            <button class="btn btn-skip" onclick="skip()">Skip →</button>
+        </div>
 
-            if(target === 'pomo') {
-                document.getElementById('tab-pomo').classList.add('active');
-                document.getElementById('panel-pomo').classList.add('active');
-            } else {
-                document.getElementById('tab-stop').classList.add('active');
-                document.getElementById('panel-stop').classList.add('active');
-            }
-        };
+        <div class="session-counter">
+            <div style="font-size:0.85rem; color:var(--text-muted);">Completed sessions today</div>
+            <div class="session-dots" id="sessionDots">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+        </div>
 
-        /* ================= POMODORO TIMER SCRIPT LOGIC ================= */
-        window.setPomoInterval = function(minutes, label) {
-            resetPomo();
-            pomoSecondsLeft = minutes * 60;
-            pomoDurationTotal = minutes * 60;
-            currentPomoLabel = label;
-            document.getElementById('pomo-status').innerText = currentPomoLabel;
-            renderPomoDisplay();
-        };
+        <div class="settings-grid">
+            <div class="setting-group">
+                <label>Focus (min)</label>
+                <input type="number" id="workMins" value="25" min="1" max="90" onchange="applySettings()">
+            </div>
+            <div class="setting-group">
+                <label>Short Break (min)</label>
+                <input type="number" id="breakMins" value="5" min="1" max="30" onchange="applySettings()">
+            </div>
+            <div class="setting-group">
+                <label>Long Break (min)</label>
+                <input type="number" id="longMins" value="15" min="1" max="60" onchange="applySettings()">
+            </div>
+        </div>
+        <div class="notif-row">
+            <input type="checkbox" id="notifCheck">
+            <label for="notifCheck">Enable desktop notifications when a session ends</label>
+        </div>
+    </div>
 
-        function renderPomoDisplay() {
-            const mins = Math.floor(pomoSecondsLeft / 60);
-            const secs = pomoSecondsLeft % 60;
-            const formattedTime = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-            document.getElementById('pomo-time').innerText = formattedTime;
-            document.title = `(${formattedTime}) Pomodoro & Stopwatch | AI Learning Gym`;
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+        <h2>What is the Pomodoro Technique?</h2>
+        <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. The idea is simple: work with full focus for 25 minutes (one "Pomodoro"), then take a 5-minute break. After four focus sessions, take a longer break of 15–30 minutes. Then repeat.</p>
+        <p>The name comes from the tomato-shaped kitchen timer Cirillo used as a student — "pomodoro" is Italian for tomato. The technique works because it creates urgency (you only have 25 minutes), forces regular breaks to avoid burnout, and makes large tasks feel manageable by breaking them into defined chunks.</p>
+
+        <h3>Why does it work so well?</h3>
+        <ul>
+            <li><strong>Time becomes concrete</strong> — "I'll work on this for one Pomodoro" is much easier to commit to than "I'll work on this for a while."</li>
+            <li><strong>It fights procrastination</strong> — knowing you only have to focus for 25 minutes makes it much easier to start.</li>
+            <li><strong>Breaks prevent burnout</strong> — regular short breaks keep your mind fresh and sustain attention over a long day.</li>
+            <li><strong>It reveals where time actually goes</strong> — tracking your sessions shows you how long things really take vs. how long you think they take.</li>
+        </ul>
+
+        <h3>Tips for getting the most out of each session</h3>
+        <ul>
+            <li>Before starting the timer, decide exactly what you'll work on. Don't start vague — "work on project" is less effective than "write the introduction section."</li>
+            <li>Close distracting tabs and put your phone face down. One Pomodoro of real focus beats two hours of half-attention.</li>
+            <li>If an unrelated thought pops up, write it down quickly and return to the task. Don't let interruptions break the session.</li>
+            <li>Actually use your breaks — get up, move around, look away from the screen. Scrolling your phone during a break is not a real break.</li>
+        </ul>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>What if 25 minutes feels too short or too long?</h4>
+            <p>Adjust it to fit your work style. Some people prefer 50-minute focus sessions with 10-minute breaks (sometimes called the "52/17" method). Others find 15 minutes works better for tasks that require frequent context switching. Use the settings above to customize your intervals.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Should I stop mid-Pomodoro if I finish my task early?</h4>
+            <p>If you finish early, use the remaining time to review what you did, improve it, or prepare for the next task. Don't switch to something completely different — the boundary of the Pomodoro is part of what makes the technique work.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What if I'm interrupted during a session?</h4>
+            <p>The classic Pomodoro rule is that an interrupted Pomodoro doesn't count — you reset and start fresh. For real-world use, use your judgment: a brief unavoidable interruption is okay, but if you get pulled into a 10-minute conversation, restart the timer.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How many Pomodoros should I aim for in a day?</h4>
+            <p>Most people can sustain about 8–12 quality Pomodoros (4–6 hours of focused work) in a full workday. More than that often leads to diminishing returns. Tracking your daily Pomodoro count can be a healthy reality check on how much deep work you're actually doing.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    let currentMode = 'work';
+    let running = false;
+    let interval = null;
+    let totalSeconds = 25 * 60;
+    let remaining = totalSeconds;
+    let sessionsCompleted = 0;
+    const SESSIONS_BEFORE_LONG = 4;
+
+    const modeSettings = {
+        work: { label: 'Focus Session', btnClass: 'btn-start', color: 'var(--work-color)' },
+        break: { label: 'Short Break', btnClass: 'btn-start break-mode', color: 'var(--break-color)' },
+        long: { label: 'Long Break', btnClass: 'btn-start long-mode', color: 'var(--accent-color)' }
+    };
+
+    function getMinutes(mode) {
+        if (mode === 'work') return parseInt(document.getElementById('workMins').value) || 25;
+        if (mode === 'break') return parseInt(document.getElementById('breakMins').value) || 5;
+        return parseInt(document.getElementById('longMins').value) || 15;
+    }
+
+    function switchMode(mode) {
+        if (running) { clearInterval(interval); running = false; }
+        currentMode = mode;
+        const mins = getMinutes(mode);
+        totalSeconds = mins * 60;
+        remaining = totalSeconds;
+        updateDisplay();
+        document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector(`.mode-tab.${mode}`).classList.add('active');
+        document.getElementById('startBtn').className = `btn ${modeSettings[mode].btnClass}`;
+        document.getElementById('startBtn').textContent = 'Start';
+        document.getElementById('modeLabel').textContent = modeSettings[mode].label;
+    }
+
+    function applySettings() {
+        if (!running) {
+            const mins = getMinutes(currentMode);
+            totalSeconds = mins * 60;
+            remaining = totalSeconds;
+            updateDisplay();
         }
+    }
 
-        window.togglePomo = function() {
-            const btn = document.getElementById('pomo-start-btn');
-            if(pomoWorker) {
-                // Handle Active Pausing Events
-                clearInterval(pomoWorker);
-                pomoWorker = null;
-                btn.innerText = 'Resume';
-                btn.classList.add('paused');
-            } else {
-                // Engage Runtime Counting Array
-                btn.innerText = 'Pause';
-                btn.classList.remove('paused');
-                pomoWorker = setInterval(() => {
-                    if(pomoSecondsLeft > 0) {
-                        pomoSecondsLeft--;
-                        renderPomoDisplay();
-                    } else {
-                        triggerSystemChime();
-                        resetPomo();
-                        alert(`${currentPomoLabel} has completed successfully!`);
-                    }
-                }, 1000);
-            }
-        };
+    function updateDisplay() {
+        const m = Math.floor(remaining / 60);
+        const s = remaining % 60;
+        const str = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        document.getElementById('timeDisplay').textContent = str;
+        document.title = running ? `${str} — ${modeSettings[currentMode].label}` : 'Pomodoro Timer | AI Learning Gym';
+    }
 
-        window.resetPomo = function() {
-            clearInterval(pomoWorker);
-            pomoWorker = null;
-            pomoSecondsLeft = pomoDurationTotal;
-            const btn = document.getElementById('pomo-start-btn');
-            btn.innerText = 'Start';
-            btn.classList.remove('paused');
-            renderPomoDisplay();
-            document.title = "Free Minimalist Online Pomodoro Timer & Stopwatch | AI Learning Gym";
-        };
-
-        /* ================= STOPWATCH SCRIPT LOGIC ================= */
-        function renderStopwatchDisplay() {
-            const totalMs = swElapsedTime;
-            const mins = Math.floor(totalMs / 60000);
-            const secs = Math.floor((totalMs % 60000) / 1000);
-            const ms = Math.floor((totalMs % 1000) / 10);
-            
-            document.getElementById('stop-time').innerText = 
-                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${ms.toString().padStart(2, '0')}`;
+    function toggleTimer() {
+        if (running) {
+            clearInterval(interval);
+            running = false;
+            document.getElementById('startBtn').textContent = 'Resume';
+        } else {
+            running = true;
+            document.getElementById('startBtn').textContent = 'Pause';
+            interval = setInterval(() => {
+                remaining--;
+                updateDisplay();
+                if (remaining <= 0) {
+                    clearInterval(interval);
+                    running = false;
+                    sessionDone();
+                }
+            }, 1000);
         }
+    }
 
-        window.toggleStopwatch = function() {
-            const btn = document.getElementById('stop-start-btn');
-            const lapBtn = document.getElementById('stop-lap-btn');
-            
-            if(stopwatchWorker) {
-                // Halt Runtime Performance Counters
-                clearInterval(stopwatchWorker);
-                stopwatchWorker = null;
-                btn.innerText = 'Resume';
-                btn.classList.add('paused');
-                lapBtn.disabled = true;
-            } else {
-                // Initialize System Clock Sync
-                btn.innerText = 'Pause';
-                btn.classList.remove('paused');
-                lapBtn.disabled = false;
-                
-                swLastTimestamp = Date.now();
-                stopwatchWorker = setInterval(() => {
-                    const now = Date.now();
-                    swElapsedTime += (now - swLastTimestamp);
-                    swLastTimestamp = now;
-                    renderStopwatchDisplay();
-                }, 30); // Native 30ms interface tick frequency
-            }
-        };
-
-        window.recordLap = function() {
-            if(!stopwatchWorker) return;
-            lapCounter++;
-            const container = document.getElementById('laps-container');
-            document.getElementById('lap-records').style.display = 'block';
-            
-            const currentTimestampText = document.getElementById('stop-time').innerText;
-            const div = document.createElement('div');
-            div.className = 'lap-item';
-            div.innerHTML = `<span>Lap ${lapCounter.toString().padStart(2, '0')}</span> <span>${currentTimestampText}</span>`;
-            container.insertBefore(div, container.firstChild); // Prepend lap record to list
-        };
-
-        window.resetStopwatch = function() {
-            clearInterval(stopwatchWorker);
-            stopwatchWorker = null;
-            swElapsedTime = 0;
-            lapCounter = 0;
-            
-            document.getElementById('stop-start-btn').innerText = 'Start';
-            document.getElementById('stop-start-btn').classList.remove('paused');
-            document.getElementById('stop-lap-btn').disabled = true;
-            document.getElementById('laps-container').innerHTML = '';
-            document.getElementById('lap-records').style.display = 'none';
-            renderStopwatchDisplay();
-        };
-
-        /* ================= CLIENT-SIDE NATIVE WEB AUDIO API CHIME ================= */
-        function triggerSystemChime() {
-            try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContext) return;
-                const ctx = new AudioContext();
-                
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(880, ctx.currentTime); // Pure A5 high clarity note frequency
-                
-                gain.gain.setValueAtTime(0.5, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6); // Exponential decay loop
-                
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                
-                osc.start();
-                osc.stop(ctx.currentTime + 0.6);
-            } catch (e) {
-                console.error("Audio API synthesis block blocked by user interaction profiles.", e);
-            }
+    function sessionDone() {
+        if (currentMode === 'work') {
+            sessionsCompleted++;
+            updateDots();
+            notify('Focus session complete! Time for a break.');
+            const nextMode = sessionsCompleted % SESSIONS_BEFORE_LONG === 0 ? 'long' : 'break';
+            switchMode(nextMode);
+        } else {
+            notify('Break over! Ready to focus?');
+            switchMode('work');
         }
+    }
+
+    function reset() {
+        clearInterval(interval);
+        running = false;
+        remaining = totalSeconds = getMinutes(currentMode) * 60;
+        document.getElementById('startBtn').textContent = 'Start';
+        updateDisplay();
+    }
+
+    function skip() {
+        clearInterval(interval);
+        running = false;
+        sessionDone();
+    }
+
+    function updateDots() {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((d, i) => d.classList.toggle('done', i < (sessionsCompleted % SESSIONS_BEFORE_LONG || (sessionsCompleted % SESSIONS_BEFORE_LONG === 0 && sessionsCompleted > 0 ? SESSIONS_BEFORE_LONG : 0))));
+    }
+
+    function notify(msg) {
+        const wantNotif = document.getElementById('notifCheck').checked;
+        if (!wantNotif) return;
+        if (Notification.permission === 'granted') {
+            new Notification('Pomodoro Timer', { body: msg, icon: '/logo.png' });
+        } else if (Notification.permission !== 'denied') {
+            Notification.requestPermission().then(p => {
+                if (p === 'granted') new Notification('Pomodoro Timer', { body: msg });
+            });
+        }
+    }
+
+    document.getElementById('notifCheck').addEventListener('change', function() {
+        if (this.checked && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+    });
+
+    updateDisplay();
+</script>
 </body>
 </html>
