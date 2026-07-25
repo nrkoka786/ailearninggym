@@ -1,222 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Image Resizer & Format Converter Sandbox | AI Learning Gym</title>
-    <meta name="description" content="Resize and compress your images entirely in your browser canvas. Scale width and height, maintain aspect ratio, and convert formats to JPEG, PNG, or WebP.">
-    <meta name="keywords" content="free online image resizer, scale image pixels, crop and compress photos, convert to webp, client side graphic scaler">
-    <meta property="og:title" content="Free Image Resizer & Format Converter Sandbox | AI Learning Gym">
-    <meta property="og:description" content="Scale image dimensions and optimize file formats locally using client-side rendering loops. Zero server uploads.">
-    <style>
-        /* --- Core Layout & Styling Matrix --- */
-        :root {
-            --primary-color: #1a252f;
-            --accent-color: #3498db;
-            --text-dark: #2c3e50;
-            --text-muted: #64748b;
-            --card-border: #e2e8f0;
-            --success-color: #2ecc71;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- AdSense Spaces --- */
-        .adsense-placeholder {
-            background-color: #eaeaea;
-            border: 2px dashed #bbb;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .top-banner-ad { width: 100%; height: 90px; }
-        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
-        .inline-content-ad { width: 100%; height: 250px; }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Image Sandbox Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        /* Drag & Drop Area */
-        .upload-box {
-            border: 3px dashed #cbd5e1;
-            padding: 30px;
-            text-align: center;
-            background: #ffffff;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: border-color 0.2s;
-        }
-
-        .upload-box:hover { border-color: var(--accent-color); }
-        .upload-box p { color: var(--text-muted); font-weight: 600; margin-top: 5px; }
-
-        #file-input { display: none; }
-
-        /* Workspace Settings Grid */
-        .workspace-grid {
-            display: none; /* Controlled by script */
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-top: 25px;
-        }
-
-        @media (min-width: 600px) {
-            .workspace-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        .preview-pane {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
-        }
-
-        .preview-pane img {
-            max-width: 100%;
-            max-height: 350px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .settings-panel {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .input-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        .input-field-group {
-            flex: 1;
-        }
-
-        .input-field-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 4px;
-        }
-
-        .num-input, .select-input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 0.95rem;
-        }
-
-        .num-input:focus, .select-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        .checkbox-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .download-btn {
-            background-color: var(--success-color);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-            transition: background 0.2s;
-        }
-        .download-btn:hover { background-color: #27ae60; }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-    </style>
+    <title>Free Image Resizer | Resize Images Online | AI Learning Gym</title>
+    <meta name="description" content="Resize any image to exact dimensions instantly in your browser. Free online image resizer — no upload to server, no account needed. Download as PNG or JPG.">
+    <meta name="keywords" content="image resizer, resize image online, image resize tool, crop image, scale image, photo resizer free">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -224,274 +14,278 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .drop-zone { border: 2px dashed var(--card-border); border-radius: 8px; padding: 40px 20px; text-align: center; cursor: pointer; margin-bottom: 20px; transition: border-color 0.2s; }
+        .drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent-color); background: #f0f8ff; }
+        .drop-zone p { margin: 0; color: var(--text-muted); }
+        .drop-zone strong { color: var(--text-dark); font-size: 1rem; }
+        .drop-zone .icon { font-size: 2.5rem; margin-bottom: 10px; }
+        .options-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .options-row { grid-template-columns: 1fr 1fr; } }
+        .opt-group label { display: block; font-weight: 600; color: var(--text-dark); font-size: 0.88rem; margin-bottom: 6px; }
+        .opt-group input, .opt-group select { width: 100%; padding: 9px 10px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.95rem; color: var(--text-dark); }
+        .lock-ratio { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-size: 0.9rem; color: var(--text-dark); font-weight: 600; }
+        .lock-ratio input { width: 18px; height: 18px; accent-color: var(--accent-color); }
+        .btn { padding: 11px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .preview-area { display: none; margin-top: 20px; }
+        .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .preview-grid { grid-template-columns: 1fr; } }
+        .preview-box { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 12px; text-align: center; }
+        .preview-box p { font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 0; }
+        .preview-box img { max-width: 100%; max-height: 200px; border-radius: 4px; }
+        .preview-box canvas { max-width: 100%; max-height: 200px; border-radius: 4px; }
+        .info-badge { display: inline-block; background: var(--primary-color); color: #fff; border-radius: 4px; padding: 2px 8px; font-size: 0.78rem; margin-top: 6px; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free image tools for designers and creators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="adsense-placeholder top-banner-ad">
-                [ AdSense Space: Leaderboard Banner Unit ]
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+        <h2>Image Resizer</h2>
+
+        <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+            <div class="icon">🖼️</div>
+            <strong>Click to upload or drag &amp; drop an image</strong>
+            <p>Supports JPG, PNG, GIF, WebP — processed locally, never uploaded</p>
+        </div>
+        <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="loadImage(this.files[0])">
+
+        <div id="controls" style="display:none">
+            <div class="options-row">
+                <div class="opt-group">
+                    <label>Width (px)</label>
+                    <input type="number" id="newWidth" min="1" oninput="widthChanged()">
+                </div>
+                <div class="opt-group">
+                    <label>Height (px)</label>
+                    <input type="number" id="newHeight" min="1" oninput="heightChanged()">
+                </div>
+                <div class="opt-group">
+                    <label>Format</label>
+                    <select id="format">
+                        <option value="image/png">PNG</option>
+                        <option value="image/jpeg">JPG</option>
+                        <option value="image/webp">WebP</option>
+                    </select>
+                </div>
             </div>
-
-            <section class="tool-wrapper">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark);">Client-Side Image Resizer &amp; Sandbox</h2>
-                
-                <div class="upload-box" id="drop-zone" onclick="document.getElementById('file-input').click()">
-                    <svg width="48" height="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" style="color: var(--accent-color); margin: 0 auto 10px auto;">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-                    </svg>
-                    <p>Click to select or drag &amp; drop an image here</p>
-                    <span style="font-size: 0.8rem; color: var(--text-muted);">Supports PNG, JPG, WebP</span>
-                    <input type="file" id="file-input" accept="image/*">
-                </div>
-
-                <div class="workspace-grid" id="workspace">
-                    <div class="preview-pane">
-                        <img id="image-preview" src="" alt="Source upload preview">
-                    </div>
-
-                    <div class="settings-panel">
-                        <h3 style="color: var(--text-dark); font-size: 1.1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px;">Dimension Configurations</h3>
-                        
-                        <div class="input-row">
-                            <div class="input-field-group">
-                                <label for="width-input">Width (px)</label>
-                                <input type="number" id="width-input" class="num-input">
-                            </div>
-                            <div class="input-field-group">
-                                <label for="height-input">Height (px)</label>
-                                <input type="number" id="height-input" class="num-input">
-                            </div>
-                        </div>
-
-                        <div class="checkbox-row">
-                            <input type="checkbox" id="aspect-ratio" checked>
-                            <label for="aspect-ratio">Maintain Aspect Ratio</label>
-                        </div>
-
-                        <h3 style="color: var(--text-dark); font-size: 1.1rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; margin-top: 10px;">Format Compression</h3>
-
-                        <div class="input-field-group">
-                            <label for="format-select">Export Format</label>
-                            <select id="format-select" class="select-input">
-                                <option value="image/jpeg">JPEG (.jpg)</option>
-                                <option value="image/png">PNG (.png)</option>
-                                <option value="image/webp">WebP (.webp)</option>
-                            </select>
-                        </div>
-
-                        <button id="download-btn" class="download-btn">Process &amp; Download Image</button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Image Resizer &amp; Format Converter Sandbox is an interactive, browser-native graphics processing workstation engineered to alter raw image dimensions, lock aspect ratios, and handle instant format compressions. Designed specifically for content creators, web developers, and graphic specialists, this tool processes images locally within your browser sandbox layout. This client-side execution model offers total privacy and isolation for your media assets by handling pixel data transitions directly inside transient system memory layers without server-side caching or uploads.</p>
-
-                <h3>How to Operate the Image Resizer Sandbox</h3>
-                <p>Scaling raw photography files or generating compressed, web-ready graphic targets follows a streamlined process. Execute these steps to handle your assets:</p>
-                <ol>
-                    <li><strong>Import the Source Asset:</strong> Click inside the dotted <em>Upload Box</em> to open your local system selector or drag-and-drop your target file (PNG, JPG, or WebP) directly onto the surface area. The app reads file attributes instantly and opens your dashboard workspace grid.</li>
-                    <li><strong>Configure Pixel Dimensions:</strong> Type your target resolution metrics into the <em>Width</em> or <em>Height</em> box. If the <em>Maintain Aspect Ratio</em> setting is enabled, the program calculates the proportional dimensions automatically to eliminate stretching.</li>
-                    <li><strong>Select Your Export Format:</strong> Click the format select drop-down menu to pick your export MIME-type target: lossy JPEG, lossless transparent PNG, or highly optimized WebP format.</li>
-                    <li><strong>Process and Download:</strong> Click the green <em>Process &amp; Download Image</em> button. The client engine renders your changes instantly and downloads the optimized file directly to your machine.</li>
-                </ol>
-
-                <h3>Core Canvas Processing Mechanics Detailed</h3>
-                <p>This image editor combines robust HTML5 browser features to run safe, non-invasive graphic modifications:</p>
-                <ul>
-                    <li><strong>HTML5 Canvas Rasterization:</strong> When you execute a resize operation, the script initializes a virtual, offscreen canvas layout, maps your custom width/height properties, and applies high-fidelity interpolation curves via the browser's hardware-accelerated 2D context drawing engine.</li>
-                    <li><strong>Asynchronous FileReader Streaming:</strong> The drag-and-drop handler utilizes an automated `FileReader` pipeline to translate local binary files directly into base64 data streams, letting you scale media assets entirely offline.</li>
-                    <li><strong>Flexible MIME-Type Encoding:</strong> The encoder queries your browser's native compression parameters through the `toDataURL` method, letting you optimize images down to low data-footprint files on the fly.</li>
-                </ul>
-
-                <h2>Optimizing Digital Images: Core Principles of Image Scaling</h2>
-                <p>Welcome to the image compression sandbox at AI Learning Gym. In the modern visual web workspace, serving raw camera file configurations degrades browser paint speed horizons and drives bounce counts high. Modifying width arrays and tuning file formats before deploying assets guarantees quick rendering speeds across mobile browsers.</p>
-                
-                <h3>Lossy vs. Lossless Digital Transformations Explained</h3>
-                <p>Altering file types shifts graphic file structures drastically. Standard PNG processing provides lossless layout structural retention, locking sharp pixel data lines safely inside your canvas asset, which is excellent for diagrams or sharp brand marks. Conversely, formats like JPEG and optimized WebP employ lossy algorithms, stripping un-scanned visual micro-details to yield incredibly small asset download sizes.</p>
-
-                <div class="adsense-placeholder inline-content-ad">
-                    [ AdSense Space: Rectangular In-Article Unit ]
-                </div>
-
-                <h3>Why Preserving Aspect Proportions Prevents Graphic Distortions</h3>
-                <p>Forced image skewing occurs when file width lines scale entirely independent of height frameworks. If proportions fall out of sync, graphic assets warp noticeably. Our workspace calculator keeps structural dimensions locked automatically, scaling adjacent layout rules uniformly to protect standard photographic balance completely.</p>
-                
-                <h3>Frequently Answered Compression Questions (FAQ)</h3>
-                <p><strong>Q: Are my high-res media uploads transmitted to your cloud databases?</strong><br>
-                A: No. Privacy is absolute within our utility network. The engine parses files locally via your web rendering viewport. The canvas structures rewrite pixels straight inside your local RAM cache environment.</p>
-                
-                <p><strong>Q: Which export variation serves web properties most effectively?</strong><br>
-                A: For modern websites, WebP provides the highest quality-to-compression ratios available. It cuts image data footprints down significantly compared to old JPEG frameworks without losing structural crispness.</p>
-
-                <p><strong>Q: Can I re-upload the same file multiple times to run sequential compression steps?</strong><br>
-                A: While you can re-process images through the resizer sandbox repeatedly, running lossy encoders (like JPEG or WebP) over an already compressed file introduces compression artifacts and degrades image clarity. For the crispest output, always load the high-resolution original source asset before configuring new size targets.</p>
-
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free Online Image Resizer</h3>
-                <p>Scaling your graphics with our Image Resizer requires zero technical editing skills. Simply drop your image asset into the target configuration area, specify your desired width and height dimensions, maintain your preferred aspect ratio constraints, and export your optimized graphic file.</p>
-                
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">Zero Server-Side Image Caching</h3>
-                <p>Most online graphic tools upload your photos directly onto cloud servers to render changes, creating a serious data liability. Our platform relies completely on client-side canvas rendering loops. Your pictures remain strictly on your local device, bypassing cloud storage entirely.</p>
-            </section>
-
-        </main>
-
-        <aside>
-            <div class="adsense-placeholder sidebar-ad">
-                [ AdSense Space: Large Skyscraper (Sticky Display) ]
+            <div class="lock-ratio">
+                <input type="checkbox" id="lockRatio" checked>
+                <label for="lockRatio">Lock aspect ratio</label>
             </div>
-        </aside>
+            <div class="btn-row">
+                <button class="btn btn-primary" onclick="resizeImage()">Resize &amp; Download</button>
+                <button class="btn btn-secondary" onclick="resetSize()">Reset to Original</button>
+                <button class="btn btn-secondary" onclick="clearImage()">Clear</button>
+            </div>
+        </div>
 
-    </div> <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+        <div class="preview-area" id="previewArea">
+            <div class="preview-grid">
+                <div class="preview-box">
+                    <img id="originalPreview" src="" alt="Original">
+                    <p>Original</p>
+                    <span class="info-badge" id="origInfo"></span>
+                </div>
+                <div class="preview-box">
+                    <canvas id="outputCanvas"></canvas>
+                    <p>Preview (resized)</p>
+                    <span class="info-badge" id="newInfo"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const dropZone = document.getElementById("drop-zone");
-            const fileInput = document.getElementById("file-input");
-            const workspace = document.getElementById("workspace");
-            const imgPreview = document.getElementById("image-preview");
-            
-            const widthInput = document.getElementById("width-input");
-            const heightInput = document.getElementById("height-input");
-            const aspectCheck = document.getElementById("aspect-ratio");
-            const formatSelect = document.getElementById("format-select");
-            const downloadBtn = document.getElementById("download-btn");
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            let sourceImage = new Image();
-            let nativeRatio = 1;
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This image resizer lets you change the dimensions of any photo or graphic right in your browser. Upload an image, enter the new width or height, and download the resized version — all without sending your file anywhere. It's completely private and works offline once the page is loaded.</p>
 
-            // Drag Over States
-            dropZone.addEventListener("dragover", (e) => {
-                e.preventDefault();
-                dropZone.style.borderColor = "var(--accent-color)";
-            });
+        <h3>Common image sizes to know</h3>
+        <ul>
+            <li><strong>Profile photos</strong> — most platforms use 400×400 or 500×500 pixels for profile pictures</li>
+            <li><strong>Facebook cover</strong> — 820×312 pixels is the recommended cover photo size</li>
+            <li><strong>Instagram posts</strong> — square (1080×1080), portrait (1080×1350), or landscape (1080×566)</li>
+            <li><strong>Twitter/X header</strong> — 1500×500 pixels</li>
+            <li><strong>LinkedIn banner</strong> — 1584×396 pixels</li>
+            <li><strong>Email headers</strong> — typically 600px wide, height varies</li>
+            <li><strong>Thumbnails</strong> — YouTube uses 1280×720, many blogs use 300×200 or 400×300</li>
+        </ul>
 
-            dropZone.addEventListener("dragleave", () => {
-                dropZone.style.borderColor = "#cbd5e1";
-            });
+        <h3>PNG vs JPG vs WebP — which should I choose?</h3>
+        <p><strong>PNG</strong> is best for images with text, logos, or graphics that need sharp edges and transparency. File sizes are larger but quality is lossless. <strong>JPG</strong> is ideal for photographs — it compresses well and produces smaller files with minimal visible quality loss. <strong>WebP</strong> is a modern format that offers better compression than both PNG and JPG, but it's not supported by all older software. For web use, WebP is an excellent choice if your platform supports it.</p>
 
-            dropZone.addEventListener("drop", (e) => {
-                e.preventDefault();
-                dropZone.style.borderColor = "#cbd5e1";
-                if (e.dataTransfer.files.length > 0) {
-                    processFile(e.dataTransfer.files[0]);
-                }
-            });
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is my image uploaded to a server?</h4>
+            <p>No. Your image is processed entirely in your browser using the HTML5 Canvas API. The file never leaves your device. This means it also works offline once the page has loaded.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Will resizing reduce the image quality?</h4>
+            <p>Reducing an image (making it smaller) generally looks fine. Enlarging an image beyond its original dimensions (upscaling) will reduce quality — you may notice blurriness or pixelation. For best results, always start with the largest available version of the image.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I resize animated GIFs?</h4>
+            <p>This tool resizes images using a canvas, which captures only the first frame of a GIF. If you need to resize an animated GIF while preserving the animation, you'll need a dedicated GIF editing tool.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is there a maximum file size?</h4>
+            <p>There's no hard limit set by this tool, but very large images (over 20MB) may process slowly depending on your device. Most standard photos and graphics resize quickly.</p>
+        </div>
+    </div>
 
-            fileInput.addEventListener("change", (e) => {
-                if (e.target.files.length > 0) {
-                    processFile(e.target.files[0]);
-                }
-            });
+</div>
 
-            function processFile(file) {
-                if (!file.type.startsWith("image/")) {
-                    alert("Please drop a valid image file configuration!");
-                    return;
-                }
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
 
-                const fileReader = new FileReader();
-                fileReader.onload = (event) => {
-                    sourceImage.src = event.target.result;
-                };
-                fileReader.readAsDataURL(file);
-            }
+<script>
+    let img = new Image();
+    let origW = 0, origH = 0;
 
-            sourceImage.onload = () => {
-                // Map out initial resolution vectors
-                widthInput.value = sourceImage.width;
-                heightInput.value = sourceImage.height;
-                nativeRatio = sourceImage.width / sourceImage.height;
+    // Drag and drop
+    const dz = document.getElementById('dropZone');
+    dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag-over'); });
+    dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+    dz.addEventListener('drop', e => {
+        e.preventDefault(); dz.classList.remove('drag-over');
+        if (e.dataTransfer.files[0]) loadImage(e.dataTransfer.files[0]);
+    });
 
-                imgPreview.src = sourceImage.src;
-                dropZone.style.display = "none";
-                workspace.style.display = "grid";
+    function loadImage(file) {
+        if (!file || !file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+            img.onload = () => {
+                origW = img.naturalWidth;
+                origH = img.naturalHeight;
+                document.getElementById('newWidth').value = origW;
+                document.getElementById('newHeight').value = origH;
+                document.getElementById('originalPreview').src = e.target.result;
+                document.getElementById('origInfo').textContent = `${origW} × ${origH}`;
+                updatePreview();
+                document.getElementById('controls').style.display = 'block';
+                document.getElementById('previewArea').style.display = 'block';
             };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
 
-            // Aspect locking event loops
-            widthInput.addEventListener("input", () => {
-                if (aspectCheck.checked && nativeRatio) {
-                    heightInput.value = Math.round(widthInput.value / nativeRatio);
-                }
-            });
+    function widthChanged() {
+        if (!document.getElementById('lockRatio').checked) return;
+        const w = parseInt(document.getElementById('newWidth').value);
+        if (w && origW) document.getElementById('newHeight').value = Math.round(w * origH / origW);
+        updatePreview();
+    }
 
-            heightInput.addEventListener("input", () => {
-                if (aspectCheck.checked && nativeRatio) {
-                    widthInput.value = Math.round(heightInput.value * nativeRatio);
-                }
-            });
+    function heightChanged() {
+        if (!document.getElementById('lockRatio').checked) return;
+        const h = parseInt(document.getElementById('newHeight').value);
+        if (h && origH) document.getElementById('newWidth').value = Math.round(h * origW / origH);
+        updatePreview();
+    }
 
-            // Process & Download Image
-            downloadBtn.addEventListener("click", () => {
-                const targetWidth = parseInt(widthInput.value);
-                const targetHeight = parseInt(heightInput.value);
+    function updatePreview() {
+        const w = parseInt(document.getElementById('newWidth').value) || origW;
+        const h = parseInt(document.getElementById('newHeight').value) || origH;
+        const canvas = document.getElementById('outputCanvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        document.getElementById('newInfo').textContent = `${w} × ${h}`;
+    }
 
-                if (isNaN(targetLoss) || isNaN(targetGain) || targetLoss <= 0 || targetGain <= 0) {
-                    alert("Please enter valid width and height dimension bounds.");
-                    return;
-                }
+    function resizeImage() {
+        const w = parseInt(document.getElementById('newWidth').value);
+        const h = parseInt(document.getElementById('newHeight').value);
+        if (!w || !h) return;
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        const fmt = document.getElementById('format').value;
+        const ext = fmt === 'image/jpeg' ? 'jpg' : fmt === 'image/webp' ? 'webp' : 'png';
+        const quality = fmt === 'image/jpeg' ? 0.92 : undefined;
+        const link = document.createElement('a');
+        link.download = `resized-${w}x${h}.${ext}`;
+        link.href = canvas.toDataURL(fmt, quality);
+        link.click();
+    }
 
-                const canvas = document.createElement('canvas');
-                canvas.width = targetWidth;
-                cardHeight = targetHeight;
-                const ctx = canvas.getContext('2d');
+    function resetSize() {
+        document.getElementById('newWidth').value = origW;
+        document.getElementById('newHeight').value = origH;
+        updatePreview();
+    }
 
-                // Draw user asset onto canvas with customized dimensions
-                ctx.drawImage(document.getElementById('color-preview') ? document.getElementById('color-input') : imgElementPlaceholder(), 0, 0, targetLoss, targetGain);
-
-                const mimeType = document.getElementById('activityLevel').value || 'image/jpeg';
-                const quality = 0.92; // balanced optimization matrix point
-
-                // Dynamic client-side download anchor pipeline execution
-                const downloadLink = document.createElement('a');
-                downloadLink.download = `resized-gym-asset-${Date.now()}.${mimeType.split('/')[1]}`;
-                downloadLink.href = canvas.toDataURL(mimeType, quality);
-                downloadLink.click();
-            });
-
-            // Workaround logic block mapping for custom canvas references
-            let imgElement = new Image();
-            let fileAssetRef = null;
-
-            window.processFileToBase64 = function() {
-                const selector = document.getElementById('binary-file-selector');
-                if (!selector.files || selector.files.length === 0) return;
-                selectedFile = selector.files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('text-base64').value = e.target.result;
-                };
-                reader.readAsDataURL(selectedFile);
-            };
-
-            // Fix implementation parameters inside core rendering loop definitions
-            window.executeBMICalculation = function() { return false; };
-            
-            // Re-bind the core calculation button execution cleanly to active canvas triggers
-            window.executeBMICalculation = function() { /* fallback legacy binding */ };
-        });
-
-        // Safe re-route for core rendering logic components
-        function processFileToBase64() { return false; }
-    </script>
+    function clearImage() {
+        document.getElementById('controls').style.display = 'none';
+        document.getElementById('previewArea').style.display = 'none';
+        document.getElementById('fileInput').value = '';
+        origW = origH = 0;
+    }
+</script>
 </body>
 </html>
