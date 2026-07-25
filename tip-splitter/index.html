@@ -1,14 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Instant Tip Calculator &amp; Bill Splitter | AI Learning Gym</title>
-    <meta name="description" content="Calculate restaurant tips and split dining bills instantly. Free, mobile-friendly online tip splitter with real-time percentage adjustments.">
+    <title>Free Tip Calculator & Bill Splitter | AI Learning Gym</title>
+    <meta name="description" content="Calculate restaurant tips and split the bill evenly among friends. Free, instant tip calculator — works offline, no data stored.">
     <meta name="keywords" content="tip calculator, bill splitter, restaurant tip tool, split bill online, group dining calculator">
-    <meta property="og:title" content="Free Instant Tip Calculator &amp; Bill Splitter | AI Learning Gym">
-    <meta property="og:description" content="Calculate exact gratuity shares and group billing tallies across custom party sizes using a fast, local browser sandbox.">
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,385 +14,208 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
-            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- Live Ad Container Classes --- */
-        .ad-container {
-            margin: 15px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- Calculator App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .tip-input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1.1rem;
-        }
-
-        .tip-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        /* Slider Controls */
-        .slider-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .tip-slider {
-            flex-grow: 1;
-            height: 8px;
-            cursor: pointer;
-        }
-
-        .slider-val {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            min-width: 50px;
-            text-align: right;
-        }
-
-        /* Results Matrix Presentation */
-        .results-matrix {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 25px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        @media (min-width: 550px) {
-            .results-matrix { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .result-card {
-            text-align: center;
-            padding: 10px;
-        }
-
-        .result-card:not(:last-child) {
-            border-bottom: 1px dashed var(--card-border);
-        }
-
-        @media (min-width: 550px) {
-            .result-card:not(:last-child) {
-                border-bottom: none;
-                border-right: 1px dashed var(--card-border);
-            }
-        }
-
-        .result-title {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            font-weight: bold;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-        }
-
-        .result-val {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .result-val.highlight {
-            color: var(--success-color);
-        }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin: 16px 0 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; font-size: 0.95rem; }
+        .input-group input[type="number"] { width: 100%; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); }
+        .input-group input[type="range"] { width: 100%; margin-top: 6px; accent-color: var(--accent-color); }
+        .tip-label { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+        .tip-value { font-size: 1.2rem; font-weight: 700; color: var(--accent-color); text-align: center; margin-bottom: 6px; }
+        .results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+        @media (max-width: 600px) { .results { grid-template-columns: 1fr; } }
+        .result-card { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 16px; text-align: center; }
+        .result-label { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; }
+        .result-value { font-size: 1.6rem; font-weight: 700; color: var(--text-dark); }
+        .result-card.highlight { background: var(--primary-color); border-color: var(--primary-color); }
+        .result-card.highlight .result-label { color: #94a3b8; }
+        .result-card.highlight .result-value { color: #fff; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; font-size: 1rem; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free browser tools for everyday calculations</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-2027849186057550"
-                     data-ad-slot="1105246416"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            <section class="tool-wrapper">
-                <h2 style="margin-bottom: 20px; color: var(--text-dark);">Instant Tip Calculator &amp; Bill Splitter</h2>
-                
-                <div class="input-group">
-                    <label for="bill-total">Base Bill Amount ($):</label>
-                    <input type="number" id="bill-total" class="tip-input" placeholder="0.00" min="0" step="0.01" oninput="calculateBillSplit()">
-                </div>
+    <!-- CALCULATOR CARD -->
+    <div class="card">
+        <h2>Tip Calculator & Bill Splitter</h2>
 
-                <div class="input-group">
-                    <label for="tip-percent">Tip Percentage:</label>
-                    <div class="slider-wrapper">
-                        <input type="range" id="tip-percent" class="tip-slider" min="0" max="50" value="15" oninput="updateSliderLabel(); calculateBillSplit();">
-                        <span id="slider-label" class="slider-val">15%</span>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label for="party-size">Number of People splitting:</label>
-                    <input type="number" id="party-size" class="tip-input" value="1" min="1" step="1" oninput="calculateBillSplit()">
-                </div>
-
-                <div class="results-matrix">
-                    <div class="result-card">
-                        <div class="result-title">Total Tip Amount</div>
-                        <div class="result-val" id="out-total-tip">$0.00</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-title">Combined Total Bill</div>
-                        <div class="result-val" id="out-grand-total">$0.00</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-title">Each Person Owes</div>
-                        <div class="result-val highlight" id="out-per-person">$0.00</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Instant Tip Calculator &amp; Bill Splitter is an interactive financial dashboard built to compute dining gratuities and divide group check expenses instantly inside your client browser viewport. Engineered for group diners, banquet managers, and service staff tracking tips, this responsive panel structures billing outputs automatically. Operating completely client-side, the utility guarantees total database isolation by processing billing values entirely inside temporary local memory spaces, keeping your transaction parameters completely private.</p>
-
-                <h3>How to Operate the Instant Bill Splitter Panels</h3>
-                <p>Calculating custom gratuity values and allocating fractional party shares follows an easy, non-invasive data workflow:</p>
-                <ol>
-                    <li><strong>Enter the Base Bill:</strong> Input your pre-tax or post-tax check total directly into the entry box marked <em>Base Bill Amount ($)</em>. </li>
-                    <li><strong>Adjust Gratuity Percentage:</strong> Scroll the interactive <em>Tip Percentage</em> range slider left or right to dynamically map targeted service levels (supports settings from 0% up to 50%).</li>
-                    <li><strong>Define Party Size Parameters:</strong> Enter the absolute count of individuals sharing the check into the input field marked <em>Number of People splitting</em>.</li>
-                    <li><strong>Review the Live Output Matrix:</strong> Observe the display grid cards, which update instantly on every single keystroke or slider adjustment to reveal total tip amounts, the combined grand total bill, and the precise share each person owes.</li>
-                </ol>
-
-                <h3>Core Arithmetic Framework Detailed</h3>
-                <p>This group financial tool utilizes clean mathematical rounding filters to deliver precise billing allocations safely:</p>
-                <ul>
-                    <li><strong>Real-Time Recalculation Loops:</strong> The engine bounds key inputs via frontend listeners, instantly processing changes across all variables concurrently to prevent broken totals or manual recalculation loops.</li>
-                    <li><strong>Floating-Point Error Prevention:</strong> Standard computer processing loops often create slight rounding anomalies when dividing fractional numbers. This tool uses exact decimal constraints (`toFixed(2)`) to make sure every individual split adds up perfectly to match the final receipt.</li>
-                    <li><strong>Local Sandbox Memory Caching:</strong> Your entry values, party counts, and calculated shares exist strictly within temporary DOM allocations and clear instantly when you refresh the page or exit the tab view.</li>
-                </ul>
-
-                <h2>The Social and Economic Logic of Gratuity Calculations</h2>
-                <p>Computing table totals, coordinating standard service percentages, and dividing group bills at restaurant tables can break up a great evening out. Using a fast, browser-based tool allows group dinners to handle calculations accurately without awkward delays or math errors.</p>
-                
-                <h3>Understanding standard tip rates across industries</h3>
-                <p>Gratuity percentages differ based on the type of service, geographic location, and group size. While a 15% to 20% baseline is standard for sit-down dining services in many regions, specialized catering setups or large holiday parties might use distinct internal calculations or mandatory house service charges. Running numbers through a slider lets you see different service levels instantly.</p>
-
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2027849186057550"
-                         data-ad-slot="1105246416"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-
-                <h3>Preventing Check Math Errors and Floating-Point Issues</h3>
-                <p>Calculations handled manually on scraps of paper or back-of-the-envelope estimations frequently introduce errors, especially when dealing with tax allocations or uneven split distributions. Our system uses database-grade rounding logic built into the script matrix. This ensures numbers align exactly to the cent ($0.01$), making sure every split adds up cleanly to match the final receipt total.</p>
-                
-                <h3>Frequently Answered Financial Utility Questions (FAQ)</h3>
-                <p><strong>Q: Does this tool store any payment information or dining logs?</strong><br>
-                A: No. Privacy and data security are core across our network tools. Your bill amounts, party sizes, and tip configurations stay strictly on your local device. All calculation routines occur inside your temporary browser cache layer.</p>
-                
-                <p><strong>Q: Can I use this calculator offline if the restaurant has poor reception?</strong><br>
-                A: Yes. Once the initial dashboard page loads on your browser canvas, the underlying JavaScript code block requires zero external database updates. It will continue calculating instantly even if you lose network access during your dinner.</p>
-
-                <p><strong>Q: Should I calculate my tip percentage values from the pre-tax bill or the post-tax bill total?</strong><br>
-                A: Standard social protocol varies by region, but most traditional guidelines suggest calculating gratuity based on the pre-tax subtotal. This ensures you tip specifically for the core food and hospitality services provided, rather than adding a premium on localized government tax fees.</p>
-            </section>
-
-        </main>
-
-        <aside style="position: sticky; top: 20px;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2027849186057550"
-                 data-ad-slot="1105246416"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
-
-    </div> 
-
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <div class="footer-links" style="margin-top: 15px;">
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
+        <div class="input-group">
+            <label for="billAmount">Bill Amount ($)</label>
+            <input type="number" id="billAmount" placeholder="e.g. 85.00" min="0" step="0.01">
         </div>
-    </footer>
 
-    <script>
-        function updateSliderLabel() {
-            const percentage = document.getElementById("tip-percent").value;
-            document.getElementById("slider-label").innerText = percentage + "%";
-        }
+        <div class="input-group">
+            <label for="tipPercent">Tip Percentage</label>
+            <div class="tip-value" id="tipDisplay">18%</div>
+            <input type="range" id="tipPercent" min="0" max="50" value="18">
+            <div class="tip-label"><span>0%</span><span>25%</span><span>50%</span></div>
+        </div>
 
-        function calculateBillSplit() {
-            const rawBill = parseFloat(document.getElementById("bill-total").value);
-            const tipPercent = parseFloat(document.getElementById("tip-percent").value);
-            let partySize = parseInt(document.getElementById("party-size").value);
+        <div class="input-group">
+            <label for="numPeople">Number of People</label>
+            <input type="number" id="numPeople" value="1" min="1" step="1">
+        </div>
 
-            // Establish fallbacks for empty or invalid parameter sets
-            if (isNaN(rawBill) || rawBill <= 0) {
-                resetOutputs();
-                return;
-            }
-            if (isNaN(partySize) || partySize < 1) {
-                partySize = 1;
-            }
+        <div class="results">
+            <div class="result-card">
+                <div class="result-label">Total Tip</div>
+                <div class="result-value" id="totalTip">$0.00</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Total Bill</div>
+                <div class="result-value" id="totalBill">$0.00</div>
+            </div>
+            <div class="result-card highlight">
+                <div class="result-label">Each Person Owes</div>
+                <div class="result-value" id="perPerson">$0.00</div>
+            </div>
+        </div>
+    </div>
 
-            // Core arithmetic processing block
-            const calculatedTotalTip = rawBill * (tipPercent / 100);
-            const combinedGrandTotal = rawBill + calculatedTotalTip;
-            const absoluteSharePerPerson = combinedGrandTotal / partySize;
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            // Render matching formatted currency strings
-            document.getElementById("out-total-tip").innerText = formatCurrency(calculatedTotalTip);
-            document.getElementById("out-grand-total").innerText = formatCurrency(combinedGrandTotal);
-            document.getElementById("out-per-person").innerText = formatCurrency(absoluteSharePerPerson);
-        }
+    <!-- CONTENT CARD -->
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This tip calculator makes it easy to figure out how much to tip at a restaurant and how to split the bill evenly among a group. Enter the bill amount, choose a tip percentage, and set how many people are splitting — the totals update instantly.</p>
 
-        function formatCurrency(num) {
-            return "$" + num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        }
+        <h3>How to use it</h3>
+        <ol>
+            <li><strong>Enter the bill amount</strong> — type in your total check (before or after tax, your choice).</li>
+            <li><strong>Set the tip percentage</strong> — drag the slider to your desired tip. 15% is standard, 18–20% is common for good service, 25% for exceptional.</li>
+            <li><strong>Enter the number of people</strong> — the calculator divides everything evenly and shows each person's share.</li>
+        </ol>
 
-        function resetOutputs() {
-            document.getElementById("out-total-tip").innerText = "$0.00";
-            document.getElementById("out-grand-total").innerText = "$0.00";
-            document.getElementById("out-per-person").innerText = "$0.00";
-        }
-    </script>
+        <h3>What tip percentage should you leave?</h3>
+        <p>Tipping customs vary by country and type of service, but here are common US guidelines:</p>
+        <ul>
+            <li><strong>15%</strong> — adequate service at a sit-down restaurant</li>
+            <li><strong>18–20%</strong> — good service, the most common range</li>
+            <li><strong>25%+</strong> — exceptional service or a way to show extra appreciation</li>
+            <li><strong>10% or less</strong> — poor service (though many still tip 15% minimum)</li>
+            <li><strong>Takeout</strong> — tipping is optional; 10–15% is appreciated</li>
+            <li><strong>Delivery</strong> — 15–20% is standard, more in bad weather</li>
+        </ul>
+
+        <h3>Should you tip on the pre-tax or post-tax amount?</h3>
+        <p>Most etiquette guides suggest tipping on the pre-tax subtotal since you're tipping for the service, not the government tax. That said, many people tip on the post-tax total for simplicity — the difference is usually only a dollar or two either way.</p>
+
+        <h3>Tips for splitting bills fairly</h3>
+        <p>Splitting a restaurant bill evenly works well when everyone ordered similar items. If one person had significantly more (or less) than others, it helps to itemize first and then split the tip evenly. Most people find a clean round-up easier — for example, if the calculator says $23.47 each, everyone putting in $24 leaves a little extra and avoids coin-counting.</p>
+
+        <h3>Frequently asked questions</h3>
+
+        <div class="faq-item">
+            <h4>Does this tool store my data?</h4>
+            <p>No. Everything runs in your browser. No data is sent to any server — your bill amounts and calculations stay completely private on your device.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I use this without an internet connection?</h4>
+            <p>Yes — once the page loads, the calculator works entirely offline. Handy if you're at a restaurant with poor signal.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What if the bill doesn't split evenly?</h4>
+            <p>The calculator rounds to the nearest cent. In practice, just round everyone up to the nearest dollar — it's simpler and the extra cents go to a slightly better tip.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is a mandatory service charge the same as a tip?</h4>
+            <p>No. Some restaurants automatically add a gratuity (usually 18–20%) for large groups. Check your bill first — if a service charge is already included, you don't need to add another tip on top unless you want to.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How much should I tip for bad service?</h4>
+            <p>Many people still tip 10–15% even for poor service, since servers often share tips with kitchen staff and busboys who had nothing to do with the problem. If the service was genuinely bad, speaking to a manager is usually more effective than leaving nothing.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    const billInput = document.getElementById('billAmount');
+    const tipSlider = document.getElementById('tipPercent');
+    const tipDisplay = document.getElementById('tipDisplay');
+    const peopleInput = document.getElementById('numPeople');
+    const totalTipEl = document.getElementById('totalTip');
+    const totalBillEl = document.getElementById('totalBill');
+    const perPersonEl = document.getElementById('perPerson');
+
+    function calculate() {
+        const bill = parseFloat(billInput.value) || 0;
+        const tip = parseInt(tipSlider.value) || 0;
+        const people = parseInt(peopleInput.value) || 1;
+
+        const tipAmount = bill * (tip / 100);
+        const total = bill + tipAmount;
+        const perPerson = total / people;
+
+        tipDisplay.textContent = tip + '%';
+        totalTipEl.textContent = '$' + tipAmount.toFixed(2);
+        totalBillEl.textContent = '$' + total.toFixed(2);
+        perPersonEl.textContent = '$' + perPerson.toFixed(2);
+    }
+
+    billInput.addEventListener('input', calculate);
+    tipSlider.addEventListener('input', calculate);
+    peopleInput.addEventListener('input', calculate);
+
+    calculate();
+</script>
 </body>
 </html>
