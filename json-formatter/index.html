@@ -1,14 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online JSON Validator, Formatter &amp; Beautifier | AI Learning Gym</title>
-    <meta name="description" content="Validate, format, and beautify raw JSON data strings. High-fidelity syntax highlighting tree view with structural linting and minification settings.">
-    <meta name="keywords" content="online json formatter, json validator, beautify json array, minify json string, debug json schema api">
-    <meta property="og:title" content="Online JSON Validator, Formatter &amp; Beautifier | AI Learning Gym">
-    <meta property="og:description" content="Audit, prettify, or compress your programmatic configuration strings completely inside your client-side browser window.">
-
+    <title>Free JSON Formatter & Validator | Beautify or Minify JSON | AI Learning Gym</title>
+    <meta name="description" content="Format, validate, and minify JSON instantly. Free online JSON formatter with syntax highlighting — runs in your browser, nothing is stored.">
+    <meta name="keywords" content="JSON formatter, JSON validator, beautify JSON, minify JSON, JSON viewer, JSON pretty print">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,391 +14,197 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
-            --success-color: #2ecc71;
-            --danger-color: #e74c3c;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
-        header h1 { font-size: 1.6rem; }
-        header a { color: var(--accent-color); text-decoration: none; font-size: 0.9rem; font-weight: bold; }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { grid-template-columns: 3fr 1fr; }
-        }
-
-        /* --- AdSense Spaces --- */
-        .adsense-placeholder {
-            background-color: #eaeaea;
-            border: 2px dashed #bbb;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .top-banner-ad { width: 100%; height: 90px; }
-        .sidebar-ad { width: 100%; height: 600px; position: sticky; top: 20px; }
-        .inline-content-ad { width: 100%; height: 250px; }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- JSON Parser App Frame --- */
-        .tool-wrapper {
-            background: #f8f9fa;
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .workspace-split {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        @media (min-width: 768px) {
-            .workspace-split { grid-template-columns: 1fr 1fr; }
-        }
-
-        .editor-header {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-        }
-
-        .json-textarea {
-            width: 100%;
-            height: 350px;
-            padding: 12px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            resize: vertical;
-            background: #ffffff;
-        }
-
-        .json-textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        /* Visual Output Code Viewport */
-        .json-output-view {
-            width: 100%;
-            height: 350px;
-            padding: 12px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            overflow: auto;
-            background: #282c34;
-            color: #abb2bf;
-            white-space: pre-wrap;
-        }
-
-        /* Syntax Highlighter Tokens */
-        .json-key { color: #e06c75; font-weight: bold; }
-        .json-string { color: #98c379; }
-        .json-number { color: #d19a66; }
-        .json-boolean { color: #c678dd; }
-        .json-null { color: #5c6370; font-style: italic; }
-
-        .btn-panel {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .action-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-        .action-btn:hover { background-color: var(--accent-color); }
-
-        .clear-btn { background-color: #e74c3c; }
-        .clear-btn:hover { background-color: #c0392b; }
-
-        .status-banner {
-            padding: 12px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: none;
-        }
-        .status-success { background-color: #d4edda; color: #155724; border-left: 5px solid var(--success-color); }
-        .status-error { background-color: #f8d7da; color: #721c24; border-left: 5px solid var(--danger-color); font-family: monospace; white-space: pre-wrap; }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            border-top: 2px solid #edf2f7;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 12px; font-size: 1.5rem; }
-        .seo-section h3 { color: #34495e; margin: 20px 0 8px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+        @media (max-width: 650px) { .editor-grid { grid-template-columns: 1fr; } }
+        .editor-label { font-weight: 600; color: var(--text-dark); font-size: 0.9rem; margin-bottom: 6px; display: block; }
+        textarea { width: 100%; height: 240px; padding: 12px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.85rem; font-family: monospace; resize: vertical; color: var(--text-dark); line-height: 1.5; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+        .btn { padding: 9px 18px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .status { padding: 10px 14px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; display: none; }
+        .status.ok { background: #d1fae5; color: #065f46; display: block; }
+        .status.error { background: #fee2e2; color: #991b1b; display: block; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        code { background: #f1f5f9; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 0.9em; color: #e74c3c; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free tools for developers</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>AI Learning Gym Utilities</h1>
-        <a href="/">&larr; Back to Dashboard</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="adsense-placeholder top-banner-ad">
-                [ AdSense Space: Leaderboard Banner Unit ]
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="card">
+        <h2>JSON Formatter & Validator</h2>
+        <div class="status" id="status"></div>
+        <div class="editor-grid">
+            <div>
+                <span class="editor-label">Input JSON</span>
+                <textarea id="inputJson" placeholder='Paste your JSON here, e.g. {"name":"Alice","age":30}'></textarea>
             </div>
-
-            <section class="tool-wrapper">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark);">JSON Tree Formatter &amp; Syntax Validator</h2>
-                
-                <div class="workspace-split">
-                    <div>
-                        <div class="editor-header">Paste Raw Data String:</div>
-                        <textarea id="json-input" class="json-textarea" placeholder='{\n  "status": "paste raw code here",\n  "count": 1024\n}'></textarea>
-                    </div>
-                    <div>
-                        <div class="editor-header">Beautified Syntax Node View:</div>
-                        <div id="json-output" class="json-output-view"><i>Waiting for valid string payload input parsing...</i></div>
-                    </div>
-                </div>
-
-                <div class="btn-panel">
-                    <button class="action-btn" onclick="processJSON('beautify')">Beautify (4 Spaces)</button>
-                    <button class="action-btn" onclick="processJSON('minify')">Minify String</button>
-                    <button class="action-btn" id="copy-btn" onclick="copyOutput()" style="background-color: #7f8c8d;">Copy Result</button>
-                    <button class="action-btn clear-btn" onclick="clearWorkspace()">Clear Everything</button>
-                </div>
-
-                <div id="validation-status" class="status-banner"></div>
-            </section>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Online JSON Validator, Formatter &amp; Beautifier is an interactive web engineering workspace designed to parse nested keys, fix notation boundaries, and render high-fidelity colorized tree views of data scripts. Engineered for backend developers, integration programmers, and server data managers, this application processes data variations instantly inside your browser sandbox layout. By running object conversions client-side, the dashboard provides total privacy preservation for database arrays and API payload structures, completely removing the risk of cloud-hosted data mining or server logging.</p>
-
-                <h3>How to Operate the JSON Processing Workbench</h3>
-                <p>Auditing minified configurations or debugging object schemas maps to a streamlined layout process. Execute these functional steps to process your strings:</p>
-                <ol>
-                    <li><strong>Paste the Source Payload:</strong> Input your raw, un-indented, or minified text block directly into the editing box marked <em>Paste Raw Data String:</em>.</li>
-                    <li><strong>Execute Beautification:</strong> Click <em>Beautify (4 Spaces)</em> to normalize structural indentation spaces. The engine executes localized lint arrays and outputs an indented, color-coded node layout in the adjacent panel.</li>
-                    <li><strong>Execute Minification:</strong> Click <em>Minify String</em> to pack complex structural branches down into compressed single-line bundles, removing unnecessary spacing bytes for fast API network transmissions.</li>
-                    <li><strong>Collect and Export Data:</strong> Look at the validation banner to verify syntax health. If the code compiles perfectly, click the gray <em>Copy Result</em> button to capture your processed text block to your clipboard framework.</li>
-                </ol>
-
-                <h3>Core Token Highlight Mechanics Detailed</h3>
-                <p>Our client-side processing core checks object properties concurrently by leveraging robust regular expression filters:</p>
-                <ul>
-                    <li><strong>Native Try-Catch Linting:</strong> The engine drops raw parameters directly into local `JSON.parse` compiler blocks. If tracking fails, the internal catch array targets the exact token line deviation to output clear syntax descriptions in the red error banner.</li>
-                    <li><strong>Regex Lexical Evaluation:</strong> Valid text blocks route instantly through a multi-tier regex filter that scans matching characters and wraps independent keys, numbers, booleans, and null references inside explicit CSS spans for localized token colorizing.</li>
-                    <li><strong>HTML Sanitization Guardrails:</strong> Before parsing style markers, the engine neutralizes characters like `&lt;` and `&gt;` using string entity replacements, making it totally secure to debug configuration properties without triggering XSS vulnerabilities.</li>
-                </ul>
-
-                <h2>The Importance of Object Notation Syntax in Data Architecture</h2>
-                <p>Welcome to the structured information matrix sandbox at AI Learning Gym. In modern cloud server ecosystems, JavaScript Object Notation—commonly categorized as JSON—is the structural language foundation for API integration platforms. Because nesting parameters demand exact trailing commas and strict quotation alignments, one omitted structural bracket breaks down server requests entirely, requiring clean debugging frameworks.</p>
-                
-                <h3>Decoding Nested Objects: Schema Rules and Format Constraints</h3>
-                <p>Unlike standard un-compiled text forms, key-value data structures must adhere to exact syntactic layout paths. Keys must always sit wrapped inside double quotation blocks, separating values via standard colons. Array trees maintain nested sequences trapped inside square notation parameters, while secondary child nodes exist safely locked in localized curly structures. Forcing strict lint parameters early mitigates processing faults down the pipeline.</p>
-
-                <div class="adsense-placeholder inline-content-ad">
-                    [ AdSense Space: Rectangular In-Article Unit ]
-                </div>
-
-                <h3>Minification vs. Beautification Optimization Matrices</h3>
-                <p>Software developers alternate between opposing serialization forms to solve disparate processing challenges. Code beautification breaks packed code streams apart using distinct visual spacing steps, empowering human analytics groups to scan object profiles instantly. Alternatively, structural minification strips out every scrap of trailing white space and hidden carriage breaks, consolidating assets into compressed single-line bundles to maximize network transmission speeds across API channels.</p>
-                
-                <h3>Frequently Answered JSON Engineering Questions (FAQ)</h3>
-                <p><strong>Q: Does this rendering layout pipeline share my proprietary token parameters?</strong><br>
-                A: No. Privacy security is built into our toolkit logic. The string verification loops operate natively inside your web layout browser window using JavaScript loops. No outside database or analytical network streams process your private files.</p>
-                
-                <p><strong>Q: Why does the system trigger validation errors when parsing JavaScript objects?</strong><br>
-                A: Native web structures allow flexible single-quote declarations or loose key layouts. Real JSON constraints reject loose definitions completely. Our system marks deviations to ensure compliance with global server requirements.</p>
-
-                <p><strong>Q: What causes a 'JSON.parse: unexpected non-whitespace character' exception boundary?</strong><br>
-                A: This clinical parsing error typically triggers when multiple separate root objects sit adjacent inside the same canvas block without enclosing parent array wrappers, or when structural trailing commas trail behind final property boundaries.</p>
-
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">How to Use the Free Online JSON Formatter</h3>
-                <p>Sanitizing raw scripts with our JSON Formatter takes only seconds. Paste your unformatted, minified JSON array data into the source code input workspace above and execute the tool. It will instantly parse, audit, and clean your structural logic into an indented format.</p>
-                
-                <h3 style="color: #34495e; font-size: 1.15rem; margin: 25px 0 8px 0;">Secure Debugging for Web Developers</h3>
-                <p>Pasting programmatic configuration strings or customer dataset structures into standard online layout editors poses massive compliance risks. Our tool evaluates data logic locally via JavaScript parsing layers, meaning your structural backend arrays never leave your browser window.</p>
-            </section>
-
-        </main>
-
-        <aside>
-            <div class="adsense-placeholder sidebar-ad">
-                [ AdSense Space: Large Skyscraper (Sticky Display) ]
+            <div>
+                <span class="editor-label">Formatted Output</span>
+                <textarea id="outputJson" readonly placeholder="Formatted result appears here..."></textarea>
             </div>
-        </aside>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="beautify()">Beautify (4 spaces)</button>
+            <button class="btn btn-primary" onclick="minify()">Minify</button>
+            <button class="btn btn-secondary" onclick="copyOutput()">Copy Result</button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+        </div>
+    </div>
 
-    </div> <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p>
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> |
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-    <script>
-        const jsonInput = document.getElementById("json-input");
-        const jsonOutput = document.getElementById("json-output");
-        const statusBanner = document.getElementById("validation-status");
-        const copyBtn = document.getElementById("copy-btn");
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This JSON formatter validates your JSON and makes it easy to read. Paste raw or minified JSON, click Beautify to add indentation, or click Minify to compress it into a single line. Any syntax errors are highlighted clearly.</p>
 
-        let validatedRawOutput = "";
+        <h3>How to use it</h3>
+        <ol>
+            <li>Paste your JSON into the left box.</li>
+            <li>Click <strong>Beautify</strong> to format it with indentation, or <strong>Minify</strong> to compress it.</li>
+            <li>If there's a syntax error, a red message shows you what's wrong.</li>
+            <li>Click <strong>Copy Result</strong> to copy the formatted output.</li>
+        </ol>
 
-        function showStatus(msg, isSuccess) {
-            statusBanner.className = `status-banner ${isSuccess ? 'status-success' : 'status-error'}`;
-            statusBanner.innerText = msg;
-            statusBanner.style.display = "block";
+        <h3>What is JSON?</h3>
+        <p>JSON (JavaScript Object Notation) is the most common format for exchanging data between web applications and APIs. It's human-readable and looks like this:</p>
+        <pre style="background:#f1f5f9; padding:12px; border-radius:6px; font-size:0.85rem; overflow-x:auto; margin-bottom:14px;">{"name": "Alice", "age": 30, "active": true}</pre>
+        <p>When APIs return data, it's often compressed into a single long line with no spacing — that's where a formatter helps you read and debug it.</p>
+
+        <h3>Common JSON errors</h3>
+        <ul>
+            <li><strong>Missing quotes around keys</strong> — JSON requires <code>"key"</code>, not <code>key</code></li>
+            <li><strong>Trailing comma</strong> — <code>{"a": 1,}</code> is invalid; remove the last comma</li>
+            <li><strong>Single quotes</strong> — JSON requires double quotes (<code>"</code>), not single quotes (<code>'</code>)</li>
+            <li><strong>Unescaped characters</strong> — special characters inside strings need to be escaped (e.g. <code>\"</code> for a quote inside a string)</li>
+        </ul>
+
+        <h3>Beautify vs. Minify — when to use each</h3>
+        <p><strong>Beautify</strong> adds line breaks and indentation so the JSON is easy to read and debug. Use it when reviewing API responses or editing config files. <strong>Minify</strong> removes all whitespace to make the file as small as possible — useful when sending JSON over a network or embedding it in code where file size matters.</p>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is my JSON data stored or sent anywhere?</h4>
+            <p>No. All processing happens in your browser using JavaScript. Nothing is uploaded or logged. Safe for API keys, config files, and sensitive data.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why does my JSON show an error when it looks fine?</h4>
+            <p>The most common culprits are trailing commas (a comma after the last item), single quotes instead of double quotes, or an unescaped backslash. The error message will point to the line causing the problem.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I format JavaScript objects (not just JSON)?</h4>
+            <p>This tool validates strict JSON only. JavaScript objects allow single quotes and unquoted keys, which JSON does not. You'll need to convert JS objects to valid JSON first (add double quotes to all keys and string values).</p>
+        </div>
+        <div class="faq-item">
+            <h4>What's the difference between JSON and XML?</h4>
+            <p>Both are data formats used to exchange information between systems. JSON is lighter and easier to read; XML is more verbose but supports attributes and comments. JSON has become the dominant format for modern web APIs.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    function showStatus(msg, type) {
+        const el = document.getElementById('status');
+        el.textContent = msg;
+        el.className = 'status ' + type;
+    }
+
+    function beautify() {
+        try {
+            const parsed = JSON.parse(document.getElementById('inputJson').value);
+            document.getElementById('outputJson').value = JSON.stringify(parsed, null, 4);
+            showStatus('✓ Valid JSON', 'ok');
+        } catch(e) {
+            document.getElementById('outputJson').value = '';
+            showStatus('✗ Error: ' + e.message, 'error');
         }
+    }
 
-        // High-fidelity syntax regex colorizer matrix
-        function syntaxHighlight(jsonStr) {
-            // Clean out HTML tags first to secure viewport execution
-            jsonStr = jsonStr.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            
-            return jsonStr.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, function (match) {
-                let cls = 'json-number';
-                if (/^"/.test(match)) {
-                    if (/:$/.test(match)) {
-                        cls = 'json-key';
-                    } else {
-                        cls = 'json-string';
-                    }
-                } else if (/true|false/.test(match)) {
-                    cls = 'json-boolean';
-                } else if (/null/.test(match)) {
-                    cls = 'json-null';
-                }
-                return '<span class="' + cls + '">' + match + '</span>';
-            });
+    function minify() {
+        try {
+            const parsed = JSON.parse(document.getElementById('inputJson').value);
+            document.getElementById('outputJson').value = JSON.stringify(parsed);
+            showStatus('✓ Valid JSON — minified', 'ok');
+        } catch(e) {
+            document.getElementById('outputJson').value = '';
+            showStatus('✗ Error: ' + e.message, 'error');
         }
+    }
 
-        function processJSON(mode) {
-            const rawVal = jsonInput.value.trim();
-            if (!rawVal) {
-                showStatus("Error: Field cannot be empty! Please paste a valid JSON string structure.", false);
-                return;
-            }
+    function copyOutput() {
+        const val = document.getElementById('outputJson').value;
+        if (val) navigator.clipboard.writeText(val);
+    }
 
-            try {
-                // Core validation parsing check
-                const parsedObj = JSON.parse(rawVal);
-                
-                if (mode === 'beautify') {
-                    validatedRawOutput = JSON.stringify(parsedObj, null, 4);
-                    jsonOutput.innerHTML = syntaxHighlight(validatedRawOutput);
-                } else if (mode === 'minify') {
-                    validatedRawOutput = JSON.stringify(parsedObj);
-                    jsonOutput.innerHTML = syntaxHighlight(validatedRawOutput);
-                }
-                
-                showStatus("✔ Valid JSON Structure: String parsed and validated successfully with zero schema errors.", true);
-            } catch (err) {
-                validatedRawOutput = "";
-                jsonOutput.innerHTML = `<span style="color: #e06c75;">Parsing Failure...</span>`;
-                showStatus(`❌ Invalid JSON Detected:\n${err.message}`, false);
-            }
-        }
-
-        function copyOutput() {
-            if (!validatedRawOutput) return;
-            navigator.clipboard.writeText(validatedRawOutput);
-            
-            const originalText = copyBtn.innerText;
-            copyBtn.innerText = "Copied!";
-            copyBtn.style.backgroundColor = "var(--success-color)";
-            
-            setTimeout(() => {
-                copyBtn.innerText = originalText;
-                copyBtn.style.backgroundColor = "#7f8c8d";
-            }, 1200);
-        }
-
-        function clearWorkspace() {
-            jsonInput.value = "";
-            jsonOutput.innerHTML = "<i>Waiting for valid string payload input parsing...</i>";
-            statusBanner.style.display = "none";
-            validatedRawOutput = "";
-        }
-    </script>
+    function clearAll() {
+        document.getElementById('inputJson').value = '';
+        document.getElementById('outputJson').value = '';
+        const el = document.getElementById('status');
+        el.className = 'status';
+    }
+</script>
 </body>
 </html>
