@@ -1,17 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Word Counter &amp; Text Analyzer | AI Learning Gym</title>
-    <meta name="description" content="Count words, characters, and paragraphs in real-time. Free comprehensive manuscript text analyzer displaying estimated reading time scores.">
-    <meta name="keywords" content="online word counter, character density counter, paragraph tracker tool, estimated reading time, essay word counter">
-    
-    <meta property="og:title" content="Free Online Word Counter &amp; Text Analyzer | AI Learning Gym">
-    <meta property="og:description" content="Monitor exact draft limits and analyze typographic structures instantly inside our native text counting analytics dashboard.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ailearninggym.com/word-counter/">
-
+    <title>Free Word Counter & Character Counter | AI Learning Gym</title>
+    <meta name="description" content="Count words, characters, paragraphs, and reading time instantly. Free online word counter — works in your browser, nothing is stored.">
+    <meta name="keywords" content="word counter, character counter, online word count, reading time calculator, essay word counter">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -19,383 +14,176 @@
       gtag('js', new Date());
       gtag('config', 'G-RPRW3TN403');
     </script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
-
     <style>
-        /* --- Core Layout & Styling Matrix --- */
         :root {
             --primary-color: #1a252f;
             --accent-color: #3498db;
             --text-dark: #2c3e50;
             --text-muted: #64748b;
             --card-border: #e2e8f0;
-            --success-color: #2ecc71;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent-color);
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
         header h1 { font-size: 2rem; margin-bottom: 8px; }
-        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 5px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
         header a:hover { color: var(--accent-color); }
-
-        /* --- Grid Layout System --- */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .container { 
-                display: grid;
-                grid-template-columns: 3fr 1fr; 
-                align-items: start;
-            }
-        }
-
-        /* --- AdSense Layout Structures --- */
-        .ad-container { margin: 15px 0; text-align: center; width: 100%; }
-        .sidebar-ad-wrapper { position: sticky; top: 20px; }
-
-        /* --- Main Layout Window --- */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* --- App Interface Wrapper --- */
-        .tool-wrapper {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-
-        .text-input-area {
-            width: 100%;
-            height: 250px;
-            padding: 15px;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-            resize: vertical;
-            margin-bottom: 20px;
-            transition: border-color 0.2s;
-        }
-
-        .text-input-area:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        /* Metric Analytics Grid Cards */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        @media (min-width: 600px) {
-            .metrics-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .summary-card-p {
-            background: #f8fafc;
-            border-left: 4px solid var(--accent-color);
-            padding: 15px;
-            text-align: center;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .summary-card-p .num-val {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            line-height: 1.2;
-            margin-bottom: 2px;
-            font-family: monospace;
-        }
-
-        .summary-card-p .label-text {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .action-btn-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        .util-btn {
-            background-color: #7f8c8d;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 4px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: background 0.2s;
-        }
-        .util-btn:hover { background-color: #95a5a6; }
-        .clear-btn { background-color: #e74c3c; }
-        .clear-btn:hover { background-color: #c0392b; }
-
-        /* --- SEO Article Area --- */
-        .seo-section {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            text-align: left;
-        }
-
-        .seo-section h2 { color: var(--text-dark); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 2px solid #edf2f7; padding-bottom: 8px; }
-        .seo-section h3 { color: #34495e; margin: 25px 0 10px 0; font-size: 1.15rem; }
-        .seo-section p { margin-bottom: 15px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul, .seo-section ol { margin: 10px 0 20px 25px; color: #4a5568; font-size: 0.98rem; }
-        .seo-section ul li, .seo-section ol li { margin-bottom: 8px; }
-
-        /* Structured accordion list cards */
-        .faq-item { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 6px; margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--accent-color); }
-        .faq-item h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 5px; }
-        .faq-item p { margin-bottom: 0; color: #4a5568; font-size: 0.92rem; }
-
-        /* --- Standard Footer --- */
-        footer {
-            background-color: var(--primary-color);
-            color: #cbd5e1;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-            font-size: 0.9rem;
-        }
-        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; transition: color 0.2s; }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        textarea { width: 100%; height: 220px; padding: 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.98rem; resize: vertical; color: var(--text-dark); line-height: 1.6; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+        @media (max-width: 600px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+        .stat-box { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 14px; text-align: center; }
+        .stat-value { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+        .btn-row { display: flex; gap: 10px; margin-top: 12px; }
+        .btn { padding: 9px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .btn-copy { background: var(--accent-color); color: #fff; }
+        .btn-clear { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
         footer a:hover { color: var(--accent-color); }
     </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<header>
+    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free browser tools for writers and creators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
 
-    <header>
-        <h1>Linguistic Character Counter Suite</h1>
-        <p>Monitor text layout densities and manuscript properties in a 100% cloud-isolated sandbox memory ecosystem.</p>
-        <a href="/">&larr; Return to AI Learning Gym Hub</a>
-    </header>
+<div class="container">
 
-    <div class="container">
-        
-        <main class="main-content">
-            
-            <div class="ad-container">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-
-            <section class="tool-wrapper" aria-label="Text Counter Workstation">
-                <h2 style="margin-bottom: 15px; color: var(--text-dark); font-size: 1.3rem;">Real-Time Character &amp; Word Analytics Dashboard</h2>
-                
-                <textarea id="analyzer-textarea" class="text-input-area" placeholder="Start typing or paste your content script elements here to monitor character lengths, structural densities, and paragraph breaks automatically..."></textarea>
-
-                <div class="metrics-grid">
-                    <div class="summary-card-p">
-                        <span id="word-count" class="num-val">0</span>
-                        <span class="label-text">Words</span>
-                    </div>
-                    <div class="summary-card-p">
-                        <span id="char-count" class="num-val">0</span>
-                        <span class="label-text">Characters</span>
-                    </div>
-                    <div class="summary-card-p">
-                        <span id="paragraph-count" class="num-val">0</span>
-                        <span class="label-text">Paragraphs</span>
-                    </div>
-                    <div class="summary-card-p">
-                        <span id="reading-time" class="num-val">0m</span>
-                        <span class="label-text">Est. Read Time</span>
-                    </div>
-                </div>
-
-                <div class="action-btn-row">
-                    <button id="copy-btn" class="util-btn" onclick="copyText()">Copy Text</button>
-                    <button class="util-btn clear-btn" onclick="clearInput()">Clear Sandbox</button>
-                </div>
-            </section>
-
-            <section class="seo-section">
-                <h2>About this Tool &amp; User Guide</h2>
-                <p>The Free Online Word Counter &amp; Text Analyzer is an interactive, real-time linguistic monitoring dashboard engineered to calculate character densities, track paragraph structures, and project estimated reading durations entirely inside your browser. Built for web copywriters, academic authors, editors, and digital marketers, this application helps you audit document thresholds with absolute precision. Operating 100% client-side, the workspace processes all text entries inside your device's temporary local memory layers, keeping information completely private and safe from cloud data indexing or background tracking server loops.</p>
-
-                <h3>How to Operate the Real-Time Text Analyzer</h3>
-                <p>Monitoring manuscript lengths and reviewing textual parameters follows a simple, seamless layout process. Follow these instructions to audit your drafts:</p>
-                <ol>
-                    <li><strong>Input Draft Copy Placement:</strong> Type directly or paste your text lines into the primary container editing area marked <em>Real-Time Character &amp; Word Analytics Dashboard</em>.</li>
-                    <li><strong>Observe Live Metrics Calculation:</strong> Review the analytical metrics rows immediately. The front-end processing script reads your characters on every single keystroke, dynamically computing overall word volume balances, exact character lengths, paragraph breaks, and reading speeds.</li>
-                    <li><strong>Export Your Content Payload:</strong> Click the gray <em>Copy Text</em> action button to quickly capture your entire document straight to your computer's clipboard buffer.</li>
-                    <li><strong>Reset the Workspace Canvas:</strong> Click the red <em>Clear Sandbox</em> button to wipe the workspace input field, flushing out temporary cache parameters cleanly to begin a brand-new analysis loop.</li>
-                </ol>
-
-                <h3>Core Text Auditing Properties Detailed</h3>
-                <p>Our client-side processing core relies on robust character parsing methods to deliver reliable analysis tallies across separate metrics:</p>
-                <ul>
-                    <li><strong>Regular Expression Word Extraction:</strong> Standard word counting tools frequently map numbers incorrectly when parsing consecutive trailing spaces or carriage returns. This engine utilizes strict regular expression criteria (`/\s+/`) to isolate word structures cleanly based on true boundary changes.</li>
-                    <li><strong>Granular Paragraph Break Tracking:</strong> The script scans document blocks for explicit line-feed anchors (`\n+`), filtering out completely empty spaces to ensure that header gaps or structural carriage breaks do not throw off your paragraph totals.</li>
-                    <li><strong>Literacy Acceleration Projections:</strong> To compute actionable engagement parameters for authors, the tool applies a standardized literacy constant, evaluating overall text volume against an average reading comprehension speed of 200 words per minute.</li>
-                </ul>
-
-                <h2>Optimizing Content Metrics for Modern Search Standards</h2>
-                <p>In the layout landscape of modern content production, calculating document length vectors is no longer just about tracking random spacing. It serves as a vital analytics process. Search indexing algorithms look for complete semantic content frameworks, meaning copywriters, student academics, and digital marketers require micro-level density visibility to target exact optimization markers smoothly.</p>
-                
-                <h3>The Technical Breakdown of String Verification Logic</h3>
-                <p>Simple code parameters frequently fall out of sync when parsing messy space blocks or formatting carriage returns. Our client-side rendering architecture avoids basic index errors by employing targeted regular expressions. By executing global filters across raw input configurations, the tool separates hidden line breaks from formal sentence characters, guaranteeing pinpoint validation totals even when parsing complicated text files.</p>
-
-                <div class="ad-container">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
-
-                <h3>Why Word Counts Matter Across Media Platforms</h3>
-                <p>Varying digital publishing horizons require precise string sizes to satisfy layout parameters. Editorial guidelines for journalistic review columns require rigorous content parameters to align columns cleanly. On the marketing end, social media description margins require strict validation so copy lines don't get truncated by default view settings. Monitoring these parameters safely before deploying copy ensures clean presentation profiles across all viewports.</p>
-                
-                <h3>How to Utilize This Text Analyzer Suite</h3>
-                <p>Our platform operates strictly as a local browser sandbox tool. Simply type or paste your raw text into the input array container, and watch the tracking modules update instantly:</p>
-                <ul style="list-style-type: disc;">
-                    <li><strong>Word Count Processing:</strong> Isolates individual string blocks by identifying white spaces, giving you an exact measurement for long-form content requirements.</li>
-                    <li><strong>Character Allocation Matrix:</strong> Measures exact character arrays, crucial for drafting fine-tuned metadata tags or social media copy.</li>
-                    <li><strong>Sentence &amp; Paragraph Isolation:</strong> Analyzes punctuation marks to measure total sentence structures, helping you evaluate reading ease and structural variety.</li>
-                </ul>
-
-                <h3>Frequently Answered Text Counting Questions (FAQ)</h3>
-                
-                <div class="faq-item">
-                    <h4>Q: Does this counting suite log or capture my proprietary copy assets?</h4>
-                    <p>A: No. Privacy protection is a structural mandate at our gym. Every mathematical extraction operates exclusively via your local layout browser frame using internal JavaScript array processing. Your inputs are never transmitted to cloud databases.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h4>Q: How does the processing engine estimate overall reading time?</h4>
-                    <p>A: The system evaluates standard comprehension benchmarks, assuming an average literacy acceleration curve of 200 words per minute. This baseline gives authors a highly accurate projection of reader engagement patterns before deployment.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Q: Why do different word counting tools show slightly different numbers?</h4>
-                    <p>A: Variations happen because different programs use different formatting rules. Some counters treat hyphenated paths (like "privacy-first") as a single word, while others split them into two. Our analyzer handles compound terms, punctuation breaks, and spaces uniformly to match standard commercial publishing rules.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Q: Can this text analyzer accurately calculate metrics for non-English character languages?</h4>
-                    <p>A: The underlying JavaScript string length tracker reads standard Unicode character weights correctly across all international languages, including accented characters and Asian glyphs. However, because languages like Chinese or Japanese do not separate words with space boundaries, word-splitting counts are optimized specifically for space-separated character frameworks.</p>
-                </div>
-
-                <h3>Streamlined Local Text Analytics</h3>
-                <p>This layout operates entirely within your web browser memory sandbox using efficient string algorithms. Because your articles and copy drafts are never uploaded to remote data nodes, your information remains entirely isolated and safe from third-party observation.</p>
-            </section>
-
-        </main>
-
-        <aside class="sidebar-ad">
-            <div class="sidebar-ad-wrapper">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-        </aside>
-
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <footer>
-        <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.85rem; color: #cbd5e1;">
-            <a href="/privacy-policy.html">Privacy Policy</a> | 
-            <a href="/about.html">About Us</a> | 
-            <a href="/terms-of-service.html">Terms of Use</a> | 
-            <a href="/contact.html">Contact Support</a> | 
-            <a href="/sitemap.html">Site Map Directory</a>
-        </p>
-    </footer>
+    <div class="card">
+        <h2>Word Counter</h2>
+        <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+        <div class="stats">
+            <div class="stat-box"><div class="stat-value" id="wordCount">0</div><div class="stat-label">Words</div></div>
+            <div class="stat-box"><div class="stat-value" id="charCount">0</div><div class="stat-label">Characters</div></div>
+            <div class="stat-box"><div class="stat-value" id="paraCount">0</div><div class="stat-label">Paragraphs</div></div>
+            <div class="stat-box"><div class="stat-value" id="readTime">0m</div><div class="stat-label">Read Time</div></div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-copy" onclick="copyText()">Copy Text</button>
+            <button class="btn btn-clear" onclick="clearText()">Clear</button>
+        </div>
+    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const txtArea = document.getElementById("analyzer-textarea");
-            const wordDisplay = document.getElementById("word-count");
-            const charDisplay = document.getElementById("char-count");
-            const paraDisplay = document.getElementById("paragraph-count");
-            const readDisplay = document.getElementById("reading-time");
-            const copyBtn = document.getElementById("copy-btn");
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-            // Attach asynchronous typing validation hook
-            txtArea.addEventListener("input", runTextAnalysis);
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This word counter tracks words, characters, paragraphs, and estimated reading time as you type. It's useful for essays, blog posts, social media captions, or any writing with a length limit. Everything runs in your browser — your text is never sent anywhere.</p>
 
-            function runTextAnalysis() {
-                const textValue = txtArea.value;
+        <h3>How to use it</h3>
+        <ol>
+            <li>Type or paste your text into the box above.</li>
+            <li>The counts update automatically as you type — no button needed.</li>
+            <li>Use <strong>Copy Text</strong> to copy your text to the clipboard, or <strong>Clear</strong> to start fresh.</li>
+        </ol>
 
-                // 1. Character evaluation extraction
-                charDisplay.innerText = textValue.length.toLocaleString();
+        <h3>Common word count targets</h3>
+        <p>Here are typical length guidelines for different types of writing:</p>
+        <ul>
+            <li><strong>Tweet / X post</strong> — 280 characters max</li>
+            <li><strong>Instagram caption</strong> — 125 words recommended, 2,200 max</li>
+            <li><strong>Email subject line</strong> — 6–10 words for best open rates</li>
+            <li><strong>Blog post (short)</strong> — 500–800 words</li>
+            <li><strong>Blog post (standard)</strong> — 1,000–1,500 words</li>
+            <li><strong>Long-form SEO article</strong> — 1,500–2,500 words</li>
+            <li><strong>College essay</strong> — 500–650 words (Common App)</li>
+            <li><strong>Short story</strong> — 1,000–7,500 words</li>
+            <li><strong>Novel</strong> — 70,000–100,000 words</li>
+        </ul>
 
-                // 2. Exact word splitting via regular expression evaluation
-                const cleanWords = textValue.trim().split(/\s+/).filter(word => word.length > 0);
-                const trueWordCount = cleanWords.length;
-                wordDisplay.innerText = trueWordCount.toLocaleString();
+        <h3>How reading time is calculated</h3>
+        <p>The estimated reading time is based on an average reading speed of 200 words per minute — a widely used benchmark for general adult readers. A 1,000-word article takes about 5 minutes to read at this pace. Academic or technical content may take longer; simple content may be faster.</p>
 
-                // 3. Extract exact paragraph splits
-                const paragraphs = textValue.split(/\n+/).filter(p => p.trim().length > 0);
-                paraDisplay.innerText = paragraphs.length.toLocaleString();
+        <h3>Frequently asked questions</h3>
 
-                // 4. Calculate reading time profile (200 WPM default metric map)
-                const totalMinutes = Math.ceil(trueWordCount / 200);
-                readDisplay.innerText = trueWordCount > 0 ? `${totalMinutes}m` : "0m";
-            }
+        <div class="faq-item">
+            <h4>Does this tool save my text?</h4>
+            <p>No. Your text stays in your browser only. Nothing is uploaded or stored. Closing the tab or refreshing the page clears everything.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why does my word count differ from Microsoft Word?</h4>
+            <p>Different tools handle hyphenated words, numbers, and punctuation slightly differently. For example, "real-time" might count as one word or two depending on the tool. For most purposes the difference is minimal — usually just 1–3 words.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does it count characters with or without spaces?</h4>
+            <p>The character count shown includes spaces. If you need a count without spaces, subtract the number of words minus one as a rough approximation, or use a dedicated character counter.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I use this for non-English text?</h4>
+            <p>Yes — the character count works for any language. However, word counting relies on spaces between words, so it works best for languages that separate words with spaces (most European languages). Languages like Chinese or Japanese without spaces will show inaccurate word counts.</p>
+        </div>
+    </div>
 
-            // Global trigger layout utilities
-            window.copyText = function() {
-                if (!txtArea.value) return;
-                navigator.clipboard.writeText(txtArea.value);
-                
-                const originalText = copyBtn.innerText;
-                copyBtn.innerText = "Copied Text!";
-                copyBtn.style.backgroundColor = "var(--success-color)";
-                
-                setTimeout(() => {
-                    copyBtn.innerText = originalText;
-                    copyBtn.style.backgroundColor = "#7f8c8d";
-                }, 1200);
-            };
+</div>
 
-            window.clearInput = function() {
-                txtArea.value = "";
-                runTextAnalysis();
-            };
-        });
-    </script>
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    const textInput = document.getElementById('textInput');
+
+    function updateStats() {
+        const text = textInput.value;
+        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+        const chars = text.length;
+        const paras = text.trim() === '' ? 0 : text.trim().split(/\n+/).filter(p => p.trim() !== '').length;
+        const readTime = Math.ceil(words / 200);
+
+        document.getElementById('wordCount').textContent = words;
+        document.getElementById('charCount').textContent = chars;
+        document.getElementById('paraCount').textContent = paras;
+        document.getElementById('readTime').textContent = readTime + 'm';
+    }
+
+    function copyText() {
+        navigator.clipboard.writeText(textInput.value);
+    }
+
+    function clearText() {
+        textInput.value = '';
+        updateStats();
+    }
+
+    textInput.addEventListener('input', updateStats);
+</script>
 </body>
 </html>
