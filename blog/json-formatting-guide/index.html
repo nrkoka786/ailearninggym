@@ -1,7 +1,15 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why JSON Formatting Matters (And How to Fix Broken JSON) | AI Learning Gym</title>
@@ -186,10 +194,238 @@
                 <p>The JSON might be syntactically valid but semantically wrong — the right structure but wrong data types, missing required fields, or values outside an expected range. A JSON validator only checks syntax. If you need schema validation (ensuring the data matches a specific structure), look into JSON Schema.</p>
             </div>
 
+
             <div class="cta-box">
                 <p>Paste your JSON to format, validate, and fix syntax errors — instantly, in your browser.</p>
                 <a href="/json-formatter/">Open JSON Formatter →</a>
             </div>
+
+            <section class="content-section">
+                <h2>The Six JSON Syntax Rules Every Developer Must Know</h2>
+                <p>JSON has exactly six rules. Every valid JSON document follows all six. Every invalid JSON document violates at least one. Memorizing these rules is the fastest path to writing and debugging JSON confidently.</p>
+
+                <h3>Rule 1 — Keys Must Be Strings in Double Quotes</h3>
+                <p>Every key in a JSON object must be a string wrapped in double quotes. Single quotes are not valid JSON. Unquoted keys are not valid JSON. This is the most common mistake made by developers coming from JavaScript, where unquoted object keys are perfectly acceptable.</p>
+                <pre><code>// INVALID — unquoted key
+{ name: "Alice" }
+
+// INVALID — single-quoted key
+{ 'name': "Alice" }
+
+// VALID
+{ "name": "Alice" }</code></pre>
+
+                <h3>Rule 2 — No Trailing Commas</h3>
+                <p>JSON does not allow trailing commas — a comma after the last item in an object or array. JavaScript and most modern programming languages do allow trailing commas, which makes this rule feel unnecessary, but it is strictly enforced in all JSON parsers.</p>
+                <pre><code>// INVALID — trailing comma after last item
+{
+  "name": "Alice",
+  "age": 30,
+}
+
+// VALID
+{
+  "name": "Alice",
+  "age": 30
+}</code></pre>
+
+                <h3>Rule 3 — No Comments</h3>
+                <p>JSON does not support comments of any kind — no <code>//</code> single-line comments and no <code>/* */</code> block comments. This surprises many developers who want to annotate configuration files. If you need comments in a JSON-like config file, consider JSONC (JSON with Comments), which is supported by VS Code, or switch to YAML which natively supports comments.</p>
+
+                <h3>Rule 4 — Values Must Be One of Six Types</h3>
+                <p>JSON values must be one of exactly six types: string (in double quotes), number, boolean (<code>true</code> or <code>false</code> — lowercase only), null (lowercase), object, or array. JavaScript undefined, functions, and Date objects are not valid JSON values.</p>
+                <pre><code>// INVALID
+{ "active": True }     // Python boolean — not JSON
+{ "score": None }      // Python None — not JSON
+{ "value": undefined } // JavaScript undefined — not JSON
+
+// VALID
+{ "active": true }
+{ "score": null }
+{ "value": null }</code></pre>
+
+                <h3>Rule 5 — Numbers Cannot Have Leading Zeros</h3>
+                <p>JSON numbers cannot have leading zeros (except for decimals like <code>0.5</code>), cannot use hexadecimal notation, and cannot be <code>Infinity</code> or <code>NaN</code>.</p>
+                <pre><code>// INVALID
+{ "value": 0123 }    // leading zero
+{ "value": 0xFF }    // hexadecimal
+{ "value": Infinity } // Infinity
+
+// VALID
+{ "value": 123 }
+{ "value": 3.14 }
+{ "value": 1.5e10 }</code></pre>
+
+                <h3>Rule 6 — Special Characters in Strings Must Be Escaped</h3>
+                <p>Certain characters must be escaped with a backslash inside JSON strings — double quotes, backslashes, and control characters like newlines and tabs.</p>
+                <pre><code>// INVALID — unescaped double quote inside string
+{ "message": "She said "hello" to him" }
+
+// VALID
+{ "message": "She said \"hello\" to him" }
+
+// Common escape sequences:
+// \"  — double quote
+// \\  — backslash
+// \n  — newline
+// \t  — tab</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2>The Eight Most Common JSON Errors and How to Fix Them</h2>
+                <p>In practice, JSON syntax errors fall into a small set of recurring patterns. Here are the eight you will encounter most often, with examples and exact fixes.</p>
+
+                <h3>Error 1 — Missing Comma Between Items</h3>
+                <pre><code>// INVALID — missing comma after "name" line
+{
+  "name": "Alice"
+  "age": 30
+}
+
+// FIXED — add comma after every item except the last
+{
+  "name": "Alice",
+  "age": 30
+}</code></pre>
+
+                <h3>Error 2 — Trailing Comma</h3>
+                <pre><code>// INVALID
+{
+  "name": "Alice",
+  "age": 30,
+}
+
+// FIXED — remove the last comma
+{
+  "name": "Alice",
+  "age": 30
+}</code></pre>
+
+                <h3>Error 3 — Mismatched Brackets</h3>
+                <pre><code>// INVALID — opened with { but closed with ]
+{ "items": [1, 2, 3 }
+
+// FIXED
+{ "items": [1, 2, 3] }</code></pre>
+
+                <h3>Error 4 — Using JavaScript Values Not Valid in JSON</h3>
+                <pre><code>// INVALID
+{
+  "active": True,      // must be lowercase: true
+  "data": undefined,   // undefined does not exist in JSON
+  "date": new Date()   // Date objects are not JSON
+}
+
+// FIXED
+{
+  "active": true,
+  "data": null,
+  "date": "2026-06-15T10:30:00Z"
+}</code></pre>
+
+                <h3>Error 5 — Single Quotes Instead of Double Quotes</h3>
+                <pre><code>// INVALID
+{ 'name': 'Alice' }
+
+// FIXED
+{ "name": "Alice" }</code></pre>
+
+                <h3>Error 6 — Comments in JSON</h3>
+                <pre><code>// INVALID — JSON does not support comments
+{
+  "name": "Alice",  // this is the user's name
+  "age": 30         /* age in years */
+}
+
+// FIXED — remove all comments
+{
+  "name": "Alice",
+  "age": 30
+}</code></pre>
+
+                <h3>Error 7 — Unescaped Special Characters in Strings</h3>
+                <pre><code>// INVALID
+{ "path": "C:\Users\Alice" }  // backslash not escaped
+{ "quote": "He said "hello"" } // quote not escaped
+
+// FIXED
+{ "path": "C:\\Users\\Alice" }
+{ "quote": "He said \"hello\"" }</code></pre>
+
+                <h3>Error 8 — Empty or Whitespace-Only Input</h3>
+                <p>An empty string is not valid JSON. Valid JSON must be either an object <code>{}</code>, an array <code>[]</code>, a string <code>""</code>, a number, a boolean, or null. An empty input will always fail to parse.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>How to Debug JSON Errors Fast</h2>
+                <p>When you receive a JSON parse error, follow this systematic process to find and fix the problem quickly without reading every character manually.</p>
+
+                <h3>Step 1 — Beautify First, Then Read</h3>
+                <p>Never try to read or debug raw minified JSON. Paste it into a formatter tool first. Beautified JSON with proper indentation makes the structure immediately visible — mismatched brackets, missing commas, and structural errors become obvious within seconds.</p>
+
+                <h3>Step 2 — Read the Error Message Carefully</h3>
+                <p>JSON parse error messages typically include a line number and character position — "Unexpected token at position 47" or "Expected property name at line 3 column 12." Go to that exact location. The error is almost always at or just before the reported position.</p>
+
+                <h3>Step 3 — Check the Four Most Common Problems First</h3>
+                <ul>
+                    <li>Are there trailing commas anywhere in the document?</li>
+                    <li>Are all keys wrapped in double quotes?</li>
+                    <li>Do all opening brackets and braces have matching closing ones?</li>
+                    <li>Are all string values using double quotes, not single quotes?</li>
+                </ul>
+
+                <h3>Step 4 — Validate Programmatically in JavaScript</h3>
+                <pre><code>try {
+  const data = JSON.parse(jsonString);
+  console.log('Valid JSON:', data);
+} catch (error) {
+  console.error('Parse error:', error.message);
+  console.log('Attempted to parse:', jsonString);
+}</code></pre>
+
+                <h3>Step 5 — Use jq on the Command Line</h3>
+                <pre><code># Validate and pretty-print a JSON file
+cat data.json | jq .
+
+# Minify JSON
+cat data.json | jq -c .
+
+# Extract a specific field
+cat data.json | jq '.users[0].name'</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2>Pretty-Print vs Minified JSON — When to Use Each</h2>
+
+                <h3>When to Use Pretty-Printed JSON</h3>
+                <ul>
+                    <li>Writing configuration files that humans will read and edit</li>
+                    <li>Debugging API responses or inspecting data structures</li>
+                    <li>Storing data in version-controlled files where readable diffs matter</li>
+                    <li>Generating output intended for human review or documentation</li>
+                </ul>
+
+                <h3>When to Use Minified JSON</h3>
+                <ul>
+                    <li>Transmitting data over a network where bandwidth matters</li>
+                    <li>Storing JSON in databases or caches where storage size is a concern</li>
+                    <li>Including JSON in HTTP responses from production APIs</li>
+                    <li>Generating JSON for machine consumption where human readability is irrelevant</li>
+                </ul>
+
+                <h3>How to Toggle Between Formats in Code</h3>
+                <pre><code>// JavaScript
+JSON.stringify(data, null, 2);  // pretty-print with 2-space indent
+JSON.stringify(data);           // minify
+
+// Python
+import json
+json.dumps(data, indent=2)                        # pretty-print
+json.dumps(data, separators=(',', ':'))            # minify</code></pre>
+
+                <p>Best practice: develop and debug with pretty-printed JSON. Deploy and transmit minified JSON. Most JSON libraries toggle between the two with a single parameter change.</p>
+            </section>
+
         </div>
     </div>
 
