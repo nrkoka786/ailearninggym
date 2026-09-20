@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/diff-checker/">
+    <title>Free Text Diff Checker | Compare Two Texts Side by Side | AI Learning Gym</title>
+    <meta name="description" content="Compare two texts and instantly see what changed. Our diff checker highlights additions and deletions line by line. Free, runs in your browser.">
+    <meta name="keywords" content="diff checker, text comparison, compare text, find differences, text diff tool, document compare">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 960px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+        @media (max-width: 650px) { .input-grid { grid-template-columns: 1fr; } }
+        .input-label { font-weight: 600; color: var(--text-dark); font-size: 0.9rem; margin-bottom: 6px; display: block; }
+        textarea { width: 100%; height: 200px; padding: 12px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.88rem; font-family: monospace; resize: vertical; color: var(--text-dark); line-height: 1.5; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .btn-row { display: flex; gap: 10px; margin-bottom: 16px; }
+        .btn { padding: 10px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .diff-output { display: none; border: 1px solid var(--card-border); border-radius: 6px; overflow: hidden; }
+        .diff-header { display: grid; grid-template-columns: 1fr 1fr; background: var(--primary-color); color: #fff; font-size: 0.85rem; font-weight: 600; }
+        .diff-header div { padding: 8px 14px; }
+        .diff-body { font-family: monospace; font-size: 0.85rem; line-height: 1.6; }
+        .diff-row { display: grid; grid-template-columns: 1fr 1fr; }
+        .diff-row:nth-child(even) { background: #fafafa; }
+        .diff-cell { padding: 4px 14px; border-right: 1px solid var(--card-border); word-break: break-word; }
+        .diff-cell:last-child { border-right: none; }
+        .line-removed { background: #fef2f2; color: #991b1b; }
+        .line-added { background: #f0fdf4; color: #166534; }
+        .line-same { color: #4a5568; }
+        .stats { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px; }
+        .stats span { font-weight: 700; }
+        .stats .added { color: #166534; }
+        .stats .removed { color: #991b1b; }
+        .legend { display: flex; gap: 16px; font-size: 0.85rem; margin-bottom: 10px; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-dot { width: 14px; height: 14px; border-radius: 3px; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free tools for writers and developers</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Text Diff Checker</h2>
+        <div class="input-grid">
+            <div>
+                <span class="input-label">Original Text</span>
+                <textarea id="text1" placeholder="Paste the original (old) version here..."></textarea>
+            </div>
+            <div>
+                <span class="input-label">Modified Text</span>
+                <textarea id="text2" placeholder="Paste the modified (new) version here..."></textarea>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="compare()">Compare</button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div id="diffResult">
+            <div class="stats" id="stats" style="display:none"></div>
+            <div class="legend">
+                <div class="legend-item"><div class="legend-dot" style="background:#fef2f2; border:1px solid #fca5a5;"></div> Removed</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#f0fdf4; border:1px solid #86efac;"></div> Added</div>
+            </div>
+            <div class="diff-output" id="diffOutput">
+                <div class="diff-header">
+                    <div>Original</div>
+                    <div>Modified</div>
+                </div>
+                <div class="diff-body" id="diffBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This diff checker compares two pieces of text line by line and highlights what's different. Lines that were removed show on the left in red; lines that were added show on the right in green. Lines that are the same appear in both columns without highlighting.</p>
+
+        <h3>When is a diff checker useful?</h3>
+        <ul>
+            <li><strong>Reviewing document edits</strong> — compare a draft before and after feedback to see exactly what changed.</li>
+            <li><strong>Checking code changes</strong> — spot differences between two versions of a script or config file.</li>
+            <li><strong>Proofreading</strong> — paste two versions of an article or email to find accidental deletions or additions.</li>
+            <li><strong>Version history</strong> — if you saved two copies of a file and aren't sure what changed, this shows you instantly.</li>
+        </ul>
+
+        <h3>How it works</h3>
+        <p>The tool splits both texts into lines and compares them using a longest common subsequence (LCS) approach — the same method used by tools like Git's <code style="background:#f1f5f9; padding:2px 5px; border-radius:3px; font-family:monospace; font-size:0.9em;">git diff</code>. Lines that appear in both versions are considered unchanged; everything else is flagged as added or removed.</p>
+
+        <h3>Tips for getting the best results</h3>
+        <ul>
+            <li>For documents, make sure both versions use the same line breaks — some programs (especially on Windows vs. Mac) format line endings differently.</li>
+            <li>If you're comparing code, keep indentation consistent — a line with an extra space is treated as a different line.</li>
+            <li>For large documents, focus on the highlighted lines — unchanged lines are shown for context but don't need review.</li>
+        </ul>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is my text uploaded anywhere?</h4>
+            <p>No. All comparison happens locally in your browser using JavaScript. Your text never leaves your computer — safe for confidential documents, code, and private content.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I compare very long documents?</h4>
+            <p>Yes, though very large texts (thousands of lines) may take a moment to process. For extremely long files, consider breaking them into sections for faster comparison.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does it detect changes within a line, or only whole lines?</h4>
+            <p>This tool compares at the line level — if a single word in a long sentence changed, the whole line will be flagged. For word-level highlighting within a line, you'd need a more advanced diff tool.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How is this different from using Ctrl+F to search?</h4>
+            <p>Ctrl+F finds specific words, but it won't show you what's different between two versions. A diff tool shows the complete picture of every change — additions, deletions, and unchanged context — all at once.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    function lcs(a, b) {
+        const m = a.length, n = b.length;
+        const dp = Array.from({length: m+1}, () => new Array(n+1).fill(0));
+        for (let i = 1; i <= m; i++)
+            for (let j = 1; j <= n; j++)
+                dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j], dp[i][j-1]);
+        let i = m, j = n, result = [];
+        while (i > 0 && j > 0) {
+            if (a[i-1] === b[j-1]) { result.push({type:'same', val:a[i-1]}); i--; j--; }
+            else if (dp[i-1][j] > dp[i][j-1]) { result.push({type:'removed', val:a[i-1]}); i--; }
+            else { result.push({type:'added', val:b[j-1]}); j--; }
+        }
+        while (i > 0) { result.push({type:'removed', val:a[i-1]}); i--; }
+        while (j > 0) { result.push({type:'added', val:b[j-1]}); j--; }
+        return result.reverse();
+    }
+
+    function compare() {
+        const t1 = document.getElementById('text1').value.split('\n');
+        const t2 = document.getElementById('text2').value.split('\n');
+        const diff = lcs(t1, t2);
+
+        let body = '';
+        let added = 0, removed = 0;
+
+        // Pair up removed/added lines
+        let i = 0;
+        while (i < diff.length) {
+            const d = diff[i];
+            if (d.type === 'same') {
+                body += `<div class="diff-row"><div class="diff-cell line-same">${escape(d.val)}&nbsp;</div><div class="diff-cell line-same">${escape(d.val)}&nbsp;</div></div>`;
+                i++;
+            } else if (d.type === 'removed') {
+                // look ahead for corresponding added
+                const next = diff[i+1];
+                if (next && next.type === 'added') {
+                    body += `<div class="diff-row"><div class="diff-cell line-removed">${escape(d.val)}&nbsp;</div><div class="diff-cell line-added">${escape(next.val)}&nbsp;</div></div>`;
+                    removed++; added++; i += 2;
+                } else {
+                    body += `<div class="diff-row"><div class="diff-cell line-removed">${escape(d.val)}&nbsp;</div><div class="diff-cell"></div></div>`;
+                    removed++; i++;
+                }
+            } else {
+                body += `<div class="diff-row"><div class="diff-cell"></div><div class="diff-cell line-added">${escape(d.val)}&nbsp;</div></div>`;
+                added++; i++;
+            }
+        }
+
+        document.getElementById('diffBody').innerHTML = body || '<div style="padding:12px 14px; color:#64748b;">No differences found — the texts are identical.</div>';
+        document.getElementById('diffOutput').style.display = 'block';
+
+        const statsEl = document.getElementById('stats');
+        statsEl.innerHTML = `<span class="added">+${added} line${added!==1?'s':''} added</span> &nbsp; <span class="removed">−${removed} line${removed!==1?'s':''} removed</span>`;
+        statsEl.style.display = 'block';
+    }
+
+    function escape(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function clearAll() {
+        document.getElementById('text1').value = '';
+        document.getElementById('text2').value = '';
+        document.getElementById('diffBody').innerHTML = '';
+        document.getElementById('diffOutput').style.display = 'none';
+        document.getElementById('stats').style.display = 'none';
+    }
+</script>
+</body>
+</html>

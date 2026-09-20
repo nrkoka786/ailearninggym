@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/loan-calculator/">
+    <title>Free Loan Calculator & Amortization Schedule | AI Learning Gym</title>
+    <meta name="description" content="Calculate your monthly loan payment and see a full amortization schedule. Free online loan calculator for mortgages, auto loans, and personal loans.">
+    <meta name="keywords" content="loan calculator, amortization calculator, monthly payment calculator, mortgage calculator, loan schedule">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; font-size: 0.95rem; }
+        .input-group input { width: 100%; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); }
+        .btn { width: 100%; padding: 12px; background: var(--accent-color); color: #fff; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 8px; }
+        .btn:hover { opacity: 0.9; }
+        .results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+        @media (max-width: 600px) { .results { grid-template-columns: 1fr; } }
+        .result-card { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 16px; text-align: center; }
+        .result-card.highlight { background: var(--primary-color); border-color: var(--primary-color); }
+        .result-label { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px; }
+        .result-card.highlight .result-label { color: #94a3b8; }
+        .result-value { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); }
+        .result-card.highlight .result-value { color: #fff; }
+        .table-wrap { overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th { background: var(--primary-color); color: #fff; padding: 10px 12px; text-align: right; }
+        th:first-child { text-align: center; }
+        td { padding: 8px 12px; border-bottom: 1px solid var(--card-border); color: #4a5568; text-align: right; }
+        td:first-child { text-align: center; }
+        tr:hover { background: #f8fafc; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free financial calculators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Loan Calculator</h2>
+        <div class="input-group"><label>Loan Amount ($)</label><input type="number" id="principal" placeholder="e.g. 250000" min="1"></div>
+        <div class="input-group"><label>Annual Interest Rate (%)</label><input type="number" id="rate" placeholder="e.g. 6.5" min="0" step="0.01"></div>
+        <div class="input-group"><label>Loan Term (years)</label><input type="number" id="term" placeholder="e.g. 30" min="1"></div>
+        <button class="btn" onclick="calculate()">Calculate</button>
+
+        <div class="results" id="results" style="display:none">
+            <div class="result-card highlight">
+                <div class="result-label">Monthly Payment</div>
+                <div class="result-value" id="monthly">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Total Interest Paid</div>
+                <div class="result-value" id="totalInterest">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Total Cost</div>
+                <div class="result-value" id="totalCost">$0</div>
+            </div>
+        </div>
+
+        <div class="table-wrap" id="tableWrap" style="display:none">
+            <table id="scheduleTable">
+                <thead>
+                    <tr><th>#</th><th>Principal</th><th>Interest</th><th>Total Paid</th><th>Balance</th></tr>
+                </thead>
+                <tbody id="scheduleBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>About This Calculator</h2>
+        <p>This loan calculator shows your monthly payment and a full amortization schedule — a month-by-month breakdown of how much of each payment goes to principal versus interest. It works for mortgages, car loans, personal loans, and student loans.</p>
+
+        <h3>How to use it</h3>
+        <ol>
+            <li><strong>Loan amount</strong> — enter the total amount you're borrowing (not including a down payment).</li>
+            <li><strong>Interest rate</strong> — enter the annual interest rate your lender quoted (e.g. 6.5).</li>
+            <li><strong>Loan term</strong> — enter how many years the loan runs (e.g. 15 or 30).</li>
+            <li>Click <strong>Calculate</strong> to see your monthly payment, total interest, and the full payment schedule.</li>
+        </ol>
+
+        <h3>Why the early payments are mostly interest</h3>
+        <p>With a standard fixed-rate loan, your monthly payment stays the same throughout the loan — but what that payment covers changes every month. In the early years, most of each payment goes toward interest because you still owe a large balance. As you pay down the principal, the interest portion shrinks and more of your payment goes toward the actual loan balance. This is called amortization.</p>
+        <p>For example, on a 30-year $300,000 mortgage at 6.5%, your first payment might be about $1,896 — but roughly $1,625 of that goes to interest and only $271 reduces your balance. By year 25, the split reverses.</p>
+
+        <h3>15-year vs. 30-year mortgage</h3>
+        <p>A 30-year mortgage gives you a lower monthly payment but costs significantly more in total interest. A 15-year mortgage has higher monthly payments but you pay off the loan faster and pay far less interest overall. Use this calculator to compare both options side by side.</p>
+
+        <h3>Frequently asked questions</h3>
+
+        <div class="faq-item">
+            <h4>What's the difference between principal and interest?</h4>
+            <p>Principal is the actual amount you borrowed. Interest is the fee your lender charges for lending you that money. Your monthly payment covers both — the amortization schedule below shows exactly how much goes to each.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does making extra payments save money?</h4>
+            <p>Yes — significantly. Any extra payment goes directly toward the principal, which reduces the balance interest is calculated on. Even one extra payment per year on a 30-year mortgage can cut years off the loan and save tens of thousands in interest.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What's APR vs. interest rate?</h4>
+            <p>The interest rate is what your lender charges on the loan itself. APR (Annual Percentage Rate) includes the interest rate plus fees like origination charges, making it a better measure of the true cost of borrowing. Use the interest rate (not APR) in this calculator for your monthly payment.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is my data stored?</h4>
+            <p>No. All calculations happen in your browser. Nothing is sent to any server.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    function fmt(n) { return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+
+    function calculate() {
+        const P = parseFloat(document.getElementById('principal').value);
+        const annualRate = parseFloat(document.getElementById('rate').value);
+        const years = parseInt(document.getElementById('term').value);
+        if (!P || !annualRate || !years) return;
+
+        const r = annualRate / 100 / 12;
+        const n = years * 12;
+        const M = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+        const totalPaid = M * n;
+        const totalInterest = totalPaid - P;
+
+        document.getElementById('monthly').textContent = fmt(M);
+        document.getElementById('totalInterest').textContent = fmt(totalInterest);
+        document.getElementById('totalCost').textContent = fmt(totalPaid);
+        document.getElementById('results').style.display = 'grid';
+
+        let balance = P;
+        let cumulativePaid = 0;
+        const tbody = document.getElementById('scheduleBody');
+        tbody.innerHTML = '';
+
+        for (let i = 1; i <= n; i++) {
+            const interestPayment = balance * r;
+            const principalPayment = M - interestPayment;
+            balance -= principalPayment;
+            cumulativePaid += M;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${i}</td><td>${fmt(principalPayment)}</td><td>${fmt(interestPayment)}</td><td>${fmt(cumulativePaid)}</td><td>${fmt(Math.max(0, balance))}</td>`;
+            tbody.appendChild(tr);
+        }
+        document.getElementById('tableWrap').style.display = 'block';
+    }
+</script>
+</body>
+</html>
