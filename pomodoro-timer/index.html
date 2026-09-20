@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/pomodoro-timer/">
     <title>Free Pomodoro Timer | Focus & Productivity Timer | AI Learning Gym</title>
     <meta name="description" content="Stay focused with a free Pomodoro timer. Work for 25 minutes, take a 5-minute break, and repeat. Customizable intervals, desktop notifications, and no sign-up needed.">
     <meta name="keywords" content="pomodoro timer, focus timer, productivity timer, work timer, pomodoro technique, 25 minute timer, study timer">
@@ -84,17 +85,12 @@
 </head>
 <body>
 <header>
-    <h1><img src="/logo.png" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
     <p>Free productivity and focus tools</p>
     <a href="/">&larr; Back to Dashboard</a>
 </header>
 
 <div class="container">
-
-    <div class="ad-container">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
 
     <div class="card">
         <h2>Pomodoro Timer</h2>
@@ -140,11 +136,6 @@
             <input type="checkbox" id="notifCheck">
             <label for="notifCheck">Enable desktop notifications when a session ends</label>
         </div>
-    </div>
-
-    <div class="ad-container">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2027849186057550" data-ad-slot="1105246416" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <div class="card">
@@ -308,7 +299,7 @@
         const wantNotif = document.getElementById('notifCheck').checked;
         if (!wantNotif) return;
         if (Notification.permission === 'granted') {
-            new Notification('Pomodoro Timer', { body: msg, icon: '/logo.png' });
+            new Notification('Pomodoro Timer', { body: msg, icon: '/AI_Learning_Gym_Logo.jpg' });
         } else if (Notification.permission !== 'denied') {
             Notification.requestPermission().then(p => {
                 if (p === 'granted') new Notification('Pomodoro Timer', { body: msg });

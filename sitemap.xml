@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ailearninggym.com/</loc></url>
+  <url><loc>https://ailearninggym.com/about.html</loc></url>
+  <url><loc>https://ailearninggym.com/contact.html</loc></url>
+  <url><loc>https://ailearninggym.com/privacy.html</loc></url>
+  <url><loc>https://ailearninggym.com/terms-of-service.html</loc></url>
   <url><loc>https://ailearninggym.com/age-calculator/</loc></url>
   <url><loc>https://ailearninggym.com/ai-detector/</loc></url>
   <url><loc>https://ailearninggym.com/ai-image-prompt-generator/</loc></url>
