@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/white-screen/">
+    <title>White Screen & Dead Pixel Test | All Screen Colors | AI Learning Gym</title>
+    <meta name="description" content="Use our white screen tool to test your monitor for dead pixels or use it as a bright light source. Switch between white, black, red, green, blue, and more colors.">
+    <meta name="keywords" content="white screen, dead pixel test, monitor test, blank white screen, screen color test, dead pixel checker, bright white screen">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .preview-box { width: 100%; height: 200px; border-radius: 8px; border: 1px solid var(--card-border); background: white; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative; }
+        .preview-box span { font-weight: 600; font-size: 0.9rem; color: rgba(0,0,0,0.4); pointer-events: none; }
+        .colors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .color-btn { border: none; border-radius: 6px; cursor: pointer; padding: 0; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 700; transition: transform 0.1s; }
+        .color-btn:hover { transform: scale(1.05); }
+        .color-btn.active { outline: 3px solid var(--accent-color); outline-offset: 2px; }
+        .fullscreen-btn { width: 100%; padding: 14px; background: var(--accent-color); color: #fff; border: none; border-radius: 6px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+        .fullscreen-btn:hover { background: #2980b9; }
+        .gradient-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .grad-btn { flex: 1 1 140px; padding: 12px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        #fullscreenOverlay { display: none; position: fixed; inset: 0; z-index: 9999; cursor: pointer; }
+        #fsHint { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.35); color: #fff; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; pointer-events: none; opacity: 0; transition: opacity 0.3s; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- Fullscreen overlay -->
+<div id="fullscreenOverlay" onclick="exitFullscreen()">
+    <span id="fsHint">Press Esc or click anywhere to exit</span>
+</div>
+
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free screen testing and monitor tools</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Screen Color Tester</h2>
+        <p>Pick a color below, then click <strong>Go Fullscreen</strong> to fill your monitor. Use this to spot dead or stuck pixels, check for backlight bleed, or use your screen as a bright light source.</p>
+
+        <div class="preview-box" id="previewBox" onclick="goFullscreen()">
+            <span id="previewLabel">White — click to fullscreen</span>
+        </div>
+
+        <div class="colors-grid" id="colorsGrid"></div>
+
+        <button class="fullscreen-btn" onclick="goFullscreen()">Go Fullscreen</button>
+    </div>
+
+    <div class="card">
+        <h2>How to Test for Dead Pixels</h2>
+        <p>A dead pixel is a tiny dot on your screen that stays permanently black, white, or stuck on one color no matter what the display shows. They're easiest to spot against a solid background — the contrasting color makes the bad pixel stand out sharply.</p>
+
+        <p>Here's the quickest way to run a full check:</p>
+        <ul>
+            <li>Go fullscreen with the <strong>white</strong> screen and slowly scan for any black or dark dots</li>
+            <li>Switch to <strong>black</strong> and scan for any bright or glowing dots</li>
+            <li>Repeat with <strong>red, green, and blue</strong> to catch stuck pixels</li>
+            <li>Take your time — a thorough pass across the entire screen only takes a minute or two</li>
+        </ul>
+
+        <h3>Other uses for a blank screen</h3>
+        <p>Beyond pixel testing, a white or brightly colored screen has plenty of practical uses. It works as a light panel for photography or video lighting, as a soft background for scanning documents, or as a quick way to check whether a laptop screen has any pressure marks or scratches.</p>
+
+        <h3>What's the difference between a dead pixel and a stuck pixel?</h3>
+        <p>A dead pixel gets no power at all and shows as a permanent black dot. A stuck pixel is still receiving power but is fixed on one color — usually red, green, or blue. Stuck pixels sometimes recover on their own or respond to pixel-refreshing tools, while true dead pixels are usually permanent hardware defects.</p>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Does this tool work on any screen?</h4>
+            <p>Yes — it works on any device with a modern web browser, including desktop monitors, laptops, tablets, and phones. The fullscreen mode uses your browser's native fullscreen API to fill the entire display.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can a dead pixel be fixed?</h4>
+            <p>True dead pixels (permanently dark) are hardware failures and cannot be fixed in software. Stuck pixels sometimes respond to rapid color cycling or gentle pressure. Whether dead pixels qualify for a warranty repair depends on the manufacturer — many have a minimum threshold of 3–5 pixels.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why do I need multiple colors to check for dead pixels?</h4>
+            <p>Each sub-pixel inside a display is either red, green, or blue. A defective sub-pixel only shows up clearly when the matching color is displayed. Testing only on white can miss sub-pixel failures that only a red, green, or blue background would reveal.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is the white screen tool safe for my monitor?</h4>
+            <p>Yes. Displaying a solid color puts no more strain on your screen than any other image. OLED screens can develop burn-in from static images shown for very long periods, but a few minutes of pixel testing poses no real risk.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    const COLORS = [
+        { name: 'White',   hex: '#ffffff', text: '#000' },
+        { name: 'Black',   hex: '#000000', text: '#fff' },
+        { name: 'Red',     hex: '#ff0000', text: '#fff' },
+        { name: 'Green',   hex: '#00cc00', text: '#fff' },
+        { name: 'Blue',    hex: '#0000ff', text: '#fff' },
+        { name: 'Cyan',    hex: '#00ffff', text: '#000' },
+        { name: 'Magenta', hex: '#ff00ff', text: '#fff' },
+        { name: 'Yellow',  hex: '#ffff00', text: '#000' },
+        { name: 'Gray',    hex: '#808080', text: '#fff' },
+        { name: 'Dark Gray',hex:'#333333', text: '#fff' },
+        { name: 'Navy',    hex: '#001f5b', text: '#fff' },
+        { name: 'Orange',  hex: '#ff6600', text: '#fff' },
+    ];
+
+    let activeColor = COLORS[0];
+    const grid = document.getElementById('colorsGrid');
+    const preview = document.getElementById('previewBox');
+    const previewLabel = document.getElementById('previewLabel');
+
+    COLORS.forEach((c, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'color-btn' + (i === 0 ? ' active' : '');
+        btn.style.background = c.hex;
+        btn.style.color = c.text;
+        btn.style.border = c.hex === '#ffffff' ? '1px solid #ddd' : 'none';
+        btn.textContent = c.name;
+        btn.onclick = () => selectColor(c, btn);
+        grid.appendChild(btn);
+    });
+
+    function selectColor(c, btn) {
+        activeColor = c;
+        preview.style.background = c.hex;
+        previewLabel.style.color = c.hex === '#ffffff' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.5)';
+        previewLabel.textContent = c.name + ' — click to fullscreen';
+        document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function goFullscreen() {
+        const overlay = document.getElementById('fullscreenOverlay');
+        overlay.style.background = activeColor.hex;
+        overlay.style.display = 'block';
+        const hint = document.getElementById('fsHint');
+        hint.style.opacity = '1';
+        setTimeout(() => { hint.style.opacity = '0'; }, 2000);
+        const el = document.documentElement;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    }
+
+    function exitFullscreen() {
+        document.getElementById('fullscreenOverlay').style.display = 'none';
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') exitFullscreen();
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+            document.getElementById('fullscreenOverlay').style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>

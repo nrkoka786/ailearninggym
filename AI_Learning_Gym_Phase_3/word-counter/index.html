@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/word-counter/">
+    <title>Free Word Counter & Character Counter | AI Learning Gym</title>
+    <meta name="description" content="Count words, characters, paragraphs, and reading time instantly. Free online word counter — works in your browser, nothing is stored.">
+    <meta name="keywords" content="word counter, character counter, online word count, reading time calculator, essay word counter">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        textarea { width: 100%; height: 220px; padding: 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.98rem; resize: vertical; color: var(--text-dark); line-height: 1.6; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+        @media (max-width: 600px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+        .stat-box { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 14px; text-align: center; }
+        .stat-value { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+        .btn-row { display: flex; gap: 10px; margin-top: 12px; }
+        .btn { padding: 9px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .btn-copy { background: var(--accent-color); color: #fff; }
+        .btn-clear { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free browser tools for writers and creators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Word Counter</h2>
+        <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+        <div class="stats">
+            <div class="stat-box"><div class="stat-value" id="wordCount">0</div><div class="stat-label">Words</div></div>
+            <div class="stat-box"><div class="stat-value" id="charCount">0</div><div class="stat-label">Characters</div></div>
+            <div class="stat-box"><div class="stat-value" id="paraCount">0</div><div class="stat-label">Paragraphs</div></div>
+            <div class="stat-box"><div class="stat-value" id="readTime">0m</div><div class="stat-label">Read Time</div></div>
+        </div>
+        <div class="btn-row">
+            <button class="btn btn-copy" onclick="copyText()">Copy Text</button>
+            <button class="btn btn-clear" onclick="clearText()">Clear</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This word counter tracks words, characters, paragraphs, and estimated reading time as you type. It's useful for essays, blog posts, social media captions, or any writing with a length limit. Everything runs in your browser — your text is never sent anywhere.</p>
+
+        <h3>How to use it</h3>
+        <ol>
+            <li>Type or paste your text into the box above.</li>
+            <li>The counts update automatically as you type — no button needed.</li>
+            <li>Use <strong>Copy Text</strong> to copy your text to the clipboard, or <strong>Clear</strong> to start fresh.</li>
+        </ol>
+
+        <h3>Common word count targets</h3>
+        <p>Here are typical length guidelines for different types of writing:</p>
+        <ul>
+            <li><strong>Tweet / X post</strong> — 280 characters max</li>
+            <li><strong>Instagram caption</strong> — 125 words recommended, 2,200 max</li>
+            <li><strong>Email subject line</strong> — 6–10 words for best open rates</li>
+            <li><strong>Blog post (short)</strong> — 500–800 words</li>
+            <li><strong>Blog post (standard)</strong> — 1,000–1,500 words</li>
+            <li><strong>Long-form SEO article</strong> — 1,500–2,500 words</li>
+            <li><strong>College essay</strong> — 500–650 words (Common App)</li>
+            <li><strong>Short story</strong> — 1,000–7,500 words</li>
+            <li><strong>Novel</strong> — 70,000–100,000 words</li>
+        </ul>
+
+        <h3>How reading time is calculated</h3>
+        <p>The estimated reading time is based on an average reading speed of 200 words per minute — a widely used benchmark for general adult readers. A 1,000-word article takes about 5 minutes to read at this pace. Academic or technical content may take longer; simple content may be faster.</p>
+
+        <h3>Frequently asked questions</h3>
+
+        <div class="faq-item">
+            <h4>Does this tool save my text?</h4>
+            <p>No. Your text stays in your browser only. Nothing is uploaded or stored. Closing the tab or refreshing the page clears everything.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why does my word count differ from Microsoft Word?</h4>
+            <p>Different tools handle hyphenated words, numbers, and punctuation slightly differently. For example, "real-time" might count as one word or two depending on the tool. For most purposes the difference is minimal — usually just 1–3 words.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does it count characters with or without spaces?</h4>
+            <p>The character count shown includes spaces. If you need a count without spaces, subtract the number of words minus one as a rough approximation, or use a dedicated character counter.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I use this for non-English text?</h4>
+            <p>Yes — the character count works for any language. However, word counting relies on spaces between words, so it works best for languages that separate words with spaces (most European languages). Languages like Chinese or Japanese without spaces will show inaccurate word counts.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    const textInput = document.getElementById('textInput');
+
+    function updateStats() {
+        const text = textInput.value;
+        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+        const chars = text.length;
+        const paras = text.trim() === '' ? 0 : text.trim().split(/\n+/).filter(p => p.trim() !== '').length;
+        const readTime = Math.ceil(words / 200);
+
+        document.getElementById('wordCount').textContent = words;
+        document.getElementById('charCount').textContent = chars;
+        document.getElementById('paraCount').textContent = paras;
+        document.getElementById('readTime').textContent = readTime + 'm';
+    }
+
+    function copyText() {
+        navigator.clipboard.writeText(textInput.value);
+    }
+
+    function clearText() {
+        textInput.value = '';
+        updateStats();
+    }
+
+    textInput.addEventListener('input', updateStats);
+</script>
+</body>
+</html>

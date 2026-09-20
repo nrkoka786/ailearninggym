@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/qr-generator/">
+    <title>Free QR Code Generator | Create QR Codes Instantly | AI Learning Gym</title>
+    <meta name="description" content="Generate QR codes for URLs, text, phone numbers, and more. Free online QR code maker — create, download, and share in seconds. No sign-up needed.">
+    <meta name="keywords" content="QR code generator, create QR code, free QR code, QR code maker, URL to QR code, QR code download">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; font-size: 0.95rem; }
+        .input-group textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.98rem; color: var(--text-dark); resize: vertical; height: 90px; }
+        .input-group textarea:focus { outline: none; border-color: var(--accent-color); }
+        .options-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .options-row { grid-template-columns: 1fr; } }
+        .opt-group label { display: block; font-weight: 600; color: var(--text-dark); font-size: 0.88rem; margin-bottom: 6px; }
+        .opt-group select, .opt-group input[type="color"] { width: 100%; padding: 7px 10px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.9rem; color: var(--text-dark); }
+        .opt-group input[type="color"] { height: 38px; cursor: pointer; }
+        .btn { padding: 11px 28px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .qr-output { display: none; text-align: center; margin-top: 20px; }
+        #qrcode { display: inline-block; padding: 16px; background: #fff; border: 1px solid var(--card-border); border-radius: 8px; }
+        #qrcode canvas, #qrcode img { display: block; }
+        .qr-actions { margin-top: 14px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .type-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+        .type-tab { padding: 7px 14px; border: 1px solid var(--card-border); border-radius: 20px; background: #f8fafc; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+        .type-tab.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free tools for businesses and creators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>QR Code Generator</h2>
+
+        <div class="type-tabs">
+            <button class="type-tab active" onclick="setType('url', this)">Website URL</button>
+            <button class="type-tab" onclick="setType('text', this)">Plain Text</button>
+            <button class="type-tab" onclick="setType('email', this)">Email</button>
+            <button class="type-tab" onclick="setType('phone', this)">Phone</button>
+            <button class="type-tab" onclick="setType('sms', this)">SMS</button>
+            <button class="type-tab" onclick="setType('wifi', this)">Wi-Fi</button>
+        </div>
+
+        <div class="input-group">
+            <label id="inputLabel">Website URL</label>
+            <textarea id="qrInput" placeholder="https://example.com"></textarea>
+        </div>
+
+        <div class="options-row">
+            <div class="opt-group">
+                <label>Size</label>
+                <select id="qrSize">
+                    <option value="128">Small (128px)</option>
+                    <option value="200" selected>Medium (200px)</option>
+                    <option value="300">Large (300px)</option>
+                    <option value="400">Extra Large (400px)</option>
+                </select>
+            </div>
+            <div class="opt-group">
+                <label>Foreground color</label>
+                <input type="color" id="fgColor" value="#000000">
+            </div>
+            <div class="opt-group">
+                <label>Background color</label>
+                <input type="color" id="bgColor" value="#ffffff">
+            </div>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="generate()">Generate QR Code</button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div class="qr-output" id="qrOutput">
+            <div id="qrcode"></div>
+            <div class="qr-actions">
+                <button class="btn btn-primary" onclick="downloadQR()">Download PNG</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>About QR Codes</h2>
+        <p>A QR code (short for Quick Response code) is a type of barcode that stores information in a grid of black and white squares. Smartphones can read them instantly using the camera app — no special app required on most modern phones. QR codes are one of the fastest ways to share a link, contact, or information in the physical world.</p>
+
+        <h3>What can a QR code store?</h3>
+        <ul>
+            <li><strong>Website URLs</strong> — link to any webpage, landing page, or online shop</li>
+            <li><strong>Plain text</strong> — a message, address, or any information you want to share</li>
+            <li><strong>Email addresses</strong> — open a pre-addressed email on scan</li>
+            <li><strong>Phone numbers</strong> — let people call or save your number with one scan</li>
+            <li><strong>SMS messages</strong> — pre-fill a text message for the user to send</li>
+            <li><strong>Wi-Fi credentials</strong> — let guests join your network without reading out a password</li>
+        </ul>
+
+        <h3>Common uses for QR codes</h3>
+        <ul>
+            <li><strong>Restaurant menus</strong> — link to a digital menu from a table card</li>
+            <li><strong>Business cards</strong> — add a QR code that links to your website or LinkedIn profile</li>
+            <li><strong>Marketing materials</strong> — print on flyers, posters, or packaging to drive traffic online</li>
+            <li><strong>Events</strong> — use QR codes for ticketing, check-in, or sharing event details</li>
+            <li><strong>Product packaging</strong> — link to tutorials, warranty registration, or product pages</li>
+        </ul>
+
+        <h3>How to make your QR code work better</h3>
+        <p>Keep the URL short — long links create denser QR codes that are harder to scan. If you're linking to a long URL, consider using a URL shortener first. Print QR codes at a reasonable size — anything smaller than about 1 inch square can be difficult for cameras to read. Always test your QR code before printing large quantities.</p>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Do QR codes expire?</h4>
+            <p>The QR code itself doesn't expire — it's just encoded data. However, if the link inside the QR code goes to a webpage that gets deleted or moved, the code will stop working. For permanent use, make sure the destination URL won't change.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is there a character limit for QR codes?</h4>
+            <p>QR codes can store up to about 4,000 characters, but the more data you include, the denser and harder-to-scan the code becomes. For best results, keep URLs and text short — under 150 characters ideally.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I use QR codes for commercial printing?</h4>
+            <p>Yes. QR codes generated here are yours to use for any purpose, including commercial printing on packaging, signage, business cards, or marketing materials. The generated image is a standard PNG file.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How do I scan a QR code?</h4>
+            <p>On most modern smartphones, just open your camera app and point it at the QR code — a notification will appear with the link. If that doesn't work, look for a QR scanner option in your camera settings, or download a free QR scanner app.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>How QR Codes Work</h2>
+        <p>QR codes — short for Quick Response codes — were invented in 1994 by Denso Wave, a Japanese automotive company, to track vehicle parts during manufacturing. Today they are one of the most widely used data encoding formats in the world, appearing on everything from restaurant menus to concert tickets to medication packaging.</p>
+
+        <h3>The Structure of a QR Code</h3>
+        <p>A QR code is made up of black and white squares arranged in a grid pattern. Each region serves a specific purpose:</p>
+        <ul>
+            <li><strong>Finder patterns</strong> — The three square patterns in three corners. These allow scanners to locate and orient the QR code regardless of the angle.</li>
+            <li><strong>Alignment patterns</strong> — Smaller squares that help correct for distortion when the code is on a curved surface or photographed at an angle.</li>
+            <li><strong>Timing patterns</strong> — Alternating black and white modules that help the scanner determine the size of the data grid.</li>
+            <li><strong>Data modules</strong> — The remaining squares that encode the actual content.</li>
+            <li><strong>Quiet zone</strong> — A margin of white space around the entire code that prevents interference from surrounding elements.</li>
+        </ul>
+
+        <h3>Error Correction Levels</h3>
+        <p>QR codes use Reed-Solomon error correction, which allows the code to still be read even when part of it is damaged or obscured. There are four levels:</p>
+        <ul>
+            <li><strong>Level L (Low)</strong> — Recovers up to 7% data loss. Produces the smallest, most compact code.</li>
+            <li><strong>Level M (Medium)</strong> — Recovers up to 15% data loss. Good balance for most uses.</li>
+            <li><strong>Level Q (Quartile)</strong> — Recovers up to 25% data loss. Good for outdoor or industrial use.</li>
+            <li><strong>Level H (High)</strong> — Recovers up to 30% data loss. Required when a logo is overlaid on the center of the code.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Real-World Uses of QR Codes</h2>
+
+        <h3>Business and Marketing</h3>
+        <ul>
+            <li><strong>Business cards</strong> — Encode contact information so people can save your details with a single scan instead of typing manually.</li>
+            <li><strong>Restaurant menus</strong> — Digital menus became widespread during COVID-19 and remain common. A QR code on the table links to an online menu that can be updated instantly without reprinting.</li>
+            <li><strong>Product packaging</strong> — Link to manuals, ingredient details, promotional content, or customer reviews directly from the packaging.</li>
+            <li><strong>Print advertising</strong> — Bridge physical and digital by adding QR codes to flyers, posters, and billboards that link to landing pages, videos, or promotions.</li>
+        </ul>
+
+        <h3>Payments and Transactions</h3>
+        <ul>
+            <li><strong>Mobile payments</strong> — Apps like Venmo, Cash App, and PayPal generate QR codes for sending and receiving money. The recipient displays their code and the sender scans it to initiate payment.</li>
+            <li><strong>Cryptocurrency wallets</strong> — Bitcoin and other cryptocurrency wallet addresses are impractical to type. QR codes allow wallets to be shared by scanning rather than copying a 34-character address.</li>
+        </ul>
+
+        <h3>Events and Access Control</h3>
+        <ul>
+            <li><strong>Event tickets</strong> — Digital tickets for concerts, sporting events, flights, and movies use QR codes scanned at entry gates.</li>
+            <li><strong>Boarding passes</strong> — Airlines have used QR code boarding passes for over a decade, verified at each checkpoint.</li>
+            <li><strong>Hotel check-in</strong> — Many hotels send QR codes that allow guests to check in digitally and access rooms directly from their phone.</li>
+        </ul>
+
+        <h3>Healthcare</h3>
+        <ul>
+            <li><strong>Medication tracking</strong> — Prescription bottles include QR codes linking to prescribing information, dosage instructions, and drug interaction warnings.</li>
+            <li><strong>Patient identification</strong> — Hospitals use QR code wristbands to quickly access patient records and medication lists at the point of care.</li>
+            <li><strong>Health records</strong> — COVID-19 vaccination certificates and health documents used QR codes to encode verifiable digital proof.</li>
+        </ul>
+
+        <h3>Education and Information</h3>
+        <ul>
+            <li><strong>Museum exhibits</strong> — QR codes next to exhibits link to extended information, audio guides, and videos beyond what fits on a physical label.</li>
+            <li><strong>Wi-Fi sharing</strong> — QR codes can encode Wi-Fi credentials so smartphones connect automatically when scanned — no need to type long passwords.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>QR Code Best Practices</h2>
+
+        <h3>Size Guidelines</h3>
+        <p>QR codes need to be large enough for smartphone cameras to read accurately. The minimum print size for scanning at close range is 2 cm x 2 cm (about 0.8 inches square). A useful formula: the minimum size should be 1/10th of the scanning distance. For a code scanned from 1 meter away, the code should be at least 10 cm square. For outdoor signage, make the code significantly larger.</p>
+
+        <h3>Contrast Is Essential</h3>
+        <p>Black on white is the most reliable combination. While colored QR codes are possible, low contrast combinations — dark blue on black, yellow on white — frequently cause scan failures. Always test colored QR codes on multiple devices before printing. A QR code that cannot be scanned is worse than no QR code at all.</p>
+
+        <h3>Always Test Before Publishing</h3>
+        <p>Before printing on physical materials — especially expensive ones like product packaging or signage — test the code on multiple devices. Test with built-in camera apps on both iOS and Android. Test at the size it will be printed. Test at different angles and in different lighting. A code that looks perfect on screen may fail at small print sizes.</p>
+
+        <h3>Keep URLs Short</h3>
+        <p>Longer URLs produce more complex QR codes with smaller, denser modules that are harder to scan. If your URL is long, use a URL shortener first. Also make sure the URL will remain valid for as long as you use the QR code — broken links in printed materials cannot easily be fixed.</p>
+
+        <h3>Content Formats for Automatic Handling</h3>
+        <p>Several standardized formats exist for specific content types that smartphones handle automatically:</p>
+        <ul>
+            <li><strong>URL</strong> — Include the full URL with https:// and the phone opens it in the browser.</li>
+            <li><strong>Wi-Fi</strong> — Format: <code>WIFI:T:WPA;S:NetworkName;P:Password;;</code> — phones offer to connect automatically.</li>
+            <li><strong>Phone number</strong> — Format: <code>tel:+15551234567</code> — phones offer to call.</li>
+            <li><strong>Email</strong> — Format: <code>mailto:email@example.com?subject=Subject</code></li>
+            <li><strong>SMS</strong> — Format: <code>sms:+15551234567?body=Message</code></li>
+            <li><strong>Contact (vCard)</strong> — Format: <code>BEGIN:VCARD
+FN:Name
+TEL:+15551234567
+END:VCARD</code></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>QR Code vs Barcode — Key Differences</h2>
+        <p>Traditional barcodes encode data in one dimension — horizontal stripes of varying widths — and can typically store 8 to 25 characters. QR codes encode data in two dimensions, both horizontally and vertically, allowing them to store thousands of characters in a similar space.</p>
+        <p>Barcodes require a specialized scanner with a laser reader. QR codes can be read by any modern smartphone camera with no additional hardware or software. For product identification in retail supply chains, barcodes remain the standard. For consumer-facing applications requiring rich data or web links, QR codes are far more versatile.</p>
+        <p>One important limitation of standard QR codes generated by tools like this one is that they are static — the encoded destination is permanent once created. If you need to update where a printed QR code points without reprinting it, look into dynamic QR code services that use a redirect URL as the encoded content, allowing you to change the final destination from a dashboard without touching the physical code.</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    let currentType = 'url';
+    const placeholders = {
+        url: 'https://example.com',
+        text: 'Enter any text you want to encode...',
+        email: 'email@example.com',
+        phone: '+1 555 123 4567',
+        sms: '+1 555 123 4567',
+        wifi: 'NetworkName:Password:WPA'
+    };
+    const labels = {
+        url: 'Website URL',
+        text: 'Plain Text',
+        email: 'Email Address',
+        phone: 'Phone Number',
+        sms: 'Phone Number (for SMS)',
+        wifi: 'Wi-Fi (format: SSID:Password:WPA)'
+    };
+
+    function setType(type, btn) {
+        currentType = type;
+        document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('inputLabel').textContent = labels[type];
+        document.getElementById('qrInput').placeholder = placeholders[type];
+        document.getElementById('qrInput').value = '';
+        clearOutput();
+    }
+
+    function buildData() {
+        const val = document.getElementById('qrInput').value.trim();
+        if (!val) return '';
+        switch(currentType) {
+            case 'url': return val.startsWith('http') ? val : 'https://' + val;
+            case 'email': return 'mailto:' + val;
+            case 'phone': return 'tel:' + val.replace(/\s/g,'');
+            case 'sms': return 'sms:' + val.replace(/\s/g,'');
+            case 'wifi': {
+                const parts = val.split(':');
+                return `WIFI:T:${parts[2]||'WPA'};S:${parts[0]||''};P:${parts[1]||''};;`;
+            }
+            default: return val;
+        }
+    }
+
+    function generate() {
+        const data = buildData();
+        if (!data) { alert('Please enter some content first.'); return; }
+        const size = parseInt(document.getElementById('qrSize').value);
+        const fg = document.getElementById('fgColor').value;
+        const bg = document.getElementById('bgColor').value;
+
+        const container = document.getElementById('qrcode');
+        container.innerHTML = '';
+
+        new QRCode(container, {
+            text: data,
+            width: size,
+            height: size,
+            colorDark: fg,
+            colorLight: bg,
+            correctLevel: QRCode.CorrectLevel.M
+        });
+
+        document.getElementById('qrOutput').style.display = 'block';
+    }
+
+    function downloadQR() {
+        const canvas = document.querySelector('#qrcode canvas');
+        const img = document.querySelector('#qrcode img');
+        if (canvas) {
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        } else if (img) {
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = img.src;
+            link.click();
+        }
+    }
+
+    function clearOutput() {
+        document.getElementById('qrcode').innerHTML = '';
+        document.getElementById('qrOutput').style.display = 'none';
+    }
+
+    function clearAll() {
+        document.getElementById('qrInput').value = '';
+        clearOutput();
+    }
+</script>
+</body>
+</html>

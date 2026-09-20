@@ -47,15 +47,11 @@
 
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p><strong>Last Updated: September 2026</strong></p>
+        <p><strong>Last Updated: May 2026</strong></p>
         <p>At AI Learning Gym, accessible from ailearninggym.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by AI Learning Gym and how we use it.</p>
 
         <h2>1. Client-Side Data Processing (Your Privacy)</h2>
         <p>AI Learning Gym operates primarily as a client-side utility portal. All transformations, calculations, text formatting, and graphic modifications handled by our tools (such as the Word Counter, Image Resizer, Password Generator, and JSON Formatter) execute directly within your local web browser's memory. Your input files, text passages, and images are never sent, cached, or saved on our servers.</p>
-
-        <h2>Learning Paths and Browser Storage</h2>
-        <p>The personalized Learning Path Builder and interactive lessons in this version run entirely in your browser. Your learning goal, questionnaire answers, generated path, practice responses, knowledge-check scores, and module progress are stored in your browser's local storage so that you can continue later on the same browser and device. This information is not sent to an AI model or stored in an AI Learning Gym database. You can remove it at any time by using the Delete This Path button on the My Learning page or by clearing this site's browser data.</p>
-        <p>The Ask AI activity prepares a coaching prompt that you may choose to copy into an external AI service. AI Learning Gym does not automatically send that prompt or your lesson answers anywhere. If you use an external service, its own privacy policy applies.</p>
 
         <h2>2. Log Files & Traffic Analytics</h2>
         <p>Like most standard websites, AI Learning Gym utilizes Google Analytics to analyze site performance and understand general visitor traffic. Google Analytics collects standard, non-personally identifiable information, including your internet protocol (IP) address, browser type, internet service provider (ISP), date/time stamps, referring/exit pages, and click counts. We use this data strictly to monitor user engagement metrics and keep our tools optimized.</p>

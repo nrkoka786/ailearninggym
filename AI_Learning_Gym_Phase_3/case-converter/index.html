@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/case-converter/">
+    <title>Free Text Case Converter | UPPERCASE, lowercase, Title Case | AI Learning Gym</title>
+    <meta name="description" content="Convert text between UPPERCASE, lowercase, Sentence case, and Title Case instantly. Free online case converter — works in your browser, nothing stored.">
+    <meta name="keywords" content="text case converter, uppercase converter, lowercase converter, title case tool, sentence case generator">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        textarea { width: 100%; height: 160px; padding: 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.98rem; resize: vertical; color: var(--text-dark); line-height: 1.6; margin-bottom: 14px; }
+        textarea:focus { outline: none; border-color: var(--accent-color); }
+        .btn-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .btn-case { padding: 9px 16px; background: var(--primary-color); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.88rem; font-weight: 600; }
+        .btn-case:hover { background: var(--accent-color); }
+        .btn-action { padding: 9px 16px; background: #e2e8f0; color: var(--text-dark); border: none; border-radius: 6px; cursor: pointer; font-size: 0.88rem; font-weight: 600; }
+        .btn-action:hover { background: #cbd5e1; }
+        .stats { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free text tools for writers and developers</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Text Case Converter</h2>
+        <textarea id="inputText" placeholder="Type or paste your text here..."></textarea>
+        <div class="btn-grid">
+            <button class="btn-case" onclick="convert('upper')">UPPERCASE</button>
+            <button class="btn-case" onclick="convert('lower')">lowercase</button>
+            <button class="btn-case" onclick="convert('sentence')">Sentence case</button>
+            <button class="btn-case" onclick="convert('title')">Title Case</button>
+            <button class="btn-case" onclick="convert('capitalize')">Capitalize Words</button>
+        </div>
+        <div class="btn-grid">
+            <button class="btn-action" onclick="copyResult()">Copy Result</button>
+            <button class="btn-action" onclick="clearAll()">Clear</button>
+        </div>
+        <div class="stats" id="stats">Characters: 0 | Words: 0</div>
+    </div>
+
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This case converter lets you change the capitalization of any text with one click. Paste your text, pick a format, and the result appears instantly in the same box — ready to copy.</p>
+
+        <h3>What each format does</h3>
+        <ul>
+            <li><strong>UPPERCASE</strong> — converts every letter to capitals. Useful for headings, labels, or emphasis.</li>
+            <li><strong>lowercase</strong> — converts every letter to small. Useful for cleaning up text typed with caps lock on.</li>
+            <li><strong>Sentence case</strong> — capitalizes only the first letter of each sentence. Good for fixing copy-pasted text that lost its formatting.</li>
+            <li><strong>Title Case</strong> — capitalizes the first letter of each major word. Standard for article headlines, book titles, and headings.</li>
+            <li><strong>Capitalize Words</strong> — capitalizes the first letter of every word, including small words like "the" and "and". Useful for names and lists.</li>
+        </ul>
+
+        <h3>When would you use this?</h3>
+        <ul>
+            <li>Someone sent you text in ALL CAPS and you want to make it readable.</li>
+            <li>You're formatting a headline and need consistent title case.</li>
+            <li>You're cleaning up data exported from a spreadsheet or database.</li>
+            <li>You need to match a specific capitalization style for a document or website.</li>
+        </ul>
+
+        <h3>Title Case vs. Capitalize Words — what's the difference?</h3>
+        <p>Title Case follows standard editorial rules — it skips capitalizing small connecting words like "a", "the", "and", "of", and "in" when they appear in the middle of a title. Capitalize Words capitalizes every single word without exception. For most article or blog headlines, Title Case is the conventional choice.</p>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is my text stored anywhere?</h4>
+            <p>No. Everything runs in your browser. Your text is never sent to any server and disappears when you close the tab.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does it handle special characters and emojis?</h4>
+            <p>Yes — the converter only changes the case of letters and leaves everything else (punctuation, numbers, emojis, symbols) untouched.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I convert very long documents?</h4>
+            <p>Yes. There's no character limit — paste as much text as you need and it converts instantly.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does it work for non-English text?</h4>
+            <p>It works for most Latin-script languages (French, Spanish, German, etc.). For languages without a case distinction (like Chinese, Japanese, or Arabic), the text will pass through unchanged.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    const input = document.getElementById('inputText');
+
+    input.addEventListener('input', updateStats);
+
+    function updateStats() {
+        const text = input.value;
+        const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+        document.getElementById('stats').textContent = `Characters: ${text.length} | Words: ${words}`;
+    }
+
+    function convert(type) {
+        let text = input.value;
+        if (!text) return;
+        switch(type) {
+            case 'upper': text = text.toUpperCase(); break;
+            case 'lower': text = text.toLowerCase(); break;
+            case 'sentence':
+                text = text.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, c => c.toUpperCase());
+                break;
+            case 'title':
+                const minorWords = ['a','an','the','and','but','or','for','nor','on','at','to','by','in','of','up','as'];
+                text = text.toLowerCase().split(' ').map((word, i) => {
+                    if (i === 0 || !minorWords.includes(word)) return word.charAt(0).toUpperCase() + word.slice(1);
+                    return word;
+                }).join(' ');
+                break;
+            case 'capitalize':
+                text = text.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+                break;
+        }
+        input.value = text;
+        updateStats();
+    }
+
+    function copyResult() {
+        if (input.value) navigator.clipboard.writeText(input.value);
+    }
+
+    function clearAll() {
+        input.value = '';
+        updateStats();
+    }
+</script>
+</body>
+</html>
