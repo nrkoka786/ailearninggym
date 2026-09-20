@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/image-resizer/">
+    <title>Free Image Resizer | Resize Images Online | AI Learning Gym</title>
+    <meta name="description" content="Resize any image to exact dimensions instantly in your browser. Free online image resizer — no upload to server, no account needed. Download as PNG or JPG.">
+    <meta name="keywords" content="image resizer, resize image online, image resize tool, crop image, scale image, photo resizer free">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .drop-zone { border: 2px dashed var(--card-border); border-radius: 8px; padding: 40px 20px; text-align: center; cursor: pointer; margin-bottom: 20px; transition: border-color 0.2s; }
+        .drop-zone:hover, .drop-zone.drag-over { border-color: var(--accent-color); background: #f0f8ff; }
+        .drop-zone p { margin: 0; color: var(--text-muted); }
+        .drop-zone strong { color: var(--text-dark); font-size: 1rem; }
+        .drop-zone .icon { font-size: 2.5rem; margin-bottom: 10px; }
+        .options-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .options-row { grid-template-columns: 1fr 1fr; } }
+        .opt-group label { display: block; font-weight: 600; color: var(--text-dark); font-size: 0.88rem; margin-bottom: 6px; }
+        .opt-group input, .opt-group select { width: 100%; padding: 9px 10px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.95rem; color: var(--text-dark); }
+        .lock-ratio { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-size: 0.9rem; color: var(--text-dark); font-weight: 600; }
+        .lock-ratio input { width: 18px; height: 18px; accent-color: var(--accent-color); }
+        .btn { padding: 11px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-primary { background: var(--accent-color); color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .preview-area { display: none; margin-top: 20px; }
+        .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .preview-grid { grid-template-columns: 1fr; } }
+        .preview-box { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 12px; text-align: center; }
+        .preview-box p { font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 0; }
+        .preview-box img { max-width: 100%; max-height: 200px; border-radius: 4px; }
+        .preview-box canvas { max-width: 100%; max-height: 200px; border-radius: 4px; }
+        .info-badge { display: inline-block; background: var(--primary-color); color: #fff; border-radius: 4px; padding: 2px 8px; font-size: 0.78rem; margin-top: 6px; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free image tools for designers and creators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Image Resizer</h2>
+
+        <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+            <div class="icon">🖼️</div>
+            <strong>Click to upload or drag &amp; drop an image</strong>
+            <p>Supports JPG, PNG, GIF, WebP — processed locally, never uploaded</p>
+        </div>
+        <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="loadImage(this.files[0])">
+
+        <div id="controls" style="display:none">
+            <div class="options-row">
+                <div class="opt-group">
+                    <label>Width (px)</label>
+                    <input type="number" id="newWidth" min="1" oninput="widthChanged()">
+                </div>
+                <div class="opt-group">
+                    <label>Height (px)</label>
+                    <input type="number" id="newHeight" min="1" oninput="heightChanged()">
+                </div>
+                <div class="opt-group">
+                    <label>Format</label>
+                    <select id="format">
+                        <option value="image/png">PNG</option>
+                        <option value="image/jpeg">JPG</option>
+                        <option value="image/webp">WebP</option>
+                    </select>
+                </div>
+            </div>
+            <div class="lock-ratio">
+                <input type="checkbox" id="lockRatio" checked>
+                <label for="lockRatio">Lock aspect ratio</label>
+            </div>
+            <div class="btn-row">
+                <button class="btn btn-primary" onclick="resizeImage()">Resize &amp; Download</button>
+                <button class="btn btn-secondary" onclick="resetSize()">Reset to Original</button>
+                <button class="btn btn-secondary" onclick="clearImage()">Clear</button>
+            </div>
+        </div>
+
+        <div class="preview-area" id="previewArea">
+            <div class="preview-grid">
+                <div class="preview-box">
+                    <img id="originalPreview" src="" alt="Original">
+                    <p>Original</p>
+                    <span class="info-badge" id="origInfo"></span>
+                </div>
+                <div class="preview-box">
+                    <canvas id="outputCanvas"></canvas>
+                    <p>Preview (resized)</p>
+                    <span class="info-badge" id="newInfo"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This image resizer lets you change the dimensions of any photo or graphic right in your browser. Upload an image, enter the new width or height, and download the resized version — all without sending your file anywhere. It's completely private and works offline once the page is loaded.</p>
+
+        <h3>Common image sizes to know</h3>
+        <ul>
+            <li><strong>Profile photos</strong> — most platforms use 400×400 or 500×500 pixels for profile pictures</li>
+            <li><strong>Facebook cover</strong> — 820×312 pixels is the recommended cover photo size</li>
+            <li><strong>Instagram posts</strong> — square (1080×1080), portrait (1080×1350), or landscape (1080×566)</li>
+            <li><strong>Twitter/X header</strong> — 1500×500 pixels</li>
+            <li><strong>LinkedIn banner</strong> — 1584×396 pixels</li>
+            <li><strong>Email headers</strong> — typically 600px wide, height varies</li>
+            <li><strong>Thumbnails</strong> — YouTube uses 1280×720, many blogs use 300×200 or 400×300</li>
+        </ul>
+
+        <h3>PNG vs JPG vs WebP — which should I choose?</h3>
+        <p><strong>PNG</strong> is best for images with text, logos, or graphics that need sharp edges and transparency. File sizes are larger but quality is lossless. <strong>JPG</strong> is ideal for photographs — it compresses well and produces smaller files with minimal visible quality loss. <strong>WebP</strong> is a modern format that offers better compression than both PNG and JPG, but it's not supported by all older software. For web use, WebP is an excellent choice if your platform supports it.</p>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is my image uploaded to a server?</h4>
+            <p>No. Your image is processed entirely in your browser using the HTML5 Canvas API. The file never leaves your device. This means it also works offline once the page has loaded.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Will resizing reduce the image quality?</h4>
+            <p>Reducing an image (making it smaller) generally looks fine. Enlarging an image beyond its original dimensions (upscaling) will reduce quality — you may notice blurriness or pixelation. For best results, always start with the largest available version of the image.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I resize animated GIFs?</h4>
+            <p>This tool resizes images using a canvas, which captures only the first frame of a GIF. If you need to resize an animated GIF while preserving the animation, you'll need a dedicated GIF editing tool.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is there a maximum file size?</h4>
+            <p>There's no hard limit set by this tool, but very large images (over 20MB) may process slowly depending on your device. Most standard photos and graphics resize quickly.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    let img = new Image();
+    let origW = 0, origH = 0;
+
+    // Drag and drop
+    const dz = document.getElementById('dropZone');
+    dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag-over'); });
+    dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+    dz.addEventListener('drop', e => {
+        e.preventDefault(); dz.classList.remove('drag-over');
+        if (e.dataTransfer.files[0]) loadImage(e.dataTransfer.files[0]);
+    });
+
+    function loadImage(file) {
+        if (!file || !file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+            img.onload = () => {
+                origW = img.naturalWidth;
+                origH = img.naturalHeight;
+                document.getElementById('newWidth').value = origW;
+                document.getElementById('newHeight').value = origH;
+                document.getElementById('originalPreview').src = e.target.result;
+                document.getElementById('origInfo').textContent = `${origW} × ${origH}`;
+                updatePreview();
+                document.getElementById('controls').style.display = 'block';
+                document.getElementById('previewArea').style.display = 'block';
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function widthChanged() {
+        if (!document.getElementById('lockRatio').checked) return;
+        const w = parseInt(document.getElementById('newWidth').value);
+        if (w && origW) document.getElementById('newHeight').value = Math.round(w * origH / origW);
+        updatePreview();
+    }
+
+    function heightChanged() {
+        if (!document.getElementById('lockRatio').checked) return;
+        const h = parseInt(document.getElementById('newHeight').value);
+        if (h && origH) document.getElementById('newWidth').value = Math.round(h * origW / origH);
+        updatePreview();
+    }
+
+    function updatePreview() {
+        const w = parseInt(document.getElementById('newWidth').value) || origW;
+        const h = parseInt(document.getElementById('newHeight').value) || origH;
+        const canvas = document.getElementById('outputCanvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        document.getElementById('newInfo').textContent = `${w} × ${h}`;
+    }
+
+    function resizeImage() {
+        const w = parseInt(document.getElementById('newWidth').value);
+        const h = parseInt(document.getElementById('newHeight').value);
+        if (!w || !h) return;
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        const fmt = document.getElementById('format').value;
+        const ext = fmt === 'image/jpeg' ? 'jpg' : fmt === 'image/webp' ? 'webp' : 'png';
+        const quality = fmt === 'image/jpeg' ? 0.92 : undefined;
+        const link = document.createElement('a');
+        link.download = `resized-${w}x${h}.${ext}`;
+        link.href = canvas.toDataURL(fmt, quality);
+        link.click();
+    }
+
+    function resetSize() {
+        document.getElementById('newWidth').value = origW;
+        document.getElementById('newHeight').value = origH;
+        updatePreview();
+    }
+
+    function clearImage() {
+        document.getElementById('controls').style.display = 'none';
+        document.getElementById('previewArea').style.display = 'none';
+        document.getElementById('fileInput').value = '';
+        origW = origH = 0;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/pomodoro-timer/">
+    <title>Free Pomodoro Timer | Focus & Productivity Timer | AI Learning Gym</title>
+    <meta name="description" content="Stay focused with a free Pomodoro timer. Work for 25 minutes, take a 5-minute break, and repeat. Customizable intervals, desktop notifications, and no sign-up needed.">
+    <meta name="keywords" content="pomodoro timer, focus timer, productivity timer, work timer, pomodoro technique, 25 minute timer, study timer">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --work-color: #e74c3c;
+            --break-color: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 700px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .mode-tabs { display: flex; gap: 0; margin-bottom: 24px; border: 1px solid var(--card-border); border-radius: 8px; overflow: hidden; }
+        .mode-tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; background: #f8fafc; color: var(--text-muted); font-weight: 700; font-size: 0.9rem; border: none; transition: all 0.2s; }
+        .mode-tab.work.active { background: var(--work-color); color: #fff; }
+        .mode-tab.break.active { background: var(--break-color); color: #fff; }
+        .mode-tab.long.active { background: var(--accent-color); color: #fff; }
+        .clock-display { text-align: center; margin: 10px 0 28px; }
+        .clock-display .time { font-size: 6rem; font-weight: 700; color: var(--text-dark); letter-spacing: -2px; line-height: 1; }
+        .clock-display .mode-label { font-size: 1rem; color: var(--text-muted); margin-top: 8px; font-weight: 600; }
+        .progress-ring { display: flex; justify-content: center; margin-bottom: 20px; }
+        .progress-ring svg { transform: rotate(-90deg); }
+        .progress-ring circle { transition: stroke-dashoffset 1s linear; }
+        .btn-row { display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; }
+        .btn { padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 700; }
+        .btn-start { background: var(--work-color); color: #fff; font-size: 1.1rem; padding: 14px 40px; }
+        .btn-start.break-mode { background: var(--break-color); }
+        .btn-start.long-mode { background: var(--accent-color); }
+        .btn-reset { background: #e2e8f0; color: var(--text-dark); }
+        .btn-skip { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .session-counter { text-align: center; margin-bottom: 10px; }
+        .session-dots { display: flex; justify-content: center; gap: 8px; margin-top: 6px; }
+        .dot { width: 14px; height: 14px; border-radius: 50%; background: #e2e8f0; }
+        .dot.done { background: var(--work-color); }
+        .settings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--card-border); }
+        @media (max-width: 480px) { .settings-grid { grid-template-columns: 1fr; } }
+        .setting-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+        .setting-group input { width: 100%; padding: 8px 10px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); text-align: center; }
+        .notif-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 0.88rem; color: var(--text-dark); }
+        .notif-row input { width: 18px; height: 18px; accent-color: var(--accent-color); }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free productivity and focus tools</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Pomodoro Timer</h2>
+        <div class="mode-tabs">
+            <button class="mode-tab work active" onclick="switchMode('work')">Focus</button>
+            <button class="mode-tab break" onclick="switchMode('break')">Short Break</button>
+            <button class="mode-tab long" onclick="switchMode('long')">Long Break</button>
+        </div>
+
+        <div class="clock-display">
+            <div class="time" id="timeDisplay">25:00</div>
+            <div class="mode-label" id="modeLabel">Focus Session</div>
+        </div>
+
+        <div class="btn-row">
+            <button class="btn btn-reset" onclick="reset()">Reset</button>
+            <button class="btn btn-start" id="startBtn" onclick="toggleTimer()">Start</button>
+            <button class="btn btn-skip" onclick="skip()">Skip →</button>
+        </div>
+
+        <div class="session-counter">
+            <div style="font-size:0.85rem; color:var(--text-muted);">Completed sessions today</div>
+            <div class="session-dots" id="sessionDots">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+        </div>
+
+        <div class="settings-grid">
+            <div class="setting-group">
+                <label>Focus (min)</label>
+                <input type="number" id="workMins" value="25" min="1" max="90" onchange="applySettings()">
+            </div>
+            <div class="setting-group">
+                <label>Short Break (min)</label>
+                <input type="number" id="breakMins" value="5" min="1" max="30" onchange="applySettings()">
+            </div>
+            <div class="setting-group">
+                <label>Long Break (min)</label>
+                <input type="number" id="longMins" value="15" min="1" max="60" onchange="applySettings()">
+            </div>
+        </div>
+        <div class="notif-row">
+            <input type="checkbox" id="notifCheck">
+            <label for="notifCheck">Enable desktop notifications when a session ends</label>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>What is the Pomodoro Technique?</h2>
+        <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. The idea is simple: work with full focus for 25 minutes (one "Pomodoro"), then take a 5-minute break. After four focus sessions, take a longer break of 15–30 minutes. Then repeat.</p>
+        <p>The name comes from the tomato-shaped kitchen timer Cirillo used as a student — "pomodoro" is Italian for tomato. The technique works because it creates urgency (you only have 25 minutes), forces regular breaks to avoid burnout, and makes large tasks feel manageable by breaking them into defined chunks.</p>
+
+        <h3>Why does it work so well?</h3>
+        <ul>
+            <li><strong>Time becomes concrete</strong> — "I'll work on this for one Pomodoro" is much easier to commit to than "I'll work on this for a while."</li>
+            <li><strong>It fights procrastination</strong> — knowing you only have to focus for 25 minutes makes it much easier to start.</li>
+            <li><strong>Breaks prevent burnout</strong> — regular short breaks keep your mind fresh and sustain attention over a long day.</li>
+            <li><strong>It reveals where time actually goes</strong> — tracking your sessions shows you how long things really take vs. how long you think they take.</li>
+        </ul>
+
+        <h3>Tips for getting the most out of each session</h3>
+        <ul>
+            <li>Before starting the timer, decide exactly what you'll work on. Don't start vague — "work on project" is less effective than "write the introduction section."</li>
+            <li>Close distracting tabs and put your phone face down. One Pomodoro of real focus beats two hours of half-attention.</li>
+            <li>If an unrelated thought pops up, write it down quickly and return to the task. Don't let interruptions break the session.</li>
+            <li>Actually use your breaks — get up, move around, look away from the screen. Scrolling your phone during a break is not a real break.</li>
+        </ul>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>What if 25 minutes feels too short or too long?</h4>
+            <p>Adjust it to fit your work style. Some people prefer 50-minute focus sessions with 10-minute breaks (sometimes called the "52/17" method). Others find 15 minutes works better for tasks that require frequent context switching. Use the settings above to customize your intervals.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Should I stop mid-Pomodoro if I finish my task early?</h4>
+            <p>If you finish early, use the remaining time to review what you did, improve it, or prepare for the next task. Don't switch to something completely different — the boundary of the Pomodoro is part of what makes the technique work.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What if I'm interrupted during a session?</h4>
+            <p>The classic Pomodoro rule is that an interrupted Pomodoro doesn't count — you reset and start fresh. For real-world use, use your judgment: a brief unavoidable interruption is okay, but if you get pulled into a 10-minute conversation, restart the timer.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How many Pomodoros should I aim for in a day?</h4>
+            <p>Most people can sustain about 8–12 quality Pomodoros (4–6 hours of focused work) in a full workday. More than that often leads to diminishing returns. Tracking your daily Pomodoro count can be a healthy reality check on how much deep work you're actually doing.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    let currentMode = 'work';
+    let running = false;
+    let interval = null;
+    let totalSeconds = 25 * 60;
+    let remaining = totalSeconds;
+    let sessionsCompleted = 0;
+    const SESSIONS_BEFORE_LONG = 4;
+
+    const modeSettings = {
+        work: { label: 'Focus Session', btnClass: 'btn-start', color: 'var(--work-color)' },
+        break: { label: 'Short Break', btnClass: 'btn-start break-mode', color: 'var(--break-color)' },
+        long: { label: 'Long Break', btnClass: 'btn-start long-mode', color: 'var(--accent-color)' }
+    };
+
+    function getMinutes(mode) {
+        if (mode === 'work') return parseInt(document.getElementById('workMins').value) || 25;
+        if (mode === 'break') return parseInt(document.getElementById('breakMins').value) || 5;
+        return parseInt(document.getElementById('longMins').value) || 15;
+    }
+
+    function switchMode(mode) {
+        if (running) { clearInterval(interval); running = false; }
+        currentMode = mode;
+        const mins = getMinutes(mode);
+        totalSeconds = mins * 60;
+        remaining = totalSeconds;
+        updateDisplay();
+        document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector(`.mode-tab.${mode}`).classList.add('active');
+        document.getElementById('startBtn').className = `btn ${modeSettings[mode].btnClass}`;
+        document.getElementById('startBtn').textContent = 'Start';
+        document.getElementById('modeLabel').textContent = modeSettings[mode].label;
+    }
+
+    function applySettings() {
+        if (!running) {
+            const mins = getMinutes(currentMode);
+            totalSeconds = mins * 60;
+            remaining = totalSeconds;
+            updateDisplay();
+        }
+    }
+
+    function updateDisplay() {
+        const m = Math.floor(remaining / 60);
+        const s = remaining % 60;
+        const str = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        document.getElementById('timeDisplay').textContent = str;
+        document.title = running ? `${str} — ${modeSettings[currentMode].label}` : 'Pomodoro Timer | AI Learning Gym';
+    }
+
+    function toggleTimer() {
+        if (running) {
+            clearInterval(interval);
+            running = false;
+            document.getElementById('startBtn').textContent = 'Resume';
+        } else {
+            running = true;
+            document.getElementById('startBtn').textContent = 'Pause';
+            interval = setInterval(() => {
+                remaining--;
+                updateDisplay();
+                if (remaining <= 0) {
+                    clearInterval(interval);
+                    running = false;
+                    sessionDone();
+                }
+            }, 1000);
+        }
+    }
+
+    function sessionDone() {
+        if (currentMode === 'work') {
+            sessionsCompleted++;
+            updateDots();
+            notify('Focus session complete! Time for a break.');
+            const nextMode = sessionsCompleted % SESSIONS_BEFORE_LONG === 0 ? 'long' : 'break';
+            switchMode(nextMode);
+        } else {
+            notify('Break over! Ready to focus?');
+            switchMode('work');
+        }
+    }
+
+    function reset() {
+        clearInterval(interval);
+        running = false;
+        remaining = totalSeconds = getMinutes(currentMode) * 60;
+        document.getElementById('startBtn').textContent = 'Start';
+        updateDisplay();
+    }
+
+    function skip() {
+        clearInterval(interval);
+        running = false;
+        sessionDone();
+    }
+
+    function updateDots() {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((d, i) => d.classList.toggle('done', i < (sessionsCompleted % SESSIONS_BEFORE_LONG || (sessionsCompleted % SESSIONS_BEFORE_LONG === 0 && sessionsCompleted > 0 ? SESSIONS_BEFORE_LONG : 0))));
+    }
+
+    function notify(msg) {
+        const wantNotif = document.getElementById('notifCheck').checked;
+        if (!wantNotif) return;
+        if (Notification.permission === 'granted') {
+            new Notification('Pomodoro Timer', { body: msg, icon: '/AI_Learning_Gym_Logo.jpg' });
+        } else if (Notification.permission !== 'denied') {
+            Notification.requestPermission().then(p => {
+                if (p === 'granted') new Notification('Pomodoro Timer', { body: msg });
+            });
+        }
+    }
+
+    document.getElementById('notifCheck').addEventListener('change', function() {
+        if (this.checked && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+    });
+
+    updateDisplay();
+</script>
+</body>
+</html>
