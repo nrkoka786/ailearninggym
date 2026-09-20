@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/tip-splitter/">
+    <title>Free Tip Calculator & Bill Splitter | AI Learning Gym</title>
+    <meta name="description" content="Calculate restaurant tips and split the bill evenly among friends. Free, instant tip calculator — works offline, no data stored.">
+    <meta name="keywords" content="tip calculator, bill splitter, restaurant tip tool, split bill online, group dining calculator">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin: 16px 0 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul, ol { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; font-size: 0.95rem; }
+        .input-group input[type="number"] { width: 100%; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); }
+        .input-group input[type="range"] { width: 100%; margin-top: 6px; accent-color: var(--accent-color); }
+        .tip-label { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+        .tip-value { font-size: 1.2rem; font-weight: 700; color: var(--accent-color); text-align: center; margin-bottom: 6px; }
+        .results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+        @media (max-width: 600px) { .results { grid-template-columns: 1fr; } }
+        .result-card { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 16px; text-align: center; }
+        .result-label { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px; }
+        .result-value { font-size: 1.6rem; font-weight: 700; color: var(--text-dark); }
+        .result-card.highlight { background: var(--primary-color); border-color: var(--primary-color); }
+        .result-card.highlight .result-label { color: #94a3b8; }
+        .result-card.highlight .result-value { color: #fff; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; font-size: 1rem; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free browser tools for everyday calculations</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <!-- CALCULATOR CARD -->
+    <div class="card">
+        <h2>Tip Calculator & Bill Splitter</h2>
+
+        <div class="input-group">
+            <label for="billAmount">Bill Amount ($)</label>
+            <input type="number" id="billAmount" placeholder="e.g. 85.00" min="0" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="tipPercent">Tip Percentage</label>
+            <div class="tip-value" id="tipDisplay">18%</div>
+            <input type="range" id="tipPercent" min="0" max="50" value="18">
+            <div class="tip-label"><span>0%</span><span>25%</span><span>50%</span></div>
+        </div>
+
+        <div class="input-group">
+            <label for="numPeople">Number of People</label>
+            <input type="number" id="numPeople" value="1" min="1" step="1">
+        </div>
+
+        <div class="results">
+            <div class="result-card">
+                <div class="result-label">Total Tip</div>
+                <div class="result-value" id="totalTip">$0.00</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Total Bill</div>
+                <div class="result-value" id="totalBill">$0.00</div>
+            </div>
+            <div class="result-card highlight">
+                <div class="result-label">Each Person Owes</div>
+                <div class="result-value" id="perPerson">$0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT CARD -->
+    <div class="card">
+        <h2>About This Tool</h2>
+        <p>This tip calculator makes it easy to figure out how much to tip at a restaurant and how to split the bill evenly among a group. Enter the bill amount, choose a tip percentage, and set how many people are splitting — the totals update instantly.</p>
+
+        <h3>How to use it</h3>
+        <ol>
+            <li><strong>Enter the bill amount</strong> — type in your total check (before or after tax, your choice).</li>
+            <li><strong>Set the tip percentage</strong> — drag the slider to your desired tip. 15% is standard, 18–20% is common for good service, 25% for exceptional.</li>
+            <li><strong>Enter the number of people</strong> — the calculator divides everything evenly and shows each person's share.</li>
+        </ol>
+
+        <h3>What tip percentage should you leave?</h3>
+        <p>Tipping customs vary by country and type of service, but here are common US guidelines:</p>
+        <ul>
+            <li><strong>15%</strong> — adequate service at a sit-down restaurant</li>
+            <li><strong>18–20%</strong> — good service, the most common range</li>
+            <li><strong>25%+</strong> — exceptional service or a way to show extra appreciation</li>
+            <li><strong>10% or less</strong> — poor service (though many still tip 15% minimum)</li>
+            <li><strong>Takeout</strong> — tipping is optional; 10–15% is appreciated</li>
+            <li><strong>Delivery</strong> — 15–20% is standard, more in bad weather</li>
+        </ul>
+
+        <h3>Should you tip on the pre-tax or post-tax amount?</h3>
+        <p>Most etiquette guides suggest tipping on the pre-tax subtotal since you're tipping for the service, not the government tax. That said, many people tip on the post-tax total for simplicity — the difference is usually only a dollar or two either way.</p>
+
+        <h3>Tips for splitting bills fairly</h3>
+        <p>Splitting a restaurant bill evenly works well when everyone ordered similar items. If one person had significantly more (or less) than others, it helps to itemize first and then split the tip evenly. Most people find a clean round-up easier — for example, if the calculator says $23.47 each, everyone putting in $24 leaves a little extra and avoids coin-counting.</p>
+
+        <h3>Frequently asked questions</h3>
+
+        <div class="faq-item">
+            <h4>Does this tool store my data?</h4>
+            <p>No. Everything runs in your browser. No data is sent to any server — your bill amounts and calculations stay completely private on your device.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I use this without an internet connection?</h4>
+            <p>Yes — once the page loads, the calculator works entirely offline. Handy if you're at a restaurant with poor signal.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What if the bill doesn't split evenly?</h4>
+            <p>The calculator rounds to the nearest cent. In practice, just round everyone up to the nearest dollar — it's simpler and the extra cents go to a slightly better tip.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is a mandatory service charge the same as a tip?</h4>
+            <p>No. Some restaurants automatically add a gratuity (usually 18–20%) for large groups. Check your bill first — if a service charge is already included, you don't need to add another tip on top unless you want to.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How much should I tip for bad service?</h4>
+            <p>Many people still tip 10–15% even for poor service, since servers often share tips with kitchen staff and busboys who had nothing to do with the problem. If the service was genuinely bad, speaking to a manager is usually more effective than leaving nothing.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Tipping Culture Around the World</h2>
+        <p>Tipping customs vary dramatically from country to country — what is considered polite generosity in one place can be seen as rude or unnecessary in another. If you travel internationally, understanding local tipping norms prevents awkward situations and shows respect for local customs.</p>
+
+        <h3>United States and Canada</h3>
+        <p>The United States has the most robust tipping culture in the world. Tipping is expected in restaurants, bars, hair salons, taxis, hotels, and many other service contexts. Restaurant servers in the US typically earn a lower minimum wage than other workers because tips are expected to make up the difference — this means tipping is not really optional in the US context. The standard range for restaurant service is 18–20%, with 25% or more for exceptional service. In Canada, tipping customs are very similar to the US — 15–20% is standard at restaurants.</p>
+
+        <h3>United Kingdom and Europe</h3>
+        <p>In the United Kingdom, tipping at restaurants is appreciated but not obligatory. A tip of 10–15% is common for good service at sit-down restaurants, but many bills already include a discretionary service charge. Check your bill before adding more. In continental Europe, tipping customs vary by country. In Germany, rounding up the bill or leaving a small amount is common. In France, a service charge is legally included in all restaurant prices, so additional tipping is genuinely optional. In Italy, a small coin tip is appreciated but not expected.</p>
+
+        <h3>Japan and East Asia</h3>
+        <p>Japan has no tipping culture — leaving a tip can actually be considered rude, as it implies the server needs charity or that the restaurant does not pay its staff properly. Service in Japan is considered a professional obligation, not something that earns extra compensation. Similarly, in China, South Korea, and most of Southeast Asia, tipping is not traditional, though it is increasingly accepted at hotels and tourist-oriented restaurants that cater to Western visitors.</p>
+
+        <h3>Australia and New Zealand</h3>
+        <p>Australia and New Zealand have strong minimum wage laws that ensure service workers are paid competitive wages without relying on tips. Tipping is not expected, but rounding up or leaving a few dollars for excellent service is appreciated. Counter service and cafes rarely expect any tip. The culture is much more relaxed about tipping than North America.</p>
+
+        <h3>Middle East</h3>
+        <p>In many Middle Eastern countries, a service charge is often added automatically to restaurant bills. Additional tipping of 10–15% is common and appreciated at upscale restaurants. In informal settings, rounding up is typical. Always check whether a service charge has already been added before leaving an additional amount.</p>
+    </div>
+
+    <div class="card">
+        <h2>Tipping by Service Type</h2>
+        <p>Restaurants are not the only context where tipping is expected or appreciated. Here is a comprehensive guide to tipping across different service categories in the United States.</p>
+
+        <h3>Food Service</h3>
+        <ul>
+            <li><strong>Sit-down restaurant (full service)</strong> — 18–20% of the pre-tax bill. 25%+ for exceptional service.</li>
+            <li><strong>Buffet restaurant</strong> — 10% for servers who bring drinks and clear plates.</li>
+            <li><strong>Counter service and fast casual</strong> — Optional. 10–15% if you feel the service warrants it. The tip jar is discretionary.</li>
+            <li><strong>Takeout order</strong> — Optional. 10–15% is appreciated, especially for large or complex orders.</li>
+            <li><strong>Food delivery</strong> — 15–20% of the order total, with a minimum of a few dollars. More in bad weather or for difficult deliveries.</li>
+            <li><strong>Coffee shop</strong> — Optional. $0.50–$1 per drink is common, more for complex custom orders.</li>
+            <li><strong>Bartender</strong> — $1–2 per drink, or 15–20% of the tab.</li>
+        </ul>
+
+        <h3>Personal Services</h3>
+        <ul>
+            <li><strong>Hair salon</strong> — 15–20% of the service cost, including to the person who washes your hair if different from the stylist.</li>
+            <li><strong>Barber</strong> — 15–20% of the service cost.</li>
+            <li><strong>Nail salon</strong> — 15–20% of the service cost.</li>
+            <li><strong>Massage therapist</strong> — 15–20%, especially at a spa setting.</li>
+            <li><strong>Tattoo artist</strong> — 15–25% of the tattoo cost for good work.</li>
+            <li><strong>Makeup artist</strong> — 15–20% for special occasion or event makeup.</li>
+        </ul>
+
+        <h3>Transportation</h3>
+        <ul>
+            <li><strong>Taxi</strong> — 15–20% of the fare, rounded up to the nearest dollar.</li>
+            <li><strong>Rideshare (Uber, Lyft)</strong> — 15–20%, easier to do in the app immediately after the ride.</li>
+            <li><strong>Airport shuttle</strong> — $2–5 per person, more if the driver helps with luggage.</li>
+            <li><strong>Limo or car service</strong> — 15–20% of the total, sometimes included in the price.</li>
+        </ul>
+
+        <h3>Hotels and Travel</h3>
+        <ul>
+            <li><strong>Hotel housekeeper</strong> — $3–5 per night, left daily (staff changes can mean different people each day). Leave cash with a note saying "housekeeping."</li>
+            <li><strong>Concierge</strong> — $5–20 for assistance with dinner reservations, event tickets, or significant help.</li>
+            <li><strong>Bellhop or porter</strong> — $1–2 per bag when they carry luggage to your room.</li>
+            <li><strong>Valet parking</strong> — $3–5 when retrieving your car.</li>
+            <li><strong>Room service</strong> — Check the bill — a delivery charge is not a tip. Add 15–20% if no gratuity is included.</li>
+        </ul>
+
+        <h3>Home Services</h3>
+        <ul>
+            <li><strong>Pizza delivery</strong> — $3–5, more for large orders or bad weather.</li>
+            <li><strong>Moving company</strong> — $20–50 per mover for a full-day move, depending on difficulty.</li>
+            <li><strong>Furniture delivery and assembly</strong> — $10–20 per person for a complex delivery.</li>
+            <li><strong>Handyman or repair person</strong> — Typically not expected, though a small tip for a quick job or going above and beyond is appreciated.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>The Mathematics of Splitting Bills</h2>
+        <p>While this calculator handles the arithmetic automatically, understanding the math helps you do quick mental calculations and handle edge cases like uneven orders or separate checks.</p>
+
+        <h3>The Basic Formula</h3>
+        <p>The tip and total bill calculation follows a simple formula:</p>
+        <ul>
+            <li><strong>Tip amount</strong> = Bill amount x (Tip percentage / 100)</li>
+            <li><strong>Total bill</strong> = Bill amount + Tip amount</li>
+            <li><strong>Per person</strong> = Total bill / Number of people</li>
+        </ul>
+        <p>For example: a $80 bill with an 18% tip produces a $14.40 tip, a $94.40 total, and $23.60 per person for 4 people.</p>
+
+        <h3>The Mental Math Shortcut</h3>
+        <p>For a quick 20% tip calculation without a calculator, move the decimal point one place to the left to get 10%, then double it. For a $75 bill: 10% = $7.50, doubled = $15 tip. Total = $90. For 18%, calculate 20% and subtract 10% of that: $15 - $1.50 = $13.50 tip.</p>
+
+        <h3>When the Split Is Not Even</h3>
+        <p>Even splitting works well when everyone ordered similar amounts. When orders vary significantly, there are two fair approaches. First, itemize individually — each person pays for exactly what they ordered plus a proportional share of the tip. Second, round up generously — if the calculator shows $23.47 per person, everyone puts in $25. The extra goes as a better tip and eliminates coin-counting at the table.</p>
+
+        <h3>Handling Large Groups</h3>
+        <p>Many restaurants automatically add a gratuity of 18–20% for groups of 6 or more people. Always check your bill when dining with a large group — paying an additional tip on top of an auto-gratuity means the server receives a significantly higher tip than you intended. The auto-gratuity will appear as a line item on the bill labeled "gratuity," "service charge," or similar. If you want to tip more than the auto-gratuity, you can add the difference, but you are not obligated to add anything beyond what is already included.</p>
+
+        <h3>Tax Considerations</h3>
+        <p>A common question is whether to calculate the tip on the pre-tax or post-tax bill amount. Most etiquette guides recommend tipping on the pre-tax subtotal because you are tipping for the service provided, not for the tax collected by the government. However, the practical difference is small — on a $100 meal with 8% tax, the difference between tipping on $100 versus $108 is only $1.60 at a 20% tip rate. Many people simply tip on the post-tax total for convenience.</p>
+    </div>
+
+    <div class="card">
+        <h2>Tipping Etiquette and Common Questions</h2>
+
+        <h3>Should you tip at counter service restaurants?</h3>
+        <p>Counter service restaurants — where you order at a register, receive a number, and pick up your own food — have increasingly added tip prompts to their payment terminals. These prompts typically suggest 15%, 20%, and 25% as default options, making it feel awkward to select "no tip." Tipping at counter service is genuinely optional and most etiquette experts consider it discretionary. If the staff provided significant personal service or you are a regular, tipping is appreciated. For a quick coffee or simple takeout order where you did not receive table service, no tip is perfectly acceptable.</p>
+
+        <h3>How should you handle tip prompts on payment terminals?</h3>
+        <p>Digital payment terminals now present tip screens in virtually every service context, including places where tipping was not previously common. It is acceptable to select "no tip" or "custom amount" and enter zero when tipping is genuinely not expected. The staff can typically see when someone declines a tip, so some people feel social pressure, but tipping in contexts where it is not customary is not obligatory. Use your judgment based on the nature of the service and local customs.</p>
+
+        <h3>Is it ever acceptable to not tip at a restaurant?</h3>
+        <p>In the United States, not tipping at a full-service restaurant is considered poor form in almost all circumstances. Restaurant servers typically earn a tipped minimum wage significantly below the standard minimum wage, relying on tips to make up the difference. If service was genuinely poor due to the server's behavior, a reduced tip of 10% communicates dissatisfaction while acknowledging the server's effort. For problems with food quality or kitchen delays, the server is often not at fault — those are kitchen issues. Speaking with a manager about problems is generally more effective than withholding a tip.</p>
+
+        <h3>Should you tip on discounts and coupons?</h3>
+        <p>When you use a coupon, discount, or promotional deal, tipping etiquette suggests tipping on the original pre-discount price. The server provided the same level of service regardless of the discount — the reduced bill does not reflect less work on their part. For example, if your bill was $80 but you have a $20 coupon and pay $60, tip on $80, not $60.</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    const billInput = document.getElementById('billAmount');
+    const tipSlider = document.getElementById('tipPercent');
+    const tipDisplay = document.getElementById('tipDisplay');
+    const peopleInput = document.getElementById('numPeople');
+    const totalTipEl = document.getElementById('totalTip');
+    const totalBillEl = document.getElementById('totalBill');
+    const perPersonEl = document.getElementById('perPerson');
+
+    function calculate() {
+        const bill = parseFloat(billInput.value) || 0;
+        const tip = parseInt(tipSlider.value) || 0;
+        const people = parseInt(peopleInput.value) || 1;
+
+        const tipAmount = bill * (tip / 100);
+        const total = bill + tipAmount;
+        const perPerson = total / people;
+
+        tipDisplay.textContent = tip + '%';
+        totalTipEl.textContent = '$' + tipAmount.toFixed(2);
+        totalBillEl.textContent = '$' + total.toFixed(2);
+        perPersonEl.textContent = '$' + perPerson.toFixed(2);
+    }
+
+    billInput.addEventListener('input', calculate);
+    tipSlider.addEventListener('input', calculate);
+    peopleInput.addEventListener('input', calculate);
+
+    calculate();
+</script>
+</body>
+</html>

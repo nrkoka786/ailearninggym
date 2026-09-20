@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/online-clock/">
+    <title>Free Online Clock | Current Time, Date & Stopwatch | AI Learning Gym</title>
+    <meta name="description" content="View the current time and date with a free online clock. Includes a stopwatch, countdown timer, and world clock for multiple time zones. Works in any browser.">
+    <meta name="keywords" content="online clock, current time, world clock, stopwatch online, countdown timer, digital clock, time zones">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .main-clock { text-align: center; padding: 20px 0 10px; }
+        .main-clock .time { font-size: 5rem; font-weight: 700; letter-spacing: -2px; color: var(--text-dark); line-height: 1; font-variant-numeric: tabular-nums; }
+        .main-clock .date { font-size: 1.1rem; color: var(--text-muted); margin-top: 10px; }
+        .main-clock .timezone { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+        .format-toggle { display: flex; justify-content: center; gap: 10px; margin: 14px 0; }
+        .fmt-btn { padding: 6px 18px; border: 1px solid var(--card-border); border-radius: 20px; background: #f8fafc; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; cursor: pointer; }
+        .fmt-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .world-clock { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin-top: 8px; }
+        .wc-card { background: #f8fafc; border: 1px solid var(--card-border); border-radius: 8px; padding: 12px 14px; }
+        .wc-city { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+        .wc-time { font-size: 1.4rem; font-weight: 700; color: var(--text-dark); font-variant-numeric: tabular-nums; }
+        .wc-date { font-size: 0.75rem; color: var(--text-muted); }
+        .stopwatch-display { text-align: center; font-size: 3.5rem; font-weight: 700; color: var(--text-dark); letter-spacing: -1px; font-variant-numeric: tabular-nums; margin-bottom: 16px; }
+        .btn-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .btn { padding: 10px 26px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+        .btn-green { background: #2ecc71; color: #fff; }
+        .btn-red { background: #e74c3c; color: #fff; }
+        .btn-secondary { background: #e2e8f0; color: var(--text-dark); }
+        .btn:hover { opacity: 0.9; }
+        .laps { margin-top: 14px; max-height: 180px; overflow-y: auto; }
+        .lap-row { display: flex; justify-content: space-between; padding: 6px 10px; font-size: 0.88rem; border-bottom: 1px solid var(--card-border); }
+        .lap-row:nth-child(odd) { background: #f8fafc; }
+        .countdown-row { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 14px; flex-wrap: wrap; }
+        .cd-group { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .cd-group label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+        .cd-group input { width: 60px; padding: 8px; border: 1px solid var(--card-border); border-radius: 6px; text-align: center; font-size: 1rem; color: var(--text-dark); }
+        .countdown-display { text-align: center; font-size: 3.5rem; font-weight: 700; color: var(--text-dark); font-variant-numeric: tabular-nums; margin-bottom: 16px; }
+        .countdown-display.urgent { color: #e74c3c; }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free time and productivity tools</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <!-- Main Clock -->
+    <div class="card">
+        <h2>Current Time</h2>
+        <div class="main-clock">
+            <div class="time" id="mainTime">--:--:--</div>
+            <div class="date" id="mainDate"></div>
+            <div class="timezone" id="mainTz"></div>
+        </div>
+        <div class="format-toggle">
+            <button class="fmt-btn active" id="btn12" onclick="setFormat(12)">12-hour</button>
+            <button class="fmt-btn" id="btn24" onclick="setFormat(24)">24-hour</button>
+        </div>
+
+        <h3>World Clock</h3>
+        <div class="world-clock" id="worldClock"></div>
+    </div>
+
+    <!-- Stopwatch -->
+    <div class="card">
+        <h2>Stopwatch</h2>
+        <div class="stopwatch-display" id="swDisplay">00:00.00</div>
+        <div class="btn-row">
+            <button class="btn btn-green" id="swStart" onclick="swToggle()">Start</button>
+            <button class="btn btn-secondary" onclick="swLap()">Lap</button>
+            <button class="btn btn-red" onclick="swReset()">Reset</button>
+        </div>
+        <div class="laps" id="swLaps"></div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="card">
+        <h2>Countdown Timer</h2>
+        <div class="countdown-row">
+            <div class="cd-group"><label>Hours</label><input type="number" id="cdH" value="0" min="0" max="99"></div>
+            <div class="cd-group"><label>Minutes</label><input type="number" id="cdM" value="5" min="0" max="59"></div>
+            <div class="cd-group"><label>Seconds</label><input type="number" id="cdS" value="0" min="0" max="59"></div>
+        </div>
+        <div class="countdown-display" id="cdDisplay">05:00</div>
+        <div class="btn-row">
+            <button class="btn btn-green" id="cdStart" onclick="cdToggle()">Start</button>
+            <button class="btn btn-red" onclick="cdReset()">Reset</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>About This Page</h2>
+        <p>This online clock shows your current local time using your device's built-in clock. The world clock section displays the current time in major cities around the world so you can quickly check what time it is elsewhere for scheduling calls and meetings.</p>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>Is this clock accurate?</h4>
+            <p>Yes — the time displayed comes directly from your device's system clock, which syncs automatically with internet time servers on most computers and phones. It should be accurate to within a second or two.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why does the world clock show a different date for some cities?</h4>
+            <p>Some time zones cross midnight, meaning cities on the other side of the world may be on a different calendar date than your local time. For example, when it's 11 PM on Tuesday in New York, it's already Wednesday morning in Tokyo.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does the countdown timer notify me when it ends?</h4>
+            <p>The countdown shows an alert and highlights the display in red when it reaches zero. For audio alerts, make sure your device volume is on — the page plays a brief sound notification when the countdown ends.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    let clockFormat = 12;
+    const worldCities = [
+        { city: 'New York', tz: 'America/New_York' },
+        { city: 'London', tz: 'Europe/London' },
+        { city: 'Paris', tz: 'Europe/Paris' },
+        { city: 'Dubai', tz: 'Asia/Dubai' },
+        { city: 'Mumbai', tz: 'Asia/Kolkata' },
+        { city: 'Singapore', tz: 'Asia/Singapore' },
+        { city: 'Tokyo', tz: 'Asia/Tokyo' },
+        { city: 'Sydney', tz: 'Australia/Sydney' },
+        { city: 'Los Angeles', tz: 'America/Los_Angeles' },
+        { city: 'São Paulo', tz: 'America/Sao_Paulo' },
+        { city: 'Nairobi', tz: 'Africa/Nairobi' },
+        { city: 'Seoul', tz: 'Asia/Seoul' }
+    ];
+
+    // Build world clock cards
+    const wc = document.getElementById('worldClock');
+    worldCities.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'wc-card';
+        div.innerHTML = `<div class="wc-city">${c.city}</div><div class="wc-time" id="wc-${c.tz.replace(/\//g,'-')}">--:--</div><div class="wc-date" id="wcd-${c.tz.replace(/\//g,'-')}"></div>`;
+        wc.appendChild(div);
+    });
+
+    function setFormat(f) {
+        clockFormat = f;
+        document.getElementById('btn12').classList.toggle('active', f===12);
+        document.getElementById('btn24').classList.toggle('active', f===24);
+    }
+
+    function fmtTime(date, tz, fmt) {
+        return new Intl.DateTimeFormat('en-US', {
+            hour: 'numeric', minute: '2-digit', second: '2-digit',
+            hour12: fmt === 12, timeZone: tz
+        }).format(date);
+    }
+
+    function tick() {
+        const now = new Date();
+        // Main clock
+        const mainOpts = { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: clockFormat === 12 };
+        document.getElementById('mainTime').textContent = new Intl.DateTimeFormat('en-US', mainOpts).format(now);
+        document.getElementById('mainDate').textContent = now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+        document.getElementById('mainTz').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        // World clocks
+        worldCities.forEach(c => {
+            const id = c.tz.replace(/\//g,'-');
+            const t = document.getElementById('wc-' + id);
+            const d = document.getElementById('wcd-' + id);
+            if (t) t.textContent = new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',hour12:clockFormat===12,timeZone:c.tz}).format(now);
+            if (d) d.textContent = new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',timeZone:c.tz}).format(now);
+        });
+    }
+    setInterval(tick, 1000);
+    tick();
+
+    // Stopwatch
+    let swRunning = false, swStart = 0, swElapsed = 0, swInterval = null, lapCount = 0;
+
+    function swToggle() {
+        if (swRunning) {
+            clearInterval(swInterval);
+            swElapsed += Date.now() - swStart;
+            swRunning = false;
+            document.getElementById('swStart').textContent = 'Resume';
+            document.getElementById('swStart').className = 'btn btn-green';
+        } else {
+            swStart = Date.now();
+            swRunning = true;
+            document.getElementById('swStart').textContent = 'Pause';
+            document.getElementById('swStart').className = 'btn btn-red';
+            swInterval = setInterval(updateSw, 10);
+        }
+    }
+
+    function updateSw() {
+        const total = swElapsed + (swRunning ? Date.now() - swStart : 0);
+        const min = Math.floor(total/60000);
+        const sec = Math.floor((total%60000)/1000);
+        const ms = Math.floor((total%1000)/10);
+        document.getElementById('swDisplay').textContent = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}.${String(ms).padStart(2,'0')}`;
+    }
+
+    function swLap() {
+        if (!swRunning && swElapsed === 0) return;
+        lapCount++;
+        const text = document.getElementById('swDisplay').textContent;
+        const row = document.createElement('div');
+        row.className = 'lap-row';
+        row.innerHTML = `<span>Lap ${lapCount}</span><span>${text}</span>`;
+        document.getElementById('swLaps').prepend(row);
+    }
+
+    function swReset() {
+        clearInterval(swInterval);
+        swRunning = false; swElapsed = 0; lapCount = 0;
+        document.getElementById('swDisplay').textContent = '00:00.00';
+        document.getElementById('swStart').textContent = 'Start';
+        document.getElementById('swStart').className = 'btn btn-green';
+        document.getElementById('swLaps').innerHTML = '';
+    }
+
+    // Countdown
+    let cdRunning = false, cdRemaining = 0, cdInterval = null;
+
+    function cdToggle() {
+        if (cdRunning) {
+            clearInterval(cdInterval);
+            cdRunning = false;
+            document.getElementById('cdStart').textContent = 'Resume';
+            document.getElementById('cdStart').className = 'btn btn-green';
+        } else {
+            if (cdRemaining === 0) {
+                cdRemaining = (parseInt(document.getElementById('cdH').value)||0)*3600
+                    + (parseInt(document.getElementById('cdM').value)||0)*60
+                    + (parseInt(document.getElementById('cdS').value)||0);
+            }
+            if (cdRemaining <= 0) return;
+            cdRunning = true;
+            document.getElementById('cdStart').textContent = 'Pause';
+            document.getElementById('cdStart').className = 'btn btn-red';
+            document.getElementById('cdDisplay').classList.remove('urgent');
+            cdInterval = setInterval(() => {
+                cdRemaining--;
+                updateCd();
+                if (cdRemaining <= 0) {
+                    clearInterval(cdInterval);
+                    cdRunning = false;
+                    document.getElementById('cdDisplay').classList.add('urgent');
+                    document.getElementById('cdStart').textContent = 'Start';
+                    document.getElementById('cdStart').className = 'btn btn-green';
+                    try { const ctx = new AudioContext(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.frequency.value = 880; g.gain.setValueAtTime(0.4,ctx.currentTime); o.start(); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+0.8); o.stop(ctx.currentTime+0.8); } catch(e){}
+                }
+            }, 1000);
+        }
+    }
+
+    function updateCd() {
+        const h = Math.floor(cdRemaining/3600);
+        const m = Math.floor((cdRemaining%3600)/60);
+        const s = cdRemaining%60;
+        const str = h > 0
+            ? `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+            : `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        document.getElementById('cdDisplay').textContent = str;
+    }
+
+    function cdReset() {
+        clearInterval(cdInterval);
+        cdRunning = false; cdRemaining = 0;
+        document.getElementById('cdDisplay').textContent = '00:00';
+        document.getElementById('cdDisplay').classList.remove('urgent');
+        document.getElementById('cdStart').textContent = 'Start';
+        document.getElementById('cdStart').className = 'btn btn-green';
+    }
+</script>
+</body>
+</html>

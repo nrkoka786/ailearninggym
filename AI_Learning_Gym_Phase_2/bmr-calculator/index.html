@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ailearninggym.com/bmr-calculator/">
+    <title>Free BMR & TDEE Calculator | Daily Calorie Needs | AI Learning Gym</title>
+    <meta name="description" content="Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE). Find out how many calories your body needs each day based on your activity level.">
+    <meta name="keywords" content="BMR calculator, TDEE calculator, calorie calculator, basal metabolic rate, daily calorie needs, calorie deficit, Mifflin St Jeor">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPRW3TN403"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RPRW3TN403');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2027849186057550" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
+        header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+        header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
+        header a:hover { color: var(--accent-color); }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 15px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        h2 { color: var(--text-dark); font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { color: var(--text-dark); font-size: 1.15rem; margin: 24px 0 10px; border-bottom: 2px solid #edf2f7; padding-bottom: 6px; }
+        h4 { color: var(--text-dark); font-size: 1rem; margin-bottom: 6px; }
+        p { margin-bottom: 14px; color: #4a5568; font-size: 0.98rem; }
+        ul { margin: 8px 0 16px 24px; color: #4a5568; font-size: 0.98rem; }
+        li { margin-bottom: 8px; }
+        strong { color: var(--text-dark); }
+        .tabs { display: flex; gap: 0; margin-bottom: 20px; border: 1px solid var(--card-border); border-radius: 6px; overflow: hidden; }
+        .tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; background: #f8fafc; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; border: none; }
+        .tab.active { background: var(--primary-color); color: #fff; }
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; font-size: 0.95rem; }
+        .input-group input, .input-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: 6px; font-size: 1rem; color: var(--text-dark); }
+        .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .gender-row { display: flex; gap: 10px; }
+        .gender-btn { flex: 1; padding: 10px; border: 1px solid var(--card-border); border-radius: 6px; background: #f8fafc; color: var(--text-muted); font-weight: 600; cursor: pointer; font-size: 0.9rem; text-align: center; }
+        .gender-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .btn { width: 100%; padding: 12px; background: var(--accent-color); color: #fff; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 8px; }
+        .btn:hover { opacity: 0.9; }
+        .results { display: none; margin-top: 24px; }
+        .bmr-box { background: var(--primary-color); color: #fff; border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 16px; }
+        .bmr-box .label { color: #94a3b8; font-size: 0.9rem; margin-bottom: 4px; }
+        .bmr-box .value { font-size: 2.8rem; font-weight: 700; }
+        .bmr-box .unit { color: #94a3b8; font-size: 0.9rem; }
+        .tdee-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .tdee-table th { background: var(--primary-color); color: #fff; padding: 10px 12px; text-align: left; }
+        .tdee-table td { padding: 10px 12px; border-bottom: 1px solid var(--card-border); color: #4a5568; }
+        .tdee-table tr.highlight td { background: #eff6ff; font-weight: 600; color: var(--text-dark); }
+        .faq-item { background: #f8fafc; border-left: 4px solid var(--accent-color); border-radius: 4px; padding: 14px; margin-bottom: 12px; }
+        .faq-item h4 { color: var(--text-dark); margin-bottom: 6px; }
+        .faq-item p { margin: 0; color: #4a5568; font-size: 0.92rem; }
+        .ad-container { margin: 10px 0; text-align: center; }
+        footer { background-color: var(--primary-color); color: #cbd5e1; padding: 40px 20px; margin-top: 40px; text-align: center; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #cbd5e1; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: var(--accent-color); }
+    </style>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <p>Free health and fitness calculators</p>
+    <a href="/">&larr; Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>BMR & TDEE Calculator</h2>
+        <div class="tabs">
+            <button class="tab active" onclick="setUnit('metric')">Metric (kg / cm)</button>
+            <button class="tab" onclick="setUnit('imperial')">Imperial (lbs / ft)</button>
+        </div>
+
+        <div class="input-group">
+            <label>Sex</label>
+            <div class="gender-row">
+                <button class="gender-btn active" id="gMale" onclick="setGender('male')">Male</button>
+                <button class="gender-btn" id="gFemale" onclick="setGender('female')">Female</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Age</label>
+            <input type="number" id="age" placeholder="e.g. 30" min="15" max="100">
+        </div>
+
+        <div id="metricInputs">
+            <div class="input-group"><label>Weight (kg)</label><input type="number" id="weightKg" placeholder="e.g. 70" min="1"></div>
+            <div class="input-group"><label>Height (cm)</label><input type="number" id="heightCm" placeholder="e.g. 175" min="1"></div>
+        </div>
+
+        <div id="imperialInputs" style="display:none">
+            <div class="input-group"><label>Weight (lbs)</label><input type="number" id="weightLbs" placeholder="e.g. 154" min="1"></div>
+            <div class="input-row">
+                <div class="input-group"><label>Height (ft)</label><input type="number" id="heightFt" placeholder="5" min="1"></div>
+                <div class="input-group"><label>Height (in)</label><input type="number" id="heightIn" placeholder="9" min="0" max="11"></div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Activity Level</label>
+            <select id="activity">
+                <option value="1.2">Sedentary — little or no exercise, desk job</option>
+                <option value="1.375">Lightly active — exercise 1–3 days per week</option>
+                <option value="1.55" selected>Moderately active — exercise 3–5 days per week</option>
+                <option value="1.725">Very active — hard exercise 6–7 days per week</option>
+                <option value="1.9">Extra active — physical job or twice-daily training</option>
+            </select>
+        </div>
+
+        <button class="btn" onclick="calculate()">Calculate</button>
+
+        <div class="results" id="results">
+            <div class="bmr-box">
+                <div class="label">Your Basal Metabolic Rate (BMR)</div>
+                <div class="value" id="bmrValue">—</div>
+                <div class="unit">calories per day</div>
+            </div>
+
+            <h3 style="margin-top:0; margin-bottom:12px;">Daily Calories by Goal</h3>
+            <table class="tdee-table">
+                <thead><tr><th>Goal</th><th>Calories/Day</th></tr></thead>
+                <tbody id="tdeeBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Understanding BMR and TDEE</h2>
+        <p>Your <strong>Basal Metabolic Rate (BMR)</strong> is the number of calories your body burns just to stay alive — breathing, keeping your heart beating, regulating temperature, and running all your organs. Even if you stayed in bed all day doing nothing, you'd still burn this many calories.</p>
+        <p>Your <strong>Total Daily Energy Expenditure (TDEE)</strong> is your BMR multiplied by how active you are. It's the total number of calories you actually burn in a day, including exercise and everyday movement.</p>
+
+        <h3>How to use your TDEE to reach your goals</h3>
+        <ul>
+            <li><strong>To lose weight</strong> — eat 300–500 calories below your TDEE. A deficit of 500 calories per day leads to roughly 1 pound of fat loss per week.</li>
+            <li><strong>To maintain your weight</strong> — eat at your TDEE. This is your maintenance level.</li>
+            <li><strong>To gain muscle or weight</strong> — eat 200–500 calories above your TDEE (a "surplus"), ideally combined with strength training.</li>
+        </ul>
+
+        <h3>Which formula does this calculator use?</h3>
+        <p>This calculator uses the <strong>Mifflin-St Jeor equation</strong>, which is considered the most accurate formula for estimating BMR in most adults. It was published in 1990 and is recommended by the American Dietetic Association. The formulas are:</p>
+        <ul>
+            <li><strong>Men:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) + 5</li>
+            <li><strong>Women:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) − 161</li>
+        </ul>
+
+        <h3>Frequently asked questions</h3>
+        <div class="faq-item">
+            <h4>How accurate is this calculator?</h4>
+            <p>The Mifflin-St Jeor formula is accurate to within about 10% for most adults. Individual variations in metabolism, muscle mass, genetics, and hormones mean no formula is perfectly precise. Use it as a starting point, then adjust based on real-world results over 2–4 weeks.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Why does my TDEE seem too high or too low?</h4>
+            <p>Activity level is the biggest variable. Many people overestimate how active they are — "moderately active" means dedicated exercise sessions, not just walking to your car. If your results don't match your experience, try a lower activity multiplier.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Does BMR change over time?</h4>
+            <p>Yes. BMR tends to decrease as you age, partly due to natural muscle loss. Building and maintaining muscle through strength training is one of the most effective ways to keep your metabolic rate higher as you get older.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is this the same as counting calories?</h4>
+            <p>Your TDEE tells you the target — how many calories to aim for. Calorie counting is the process of tracking what you actually eat and comparing it to that target. Together, they form the basis of most evidence-based nutrition approaches for weight management.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 AI Learning Gym. All rights reserved.</p>
+    <p>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/about.html">About Us</a> |
+        <a href="/terms-of-service.html">Terms of Use</a> |
+        <a href="/contact.html">Contact</a> |
+        <a href="/sitemap.html">Site Map</a>
+    </p>
+</footer>
+
+<script>
+    let unit = 'metric';
+    let gender = 'male';
+    let selectedActivity = 1.55;
+
+    function setUnit(u) {
+        unit = u;
+        document.getElementById('metricInputs').style.display = u === 'metric' ? 'block' : 'none';
+        document.getElementById('imperialInputs').style.display = u === 'imperial' ? 'block' : 'none';
+        document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', (i===0 && u==='metric') || (i===1 && u==='imperial')));
+    }
+
+    function setGender(g) {
+        gender = g;
+        document.getElementById('gMale').classList.toggle('active', g === 'male');
+        document.getElementById('gFemale').classList.toggle('active', g === 'female');
+    }
+
+    function calculate() {
+        const age = parseFloat(document.getElementById('age').value);
+        const activity = parseFloat(document.getElementById('activity').value);
+        let weightKg, heightCm;
+
+        if (unit === 'metric') {
+            weightKg = parseFloat(document.getElementById('weightKg').value);
+            heightCm = parseFloat(document.getElementById('heightCm').value);
+        } else {
+            const lbs = parseFloat(document.getElementById('weightLbs').value);
+            const ft = parseFloat(document.getElementById('heightFt').value) || 0;
+            const inches = parseFloat(document.getElementById('heightIn').value) || 0;
+            weightKg = lbs * 0.453592;
+            heightCm = (ft * 12 + inches) * 2.54;
+        }
+
+        if (!age || !weightKg || !heightCm) return;
+
+        let bmr;
+        if (gender === 'male') {
+            bmr = 10 * weightKg + 6.25 * heightCm - 5 * age + 5;
+        } else {
+            bmr = 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
+        }
+
+        const tdee = bmr * activity;
+
+        document.getElementById('bmrValue').textContent = Math.round(bmr).toLocaleString();
+
+        const goals = [
+            { label: 'Aggressive fat loss (−1 lb/week)', cal: tdee - 500, highlight: false },
+            { label: 'Moderate fat loss (−0.5 lb/week)', cal: tdee - 250, highlight: false },
+            { label: 'Maintain current weight', cal: tdee, highlight: true },
+            { label: 'Lean bulk (+0.5 lb/week)', cal: tdee + 250, highlight: false },
+            { label: 'Muscle gain (+1 lb/week)', cal: tdee + 500, highlight: false }
+        ];
+
+        const tbody = document.getElementById('tdeeBody');
+        tbody.innerHTML = goals.map(g =>
+            `<tr${g.highlight ? ' class="highlight"' : ''}><td>${g.label}</td><td>${Math.round(g.cal).toLocaleString()} cal</td></tr>`
+        ).join('');
+
+        document.getElementById('results').style.display = 'block';
+    }
+</script>
+</body>
+</html>
