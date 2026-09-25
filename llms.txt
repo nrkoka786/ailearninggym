@@ -1,0 +1,23 @@
+# AI Learning Gym
+
+AI Learning Gym is an independently operated educational website offering practical, beginner-friendly AI learning paths. AI may assist drafting, but published learning paths are manually reviewed, edited, and tested by the AI Learning Gym Editorial Team.
+
+## Primary pages
+
+- [Home](https://ailearninggym.com/): Personalized, goal-based AI learning and supporting browser tools.
+- [Learning Paths](https://ailearninggym.com/learning-paths/): Directory of free public AI courses.
+- [Editorial Standards](https://ailearninggym.com/editorial-standards.html): How courses are created, reviewed, corrected, and updated.
+- [Site and Curriculum Updates](https://ailearninggym.com/updates.html): Dated record of meaningful changes.
+
+## Learning paths
+
+- [AI Prompt Writing Fundamentals](https://ailearninggym.com/learning-paths/ai-prompt-writing-fundamentals/): Five-part prompt framework, examples, exercises, knowledge checks, verification guidance, and FAQs.
+- [ChatGPT for Complete Beginners](https://ailearninggym.com/learning-paths/chatgpt-for-beginners/): Foundations, clear requests, follow-up, verification, and privacy.
+- [Write Better Emails Using AI](https://ailearninggym.com/learning-paths/ai-email-writing/): Plan, draft, review, and personalize AI-assisted email.
+- [Create Social-Media Posts Using AI](https://ailearninggym.com/learning-paths/ai-social-media/): Audience-first posts, originality, review, and responsible publishing.
+
+## Editorial contact
+
+- [Contact](https://ailearninggym.com/contact.html): Questions and correction requests.
+
+Important: llms.txt is a voluntary content directory. The canonical HTML pages and sitemap.xml remain the authoritative sources.
