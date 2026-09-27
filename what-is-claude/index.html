@@ -29,7 +29,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
         body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
         header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
-        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header .site-brand { font-size: 2rem; margin-bottom: 8px; font-weight: 700; }
         header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
         header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
         header a:hover { color: var(--accent-color); }
@@ -51,7 +51,7 @@
         .video-placeholder p { color: #94a3b8; margin: 0; font-size: 0.9rem; }
         .video-placeholder .video-title { color: #e2e8f0; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
         /* REPLACE THIS COMMENT WITH YOUR YOUTUBE EMBED:
-           <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+           <iframe loading="lazy" title="Beginner video guide to Claude AI" width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
            frameborder="0" allowfullscreen style="border-radius:8px;"></iframe> */
         .highlight-box { background: #f5eef8; border-left: 4px solid #6c3483; border-radius: 4px; padding: 14px 18px; margin: 16px 0; color: var(--text-dark); font-size: 0.95rem; }
         .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.92rem; }
@@ -80,7 +80,7 @@
 </head>
 <body>
 <header>
-    <h1>🏋️ AI Learning Gym</h1>
+    <div class="site-brand">🏋️ AI Learning Gym</div>
     <p>Learn how the world's leading AI models work</p>
     <a href="/">&larr; Back to Dashboard</a>
 </header>
@@ -91,12 +91,12 @@
         <div class="content-card">
             <span class="tag">AI Model Guide</span>
             <h1 class="page-title">What Is Claude AI? Anthropic's Model Explained</h1>
-            <div class="page-meta">📅 July 2026 &nbsp;|&nbsp; ⏱ 7 min read &nbsp;|&nbsp; 🏢 Made by Anthropic</div>
+            <div class="page-meta">📅 Published July 2026 · Reviewed September 27, 2026 &nbsp;|&nbsp; ⏱ 7 min read &nbsp;|&nbsp; 🏢 Made by Anthropic</div>
 
             <p>Claude is an AI assistant made by Anthropic, a company founded in 2021 by former OpenAI researchers including Dario Amodei and Daniela Amodei. It's one of the most capable AI models available today, widely used for writing, coding, research, and analysis. This guide explains what Claude is, how it works, what it's particularly good at, and how it fits into the broader AI landscape.</p>
 
             <!-- VIDEO EMBED SECTION -->
-            <iframe width="100%" height="400" 
+            <iframe loading="lazy" title="Beginner video guide to Claude AI" width="100%" height="400" 
                 src="https://www.youtube.com/embed/mizFkT0zucw"
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -104,7 +104,7 @@
                 style="border-radius:8px; display:block;">
             </iframe>
             <!-- TO ADD YOUR VIDEO: Replace the div above with:
-            <iframe width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            <iframe loading="lazy" width="100%" height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen style="border-radius:8px; display:block;"></iframe> -->
 
@@ -116,17 +116,8 @@
             <p>Claude is made by Anthropic, an AI safety company based in San Francisco. Anthropic was founded in 2021 by Dario Amodei (CEO), Daniela Amodei (President), and several other researchers who previously worked at OpenAI. The company's primary focus is on building AI that is safe, reliable, and interpretable — understanding not just what AI does, but why it does it.</p>
             <p>Anthropic developed a training approach called <strong>Constitutional AI</strong>, which teaches Claude to follow a set of principles — to be helpful, harmless, and honest — rather than simply optimizing for user approval. This is one of the reasons Claude tends to push back on harmful requests and acknowledge uncertainty rather than fabricate confident-sounding answers.</p>
 
-            <h2>What are Claude's main versions?</h2>
-            <p>Anthropic releases Claude in multiple versions designed for different use cases and budgets:</p>
-            <ul>
-                <li><strong>Claude Opus</strong> — the most capable model, designed for complex reasoning, deep analysis, and demanding tasks. Best for users who need top-tier performance and don't mind slower response times.</li>
-                <li><strong>Claude Sonnet</strong> — the most popular balance of capability and speed. Handles most professional tasks — writing, coding, research — at a faster pace than Opus.</li>
-                <li><strong>Claude Haiku</strong> — the fastest and most affordable version. Ideal for high-volume applications where speed matters more than maximum depth.</li>
-            </ul>
-
-            <div class="highlight-box">
-                <strong>Context window:</strong> Claude supports up to 200,000 tokens of context — roughly 150,000 words, or about 500 pages of text — in a single conversation. This makes it exceptionally useful for analyzing long documents, reviewing entire codebases, or maintaining detailed context over extended work sessions.
-            </div>
+            <h2>How Claude models are organized</h2>
+            <p>Anthropic commonly offers Claude models in Opus, Sonnet, and Haiku families, emphasizing different balances of capability, speed, and cost. Exact model names, context limits, and availability change over time. Check Anthropic’s official Claude and pricing pages before choosing a model for an important workflow.</p>
 
             <h2>What is Claude particularly good at?</h2>
             <p>Claude has earned a strong reputation in several specific areas:</p>
@@ -139,46 +130,19 @@
             </ul>
 
             <h2>How do you access Claude?</h2>
-            <ul>
-                <li><strong>claude.ai</strong> — the web and mobile chat interface. Free tier available; Claude Pro at $20/month gives access to more powerful models and higher usage limits.</li>
-                <li><strong>Anthropic API</strong> — for developers building applications. Pricing is per token (charged per amount of text processed).</li>
-                <li><strong>Claude Code</strong> — a command-line tool for developers to use Claude directly in their terminal for coding tasks.</li>
-                <li><strong>Third-party apps</strong> — Claude is integrated into tools like Amazon Bedrock, Google Cloud Vertex AI, and various productivity apps.</li>
-            </ul>
+            <p>You can use Claude through <a href="https://claude.ai/" rel="noopener noreferrer">claude.ai</a>, supported mobile apps, Anthropic’s API, and selected third-party platforms. Free and paid access may have different limits. Review Anthropic’s official pricing information for current plan details.</p>
 
             <h2>How does Claude compare to ChatGPT?</h2>
-            <table class="compare-table">
-                <thead>
-                    <tr><th>Feature</th><th>Claude</th><th>ChatGPT</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Made by</td><td>Anthropic</td><td>OpenAI</td></tr>
-                    <tr><td>Context window</td><td>Up to 200K tokens</td><td>Up to 128K tokens (GPT-4o)</td></tr>
-                    <tr><td>Image generation</td><td>No (text only)</td><td>Yes (via DALL-E)</td></tr>
-                    <tr><td>Web browsing</td><td>Limited</td><td>Yes (with tools)</td></tr>
-                    <tr><td>Known strength</td><td>Coding, long documents, following instructions</td><td>General tasks, plugins, image creation</td></tr>
-                    <tr><td>Free tier</td><td>Yes</td><td>Yes</td></tr>
-                    <tr><td>Paid plan</td><td>$20/month (Pro)</td><td>$20/month (Plus)</td></tr>
-                </tbody>
-            </table>
+            <p>Claude and ChatGPT can both assist with writing, analysis, research, and coding. Their available models, search tools, usage limits, and privacy controls change regularly. Test each service on your real task and verify current features on the provider’s official website.</p>
 
             <h2>Frequently asked questions</h2>
-            <div class="faq-item">
-                <h4>Is Claude free to use?</h4>
-                <p>Yes. Claude has a free tier at claude.ai that gives access to Claude Sonnet with daily usage limits. Claude Pro ($20/month) removes most limits and gives access to the most powerful models including Opus.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Does Claude have access to the internet?</h4>
-                <p>Claude's knowledge comes from its training data, which has a cutoff date. It does not browse the internet in real time by default, though some integrations may add web search capability.</p>
-            </div>
+            <div class="faq-item"><h4>Is Claude free to use?</h4><p>Claude offers free and paid access. Usage limits and included models can change, so check Anthropic’s current plan page for details.</p></div>
+            <div class="faq-item"><h4>Does Claude have access to the internet?</h4><p>Claude’s available tools may include web access depending on the product, plan, and current rollout. When freshness matters, ask for sources and independently verify them.</p></div>
             <div class="faq-item">
                 <h4>Is Claude safe to use for sensitive work?</h4>
                 <p>Anthropic takes privacy seriously and publishes usage policies. For highly sensitive or confidential work, check Anthropic's current data handling policies. Enterprise plans offer additional privacy controls.</p>
             </div>
-            <div class="faq-item">
-                <h4>Can Claude generate images?</h4>
-                <p>No — Claude is a text-only model. It can describe images, analyze images you upload, and help you write prompts for image generators, but it does not create images itself.</p>
-            </div>
+            <div class="faq-item"><h4>Can Claude work with images?</h4><p>Claude can analyze supported image uploads. Image-generation and other media capabilities can change, so consult Anthropic’s current feature documentation.</p></div>
 
             <div class="cta-box">
                 <p>Try our AI tools to put your Claude knowledge into practice</p>

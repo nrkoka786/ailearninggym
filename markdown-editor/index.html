@@ -28,7 +28,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
         body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
         header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
-        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header .site-brand { font-size: 2rem; margin-bottom: 8px; font-weight: 700; }
         header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
         header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
         header a:hover { color: var(--accent-color); }
@@ -85,7 +85,7 @@
 </head>
 <body>
 <header>
-    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <div class="site-brand"><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</div>
     <p>Free writing and development tools</p>
     <a href="/">&larr; Back to Dashboard</a>
 </header>
@@ -93,7 +93,7 @@
 <div class="container">
 
     <div class="card">
-        <h2>Markdown Editor with Live Preview</h2>
+        <h1 class="tool-title">Markdown Editor with Live Preview</h1>
         <div class="editor-toolbar">
             <button class="tb-btn" onclick="insert('**','**')"><strong>B</strong></button>
             <button class="tb-btn" onclick="insert('*','*')"><em>I</em></button>

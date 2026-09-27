@@ -28,7 +28,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
         body { background-color: #f1f5f9; color: #333; line-height: 1.6; }
         header { background-color: var(--primary-color); color: #fff; padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--accent-color); }
-        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header .site-brand { font-size: 2rem; margin-bottom: 8px; font-weight: 700; }
         header p { color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0 auto; }
         header a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 8px; font-weight: bold; }
         header a:hover { color: var(--accent-color); }
@@ -81,7 +81,7 @@
 </head>
 <body>
 <header>
-    <h1><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</h1>
+    <div class="site-brand"><img src="/AI_Learning_Gym_Logo.jpg" alt="AI Learning Gym" style="height:50px; vertical-align:middle; margin-right:10px;">AI Learning Gym</div>
     <p>Learn how the world's leading AI models work</p>
     <a href="/">&larr; Back to Dashboard</a>
 </header>
@@ -92,12 +92,12 @@
         <div class="content-card">
             <span class="tag">AI Model Guide</span>
             <h1 class="page-title">What Is Grok AI? xAI's Assistant Explained</h1>
-            <div class="page-meta">📅 July 2026 &nbsp;|&nbsp; ⏱ 6 min read &nbsp;|&nbsp; 🏢 Made by xAI</div>
+            <div class="page-meta">📅 Published July 2026 · Reviewed September 27, 2026 &nbsp;|&nbsp; ⏱ 6 min read &nbsp;|&nbsp; 🏢 Made by xAI</div>
 
             <p>Grok is an AI assistant built by xAI, the AI company founded by Elon Musk in 2023. It's one of the newer major AI models on the market, and it has a few characteristics that set it apart from ChatGPT and Claude — particularly its real-time access to information on X (formerly Twitter) and its notably direct, sometimes irreverent personality. This guide explains what Grok is, how it developed, what it's good at, and how to use it.</p>
 
             <!-- VIDEO EMBED SECTION -->
-            <iframe width="100%" height="400" src="https://www.youtube.com/embed/b-e_PNokXqE"
+            <iframe loading="lazy" title="Beginner video guide to Grok AI" width="100%" height="400" src="https://www.youtube.com/embed/b-e_PNokXqE"
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen style="border-radius:8px; display:block;"></iframe>
 
@@ -109,13 +109,8 @@
             <p>Grok is made by xAI, an AI company founded by Elon Musk in July 2023. Musk was an early backer and board member of OpenAI but departed from its board in 2018. He founded xAI as a competing AI lab, staffed significantly by researchers who had worked at OpenAI, DeepMind, Google Brain, Microsoft, and Tesla. xAI is separate from X Corp (which owns X/Twitter) and Tesla, but all three companies are closely connected through Musk's leadership and shared infrastructure.</p>
             <p>Grok was initially developed using X's computing infrastructure and trained partly on the full X post archive — a dataset that no other AI company has access to.</p>
 
-            <h2>Grok model versions</h2>
-            <ul class="timeline">
-                <li><strong>Grok-1 (Nov 2023)</strong><span>The first version, launched exclusively for X Premium+ subscribers. Positioned as a "fun" model with a personality designed to be witty and willing to answer edgier questions other AI declined.</span></li>
-                <li><strong>Grok-1.5 (Mar 2024)</strong><span>Major improvement in reasoning and coding. xAI open-sourced the Grok-1 weights in March 2024, making it one of the largest open-source language models available.</span></li>
-                <li><strong>Grok-2 (Aug 2024)</strong><span>Added image generation capabilities via Aurora, xAI's in-house image model. Became competitive with GPT-4o on major benchmarks.</span></li>
-                <li><strong>Grok-3 (Feb 2025)</strong><span>xAI's most capable model at launch, with significantly improved reasoning, math, and science performance. Trained on a custom supercomputer cluster (Colossus) in Memphis, Tennessee.</span></li>
-            </ul>
+            <h2>How Grok has evolved</h2>
+            <p>xAI updates Grok frequently, and the model names, access levels, and included tools can change. For current capabilities, use xAI’s official Grok pages and in-product information rather than relying on an older version list.</p>
 
             <h2>What can Grok do?</h2>
             <ul>
@@ -123,44 +118,23 @@
                 <li><strong>Web search</strong> — Can browse the web in real time to supplement answers with current sources</li>
                 <li><strong>Image generation</strong> — Creates images using the Aurora image model, accessible directly in conversation</li>
                 <li><strong>Image analysis</strong> — Can read and describe images you upload</li>
-                <li><strong>Coding and analysis</strong> — Capable of writing, debugging, and explaining code; competitive with GPT-4o on developer benchmarks</li>
-                <li><strong>Long-form reasoning</strong> — Grok-3 and its "Think" mode reason through problems step by step before answering, similar to OpenAI's o1/o3 series</li>
+                <li><strong>Coding and analysis</strong> — Can help write, debug, and explain code, subject to the same need for testing and review as other AI assistants</li>
+                <li><strong>Reasoning</strong> — Some Grok modes are designed to spend more time working through complex questions before answering</li>
                 <li><strong>Voice mode</strong> — Available in the Grok mobile app for voice conversations</li>
             </ul>
 
-            <div class="highlight-box">
-                <strong>The X advantage:</strong> Grok is the only major AI with native, real-time access to X's full post archive. If you're following a breaking news story, tracking a public figure's recent statements, or researching a viral conversation, Grok can pull directly from X posts in ways ChatGPT and Claude cannot.
-            </div>
+            <div class="highlight-box"><strong>Verify current information:</strong> Grok can work with timely web and X content, but recent posts are not automatically reliable. Open the cited sources, compare trustworthy references, and check dates before sharing an answer.</div>
 
             <h2>How do you access Grok?</h2>
-            <ul>
-                <li><strong>X (Twitter)</strong> — Grok is built into X's mobile app and website. X Premium subscribers get access; X Premium+ gets the most powerful version with higher usage limits.</li>
-                <li><strong>grok.com</strong> — A standalone web interface separate from X.</li>
-                <li><strong>xAI API</strong> — For developers, available at api.x.ai with pay-per-token pricing.</li>
-                <li><strong>Grok mobile app</strong> — A dedicated iOS and Android app with voice mode.</li>
-            </ul>
+            <p>Grok is available through official xAI products and selected X experiences. Free access, paid plans, model availability, and usage limits can change, so review <a href="https://grok.com/" rel="noopener noreferrer">Grok’s official site</a> for current details.</p>
 
             <h2>How Grok compares to ChatGPT and Claude</h2>
-            <table class="compare-table">
-                <thead>
-                    <tr><th>Feature</th><th>Grok</th><th>ChatGPT</th><th>Claude</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Made by</td><td>xAI</td><td>OpenAI</td><td>Anthropic</td></tr>
-                    <tr><td>Real-time X/Twitter data</td><td>Yes (native)</td><td>No</td><td>No</td></tr>
-                    <tr><td>Web browsing</td><td>Yes</td><td>Yes</td><td>Limited</td></tr>
-                    <tr><td>Image generation</td><td>Yes (Aurora)</td><td>Yes (DALL-E)</td><td>No</td></tr>
-                    <tr><td>Context window</td><td>131K tokens</td><td>128K tokens</td><td>200K tokens</td></tr>
-                    <tr><td>Open source</td><td>Grok-1 weights (partial)</td><td>No</td><td>No</td></tr>
-                    <tr><td>Personality</td><td>Direct, witty, fewer refusals</td><td>Balanced, helpful</td><td>Careful, thorough</td></tr>
-                    <tr><td>Free access</td><td>Limited via X Premium</td><td>Yes (chatgpt.com)</td><td>Yes (claude.ai)</td></tr>
-                </tbody>
-            </table>
+            <p>Grok, ChatGPT, and Claude overlap on common writing, analysis, research, and coding tasks. Their tools, limits, personalities, and privacy controls change frequently. Compare them with the same real task and confirm current features on each provider’s official website.</p>
 
             <h2>Frequently asked questions</h2>
             <div class="faq-item">
                 <h4>Is Grok free to use?</h4>
-                <p>A limited version is available for free via X and grok.com. Full access, including higher usage limits and the most powerful Grok models, requires X Premium ($8/month) or X Premium+ ($22/month).</p>
+                <p>Grok may offer free and paid access with different limits. Check the official Grok or X plan page for current availability and pricing.</p>
             </div>
             <div class="faq-item">
                 <h4>What makes Grok different from ChatGPT?</h4>
@@ -168,7 +142,7 @@
             </div>
             <div class="faq-item">
                 <h4>Is Grok's code open source?</h4>
-                <p>xAI open-sourced the weights for Grok-1 in March 2024, making it one of the largest openly available language models. Grok-2 and Grok-3 have not been open-sourced.</p>
+                <p>xAI has released some earlier Grok materials publicly, but that does not mean every current Grok model is open source. Check xAI's official repositories and announcements for the latest status.</p>
             </div>
             <div class="faq-item">
                 <h4>Can Grok see what's trending on X right now?</h4>
