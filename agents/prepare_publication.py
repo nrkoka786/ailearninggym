@@ -36,10 +36,18 @@ def prepare(site, draft, slug, dry_run=False):
     target = site / "blog" / slug / "index.html"
     if target.exists(): raise ValueError("Article already exists; refusing overwrite")
     canonical = DOMAIN + "/blog/" + slug + "/"
+    # Only the allowlisted learning-path URL becomes HTML; all other text is escaped.
+    contextual_path = "/learning-paths/how-to-fact-check-ai-answers/"
+    def render_paragraph(paragraph):
+        pieces = str(paragraph).split(contextual_path)
+        safe = escape(pieces[0])
+        for part in pieces[1:]:
+            safe += '<a href="' + contextual_path + '">How to Fact-Check AI Answers</a>' + escape(part)
+        return "<p>" + safe + "</p>"
     sections = []
     for sec in data["sections"]:
         sections.append("<section><h2>" + escape(sec["heading"]) + "</h2>")
-        sections += ["<p>" + escape(p) + "</p>" for p in sec["paragraphs"]]
+        sections += [render_paragraph(p) for p in sec["paragraphs"]]
         sections.append("</section>")
     sections.append("<section><h2>Copyable prompts</h2>")
     for p in data["example_prompts"]:
