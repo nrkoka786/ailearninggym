@@ -29,6 +29,8 @@ jobs:
           ref: ${{ inputs.draft_branch }}
           path: draft
           persist-credentials: false
+      - name: Run safety unit tests
+        run: python -m unittest discover -s site/agents -p 'test_agent3_dry_run.py'
       - name: Validate without publishing
         env:
           DRAFT_SLUG: ${{ inputs.draft_slug }}
