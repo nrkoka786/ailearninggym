@@ -10,8 +10,8 @@ import urllib.error
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
-MAX_OUTPUT_TOKENS = 3500
+MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
+MAX_OUTPUT_TOKENS = 7500
 BLOCKED = {"index", "blog", "learn", "learning-paths"}
 
 def slugify(value):
@@ -80,6 +80,13 @@ def render(doc, slug):
         for paragraph in section["paragraphs"]:
             body.append("<p>" + html.escape(paragraph) + "</p>")
         body.append("</section>")
+    body.append("<section><h2>Copyable prompts</h2>")
+    for item in doc["example_prompts"]:
+        body.append("<h3>" + html.escape(item["label"]) + "</h3><pre><code>" + html.escape(item["prompt"]) + "</code></pre>")
+    body.append("</section><section><h2>Frequently asked questions</h2>")
+    for item in doc["faq"]:
+        body.append("<h3>" + html.escape(item["question"]) + "</h3><p>" + html.escape(item["answer"]) + "</p>")
+    body.append("</section>")
     # Sources are proposed reading links, NOT verified evidence.
     sources = "".join('<li><a rel="noopener noreferrer" href="' + html.escape(s["url"], quote=True) +
                       '">' + html.escape(s["label"]) + "</a></li>" for s in doc["sources"])
@@ -109,18 +116,31 @@ Existing article slugs (avoid duplicate intent): {json.dumps(existing)}
 Return JSON object ONLY with keys:
 title (string), description (string <= 155 chars), target_keyword (string),
 search_intent (string), seo_rationale (string), sections (array of 4-7 objects each with
-heading string and paragraphs array of 2-4 substantive strings), sources (array of
+heading string and paragraphs array of 3-5 substantive strings), example_prompts
+(array of 3 objects each with label and prompt strings), faq (array of 4 objects
+each with question and answer strings), sources (array of
 2-5 objects with label and url, only official authoritative URLs you know).
+Produce a useful approximately 1000-1500 word tutorial, without filler.
+Include a worked fact-checking example with specific verification steps.
+Show readers how to check original sources, dates, context and uncertainty.
+Do not imply that all ChatGPT modes lack web access. Source URLs are only
+suggestions for editorial verification; do not claim you verified them.
 Be specific, educational and cautious. No invented statistics, rankings, quotes,
 pricing, release dates, or first-hand testing claims. Never suggest artificial ad traffic.
 If a fact requires verification, say so. No markdown or HTML in fields."""
     doc, usage = request_gemini(prompt)
     required = ["title", "description", "target_keyword", "search_intent",
-                "seo_rationale", "sections", "sources"]
+                "seo_rationale", "sections", "example_prompts", "faq", "sources"]
     if any(not doc.get(k) for k in required):
         raise ValueError("Gemini draft missing required fields")
     if not (4 <= len(doc["sections"]) <= 7) or not (2 <= len(doc["sources"]) <= 5):
         raise ValueError("Draft failed section/source count validation")
+    if len(doc["example_prompts"]) < 3 or len(doc["faq"]) < 4:
+        raise ValueError("Missing example prompts or FAQs")
+    words = sum(len(p.split()) for sec in doc["sections"] for p in sec["paragraphs"])
+    words += sum(len(item["answer"].split()) for item in doc["faq"])
+    if words < 700:
+        raise ValueError(f"Draft too thin ({words} words); no PR created")
     if len(doc["description"]) > 155:
         raise ValueError("Meta description too long")
     for s in doc["sources"]:
@@ -133,6 +153,7 @@ If a fact requires verification, say so. No markdown or HTML in fields."""
     if output.exists():
         raise ValueError("Draft already exists; refusing overwrite")
     output.mkdir(parents=True)
+    doc["quality_metrics"] = {"instructional_word_count": words, "source_links_verified": False}
     (output / "preview.html").write_text(render(doc, slug), encoding="utf-8")
     (output / "review.json").write_text(json.dumps({"topic": topic, **doc,
         "usage": usage, "status": "HUMAN_REVIEW_REQUIRED"}, indent=2) + "\n", encoding="utf-8")
