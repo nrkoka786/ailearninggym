@@ -83,6 +83,28 @@ def prepare(site, draft, slug, dry_run=False):
             '.related{margin-top:3rem;padding:1rem;border:1px solid #d9e2ee;border-radius:8px}'
             '</style></head><body><header><a href="/">AI Learning Gym</a></header>'
             '<main><article><h1>' + title + '</h1>' + "\n".join(sections) + '</article></main></body></html>\n')
+    # Add a discovery card to the existing blog listing in the same publication PR.
+    # Preserve all existing blog markup, analytics and advertising scripts.
+    listing = site / "blog" / "index.html"
+    listing_text = listing.read_text(encoding="utf-8")
+    grid_marker = '<div class="blog-grid">'
+    article_href = "/blog/" + slug + "/"
+    if listing_text.count(grid_marker) != 1:
+        raise ValueError("Expected exactly one blog card grid")
+    if article_href in listing_text:
+        raise ValueError("Blog listing already contains article URL")
+    # Metadata comes from the editor-reviewed draft; never expose unescaped HTML.
+    card = (
+        '                <a class="blog-card" href="' + escape(article_href) + '">\n'
+        '                    <span class="tag">Beginner Guide</span>\n'
+        '                    <h3>' + escape(data["title"]) + '</h3>\n'
+        '                    <p>' + escape(data["description"]) + '</p>\n'
+        '                    <div class="meta">' + date.today().strftime("%B %Y") + '</div>\n'
+        '                </a>\n\n'
+    )
+    # Insert immediately after the grid opens, so the newest guide appears first.
+    insertion_point = listing_text.index(grid_marker) + len(grid_marker)
+    updated_listing = listing_text[:insertion_point] + "\n\n" + card + listing_text[insertion_point:]
     if dry_run:
         sitemap = site / "sitemap.xml"
         ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
@@ -93,6 +115,7 @@ def prepare(site, draft, slug, dry_run=False):
         return
     target.parent.mkdir(parents=True, exist_ok=False)
     target.write_text(page, encoding="utf-8")
+    listing.write_text(updated_listing, encoding="utf-8")
     sitemap = site / "sitemap.xml"
     # Preserve the site's existing sitemap bytes and ordering, appending one URL.
     # XML parsing is for validation only; ElementTree serialization would reformat
