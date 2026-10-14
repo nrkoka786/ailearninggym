@@ -137,7 +137,7 @@ If a fact requires verification, say so. No markdown or HTML in fields."""
     # One bounded retry; never publish or accept a short draft.
     if instructional_words(doc) < 900:
         retry_prompt = prompt + (
-            "\\nIMPORTANT: Your previous draft was only "
+            "\nIMPORTANT: Your previous draft was only "
             + str(instructional_words(doc))
             + " instructional words. Return a NEW complete JSON object with at least "
               "1100 instructional words. Expand the step-by-step explanations, "
