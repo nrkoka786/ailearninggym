@@ -4,12 +4,12 @@
   "description": "Learn a practical ChatGPT fact-checking workflow: isolate claims, find original sources, verify context, and document what remains uncertain.",
   "target_keyword": "how to use ChatGPT to fact-check",
   "search_intent": "Informational",
-  "seo_rationale": "This topic addresses a common pain point for AI users. It fills a content gap by providing a structured methodology for verification, distinguishing it from existing prompt-based or comparison-based articles. This revision adds a fictional worked example clearly labeled as fictional, an evidence-log template, and a stronger distinction between AI assistance and independent source verification.",
+  "seo_rationale": "This topic addresses a common pain point for AI users. It fills a content gap by providing a structured methodology for verification, distinguishing it from existing prompt-based or comparison-based articles. This revision adds a fictional worked example clearly labeled as fictional, an evidence-log template, and a stronger distinction between AI assistance and independent source verification. Editorial pass: replaced general homepages with topic-specific primary guidance; added contextual learning-path reference, clarified search feature availability, and distinguished the hypothetical example from real claims.",
   "sections": [
     {
       "heading": "Understanding the Role of AI in Fact-Checking",
       "paragraphs": [
-        "ChatGPT is a powerful language model, but it is not a search engine or a verified database. It operates by predicting text based on patterns in its training data, which means it can occasionally generate plausible-sounding but incorrect information, a phenomenon known as hallucination.",
+        "ChatGPT can be helpful when evaluating information, but it can also produce incorrect statements, fabricated citations, or misleadingly confident answers. OpenAI's published guidance recommends checking important information against reliable sources instead of treating ChatGPT output as proof.",
         "When using ChatGPT for fact-checking, you should treat it as an assistant that helps you synthesize information rather than an ultimate authority. Its primary strength lies in summarizing complex topics, identifying logical inconsistencies, and suggesting potential sources for further investigation.",
         "To use it effectively, you must maintain a skeptical mindset. Always verify critical claims against primary sources, such as government websites, peer-reviewed journals, or reputable news organizations, rather than relying solely on the AI's output."
       ]
@@ -18,19 +18,20 @@
       "heading": "Step-by-Step Verification Strategy",
       "paragraphs": [
         "The first step in fact-checking with AI is to break down a claim into smaller, verifiable components. Instead of asking if a whole article is true, ask the AI to identify the specific dates, names, and statistics mentioned within the text.",
-        "Once the AI identifies these components, use its web-browsing capabilities to locate original sources. If the AI provides a link or a reference, click through to the source to ensure the context matches what the AI claimed. Never assume the AI's summary of a document is 100% accurate.",
+        "If search is available in your ChatGPT interface, you can use it to find candidate original sources. Open each citation yourself and check the underlying document; search results and AI summaries can be incomplete or inaccurate. If search is not available, use a browser or trusted research database to locate the original source.",
         "Finally, check for uncertainty. If ChatGPT expresses hesitation or notes that a topic is controversial, pay close attention to those caveats. These are often indicators that the information is either evolving or lacks a clear consensus in the public record.",
         "A useful verification checklist asks five questions: Who originally made the claim? When was it made? What exactly does the original document say? Does the claim apply to the same place, population, and time period? What evidence would disprove it? Work through these questions in order rather than asking ChatGPT for a simple true-or-false verdict.",
-        "Separate the roles of ChatGPT and your browser. ChatGPT can help turn a paragraph into a list of checkable claims and propose search terms. Your browser and the underlying documents are where you verify the evidence. If the original report is unavailable, label the claim unverified instead of relying on a secondhand summary."
+        "Separate the roles of ChatGPT and your browser. ChatGPT can help turn a paragraph into a list of checkable claims and propose search terms. Your browser and the underlying documents are where you verify the evidence. If the original report is unavailable, label the claim unverified instead of relying on a secondhand summary.",
+        "For a fuller beginner course, see AILearningGym's existing 'How to Fact-Check AI Answers' learning path at /learning-paths/how-to-fact-check-ai-answers/. This article focuses specifically on prompts you can use with ChatGPT and a reusable evidence-log method."
       ]
     },
     {
       "heading": "A Practical Fact-Checking Example",
       "paragraphs": [
-        "Consider this fictional practice claim: 'Riverton requires every household to recycle glass beginning January 1, 2024.' Riverton and this requirement are invented for this exercise; do not treat them as real news or legal advice.",
+        "Consider this invented practice claim: 'The fictional town of Riverton requires every household to recycle glass beginning January 1, 2024.' This is a hypothetical training scenario, not a statement about any actual town, ordinance, or legal requirement.",
         "First, paste the sentence into ChatGPT and ask it to list the separate claims: the municipality's identity, whether an ordinance was adopted, which households are covered, which materials are required, and the effective date. Ask for suggested official-document search terms, not a yes-or-no answer.",
         "Second, search the actual city's government website for the adopted ordinance, council minutes, and effective-date notices. If you find only a proposed ordinance or a news summary, do not mark the requirement confirmed. Compare the original text with the claim word for word, especially any exemptions.",
-        "Third, record the result in a small evidence log: claim, primary-source URL, publication or adoption date, relevant quotation or section number, and verdict (supported, contradicted, or unverified). In this fictional exercise no real ordinance exists, so the correct verdict is 'not verified.' The purpose is to practice a repeatable method without fabricating evidence."
+        "Third, record the result in a small evidence log: claim, primary-source URL, publication or adoption date, relevant passage or section number, and verdict (supported, contradicted, or unverified). Because this exercise deliberately supplies no real ordinance or municipality to check, mark the fictional claim 'not verified' for practice. Do not imply that a real town has no ordinance."
       ]
     },
     {
@@ -46,7 +47,7 @@
       "heading": "Best Practices for Safe AI Research",
       "paragraphs": [
         "Always keep a record of your search process. If you are using ChatGPT to help with research, save the chat history so you can review the steps you took to verify each piece of information. This transparency is essential for academic or professional work.",
-        "Never input sensitive, private, or proprietary information into the chat. Fact-checking should be limited to public-domain information, news, and general knowledge. Protect your privacy by keeping your queries focused on verifiable public facts.",
+        "Avoid pasting private, confidential, or proprietary material into a chatbot unless you have confirmed the product's data-handling controls and have authorization to share it. For a beginner fact-checking exercise, use public claims and redact personal details.",
         "Finally, know when to stop using the AI. If the topic is highly specialized, medical, or legal, use the AI only to help you understand terminology, then move to professional resources for the final verification. AI is a starting point, not the end of your research journey.",
         "For screenshots and social posts, check whether the image is cropped, whether a quotation has been shortened, and whether the date matches the event being discussed. Search for the original publication before treating the screenshot as evidence."
       ]
@@ -89,7 +90,7 @@
     },
     {
       "question": "Does ChatGPT have access to real-time news?",
-      "answer": "Many versions of ChatGPT have web-browsing capabilities that allow them to access current information. Check your specific interface to see if it has access to the internet."
+      "answer": "ChatGPT can use web search when the feature is available and enabled in the interface. Check whether the response includes clickable sources, and verify those sources directly. Without search or other retrieval tools, an answer may not reflect current events."
     },
     {
       "question": "How do I know if the AI is biased?",
@@ -102,16 +103,20 @@
   ],
   "sources": [
     {
-      "label": "OpenAI Help Center",
-      "url": "https://help.openai.com"
+      "label": "OpenAI Help Center — Does ChatGPT tell the truth?",
+      "url": "https://help.openai.com/en/articles/8313428-chatgpt-accuracy-and-limitations"
     },
     {
-      "label": "Library of Congress Research Guides",
-      "url": "https://guides.loc.gov"
+      "label": "OpenAI Help Center — Searching the web with ChatGPT",
+      "url": "https://help.openai.com/en/articles/9237897-chatgpt-search"
+    },
+    {
+      "label": "Library of Congress — Primary Sources",
+      "url": "https://guides.loc.gov/student-resources/primary-sources"
     }
   ],
   "quality_metrics": {
-    "instructional_word_count": 1119,
+    "instructional_word_count": 1172,
     "source_links_verified": false
   },
   "usage": {
