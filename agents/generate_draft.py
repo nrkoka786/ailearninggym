@@ -120,7 +120,7 @@ heading string and paragraphs array of 3-5 substantive strings), example_prompts
 (array of 3 objects each with label and prompt strings), faq (array of 4 objects
 each with question and answer strings), sources (array of
 2-5 objects with label and url, only official authoritative URLs you know).
-Produce a useful approximately 1000-1500 word tutorial, without filler.
+Produce 1200-1500 instructional words (excluding prompts and source labels), without filler.\nEach of the 4-7 sections should contain 3-5 substantive paragraphs of about 65-95 words.\nEach FAQ answer should contain 50-80 useful words. Give concrete examples.\nIf the response is too short, expand with useful explanations rather than repetition.
 Include a worked fact-checking example with specific verification steps.
 Show readers how to check original sources, dates, context and uncertainty.
 Do not imply that all ChatGPT modes lack web access. Source URLs are only
@@ -129,6 +129,21 @@ Be specific, educational and cautious. No invented statistics, rankings, quotes,
 pricing, release dates, or first-hand testing claims. Never suggest artificial ad traffic.
 If a fact requires verification, say so. No markdown or HTML in fields."""
     doc, usage = request_gemini(prompt)
+    def instructional_words(article):
+        return (sum(len(p.split()) for sec in article.get("sections", [])
+                    for p in sec.get("paragraphs", []))
+                + sum(len(item.get("answer", "").split())
+                      for item in article.get("faq", [])))
+    # One bounded retry; never publish or accept a short draft.
+    if instructional_words(doc) < 900:
+        retry_prompt = prompt + (
+            "\\nIMPORTANT: Your previous draft was only "
+            + str(instructional_words(doc))
+            + " instructional words. Return a NEW complete JSON object with at least "
+              "1100 instructional words. Expand the step-by-step explanations, "
+              "worked examples and FAQ answers with useful detail, not repetition."
+        )
+        doc, usage = request_gemini(retry_prompt)
     required = ["title", "description", "target_keyword", "search_intent",
                 "seo_rationale", "sections", "example_prompts", "faq", "sources"]
     if any(not doc.get(k) for k in required):
@@ -139,7 +154,7 @@ If a fact requires verification, say so. No markdown or HTML in fields."""
         raise ValueError("Missing example prompts or FAQs")
     words = sum(len(p.split()) for sec in doc["sections"] for p in sec["paragraphs"])
     words += sum(len(item["answer"].split()) for item in doc["faq"])
-    if words < 700:
+    if words < 900:
         raise ValueError(f"Draft too thin ({words} words); no PR created")
     if len(doc["description"]) > 155:
         raise ValueError("Meta description too long")
