@@ -69,7 +69,7 @@ def prepare(site, draft, slug, dry_run=False):
     sections += ['<li><a href="' + escape(p) + '">How to Fact-Check AI Answers</a></li>' for p in links]
     sections.append("</ul></aside>")
     title = escape(data["title"])
-    page = ('<!doctype html>\\n<html lang="en"><head><meta charset="utf-8">'
+    page = ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>' + title + ' | AI Learning Gym</title>'
             '<meta name="description" content="' + escape(data["description"]) + '">'
@@ -82,7 +82,7 @@ def prepare(site, draft, slug, dry_run=False):
             'a{color:#155bb5}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f7fb;padding:1rem}'
             '.related{margin-top:3rem;padding:1rem;border:1px solid #d9e2ee;border-radius:8px}'
             '</style></head><body><header><a href="/">AI Learning Gym</a></header>'
-            '<main><article><h1>' + title + '</h1>' + "\\n".join(sections) + '</article></main></body></html>\\n')
+            '<main><article><h1>' + title + '</h1>' + "\n".join(sections) + '</article></main></body></html>\n')
     if dry_run:
         sitemap = site / "sitemap.xml"
         ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
@@ -94,17 +94,20 @@ def prepare(site, draft, slug, dry_run=False):
     target.parent.mkdir(parents=True, exist_ok=False)
     target.write_text(page, encoding="utf-8")
     sitemap = site / "sitemap.xml"
-    ET.register_namespace("", "http://www.sitemaps.org/schemas/sitemap/0.9")
-    tree = ET.parse(sitemap)
-    root = tree.getroot()
+    # Preserve the site's existing sitemap bytes and ordering, appending one URL.
+    # XML parsing is for validation only; ElementTree serialization would reformat
+    # every existing entry and make the publication PR difficult to audit.
+    sitemap_text = sitemap.read_text(encoding="utf-8")
+    tree = ET.fromstring(sitemap_text)
     ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
-    if any(n.text == canonical for n in root.iter(ns + "loc")):
+    if any(n.text == canonical for n in tree.iter(ns + "loc")):
         raise ValueError("Sitemap already contains URL")
-    entry = ET.SubElement(root, ns + "url")
-    ET.SubElement(entry, ns + "loc").text = canonical
-    ET.SubElement(entry, ns + "lastmod").text = date.today().isoformat()
-    ET.indent(tree, space="  ")
-    tree.write(sitemap, encoding="utf-8", xml_declaration=True)
+    closing = "</urlset>"
+    if sitemap_text.count(closing) != 1:
+        raise ValueError("Unexpected sitemap closing tag")
+    entry = ("  <url><loc>" + escape(canonical) + "</loc><lastmod>"
+             + date.today().isoformat() + "</lastmod></url>\n")
+    sitemap.write_text(sitemap_text.replace(closing, entry + closing), encoding="utf-8")
     print("Prepared publication files; publication still requires PR review and merge")
 
 def main():
