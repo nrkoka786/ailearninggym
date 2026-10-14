@@ -41,7 +41,7 @@ jobs:
         working-directory: draft
         env:
           DRAFT_SLUG: ${{ inputs.draft_slug }}
-        run: python ../site/agents/review_article.py --draft "agent_drafts/revised-$DRAFT_SLUG" --output "agent_drafts/revised-$DRAFT_SLUG/agent2-review.md"
+        run: python ../site/agents/review_article.py --draft "agent_drafts/revised-$DRAFT_SLUG" --output "agent_drafts/revised-$DRAFT_SLUG/agent2-review.md" --site-root ../site
       - name: Upload review-only result
         uses: actions/upload-artifact@v4
         with:
