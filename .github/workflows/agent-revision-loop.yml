@@ -1,0 +1,50 @@
+name: Agent revision loop (manual, unpublished)
+on:
+  workflow_dispatch:
+    inputs:
+      draft_branch:
+        description: Existing draft branch
+        required: true
+        type: string
+      draft_slug:
+        description: Directory inside agent_drafts
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  revise:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL: gemini-3.1-flash-lite
+    steps:
+      - name: Checkout scripts
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+          persist-credentials: false
+      - name: Checkout draft
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.draft_branch }}
+          path: draft
+          persist-credentials: false
+      - name: Run limited revisions
+        env:
+          DRAFT_SLUG: ${{ inputs.draft_slug }}
+        run: |
+          python site/agents/revise_draft.py --draft "draft/agent_drafts/$DRAFT_SLUG" --output "draft/agent_drafts/revised-$DRAFT_SLUG"
+      - name: Recheck with Agent 2
+        working-directory: draft
+        env:
+          DRAFT_SLUG: ${{ inputs.draft_slug }}
+        run: python ../site/agents/review_article.py --draft "agent_drafts/revised-$DRAFT_SLUG" --output "agent_drafts/revised-$DRAFT_SLUG/agent2-review.md"
+      - name: Upload review-only result
+        uses: actions/upload-artifact@v4
+        with:
+          name: revised-article-review-only
+          path: draft/agent_drafts/revised-*/
+          retention-days: 30
