@@ -1,0 +1,61 @@
+{
+  "topic": "How to use ChatGPT to fact-check information for beginners",
+  "title": "How to Use ChatGPT to Fact-Check Information for Beginners",
+  "description": "Learn how to use ChatGPT as a research assistant to verify information while understanding the importance of human oversight in the fact-checking process.",
+  "target_keyword": "how to use chatgpt to fact-check",
+  "search_intent": "Informational",
+  "seo_rationale": "This topic addresses a common user pain point regarding AI accuracy. By positioning the article as a guide on responsible usage, it captures high-intent traffic from users seeking to improve their AI literacy.",
+  "sections": [
+    {
+      "heading": "Understanding AI Limitations in Fact-Checking",
+      "paragraphs": [
+        "ChatGPT is a large language model designed to predict the next word in a sequence based on patterns in its training data. It is not a search engine or a database of verified historical facts, which means it can occasionally generate plausible-sounding but incorrect information, a phenomenon often called hallucination.",
+        "Because AI models do not have a real-time, inherent understanding of truth, they should be viewed as tools for summarizing or organizing information rather than as final arbiters of fact. Always approach AI-generated claims with a healthy degree of skepticism."
+      ]
+    },
+    {
+      "heading": "Best Practices for Verifying AI Claims",
+      "paragraphs": [
+        "When using ChatGPT to research a topic, ask the model to provide citations or sources for its claims. Once you have these, manually verify them by searching for the original documents, peer-reviewed studies, or reputable news outlets to confirm the information is accurate and in context.",
+        "Use the AI to help you identify search terms or summarize complex documents, but perform the final verification yourself. If the AI provides a specific date, statistic, or quote, treat it as a lead that requires independent confirmation through trusted primary sources."
+      ]
+    },
+    {
+      "heading": "Structuring Prompts for Better Accuracy",
+      "paragraphs": [
+        "To get the most reliable results, frame your prompts to encourage the AI to be cautious. For example, ask the model to 'list potential sources for this claim' or 'explain the consensus on this topic while noting any areas of debate.'",
+        "If you are checking a specific piece of text, ask the model to identify potential biases or missing information. By asking the AI to play the role of a critical reviewer rather than just a generator, you can often uncover nuances that help you perform a more thorough manual fact-check."
+      ]
+    },
+    {
+      "heading": "When to Avoid Using AI for Verification",
+      "paragraphs": [
+        "Avoid using AI for time-sensitive information, such as breaking news, live stock prices, or medical advice. AI models have a knowledge cutoff and may not have access to the most recent developments, leading to outdated or dangerous inaccuracies.",
+        "If the information you are verifying has high stakes, such as legal, financial, or health-related data, always consult a qualified professional. AI should never replace expert human judgment in situations where accuracy is critical for safety or legal compliance."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "OpenAI Help Center: How ChatGPT works",
+      "url": "https://help.openai.com/en/articles/6783457-what-is-chatgpt"
+    },
+    {
+      "label": "Federal Trade Commission: AI and Truth in Advertising",
+      "url": "https://www.ftc.gov/business-guidance/blog/2023/02/chatbots-and-truth-advertising"
+    }
+  ],
+  "usage": {
+    "promptTokenCount": 409,
+    "candidatesTokenCount": 808,
+    "totalTokenCount": 1217,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 409
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "status": "HUMAN_REVIEW_REQUIRED"
+}
