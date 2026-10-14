@@ -1,0 +1,31 @@
+name: Gemini connectivity test (manual only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Model to verify with a tiny prompt"
+        required: true
+        type: choice
+        default: gemini-3.1-flash-lite
+        options:
+          - gemini-3.1-flash-lite
+          - gemini-3.5-flash-lite
+
+permissions:
+  contents: read
+
+jobs:
+  connectivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify Gemini API generation
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ inputs.model }}
+        run: python agents/test_gemini_connection.py
