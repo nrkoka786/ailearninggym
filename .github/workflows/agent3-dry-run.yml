@@ -38,14 +38,13 @@ jobs:
           set -uo pipefail
           python -m py_compile site/agents/prepare_publication.py
           mkdir -p validation
-          python site/agents/prepare_publication.py --dry-run --site site --draft "draft/agent_drafts/$DRAFT_SLUG" --slug "$DRAFT_SLUG" >validation/details.txt 2>&1
-          status=$?
-          if [ "$status" -eq 0 ]; then
+          if python site/agents/prepare_publication.py --dry-run --site site --draft "draft/agent_drafts/$DRAFT_SLUG" --slug "$DRAFT_SLUG" >validation/details.txt 2>&1; then
             echo "PASS: draft meets automated structural publication checks" | tee validation/summary.txt
           else
             echo "NOT READY: draft failed automated publication checks; this is an expected dry-run outcome, not publication" | tee validation/summary.txt
           fi
           cat validation/details.txt
+          cat validation/details.txt >> "$GITHUB_STEP_SUMMARY"
           cat validation/summary.txt >> "$GITHUB_STEP_SUMMARY"
           echo 'No files changed, no PR created, no publication.' >> "$GITHUB_STEP_SUMMARY"
       - name: Upload dry-run report
