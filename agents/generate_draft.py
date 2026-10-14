@@ -50,13 +50,20 @@ def request_gemini(prompt):
         with urllib.request.urlopen(req, timeout=90) as response:
             result = json.load(response)
     except urllib.error.HTTPError as exc:
-        if exc.code == 404:
-            raise RuntimeError(
-                f"Gemini API HTTP 404: model '{MODEL}' not available for this key/API. "
-                f"Available generateContent models: {available_models(key)}. "
-                "Set GEMINI_MODEL to a supported model in the workflow."
-            ) from exc
-        raise RuntimeError(f"Gemini API HTTP {exc.code}; check API key permissions, quota, and model") from exc
+        # Google returns structured error details. Show only safe status/message,
+        # never headers, credentials or the full request.
+        try:
+            error = json.loads(exc.read(4096).decode("utf-8"))
+            details = error.get("error", {})
+            message = str(details.get("message", "No details provided"))[:700]
+            status = str(details.get("status", "UNKNOWN"))[:80]
+        except (ValueError, UnicodeDecodeError):
+            message, status = "No structured error details", "UNKNOWN"
+        model_hint = available_models(key) if exc.code == 404 else "Not queried"
+        raise RuntimeError(
+            f"Gemini HTTP {exc.code} ({status}) using model {MODEL}: {message}. "
+            f"Model catalog: {model_hint}"
+        ) from None
     text = "".join(p.get("text", "") for c in result.get("candidates", [])
                    for p in c.get("content", {}).get("parts", []))
     if not text:
