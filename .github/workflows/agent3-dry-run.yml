@@ -1,0 +1,56 @@
+name: Agent 3 dry-run article validation (no approval required)
+on:
+  workflow_dispatch:
+    inputs:
+      draft_branch:
+        description: Branch containing article draft
+        required: true
+        type: string
+      draft_slug:
+        description: Directory name inside agent_drafts
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout validation scripts and site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+          persist-credentials: false
+      - name: Checkout draft
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.draft_branch }}
+          path: draft
+          persist-credentials: false
+      - name: Run safety unit tests
+        run: python -m unittest discover -s site/agents -p 'test_agent3_dry_run.py'
+      - name: Validate without publishing
+        env:
+          DRAFT_SLUG: ${{ inputs.draft_slug }}
+        run: |
+          set -uo pipefail
+          python -m py_compile site/agents/prepare_publication.py
+          mkdir -p validation
+          python site/agents/prepare_publication.py --dry-run --site site --draft "draft/agent_drafts/$DRAFT_SLUG" --slug "$DRAFT_SLUG" >validation/details.txt 2>&1
+          status=$?
+          if [ "$status" -eq 0 ]; then
+            echo "PASS: draft meets automated structural publication checks" | tee validation/summary.txt
+          else
+            echo "NOT READY: draft failed automated publication checks; this is an expected dry-run outcome, not publication" | tee validation/summary.txt
+          fi
+          cat validation/details.txt
+          cat validation/summary.txt >> "$GITHUB_STEP_SUMMARY"
+          echo 'No files changed, no PR created, no publication.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload dry-run report
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent3-dry-run-report
+          path: validation/
+          retention-days: 30

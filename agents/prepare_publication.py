@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 
 DOMAIN = "https://ailearninggym.com"
 def escape(s): return html.escape(str(s), quote=True)
-def prepare(site, draft, slug):
+def prepare(site, draft, slug, dry_run=False):
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
         raise ValueError("Unsafe slug")
     data = json.loads((draft / "review.json").read_text(encoding="utf-8"))
@@ -75,6 +75,14 @@ def prepare(site, draft, slug):
             '.related{margin-top:3rem;padding:1rem;border:1px solid #d9e2ee;border-radius:8px}'
             '</style></head><body><header><a href="/">AI Learning Gym</a></header>'
             '<main><article><h1>' + title + '</h1>' + "\\n".join(sections) + '</article></main></body></html>\\n')
+    if dry_run:
+        sitemap = site / "sitemap.xml"
+        ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+        tree = ET.parse(sitemap)
+        if any(n.text == canonical for n in tree.getroot().iter(ns + "loc")):
+            raise ValueError("Sitemap already contains URL")
+        print(f"DRY RUN PASS: {slug}; {words} instructional words; no files written")
+        return
     target.parent.mkdir(parents=True, exist_ok=False)
     target.write_text(page, encoding="utf-8")
     sitemap = site / "sitemap.xml"
@@ -96,7 +104,8 @@ def main():
     p.add_argument("--site",required=True)
     p.add_argument("--draft",required=True)
     p.add_argument("--slug",required=True)
+    p.add_argument("--dry-run", action="store_true", help="Validate only; no files written")
     a=p.parse_args()
-    prepare(Path(a.site).resolve(),Path(a.draft).resolve(),a.slug)
+    prepare(Path(a.site).resolve(),Path(a.draft).resolve(),a.slug, dry_run=a.dry_run)
 
 if __name__=="__main__": main()
