@@ -1,0 +1,47 @@
+name: Agent 2 SEO editorial review (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft_branch:
+        description: "Exact draft PR branch, e.g. agent/draft-38627569942-1"
+        required: true
+        type: string
+      draft_slug:
+        description: "Draft directory name inside agent_drafts"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout reviewer from main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: reviewer
+          persist-credentials: false
+      - name: Checkout draft branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.draft_branch }}
+          path: draft
+          persist-credentials: false
+      - name: Run read-only editorial checks
+        env:
+          DRAFT_SLUG: ${{ inputs.draft_slug }}
+        run: |
+          set -euo pipefail
+          python reviewer/agents/review_article.py --draft "agent_drafts/$DRAFT_SLUG" --output "$GITHUB_WORKSPACE/agent2-review.md"
+        working-directory: draft
+      - name: Upload review report
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent2-editorial-report
+          path: agent2-review.md
+          retention-days: 30
