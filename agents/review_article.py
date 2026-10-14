@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 import urllib.request
 import urllib.error
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path.cwd() if (Path.cwd() / "agent_drafts").is_dir() else Path(__file__).resolve().parents[1]
 class Extract(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -77,7 +77,7 @@ def main():
     title = doc.get("title", "")
     report = [
         "# Agent 2 — SEO and editorial review", "",
-        f"**Article:** {title}", f"**Draft:** \\x60{args.draft}\\x60", "",
+        f"**Article:** {title}", f"**Draft:** {args.draft}", "",
         "**Decision: NEEDS HUMAN REVIEW — NOT APPROVED FOR PUBLICATION**", "",
         f"Instructional words (excluding prompts): **{words}**", "",
         "## Findings", ""
