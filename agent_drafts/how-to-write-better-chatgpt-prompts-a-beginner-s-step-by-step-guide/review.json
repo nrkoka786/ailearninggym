@@ -12,7 +12,7 @@
         "A high-quality prompt is more than just a question; it is a structured set of instructions that guides the AI toward a specific outcome. Think of it as delegating a task to a highly capable but literal-minded assistant. To get the best results, you must provide a clear role, a specific task, necessary context, and a defined output format. By breaking down your request into these four components, you significantly reduce the likelihood of receiving generic or irrelevant responses from the model.",
         "The role component allows you to set the persona for the AI, such as asking it to act as a professional editor, a coding tutor, or a historical researcher. When you define a persona, the AI adjusts its tone, vocabulary, and depth of knowledge to match that specific professional standard. For instance, asking for an explanation of quantum physics as a teacher yields a much different result than asking for it as a comedian, ensuring the content aligns with your specific learning goals.",
         "Context is the bridge between a vague request and a precise answer. Providing background information, such as your current level of understanding, the intended audience for the output, or specific constraints, helps the AI narrow its focus. Without context, the AI must guess your intent, which often leads to broad, surface-level answers. By explicitly stating what you already know or what you are trying to avoid, you save time and ensure the AI focuses its computational resources on the most relevant information.",
-        "Finally, defining the output format is crucial for usability. Whether you need a bulleted list, a professional email, a table, or a concise summary, explicitly stating your requirements prevents the AI from choosing a format that might not suit your needs. You can also specify the length, tone, and style of the output. By combining these four elements\u2014role, task, context, and format\u2014you create a robust prompt that minimizes ambiguity and maximizes the utility of every interaction you have with the model."
+        "Finally, defining the output format is crucial for usability. Whether you need a bulleted list, a professional email, a table, or a concise summary, explicitly stating your requirements prevents the AI from choosing a format that might not suit your needs. You can also specify the length, tone, and style of the output. By combining these four elements—role, task, context, and format—you create a robust prompt that minimizes ambiguity and maximizes the utility of every interaction you have with the model."
       ]
     },
     {
@@ -77,12 +77,12 @@
   ],
   "sources": [
     {
-      "label": "OpenAI Help Center",
-      "url": "https://help.openai.com"
+      "label": "OpenAI: Prompt engineering best practices for ChatGPT",
+      "url": "https://help.openai.com/en/articles/10032626"
     },
     {
-      "label": "Federal Trade Commission AI Guidance",
-      "url": "https://www.ftc.gov"
+      "label": "OpenAI: Does ChatGPT tell the truth?",
+      "url": "https://help.openai.com/en/articles/8313428"
     }
   ],
   "quality_metrics": {
@@ -101,5 +101,15 @@
     ],
     "serviceTier": "standard"
   },
-  "status": "HUMAN_REVIEW_REQUIRED"
+  "status": "HUMAN_REVIEW_REQUIRED",
+  "internal_links": [
+    {
+      "label": "AI Prompt Writing Fundamentals",
+      "url": "/learning-paths/ai-prompt-writing-fundamentals/"
+    },
+    {
+      "label": "How to Use ChatGPT to Fact-Check Information",
+      "url": "/blog/how-to-use-chatgpt-to-fact-check-information-a-beginner-guide/"
+    }
+  ]
 }
