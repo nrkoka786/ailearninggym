@@ -1,0 +1,55 @@
+name: Gemini SEO article draft (manual review only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Specific beginner AI topic for one draft (12-130 characters)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ai-article-draft
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL: gemini-2.5-flash
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate draft
+        run: python agents/generate_draft.py --topic "$TOPIC"
+        env:
+          TOPIC: ${{ inputs.topic }}
+      - name: Check generated files
+        run: python agents/validate_drafts.py
+      - name: Open review-only pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="agent/draft-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add agent_drafts/
+          git commit -m "draft: Gemini SEO article for human review"
+          git push origin "$branch"
+          gh pr create --draft --base main --head "$branch" \
+            --title "REVIEW ONLY: Gemini SEO article draft" \
+            --body "Unpublished draft only. Read agent_drafts/*/review.json and preview.html in this PR. The source links and claims have NOT been independently verified. Do not merge this PR: draft files are not publication-ready and contain noindex. Publishing, sitemap changes, and production preview will be implemented and separately validated later."
