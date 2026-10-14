@@ -37,7 +37,7 @@ jobs:
           DRAFT_SLUG: ${{ inputs.draft_slug }}
         run: |
           set -euo pipefail
-          python reviewer/agents/review_article.py --draft "agent_drafts/$DRAFT_SLUG" --output "$GITHUB_WORKSPACE/agent2-review.md"
+          python ../reviewer/agents/review_article.py --draft "agent_drafts/$DRAFT_SLUG" --output "$GITHUB_WORKSPACE/agent2-review.md"
         working-directory: draft
       - name: Upload review report
         uses: actions/upload-artifact@v4
