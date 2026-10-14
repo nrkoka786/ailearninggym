@@ -95,16 +95,16 @@ def prepare(site, draft, slug, dry_run=False):
         raise ValueError("Blog listing already contains article URL")
     # Metadata comes from the editor-reviewed draft; never expose unescaped HTML.
     card = (
-        '                <a class="blog-card" href="' + escape(article_href) + '">\\n'
-        '                    <span class="tag">Beginner Guide</span>\\n'
-        '                    <h3>' + escape(data["title"]) + '</h3>\\n'
-        '                    <p>' + escape(data["description"]) + '</p>\\n'
-        '                    <div class="meta">' + date.today().strftime("%B %Y") + '</div>\\n'
-        '                </a>\\n\\n'
+        '                <a class="blog-card" href="' + escape(article_href) + '">\n'
+        '                    <span class="tag">Beginner Guide</span>\n'
+        '                    <h3>' + escape(data["title"]) + '</h3>\n'
+        '                    <p>' + escape(data["description"]) + '</p>\n'
+        '                    <div class="meta">' + date.today().strftime("%B %Y") + '</div>\n'
+        '                </a>\n\n'
     )
     # Insert immediately after the grid opens, so the newest guide appears first.
     insertion_point = listing_text.index(grid_marker) + len(grid_marker)
-    updated_listing = listing_text[:insertion_point] + "\\n\\n" + card + listing_text[insertion_point:]
+    updated_listing = listing_text[:insertion_point] + "\n\n" + card + listing_text[insertion_point:]
     if dry_run:
         sitemap = site / "sitemap.xml"
         ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
