@@ -20,6 +20,22 @@ def slugify(value):
         raise ValueError("Invalid article slug")
     return slug
 
+def available_models(key):
+    """Query the authenticated model catalog without printing the API key."""
+    request = urllib.request.Request(
+        "https://generativelanguage.googleapis.com/v1beta/models?pageSize=100",
+        headers={"x-goog-api-key": key})
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            catalog = json.load(response)
+    except (urllib.error.HTTPError, urllib.error.URLError) as exc:
+        return f"Model catalog unavailable ({type(exc).__name__})"
+    names = [model.get("name", "").removeprefix("models/")
+             for model in catalog.get("models", [])
+             if "generateContent" in model.get("supportedGenerationMethods", [])]
+    return ", ".join(names[:25]) if names else "No generateContent models listed"
+
+
 def request_gemini(prompt):
     key = os.getenv("GEMINI_API_KEY")
     if not key:
@@ -34,7 +50,13 @@ def request_gemini(prompt):
         with urllib.request.urlopen(req, timeout=90) as response:
             result = json.load(response)
     except urllib.error.HTTPError as exc:
-        raise RuntimeError(f"Gemini API HTTP {exc.code}; check key, quota and model") from exc
+        if exc.code == 404:
+            raise RuntimeError(
+                f"Gemini API HTTP 404: model '{MODEL}' not available for this key/API. "
+                f"Available generateContent models: {available_models(key)}. "
+                "Set GEMINI_MODEL to a supported model in the workflow."
+            ) from exc
+        raise RuntimeError(f"Gemini API HTTP {exc.code}; check API key permissions, quota, and model") from exc
     text = "".join(p.get("text", "") for c in result.get("candidates", [])
                    for p in c.get("content", {}).get("parts", []))
     if not text:
