@@ -36,10 +36,15 @@ jobs:
         env:
           DRAFT_SLUG: ${{ inputs.draft_slug }}
         run: |
-          python site/agents/revise_draft.py --draft "draft/agent_drafts/$DRAFT_SLUG" --output revised_draft
+          python site/agents/revise_draft.py --draft "draft/agent_drafts/$DRAFT_SLUG" --output "draft/agent_drafts/revised-$DRAFT_SLUG"
+      - name: Recheck with Agent 2
+        working-directory: draft
+        env:
+          DRAFT_SLUG: ${{ inputs.draft_slug }}
+        run: python ../site/agents/review_article.py --draft "agent_drafts/revised-$DRAFT_SLUG" --output "agent_drafts/revised-$DRAFT_SLUG/agent2-review.md"
       - name: Upload review-only result
         uses: actions/upload-artifact@v4
         with:
           name: revised-article-review-only
-          path: revised_draft/
+          path: draft/agent_drafts/revised-*/
           retention-days: 30
