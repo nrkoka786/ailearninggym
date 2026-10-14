@@ -8,6 +8,7 @@ import re
 from urllib.parse import urlparse
 import urllib.request
 import urllib.error
+from editorial_checks import inventory, recommend_links, content_warnings
 
 ROOT = Path.cwd() if (Path.cwd() / "agent_drafts").is_dir() else Path(__file__).resolve().parents[1]
 class Extract(HTMLParser):
@@ -45,6 +46,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--draft", required=True, help="Relative path to draft folder")
     parser.add_argument("--output", default="agent2-review.md")
+    parser.add_argument("--site-root", default=None)
     args = parser.parse_args()
     folder = (ROOT / args.draft).resolve()
     if not folder.is_relative_to((ROOT / "agent_drafts").resolve()) or not folder.is_dir():
@@ -71,7 +73,14 @@ def main():
     sources = doc.get("sources", [])
     if len(sources) < 2: flag("FIX", "Fewer than two proposed sources")
     statuses = [(x.get("url", ""), verify_url(x.get("url", ""))) for x in sources]
-    if any(s != "REACHABLE" for _, s in statuses): flag("REVIEW", "One or more source URLs could not be reached")
+    for url, status in statuses:
+        if status == "HTTP_403": flag("REVIEW", f"Access restricted (403; not necessarily broken): {url}")
+        elif status in ("HTTP_404", "HTTP_410", "INVALID"): flag("FIX", f"Possibly broken URL: {url} ({status})")
+        elif status != "REACHABLE": flag("REVIEW", f"URL unverified: {url} ({status})")
+    for note in content_warnings(doc): flag("REVIEW", note)
+    pages = inventory(args.site_root) if args.site_root else []
+    suggestions = recommend_links(doc, pages)
+    if not pages: flag("REVIEW", "Site inventory unavailable; cannot suggest internal links")
     flag("REVIEW", "Source relevance, specific claim support and factual accuracy require human verification")
     flag("REVIEW", "Check originality, search intent, duplication, and compatibility with existing site design")
     title = doc.get("title", "")
@@ -83,6 +92,12 @@ def main():
         "## Findings", ""
     ]
     report += [f"- **{level}:** {message}" for level, message in findings]
+    report += ["", "## Suggested existing-site internal links", "",
+               "Candidates only: paths were found in checked-out site; editorial relevance needs review.", ""]
+    report += [f"- {p['title']} — {p['path']}" for p in suggestions] or ["- No strong title matches found."]
+    report += ["", "## Potential topic overlap", "",
+               "Keyword overlap is not an originality or plagiarism test.", ""]
+    report += [f"- {p['title']} — {p['path']}" for p in suggestions[:3]] or ["- No strong title matches."]
     report += ["", "## Proposed source URL checks", "",
                "Reachable means the URL responded; it does **not** verify a claim.", ""]
     report += [f"- {url} — {status}" for url, status in statuses]

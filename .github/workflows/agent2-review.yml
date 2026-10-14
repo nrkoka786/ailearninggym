@@ -32,12 +32,14 @@ jobs:
           ref: ${{ inputs.draft_branch }}
           path: draft
           persist-credentials: false
+      - name: Run reviewer unit tests
+        run: python -m unittest discover -s reviewer/agents -p 'test_editorial_checks.py'
       - name: Run read-only editorial checks
         env:
           DRAFT_SLUG: ${{ inputs.draft_slug }}
         run: |
           set -euo pipefail
-          python ../reviewer/agents/review_article.py --draft "agent_drafts/$DRAFT_SLUG" --output "$GITHUB_WORKSPACE/agent2-review.md"
+          python ../reviewer/agents/review_article.py --draft "agent_drafts/$DRAFT_SLUG" --output "$GITHUB_WORKSPACE/agent2-review.md" --site-root ../reviewer
         working-directory: draft
       - name: Upload review report
         uses: actions/upload-artifact@v4
