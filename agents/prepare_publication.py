@@ -61,20 +61,20 @@ def prepare(site, draft, slug):
     sections += ['<li><a href="' + escape(p) + '">How to Fact-Check AI Answers</a></li>' for p in links]
     sections.append("</ul></aside>")
     title = escape(data["title"])
-    page = """<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>""" + title + """ | AI Learning Gym</title>
-<meta name="description" content="""" + escape(data["description"]) + """">
-<link rel="canonical" href="""" + escape(canonical) + """">
-<style>
-:root{--ink:#172033;--muted:#5e687a;--link:#155bb5;--border:#d9e2ee;--soft:#f3f7fb}
-*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:18px;line-height:1.72}
-a{color:var(--link)}.site-header{border-bottom:1px solid var(--border)}.site-header-inner,main{max-width:750px;margin:auto;padding:18px 24px}
-main{padding-top:48px;padding-bottom:64px}h1,h2,h3{line-height:1.3;color:#101827}h1{font-size:clamp(2rem,5vw,3rem)}
-h2{margin-top:2em}p{margin-bottom:1.2em}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--soft);padding:1rem;border-radius:8px}
-.related{margin-top:3rem;padding:1rem;border:1px solid var(--border);border-radius:8px}
-</style></head><body><header class="site-header"><div class="site-header-inner"><a href="/">AI Learning Gym</a></div></header>
-<main><article><h1>""" + title + "</h1>" + "\n".join(sections) + "</article></main></body></html>\n"
+    page = ('<!doctype html>\\n<html lang="en"><head><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            '<title>' + title + ' | AI Learning Gym</title>'
+            '<meta name="description" content="' + escape(data["description"]) + '">'
+            '<link rel="canonical" href="' + escape(canonical) + '">'
+            '<style>body{margin:0;background:#fff;color:#172033;font:18px/1.72 system-ui,sans-serif}'
+            'header{border-bottom:1px solid #d9e2ee;padding:18px 24px}'
+            'header a,main{max-width:750px;margin:auto;display:block}'
+            'main{padding:48px 24px 64px}h1,h2,h3{line-height:1.3;color:#101827}'
+            'h1{font-size:clamp(2rem,5vw,3rem)}h2{margin-top:2em}'
+            'a{color:#155bb5}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f7fb;padding:1rem}'
+            '.related{margin-top:3rem;padding:1rem;border:1px solid #d9e2ee;border-radius:8px}'
+            '</style></head><body><header><a href="/">AI Learning Gym</a></header>'
+            '<main><article><h1>' + title + '</h1>' + "\\n".join(sections) + '</article></main></body></html>\\n')
     target.parent.mkdir(parents=True, exist_ok=False)
     target.write_text(page, encoding="utf-8")
     sitemap = site / "sitemap.xml"
